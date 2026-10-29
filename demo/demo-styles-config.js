@@ -36,5 +36,5 @@ window.DEMO_STYLES = [
     desc: 'A blue action rail down the left, big cards for customer, items, discount and pay, and a full item table.',
     preview: { dir: 'previews/demo-style-36-rail-cards/', shots: ['sale', 'payment', 'customer'] } },
   { id: '37', slug: 'maroon-console',   name: 'Maroon Console',   css: false, js: false, swatch: ['#2b120d', '#4c807a', '#1418a6'], stage: 'preview', downloadUrl: null,
-    preview: { dir: 'previews/demo-style-37-maroon-console/', shots: ['sale', 'payment', 'customer', 'menu'] } },
+    preview: { dir: 'previews/demo-style-37-maroon-console/', shots: ['sale', 'payment', 'customer', 'menu', 'keys'] } },
 ];

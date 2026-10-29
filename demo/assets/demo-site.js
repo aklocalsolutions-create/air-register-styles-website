@@ -80,7 +80,7 @@ function frameCommon(s) {
   sel.onchange = () => { location.search = '?style=' + encodeURIComponent(sel.value); };
 }
 // 'preview' styles: not in Air Register yet. Shows the design mockup (switch screens with the buttons) and its pictures.
-const PREVIEW_SHOTS = { sale: ['sale', 'Sale screen'], payment: ['pay', 'Payment screen'], customer: ['cfd', 'Customer screen'], menu: ['menu', 'Register menu'] };
+const PREVIEW_SHOTS = { sale: ['sale', 'Sale screen'], payment: ['pay', 'Payment screen'], customer: ['cfd', 'Customer screen'], menu: ['menu', 'Register menu'], keys: ['keys', 'Keys screen'] };
 function renderPreview(s) {
   document.title = `DEMO - Style ${s.id} ${s.name} - Preview - Demo Store`;
   document.body.classList.add('isPreview');
