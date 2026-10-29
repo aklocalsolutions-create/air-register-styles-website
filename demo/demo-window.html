@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DEMO - Demo Store</title>
+<!-- One demo screen on its own (e.g. the customer screen pop-out). The DEMO strip sits above the screen, never on it. -->
+<style>
+html,body{margin:0;height:100%;background:#0d0f18}
+#strip{position:fixed;left:0;right:0;top:0;height:22px;display:flex;align-items:center;gap:8px;padding:0 10px;box-sizing:border-box;background:repeating-linear-gradient(45deg,#ffd43b 0 10px,#ffbf00 10px 20px);color:#1a1a1a;font:800 11.5px/1 system-ui,Segoe UI,Arial,sans-serif;letter-spacing:.06em;white-space:nowrap;overflow:hidden}
+#strip a{color:#1a1a1a;margin-left:auto;font-weight:700;letter-spacing:0}
+iframe{position:fixed;left:0;top:22px;width:100%;height:calc(100% - 22px);border:0;background:#fff}
+</style></head><body>
+<div id="strip"></div><iframe id="scr" title="Demo screen"></iframe>
+<script>
+'use strict';
+(() => {
+  const q = new URLSearchParams(location.search), page = q.get('page') === 'customer' ? 'customer' : 'register';
+  const style = (q.get('style') || '').replace(/[^0-9]/g, '').slice(0, 2);
+  const st = (document.getElementById('strip'));
+  st.textContent = (page === 'customer' ? 'DEMO CUSTOMER SCREEN' : 'DEMO REGISTER') + ' - nothing is real · Demo Store';
+  const a = document.createElement('a'); a.href = 'demo-style.html?style=' + style; a.textContent = 'Open the full demo page'; st.appendChild(a);
+  document.getElementById('scr').src = 'register/' + (page === 'customer' ? 'demo-customer' : 'index') + '.html?style=' + style;
+})();
+</script>
+</body></html>

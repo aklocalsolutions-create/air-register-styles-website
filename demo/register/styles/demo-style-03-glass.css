@@ -1,0 +1,456 @@
+/* Air Register Styles — Style 03 Glass
+ * OWNER: the style-03 assistant ONLY (this file + demo-style-03-glass.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v2/style-3-glass/ (sale.png, payment.png, index.html)
+ * Rules: every selector starts with  html[data-style="03"]  — look only; no key changes. On screen = ONLY the mockup's buttons
+ *        (declared in demo-style-03-glass.js); every other control is hidden here with CSS only and keeps its shortcut.
+ * Hooks: see STYLES-PLAN.md "Shared DOM hooks". Test: FAKE_PORT=6104 CHROME_PORT=9501 node tests/e2e-styles.js --style 03
+ * STATUS: STYLED + button allow-list (round 2).
+ *
+ * Map (mockup -> app):
+ *   left column  = big glass search bar (#scanInput) + glass tile grid (#rightAside: quick search, bulk items, side buttons)
+ *   right card   = "Current sale": Items tile (title) + Customers tile ("Add customer F3" chip), cart lines, totals line,
+ *                  the action row (#actions buttons: New, History, Hold, Return ...), Payment tile = white "Charge" bar
+ *   payment      = left glass panel with the Balance ring + Due/Paid/Change chips, right panel with the pay types as
+ *                  tiles, Back = "Back to sale" chip, Pay = green "Finish sale" bar
+ * Layout trick: section.center, .bottom and #tiles use display:contents so their children sit in the .wrap grid.
+ */
+
+/* ---------- palette ---------- */
+html[data-style="03"] {
+  --g3-bg: #2b1d63; --g3-mint: #3ef0b0; --g3-pink: #ff6ec4; --g3-cyan: #00d2ff; --g3-violet: #7873f5; --g3-peach: #ffb86c;
+  --g3-glass: rgba(255,255,255,.14); --g3-line: rgba(255,255,255,.28); --g3-glass2: rgba(255,255,255,.10);
+  --g3-shadow: 0 10px 40px rgba(20,10,60,.25), inset 0 1px 0 rgba(255,255,255,.35);
+  --g3-font: 'Segoe UI Variable Display', 'Segoe UI', Sora, Inter, Roboto, Arial, sans-serif;
+}
+html[data-style="03"] body {
+  font-family: var(--g3-font); color: #fff; -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(700px 500px at 10% 10%, #ff6ec4 0, transparent 60%),
+    radial-gradient(800px 600px at 90% 20%, #7873f5 0, transparent 60%),
+    radial-gradient(700px 600px at 60% 110%, #00d2ff 0, transparent 60%),
+    radial-gradient(500px 400px at 30% 90%, #ffb86c 0, transparent 60%),
+    #2b1d63;
+  background-attachment: fixed;
+}
+html[data-style="03"] kbd {
+  font: 600 10px/1 var(--g3-font); color: #fff; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 6px; padding: 3px 6px; white-space: nowrap;
+}
+
+/* ---------- login ---------- */
+html[data-style="03"] #login { background: transparent; backdrop-filter: blur(2px); }
+html[data-style="03"] #login .card {
+  background: rgba(255,255,255,.16); border: 1px solid var(--g3-line); backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--g3-shadow); border-radius: 24px; color: #fff;
+}
+html[data-style="03"] #login p, html[data-style="03"] #login label.f, html[data-style="03"] #login .note { color: rgba(255,255,255,.8); }
+html[data-style="03"] #login input.f { background: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.5); border-radius: 14px; color: #2b1d63; }
+html[data-style="03"] #login .pbtn { background: #fff; color: #2b1d63; border-radius: 16px; }
+
+/* ---------- frame ---------- */
+html[data-style="03"] #app { grid-template-rows: 58px 1fr 26px; background: transparent; }
+html[data-style="03"] .top { background: transparent; padding: 10px 18px 0; gap: 10px; }
+html[data-style="03"] .top > b { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; }
+html[data-style="03"] .top > b::before {
+  content: 'AR'; width: 40px; height: 40px; border-radius: 14px; display: grid; place-items: center; font-size: 14px; font-weight: 800;
+  background: linear-gradient(135deg, rgba(255,110,196,.85), rgba(120,115,245,.85)); border: 1px solid var(--g3-line); box-shadow: var(--g3-shadow);
+}
+html[data-style="03"] .top .sub { opacity: .75; font-size: 12px; }
+html[data-style="03"] .top .pill {
+  height: 34px; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: blur(24px) saturate(160%); box-shadow: var(--g3-shadow); color: #fff;
+}
+html[data-style="03"] .top .pill.ok::before, html[data-style="03"] .top .pill.warn::before, html[data-style="03"] .top .pill.bad::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--g3-mint);
+}
+html[data-style="03"] .top .pill.warn::before { background: var(--g3-peach); }
+html[data-style="03"] .top .pill.bad::before { background: #ff5c7a; }
+html[data-style="03"] .top .topset { background: var(--g3-glass); }
+html[data-style="03"] .top .topset:hover { background: rgba(255,255,255,.24); }
+html[data-style="03"] .status { background: transparent; color: rgba(255,255,255,.72); font-size: 11.5px; padding: 0 22px; }
+html[data-style="03"] .net { color: var(--g3-mint); }
+html[data-style="03"] .net.off { color: #ff9bb0; }
+
+/* ---------- sale screen grid ---------- */
+html[data-style="03"] .wrap {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto auto;
+  grid-template-areas:
+    "scan  head"
+    "side  cart"
+    "side  cart"
+    "side  tot"
+    "side  act"
+    "side  pay";
+  column-gap: 36px; row-gap: 10px; padding: 14px 18px 8px;
+}
+/* the glass "Current sale" card behind the right column */
+html[data-style="03"] .wrap::before {
+  content: ''; position: absolute; top: 4px; bottom: 0; right: 6px; left: calc(50% + 4px); border-radius: 26px; pointer-events: none; z-index: 0;
+  background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: blur(24px) saturate(160%); box-shadow: var(--g3-shadow);
+}
+html[data-style="03"] .wrap > *, html[data-style="03"] .center > *, html[data-style="03"] .bottom > *, html[data-style="03"] #tiles > * { position: relative; z-index: 1; }
+html[data-style="03"] .sizer { display: none; }
+html[data-style="03"] section.center, html[data-style="03"] .center > .bottom, html[data-style="03"] #tiles { display: contents; }
+
+/* scan box = "Search or scan any item…" */
+html[data-style="03"] .bottom > div:first-child { grid-area: scan; align-self: start; min-width: 0; }
+html[data-style="03"] .scanrow input, html[data-style="03"] #scanInput {
+  height: 50px; border-radius: 18px; font: 500 15px var(--g3-font); color: #fff; padding: 0 16px 0 46px;
+  background: rgba(255,255,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 17px center;
+  border: 1px solid var(--g3-line); backdrop-filter: blur(24px) saturate(160%); box-shadow: var(--g3-shadow); outline: none;
+}
+html[data-style="03"] #scanInput::placeholder { color: rgba(255,255,255,.7); }
+html[data-style="03"] #scanInput:focus { border-color: rgba(255,255,255,.65); box-shadow: var(--g3-shadow), 0 0 0 3px rgba(255,255,255,.18); }
+html[data-style="03"] .scanrow input.bad { background-color: rgba(255,92,122,.35); border-color: #ff9bb0; }
+html[data-style="03"] .scanrow .drawerbtn { border-radius: 18px; background: linear-gradient(90deg, #3ef0b0, #22c3ee); color: #05322a; box-shadow: none; }
+html[data-style="03"] .msg { font-size: 12.5px; margin-top: 4px; min-height: 0; }
+html[data-style="03"] .msg.ok { color: var(--g3-mint); } html[data-style="03"] .msg.err { color: #ffb3c4; }
+html[data-style="03"] .scanmsg { color: #ffb3c4; }
+html[data-style="03"] .noteline { background: rgba(255,255,255,.16); border-color: var(--g3-line); color: #fff; border-radius: 12px; }
+
+/* tiles: Items = card title, Customers = chip, Payment = Charge bar */
+html[data-style="03"] .tile {
+  background: transparent; border: 0; color: #fff; cursor: pointer; font-weight: 700; height: auto !important;
+}
+html[data-style="03"] .tile[data-a="close"] {
+  grid-area: head; justify-self: start; align-self: center; flex-direction: column; align-items: flex-start; justify-content: center;
+  padding: 14px 0 0 18px; font-size: 22px !important; line-height: 1.15; min-height: 52px; min-width: 180px;
+}
+html[data-style="03"] .tile[data-a="close"]::before { content: 'Current sale · '; position: absolute; left: -9999px; } /* screen-reader only */
+html[data-style="03"] .tile[data-a="close"] .ic { display: none; }
+html[data-style="03"] .tile[data-a="close"] .info { color: rgba(255,255,255,.75); font-size: 12px; font-weight: 400; margin: 2px 0 0; }
+html[data-style="03"] .tile[data-a="close"] .k { position: static; order: 3; display: none; }
+html[data-style="03"] .tile[data-a="customer"] {
+  grid-area: head; justify-self: end; align-self: center; flex-direction: row; gap: 8px; margin: 14px 18px 0 0;
+  height: 40px !important; padding: 0 12px 0 14px; border-radius: 999px; font-size: 13px !important; font-weight: 600;
+  background: rgba(255,255,255,.12); border: 1px solid var(--g3-line); box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+}
+html[data-style="03"] .tile[data-a="customer"] .ic { font-size: 15px !important; filter: grayscale(1) brightness(3); }
+html[data-style="03"] .tile[data-a="customer"] .info { order: 2; color: rgba(255,255,255,.7); font-size: 11.5px; margin: 0; font-weight: 500; }
+html[data-style="03"] .tile[data-a="customer"] .k,
+html[data-style="03"] .tile[data-a="checkout"] .k {
+  position: static; order: 9; font: 600 10px/1 var(--g3-font); color: #fff; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 3px 6px;
+}
+html[data-style="03"] .tile[data-a="checkout"] {
+  grid-area: pay; margin: 0 16px 16px; height: 72px !important; border-radius: 22px; background: #fff; color: #2b1d63;
+  flex-direction: row; justify-content: flex-start; gap: 12px; padding: 0 22px; font-size: 18px !important; box-shadow: 0 14px 40px rgba(20,10,60,.35);
+}
+html[data-style="03"] .tile[data-a="checkout"] .ic { display: none; }
+html[data-style="03"] .tile[data-a="checkout"] .info { order: 2; margin: 0 0 0 auto; font-size: 30px; font-weight: 800; letter-spacing: -1px; color: #2b1d63; }
+html[data-style="03"] .tile[data-a="checkout"] .k { color: #2b1d63; background: rgba(43,29,99,.08); border-color: rgba(43,29,99,.25); }
+html[data-style="03"] .tile.active { border-color: transparent; }
+html[data-style="03"] .tile.on { background: rgba(255,110,196,.35); }
+
+/* cart = glass lines */
+html[data-style="03"] .gridbox { grid-area: cart; background: transparent; border: 0; margin: 0 16px; overflow: auto; min-height: 0; }
+html[data-style="03"] .gridhead { color: rgba(255,255,255,.75); border: 0; padding: 0 6px 6px; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
+html[data-style="03"] .gridhead.ret, html[data-style="03"][data-mode="return"] .gridhead { background: rgba(255,92,122,.3); color: #fff; border-radius: 12px; padding: 6px 10px; margin-bottom: 6px; }
+html[data-style="03"] .gridbox table { border-collapse: separate; border-spacing: 0 8px; font-size: 14px; margin-top: -8px; }
+html[data-style="03"] .gridbox th { background: transparent; color: rgba(255,255,255,.6); border: 0; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px 0; }
+html[data-style="03"] .gridbox td { background: rgba(255,255,255,.1); border-top: 1px solid rgba(255,255,255,.18); border-bottom: 1px solid rgba(255,255,255,.18); padding: 14px 10px; color: #fff; }
+html[data-style="03"] .gridbox td:first-child { border-left: 1px solid rgba(255,255,255,.18); border-radius: 18px 0 0 18px; color: rgba(255,255,255,.65); }
+html[data-style="03"] .gridbox td:last-child { border-right: 1px solid rgba(255,255,255,.18); border-radius: 0 18px 18px 0; font-weight: 700; font-size: 15px; }
+html[data-style="03"] .gridbox td:nth-child(3) { font-weight: 700; }
+html[data-style="03"] tr.row.sel td { background: rgba(255,255,255,.28); border-color: rgba(255,255,255,.5); color: #fff; }
+html[data-style="03"] #cart tr.neg td { color: #ffc2d1; }
+html[data-style="03"] .empty { color: rgba(255,255,255,.7); background: transparent !important; border: 0 !important; }
+html[data-style="03"] #retLines { background: rgba(255,92,122,.18); border: 1px solid rgba(255,255,255,.2); border-radius: 14px; color: #fff; margin-bottom: 6px; }
+html[data-style="03"] #retLines .rl { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; border-radius: 10px; }
+html[data-style="03"] .memchip { background: rgba(255,255,255,.2); color: #fff; }
+html[data-style="03"] .tag { background: rgba(255,184,108,.35); color: #fff; }
+html[data-style="03"] .taxoff { background: #ff5c7a; }
+
+/* totals = "Subtotal · Discount · Tax" line */
+html[data-style="03"] .totals {
+  grid-area: tot; margin: 0 22px; background: transparent; border: 0; font-size: 13px; color: rgba(255,255,255,.9);
+  display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 14px; row-gap: 2px;
+}
+html[data-style="03"] .totals div { border: 0; padding: 0; gap: 6px; justify-content: flex-start; }
+html[data-style="03"] .totals div span:last-child { font-weight: 700; }
+html[data-style="03"] .totals .pretax { font-weight: 400; }
+html[data-style="03"] .totals .total { font-size: 13px; font-weight: 700; padding: 0; background: transparent; }
+html[data-style="03"] .totals .taxoffline { color: #ffb3c4; }
+html[data-style="03"] .totals .negline span, html[data-style="03"] .totals .neg span { color: #ffc2d1; }
+
+/* action row (the left Actions panel) */
+html[data-style="03"] aside.actions { grid-area: act; background: transparent; border: 0; margin: 0 16px; min-height: 0; }
+html[data-style="03"] aside.actions > h2 { display: none; } /* heading only */
+html[data-style="03"] #actions { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; padding: 0; overflow: visible; }
+html[data-style="03"] #actions .hgrp { display: contents; }
+html[data-style="03"] .abtn, html[data-style="03"] .hgrp .abtn {
+  min-height: 54px; height: 54px; padding: 4px; border-radius: 16px; flex-direction: column; justify-content: center; gap: 2px; text-align: center;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff; box-shadow: none;
+}
+html[data-style="03"] .abtn .ic, html[data-style="03"] .hgrp .abtn .ic { display: block; width: auto; font-size: 14px; line-height: 1; filter: grayscale(1) brightness(2.6); }
+html[data-style="03"] .abtn .t { font-size: 11px; font-weight: 600; white-space: nowrap; }
+html[data-style="03"] .abtn .k { display: inline-block; margin-top: 2px; font-size: 8.5px; padding: 1px 4px; border-radius: 5px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); opacity: 1; white-space: nowrap; }
+html[data-style="03"] .abtn.red, html[data-style="03"] .abtn.green { background: rgba(255,255,255,.12); color: #fff; box-shadow: none; }
+html[data-style="03"] .abtn:hover, html[data-style="03"] .rbtn:hover { background: rgba(255,255,255,.24); }
+html[data-style="03"] .abtn:active, html[data-style="03"] .rbtn:active { transform: translateY(1px); }
+/* the mockup's six come first: New, History, Hold, Return; the rest follow (all keep their keys) */
+html[data-style="03"] #actions [data-a="new-sale"] { order: 1; } html[data-style="03"] #actions [data-a="history"] { order: 2; }
+html[data-style="03"] #actions [data-a="hold"] { order: 3; } html[data-style="03"] #actions [data-a="return"] { order: 4; }
+html[data-style="03"] #actions [data-a="customer"] { order: 5; } html[data-style="03"] #actions [data-a="load-hold"] { order: 6; }
+html[data-style="03"] #actions > *, html[data-style="03"] #actions .hgrp > * { order: 10; }
+html[data-style="03"] #actions [data-a="new-sale"] { order: 1; } html[data-style="03"] #actions [data-a="history"] { order: 2; }
+html[data-style="03"] #actions .hgrp [data-a="hold"] { order: 3; } html[data-style="03"] #actions [data-a="return"] { order: 4; }
+html[data-style="03"] #actions [data-a="customer"] { order: 5; } html[data-style="03"] #actions .hgrp [data-a="load-hold"] { order: 6; }
+
+/* left column: glass tiles (quick search, bulk items, the side buttons) */
+html[data-style="03"] #rightAside { grid-area: side; background: transparent; border: 0; padding: 0 4px 0 0; overflow: auto; min-height: 0; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.35) transparent; }
+html[data-style="03"] #rightAside .side { background: transparent; border: 0; padding: 0; margin: 0 0 6px; }
+html[data-style="03"] .right h3, html[data-style="03"] .side h3 {
+  margin: 10px 2px 8px !important; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,.8); font-weight: 600;
+}
+html[data-style="03"] .side h3 small { font: 600 10px/1 var(--g3-font); letter-spacing: 0; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 3px 6px; }
+html[data-style="03"] #qsPanel { display: grid; grid-template-columns: 1fr; }
+html[data-style="03"] .side input, html[data-style="03"] #qsIn {
+  height: 40px; border-radius: 14px; background: rgba(255,255,255,.14); border: 1px solid var(--g3-line); color: #fff; font: 14px var(--g3-font); padding: 0 14px;
+}
+html[data-style="03"] #qsIn::placeholder { color: rgba(255,255,255,.65); }
+html[data-style="03"] .qsres div { border-color: rgba(255,255,255,.15); color: #fff; border-radius: 10px; }
+html[data-style="03"] .qsres div.sel, html[data-style="03"] .qsres div:hover { background: rgba(255,255,255,.22); }
+html[data-style="03"] .qsres small { color: rgba(255,255,255,.7); }
+html[data-style="03"] .rgrid, html[data-style="03"] .bulkgrid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+html[data-style="03"] .rbtn, html[data-style="03"] .bulkgrid .rbtn, html[data-style="03"] #bulkSetup {
+  min-height: 62px; border-radius: 18px; padding: 10px 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between;
+  background: rgba(255,255,255,.14) !important; border: 1px solid var(--g3-line); color: #fff !important; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 10px 30px rgba(20,10,60,.18), inset 0 1px 0 rgba(255,255,255,.35); backdrop-filter: blur(24px) saturate(160%);
+}
+html[data-style="03"] .rbtn small, html[data-style="03"] .rbtn .bk { color: rgba(255,255,255,.72); font-size: 10.5px; font-weight: 500; }
+html[data-style="03"] .rbtn.red { color: #fff !important; }
+html[data-style="03"] .rbtn.on { background: rgba(255,255,255,.92) !important; color: #2b1d63 !important; }
+html[data-style="03"] .rbtn.on small { color: rgba(43,29,99,.65); }
+html[data-style="03"] .bulkgrid .rbtn { background: linear-gradient(135deg, rgba(62,240,176,.35), rgba(0,210,255,.25)) !important; }
+html[data-style="03"] .na { opacity: .42; }
+
+/* ---------- dialogs: frosted light glass so every form stays readable ---------- */
+html[data-style="03"] .el-overlay { background: rgba(30,16,80,.35); backdrop-filter: blur(10px); }
+html[data-style="03"] .modal {
+  background: rgba(255,255,255,.93); color: #2b1d63; border-radius: 24px; border: 1px solid rgba(255,255,255,.6);
+  box-shadow: 0 20px 60px rgba(20,10,60,.45);
+}
+html[data-style="03"] .modal kbd { color: #2b1d63; background: rgba(43,29,99,.08); border-color: rgba(43,29,99,.2); }
+html[data-style="03"] .modal .pbtn { border-radius: 14px; background: #6a5af9; }
+html[data-style="03"] .modal .pbtn.g { background: linear-gradient(90deg, #3ef0b0, #22c3ee); color: #05322a; }
+html[data-style="03"] .modal .pbtn.r { background: #ff5c7a; }
+html[data-style="03"] .modal .pbtn.s { background: rgba(43,29,99,.08); color: #2b1d63; }
+html[data-style="03"] .modal input.f, html[data-style="03"] .modal select.f { border-radius: 12px; border-color: rgba(43,29,99,.25); }
+html[data-style="03"] .tab.on { background: #2b1d63; border-color: #2b1d63; }
+
+/* ---------- payment screen ---------- */
+html[data-style="03"] .modal.fullpay {
+  background: transparent; color: #fff; border: 0; box-shadow: none; padding: 18px; position: relative;
+}
+html[data-style="03"] .fullpay-ov {
+  background:
+    radial-gradient(700px 500px at 10% 10%, #ff6ec4 0, transparent 60%), radial-gradient(800px 600px at 90% 20%, #7873f5 0, transparent 60%),
+    radial-gradient(700px 600px at 60% 110%, #00d2ff 0, transparent 60%), radial-gradient(500px 400px at 30% 90%, #ffb86c 0, transparent 60%), #2b1d63;
+  backdrop-filter: none;
+}
+html[data-style="03"] .fullpay .payhead {
+  position: absolute; top: 18px; left: calc(50% + 9px); right: 18px; margin: 0; padding: 18px 22px 0; background: transparent; z-index: 2;
+  flex-direction: column; align-items: flex-start; gap: 2px; pointer-events: none;
+}
+html[data-style="03"] .fullpay .payhead h2 { font-size: 22px; font-weight: 700; }
+html[data-style="03"] .fullpay .payhead h2::after { content: ' · how are they paying?'; font-weight: 400; opacity: .8; font-size: 16px; }
+html[data-style="03"] .fullpay .payhead .note { color: rgba(255,255,255,.75); font-size: 12px; }
+html[data-style="03"] .fullpay #payBody { height: 100%; }
+html[data-style="03"] .paygrid { gap: 18px; }
+html[data-style="03"] .paygrid > * {
+  background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: none; /* no blur here: it would trap the absolute Back chip */ box-shadow: var(--g3-shadow); border-radius: 24px;
+}
+html[data-style="03"] .paynums {
+  width: 50%; flex: none; display: grid; grid-template-columns: repeat(3, auto); grid-template-rows: 1fr auto; justify-content: center; align-content: center;
+  gap: 12px 10px; padding: 70px 30px 30px;
+}
+html[data-style="03"] .paynums .pn {
+  flex: none; background: rgba(255,255,255,.14); border: 1px solid var(--g3-line); border-radius: 16px; padding: 10px 18px; min-width: 96px; text-align: center; align-items: center;
+}
+html[data-style="03"] .paynums .pn span { color: rgba(255,255,255,.85); font-size: 12px; font-weight: 500; }
+html[data-style="03"] .paynums .pn b { font-size: 17px; color: #fff; font-weight: 700; }
+html[data-style="03"] .paynums .pn.left {
+  grid-column: 1 / -1; grid-row: 1; justify-self: center; align-self: center; width: min(330px, 40vh); height: min(330px, 40vh); border-radius: 50%; padding: 14px;
+  background: conic-gradient(rgba(255,255,255,.95) 0 0%, rgba(255,255,255,.15) 0 100%); border: 0; position: relative; margin-bottom: 14px;
+}
+html[data-style="03"] .paynums .pn.left::before {
+  content: ''; position: absolute; inset: 14px; border-radius: 50%; background: rgba(43,29,99,.35); backdrop-filter: blur(20px); z-index: -1;
+}
+html[data-style="03"] .paynums .pn.left { isolation: isolate; }
+html[data-style="03"] .paynums .pn.left span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.8); }
+html[data-style="03"] .paynums .pn.left b { font-size: 60px; font-weight: 800; letter-spacing: -2px; color: #fff; }
+html[data-style="03"] .paynums .pn.left.zero { background: conic-gradient(var(--g3-mint) 0 100%); }
+html[data-style="03"] .paynums .pn.total { grid-row: 2; grid-column: 1; }
+html[data-style="03"] .paynums .pn.tend { grid-row: 2; grid-column: 2; }
+html[data-style="03"] .paynums .pn.chg { grid-row: 2; grid-column: 3; background: rgba(255,255,255,.14); }
+html[data-style="03"] .paynums .pn.chg b { color: #fff; }
+html[data-style="03"] .payact { padding: 86px 18px 18px; overflow: auto; }
+html[data-style="03"] .plist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+html[data-style="03"] .pline {
+  min-height: 96px; border-radius: 20px; padding: 14px; flex-direction: column; align-items: stretch; justify-content: space-between; gap: 8px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: #fff;
+}
+html[data-style="03"] .pline .plbl { font-size: 15px; font-weight: 700; }
+html[data-style="03"] .pline.on { background: #fff; color: #2b1d63; border-color: #fff; box-shadow: 0 10px 30px rgba(20,10,60,.25); }
+html[data-style="03"] .pline.on .plbl::before { content: ''; }
+html[data-style="03"] .pline .pamt {
+  width: 100%; height: 44px; font-size: 22px; font-weight: 700; border-radius: 14px; text-align: left; color: #fff;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+}
+html[data-style="03"] .pline .pamt::placeholder { color: rgba(255,255,255,.6); }
+html[data-style="03"] .pline.on .pamt { background: rgba(43,29,99,.06); border-color: rgba(43,29,99,.2); color: #2b1d63; }
+html[data-style="03"] .pline.on .pamt::placeholder { color: rgba(43,29,99,.45); }
+html[data-style="03"] .pextra { grid-column: 1 / -1; padding: 0; }
+html[data-style="03"] .fullpay .quick button, html[data-style="03"] .quick button {
+  border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); color: #fff; height: 50px; padding: 0 18px;
+}
+html[data-style="03"] .fullpay .cardbox { border: 1px solid var(--g3-line); background: rgba(255,255,255,.12); border-radius: 18px; color: #fff; }
+html[data-style="03"] .fullpay .cardbox.bad { border-color: #ff9bb0; color: #ffd0da; }
+html[data-style="03"] .fullpay table.mini td { border-color: rgba(255,255,255,.15); }
+html[data-style="03"] .fullpay .st-done { color: var(--g3-mint); }
+html[data-style="03"] .fullpay .msg { font-size: 14px; }
+html[data-style="03"] .fullpay .note { color: rgba(255,255,255,.75); }
+html[data-style="03"] .fullpay .row2 { margin-top: auto; padding-top: 12px; display: grid; grid-template-columns: 1fr; gap: 0; }
+html[data-style="03"] .fullpay #payOk, html[data-style="03"] .fullpay .row2 .pbtn.g {
+  height: 72px; min-height: 72px; border-radius: 22px; background: linear-gradient(90deg, #3ef0b0, #22c3ee); color: #05322a; font-size: 19px; font-weight: 800;
+  text-align: left; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 14px 40px rgba(0,80,80,.35);
+}
+html[data-style="03"] .fullpay #payOk kbd { color: #05322a; background: rgba(255,255,255,.35); border-color: rgba(0,0,0,.15); opacity: 1; padding: 3px 6px; border-radius: 6px; }
+html[data-style="03"] .fullpay #payBack {
+  position: absolute; top: 28px; left: 28px; height: 40px; min-height: 40px; padding: 0 16px; border-radius: 999px; font-size: 13px; font-weight: 600; z-index: 3;
+  background: rgba(255,255,255,.16); border: 1px solid var(--g3-line); color: #fff; box-shadow: var(--g3-shadow);
+}
+html[data-style="03"] .fullpay #payBack::before { content: '‹ '; font-size: 16px; }
+html[data-style="03"] .fullpay .row2 .pbtn:not(#payOk):not(#payBack) { border-radius: 18px; min-height: 56px; margin-top: 8px; }
+html[data-style="03"] .fullpay .tabs .tab { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.22); color: #fff; border-radius: 20px; }
+html[data-style="03"] .fullpay .tabs .tab.on { background: #fff; color: #2b1d63; }
+html[data-style="03"] .fullpay input.f { background: rgba(255,255,255,.9); color: #2b1d63; }
+html[data-style="03"] .fullpay label.f { color: rgba(255,255,255,.85); }
+
+/* ---------- Settings page ---------- */
+html[data-style="03"] .stpage-ov { background: transparent; backdrop-filter: none; }
+html[data-style="03"] .modal.stpage {
+  border-radius: 0; border: 0; color: #2b1d63;
+  background:
+    radial-gradient(700px 500px at 10% 10%, #ff6ec4 0, transparent 60%), radial-gradient(800px 600px at 90% 20%, #7873f5 0, transparent 60%),
+    radial-gradient(700px 600px at 60% 110%, #00d2ff 0, transparent 60%), #2b1d63;
+}
+html[data-style="03"] .stpage .sthead { background: transparent; color: #fff; padding: 16px 24px 10px; }
+html[data-style="03"] .stpage .sthead .pbtn { background: rgba(255,255,255,.16); border: 1px solid var(--g3-line); color: #fff; border-radius: 999px; }
+html[data-style="03"] .stpage .sthead kbd { color: #fff; background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); }
+html[data-style="03"] .sttabs { background: transparent; border: 0; padding: 0 24px 10px; gap: 8px; }
+html[data-style="03"] .sttabs button {
+  border-radius: 999px; color: #fff; background: rgba(255,255,255,.14); border: 1px solid var(--g3-line); padding: 8px 14px; font-size: 13px;
+}
+html[data-style="03"] .sttabs button.on { background: #fff; color: #2b1d63; box-shadow: 0 10px 30px rgba(20,10,60,.25); }
+html[data-style="03"] .sttabs button kbd { color: inherit; background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); }
+html[data-style="03"] .sttabs button.on kbd { background: rgba(43,29,99,.08); border-color: rgba(43,29,99,.2); }
+html[data-style="03"] .stpage .stbody {
+  margin: 0 24px 20px; border-radius: 24px; background: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.6); box-shadow: var(--g3-shadow);
+}
+html[data-style="03"] .stpage .stbody h3 { color: #6a5af9; }
+html[data-style="03"] .btrow { background: rgba(43,29,99,.05); border-radius: 12px; }
+html[data-style="03"] .sybtn.on { outline: 2px solid #6a5af9; }
+
+/* ---------- customer display ---------- */
+html[data-style="03"][data-page="customer"] body { cursor: none; }
+html[data-style="03"][data-page="customer"] #idle, html[data-style="03"][data-page="customer"] #done { background: transparent; }
+html[data-style="03"][data-page="customer"] #idle h1, html[data-style="03"][data-page="customer"] #done h1 { font-weight: 700; letter-spacing: -1px; text-shadow: 0 10px 40px rgba(20,10,60,.35); }
+html[data-style="03"][data-page="customer"] #idle p { display: inline-block; margin-top: 22px; padding: 12px 26px; border-radius: 999px; background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: blur(24px); box-shadow: var(--g3-shadow); font-size: clamp(18px, 2.2vw, 30px); }
+html[data-style="03"][data-page="customer"] #done .sum { padding: 26px 40px; border-radius: 28px; background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: blur(24px); box-shadow: var(--g3-shadow); }
+html[data-style="03"][data-page="customer"] #done .sum .chg { color: var(--g3-mint); }
+html[data-style="03"][data-page="customer"] #sale { gap: 18px; padding: 18px; }
+html[data-style="03"][data-page="customer"] .lines, html[data-style="03"][data-page="customer"] .side {
+  background: var(--g3-glass); border: 1px solid var(--g3-line); backdrop-filter: blur(24px) saturate(160%); box-shadow: var(--g3-shadow); border-radius: 26px; color: #fff;
+}
+html[data-style="03"][data-page="customer"] .lines h2 { background: transparent; padding: 22px 26px 10px; font-size: 26px; font-weight: 700; }
+html[data-style="03"][data-page="customer"] .lines h2.ret { background: rgba(255,92,122,.3); }
+html[data-style="03"][data-page="customer"] .list { padding: 0 16px 16px; gap: 8px; }
+html[data-style="03"][data-page="customer"] .row { border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.1); border-radius: 18px; padding: 12px 18px; }
+html[data-style="03"][data-page="customer"] .row:last-child { background: rgba(255,255,255,.28); border-color: rgba(255,255,255,.5); }
+html[data-style="03"][data-page="customer"] .row .q { color: rgba(255,255,255,.75); }
+html[data-style="03"][data-page="customer"] .row .d { color: var(--g3-mint); }
+html[data-style="03"][data-page="customer"] .row.ret { color: #ffc2d1; }
+html[data-style="03"][data-page="customer"] .side { padding: 26px 28px; }
+html[data-style="03"][data-page="customer"] .side .big { border-top: 0; margin-top: 8px; padding: 18px 22px; border-radius: 22px; background: #fff; color: #2b1d63; box-shadow: 0 14px 40px rgba(20,10,60,.35); }
+html[data-style="03"][data-page="customer"] .side .due { color: #fff; }
+html[data-style="03"][data-page="customer"] .side .chg { color: var(--g3-mint); }
+html[data-style="03"][data-page="customer"] .side .off, html[data-style="03"][data-page="customer"] .side .ret { color: #ffc2d1; }
+html[data-style="03"][data-page="customer"] .side .big.ret { color: #c0265a; }
+
+/* ---------- pass 2 ---------- */
+/* cart: column heads are quiet (the mockup has none) */
+html[data-style="03"] .gridbox thead th { font-size: 9.5px; color: rgba(255,255,255,.5); padding-bottom: 0; }
+html[data-style="03"] .gridbox td:nth-child(2) { color: rgba(255,255,255,.65); font-size: 12.5px; }
+/* totals: one line; Rows/Quantity are already on the Items line */
+html[data-style="03"] .totals { flex-wrap: wrap; font-size: 12.5px; column-gap: 12px; justify-content: flex-start; min-width: 0; }
+html[data-style="03"] .totals div { flex: none; }
+/* Charge bar: mockup wording, the real label stays for readers */
+html[data-style="03"] .tile[data-a="checkout"] { font-size: 0 !important; }
+html[data-style="03"] .tile[data-a="checkout"]::before { content: 'Charge'; font-size: 20px; font-weight: 800; }
+html[data-style="03"] .tile[data-a="checkout"]::after { content: 'Enter or F12'; font-size: 11px; font-weight: 500; opacity: .6; align-self: center; }
+html[data-style="03"] .tile[data-a="close"] { font-size: 0 !important; }
+html[data-style="03"] .tile[data-a="close"]::before { content: 'Current sale'; position: static; font-size: 22px; font-weight: 700; }
+/* payment tiles: a one-line hint like the mockup */
+html[data-style="03"] .pline .plbl::after { display: block; font-size: 11px; font-weight: 500; opacity: .7; margin-top: 2px; }
+html[data-style="03"] .pline[data-t="20"] .plbl::after { content: 'Tap, insert or swipe'; }
+html[data-style="03"] .pline[data-t="10"] .plbl::after { content: 'Count the change'; }
+html[data-style="03"] .pline[data-t="40"] .plbl::after { content: 'Scan the card'; }
+html[data-style="03"] .pline[data-t="50"] .plbl::after { content: 'Write the number down'; }
+/* refund screen (same overlay as payment) */
+html[data-style="03"] .fullpay #refBody { margin-top: 70px !important; padding: 30px; border-radius: 24px; background: var(--g3-glass); border: 1px solid var(--g3-line); box-shadow: var(--g3-shadow); }
+html[data-style="03"] .fullpay:has(#refBody) .payhead { left: 0; right: 0; align-items: center; top: 30px; }
+html[data-style="03"] .fullpay:has(#refBody) .payhead h2::after { content: ' · how should we pay it back?'; }
+html[data-style="03"] .refbig { color: #fff; font-size: 56px; letter-spacing: -2px; text-align: center; }
+html[data-style="03"] .refl { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 18px; color: #fff; font-size: 18px; }
+html[data-style="03"] .refl.hi { background: #fff; color: #2b1d63; border-color: #fff; }
+html[data-style="03"] .pline[data-t="30"] .plbl::after { content: 'Type the card in'; }
+html[data-style="03"] .pline[data-t="11"] .plbl::after { content: 'From the customer'; }
+/* return mode: the bar and the card title say what the key does */
+html[data-style="03"][data-mode="return"] .tile[data-a="checkout"]::before { content: 'Refund'; }
+html[data-style="03"][data-mode="return"] .tile[data-a="close"]::before { content: 'Return'; }
+
+/* ===================== round 2: only the mockup's buttons on screen =====================
+ * Declared in demo-style-03-glass.js. Everything else stays in the DOM, hidden by CSS only; every key still works. */
+/* header: brand · clocked-in chip · gear (#setTop) · logout chip; printer / build / F1 pills are not in the mockup */
+html[data-style="03"] #hwPill, html[data-style="03"] #helpPill, html[data-style="03"] #buildPill { display: none; }
+html[data-style="03"] .top { padding-right: 186px; }
+/* action row: New · History · Hold · Return (+ Discount, Keys placed below); Log out moves to the header */
+html[data-style="03"] #actions > [data-a]:not([data-a="new-sale"]):not([data-a="history"]):not([data-a="return"]):not([data-a="logout"]),
+html[data-style="03"] #actions .hgrp > [data-a]:not([data-a="hold"]) { display: none; }
+html[data-style="03"] #actions [data-a="new-sale"] { grid-column: 1; } html[data-style="03"] #actions [data-a="history"] { grid-column: 2; }
+html[data-style="03"] #actions .hgrp [data-a="hold"] { grid-column: 3; } html[data-style="03"] #actions [data-a="return"] { grid-column: 4; }
+html[data-style="03"] #actions [data-a="logout"] {
+  position: fixed; top: 12px; right: 18px; z-index: 30; width: auto; height: 34px; min-height: 34px; padding: 0 14px;
+  flex-direction: row; gap: 8px; border-radius: 999px; background: var(--g3-glass); border: 1px solid var(--g3-line); box-shadow: var(--g3-shadow);
+}
+html[data-style="03"] #actions [data-a="logout"] .k { margin: 0; }
+/* left column: quick search + Categories (bulk items); the side button panels are not in the mockup */
+html[data-style="03"] #rightAside, html[data-style="03"] #right, html[data-style="03"] #right .rgrid { position: static; }
+html[data-style="03"] #right > h3 { display: none; }
+html[data-style="03"] #right .rbtn:not([data-a="discount"]):not([data-a="local:help"]) { display: none; }
+/* Discount F6 and Keys F1 = slots 5 and 6 of the action row (row sits above the 72px Charge bar) */
+html[data-style="03"] #right .rbtn[data-a="discount"], html[data-style="03"] #right .rbtn[data-a="local:help"] {
+  position: absolute; z-index: 2; bottom: 106px; height: 54px; min-height: 54px; width: calc((50% - 108px) / 6);
+  left: calc(50% + 34px + 4 * ((50% - 108px) / 6 + 8px));
+  padding: 4px; border-radius: 16px; align-items: center; justify-content: center; gap: 2px; text-align: center;
+  font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden;
+  background: rgba(255,255,255,.12) !important; border: 1px solid rgba(255,255,255,.2); box-shadow: none; backdrop-filter: none;
+}
+html[data-style="03"] #right .rbtn[data-a="local:help"] { left: calc(50% + 34px + 5 * ((50% - 108px) / 6 + 8px)); }
+html[data-style="03"] #right .rbtn[data-a="discount"] small, html[data-style="03"] #right .rbtn[data-a="local:help"] small {
+  font-size: 8.5px; padding: 1px 4px; border-radius: 5px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); color: #fff;
+}
+html[data-style="03"] #right .rbtn[data-a="discount"].on { background: rgba(255,255,255,.92) !important; color: #2b1d63 !important; }
+/* quick search (F2 / Ctrl+Shift+S): invisible until focused, then opens under the search bar */
+html[data-style="03"] #qsPanel, html[data-style="03"] #qsIn { opacity: 0; }
+html[data-style="03"] #qsPanel {
+  position: absolute; z-index: 20; top: 96px; left: 18px; width: calc(50% - 36px); pointer-events: none;
+  padding: 12px 14px !important; border-radius: 22px; background: rgba(60,40,140,.72) !important; border: 1px solid var(--g3-line) !important;
+  box-shadow: var(--g3-shadow); backdrop-filter: blur(24px) saturate(160%);
+}
+html[data-style="03"] #qsPanel:focus-within, html[data-style="03"] #qsPanel:focus-within #qsIn { opacity: 1; pointer-events: auto; }
+html[data-style="03"] #bulkPanel h3 { font-size: 0 !important; }
+html[data-style="03"] #bulkPanel h3::before { content: 'Categories'; font-size: 11px; }
+html[data-style="03"] #bulkPanel h3::after { content: 'Alt+1  Alt+2 …'; float: right; font: 600 10px/1 var(--g3-font); letter-spacing: 0; color: rgba(255,255,255,.7); }

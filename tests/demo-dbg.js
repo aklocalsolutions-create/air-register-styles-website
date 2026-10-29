@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async () => { const port = require('fs').readFileSync(__dirname + '/demo-port.txt', 'utf8').trim();
+  const b = await chromium.launch(); const p = await b.newPage();
+  await p.goto(`http://127.0.0.1:${port}/demo/register/index.html?style=${process.argv[2]}&bare=1`); await p.evaluate(() => DEMO_RESET()); await p.reload(); await p.waitForTimeout(1200);
+  const c = () => p.evaluate(() => JSON.stringify(S.cart.map(l => [l.name.slice(13), l.quantity, l.price, l.total])) + ' due ' + S.totals.due);
+  await p.locator('#scanInput').fill('1001'); await p.locator('#scanInput').press('Enter'); await p.waitForTimeout(400); console.log(await c());
+  await p.evaluate(() => act('scan', { code: '1003' })); await p.waitForTimeout(300); console.log(await c());
+  await p.evaluate(() => act('bulk-add', { index: 5 })); console.log(await c());
+  await p.evaluate(() => act('qty-plus', { row: 0 })); console.log(await c());
+  await p.evaluate(() => act('qty', { row: 1, qty: 3 })); console.log(await c());
+  await p.evaluate(() => act('remove', { row: 2 })); console.log(await c());
+  await p.evaluate(() => act('discount', { kind: 'percent', value: 10 })); console.log(await c(), await p.evaluate(() => JSON.stringify(S.totals)));
+  await b.close(); })();

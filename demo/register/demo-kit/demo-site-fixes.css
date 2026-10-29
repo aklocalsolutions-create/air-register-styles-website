@@ -1,0 +1,7 @@
+/* DEMO STORE site-only layout fixes, loaded after the style's own CSS. The style files themselves stay identical
+   to the style bots' tested builds; these only patch what the site's widths/zoom checks found. */
+/* Style 26: the earlier clock workaround was removed on 29 Oct 2026 01:31 ET; the style bot fixed it in demo-style-26-floating-windows.css. */
+/* Style 11: the earlier toolbar workaround was removed on 29 Oct 2026 01:35 ET; the style bot fixed it in demo-style-11-liquid-glass.css. */
+/* Style 30: the earlier 125%-zoom title workaround was removed on 29 Oct 2026 01:38 ET; the style bot fixed it in demo-style-30-card-deck.css. */
+/* Style 25: the earlier repeated send-button workaround was removed on 29 Oct 2026 01:36 ET; the style bot fixed it in demo-style-25-chat-ticket.js/.css. */
+/* Style 10: the earlier 1024-width clock workaround was removed on 29 Oct 2026 08:05 ET; the style bot fixed it in demo-style-10-retro-pop.css. */

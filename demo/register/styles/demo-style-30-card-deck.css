@@ -1,0 +1,705 @@
+/* Air Register Styles — Style 30 Card Deck
+ * OWNER: the style-30 assistant ONLY (this file + demo-style-30-card-deck.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v2/style-30-card-deck/ (sale.png, payment.png, index.html)
+ * Rules: every selector starts with  html[data-style="30"]  — look only; never hide a working control; no key changes.
+ * Hooks: see STYLES-PLAN.md "Shared DOM hooks". Test: FAKE_PORT=6152 CHROME_PORT=9513 node tests/e2e-styles.js --style 30
+ * STATUS: STYLED.
+ *
+ * Layout (register): the app's containers (.wrap, aside.actions, section.center, .bottom, #tiles, #rightAside) become
+ * display:contents and their real controls are placed absolutely inside #app:
+ *   left  330px maroon "your hand": brand, #gridbox (cart lines as cards), Customer tile (F3), #totals
+ *   centre      "Deal an item": #qsPanel + scan box pills, status pills, #bulkPanel = fanned cards, bottom bar
+ *               (Items tile Esc, Open Item F7, Sale Discount F6, Tax Off F5), status line
+ *   right 214px #actions as the Ticket/Store menu with key labels, Payment tile (F12) as the hot button, #right as
+ *               compact two-column chips (every Classic button stays visible).
+ * Fonts: Syne / Inter / JetBrains Mono when installed, else Segoe UI (Windows) fallbacks. No web fonts are loaded.
+ */
+
+html[data-style="30"] {
+  --cd-bg: #f6efe4; --cd-ink: #2a0f19; --cd-mut: #8a7064; --cd-line: #e6d8c6; --cd-r: #7a1f3d; --cd-r2: #a3324f;
+  --cd-gold: #d6a74a; --cd-card: #fffaf3; --cd-side: #efe4d4; --cd-kbd: #f3e1dc;
+  --cd-disp: Syne, 'Segoe UI Black', 'Arial Black', 'Segoe UI', sans-serif;
+  --cd-ui: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+  --cd-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --cd-L: 330px; --cd-R: 214px;
+  /* Classic variables re-coloured, so dialogs and Settings follow the deck colours */
+  --slate: #7a1f3d; --btn: #f3e1dc; --btnText: #7a1f3d; --green: #e4f1e1; --greenText: #2f6b2a; --red: #f6d6dc;
+  --redText: #a1213c; --line: #e6d8c6; --sel: #a3324f;
+}
+html[data-style="30"] body { font-family: var(--cd-ui); color: var(--cd-ink); background: var(--cd-bg); -webkit-font-smoothing: antialiased; }
+html[data-style="30"] kbd { font: 600 10px/1 var(--cd-mono); color: var(--cd-r); background: var(--cd-kbd); border: 0; border-radius: 4px; padding: 3px 5px; white-space: nowrap; }
+
+/* ================= register: frame ================= */
+html[data-style="30"][data-page="register"] #app {
+  display: block; position: fixed; inset: 0; height: auto; overflow: hidden; /* fixed + inset 0 = fits the window at any zoom (Ctrl +/-) */
+  background: radial-gradient(900px 500px at 50% 60%, #fffaf1, transparent 70%), var(--cd-bg);
+}
+html[data-style="30"][data-page="register"] #app::before { /* maroon hand column */
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--cd-L); background: var(--cd-r); z-index: 0;
+}
+html[data-style="30"][data-page="register"] #app::after { /* right menu column */
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: var(--cd-R); background: var(--cd-side); border-left: 1px solid var(--cd-line); z-index: 0;
+}
+html[data-style="30"][data-page="register"] .wrap,
+html[data-style="30"][data-page="register"] aside.actions,
+html[data-style="30"][data-page="register"] section.center,
+html[data-style="30"][data-page="register"] .bottom,
+html[data-style="30"][data-page="register"] #tiles,
+html[data-style="30"][data-page="register"] #rightAside { display: contents; }
+html[data-style="30"][data-page="register"] .sizer { display: none; } /* fixed deck layout: the drag-to-resize edges have no column to resize */
+
+/* top bar: brand goes to the hand column, the status pills become the centre pill row */
+html[data-style="30"][data-page="register"] .top {
+  position: static; background: none; color: var(--cd-ink); height: 38px; padding: 0;
+  margin: 76px calc(var(--cd-R) + 26px) 0 calc(var(--cd-L) + 26px); display: flex; gap: 6px; align-items: center; overflow: hidden;
+}
+html[data-style="30"][data-page="register"] .top b {
+  position: absolute; left: 18px; top: 16px; z-index: 2; color: #fbeee8; font: 800 22px/34px var(--cd-disp); letter-spacing: -.5px;
+  display: flex; align-items: center; gap: 10px;
+}
+html[data-style="30"][data-page="register"] .top b::before {
+  content: "\2660"; width: 34px; height: 34px; border-radius: 9px; background: var(--cd-gold); color: var(--cd-r);
+  display: grid; place-items: center; font-size: 18px; line-height: 1;
+}
+html[data-style="30"][data-page="register"] #subtitle {
+  position: absolute; left: 62px; top: 46px; z-index: 2; color: #fbeee8; opacity: .7; font: 500 11.5px var(--cd-ui);
+  max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+html[data-style="30"][data-page="register"] .top .sp { display: none; }
+html[data-style="30"][data-page="register"] .top .pill,
+html[data-style="30"][data-page="register"] .top .topset {
+  padding: 8px 14px; border-radius: 99px; border: 1.5px solid var(--cd-line); background: var(--cd-card); color: var(--cd-ink);
+  font: 600 13px var(--cd-ui); white-space: nowrap; flex: none;
+}
+html[data-style="30"][data-page="register"] .top .pill.ok::before { content: "\25CF  "; color: #2f8a4a; }
+html[data-style="30"][data-page="register"] .top .pill.warn::before { content: "\25CF  "; color: #c98a1a; }
+html[data-style="30"][data-page="register"] .top .pill.bad::before { content: "\25CF  "; color: #c0392b; }
+html[data-style="30"][data-page="register"] .top .topset { background: var(--cd-ink); color: #fff; border-color: var(--cd-ink); }
+html[data-style="30"][data-page="register"] .top .topset kbd { background: rgba(255,255,255,.16); color: #fff; }
+
+/* ================= left: your hand ================= */
+html[data-style="30"][data-page="register"] .gridbox {
+  position: absolute; z-index: 1; left: 14px; width: calc(var(--cd-L) - 28px); top: 74px; bottom: 258px;
+  background: none; border: 0; overflow-y: auto; overflow-x: hidden; padding: 0 4px 4px;
+}
+html[data-style="30"][data-page="register"] .gridhead {
+  position: sticky; top: 0; z-index: 2; background: var(--cd-r); border: 0; padding: 4px 2px 8px; color: #fbeee8;
+  font: 700 13px var(--cd-disp); letter-spacing: 1.5px; text-transform: uppercase; opacity: .95;
+}
+html[data-style="30"][data-page="register"] #gridTitle::before { content: "Your hand \00B7  "; }
+html[data-style="30"][data-page="register"] .gridhead.ret { background: var(--cd-r); color: var(--cd-gold); }
+html[data-style="30"][data-page="register"] .gridhead.ret #gridTitle::before { content: "\2666  "; }
+html[data-style="30"][data-page="register"] #gridInfo { text-transform: none; letter-spacing: 0; font: 600 11px var(--cd-ui); }
+html[data-style="30"][data-page="register"] #retLines { background: rgba(0,0,0,.18); color: #fbeee8; border: 0; border-radius: 10px; margin-bottom: 8px; }
+html[data-style="30"][data-page="register"] #retLines .rl { background: var(--cd-card); border-color: var(--cd-gold); color: var(--cd-ink); }
+html[data-style="30"][data-page="register"] .gridbox table { display: block; width: 100%; }
+html[data-style="30"][data-page="register"] #cartHead { display: none; } /* column titles: the card layout labels itself */
+html[data-style="30"][data-page="register"] #cart { display: flex; flex-direction: column; gap: 8px; }
+html[data-style="30"][data-page="register"] #cart tr.row {
+  display: grid; grid-template-columns: 34px 1fr auto; grid-template-rows: auto auto; column-gap: 10px; align-items: center;
+  background: var(--cd-card); color: var(--cd-ink); border-radius: 12px; padding: 9px 12px; box-shadow: 0 6px 14px -6px rgba(0,0,0,.45);
+}
+html[data-style="30"][data-page="register"] #cart tr.row td { padding: 0; border: 0; background: none !important; color: inherit; font-size: 12px; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(1) { /* line number as the card's corner badge */
+  grid-row: 1 / 3; grid-column: 1; width: 34px; height: 34px; border-radius: 8px; background: #f6ebdc !important;
+  display: grid; place-items: center; font: 800 14px var(--cd-disp); color: var(--cd-r);
+}
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(3) { grid-row: 1; grid-column: 2; font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(2) { grid-row: 2; grid-column: 2; color: var(--cd-mut); font-size: 11px; display: flex; gap: 6px; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(2)::after { content: "\00B7"; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(4),
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(5),
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(6) { grid-row: 2; color: var(--cd-mut); font-size: 11px; text-align: left; }
+/* row 2 shows "code · qty × price  discount": place them in one line via a nested flow */
+html[data-style="30"][data-page="register"] #cart tr.row { grid-template-columns: 34px auto auto auto 1fr auto; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(3) { grid-column: 2 / 6; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(2) { grid-column: 2; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(4) { grid-column: 3; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(4)::after { content: " \00D7"; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(5) { grid-column: 4; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(6) { grid-column: 5; color: #2f6b2a; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(7) { grid-row: 1 / 3; grid-column: 6; font: 700 14px var(--cd-disp); text-align: right; white-space: nowrap; }
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(4),
+html[data-style="30"][data-page="register"] #cart tr.row td:nth-child(5) { padding-left: 4px; }
+html[data-style="30"][data-page="register"] #cart tr.row.sel { outline: 2px solid var(--cd-gold); box-shadow: 0 0 0 4px rgba(214,167,74,.25), 0 6px 14px -6px rgba(0,0,0,.45); }
+html[data-style="30"][data-page="register"] #cart tr.row.neg { background: #fbe9ec; }
+html[data-style="30"][data-page="register"] #cart tr.row.neg td { color: #a1213c; }
+html[data-style="30"][data-page="register"] #cart tr.row .tag { background: #f3e1dc; color: var(--cd-r); }
+html[data-style="30"][data-page="register"] #cart td.empty {
+  display: block; padding: 40px 12px; color: #fbeee8; opacity: .75; font: 600 13px var(--cd-ui); text-align: center;
+  border: 1.5px dashed rgba(255,255,255,.3); border-radius: 12px;
+}
+html[data-style="30"][data-page="register"] #cart td.empty:empty::before { content: "No cards in your hand yet \2014 scan or deal an item"; }
+
+/* Customer tile (F3) = the "walk-in customer" line under the hand */
+html[data-style="30"][data-page="register"] .tile {
+  border-radius: 12px; border: 1.5px solid var(--cd-line); background: var(--cd-card); color: var(--cd-ink); font-family: var(--cd-ui);
+}
+html[data-style="30"][data-page="register"] .tile[data-a="customer"] {
+  position: absolute; z-index: 1; left: 14px; width: calc(var(--cd-L) - 28px); bottom: 180px; height: 30px !important;
+  flex-direction: row; justify-content: flex-start; gap: 8px; padding: 0 8px; background: none; border: 0; color: #fbeee8;
+  font-size: 12.5px !important; font-weight: 500;
+}
+html[data-style="30"][data-page="register"] .tile[data-a="customer"] .ic { font-size: 14px !important; filter: grayscale(1) brightness(2.2); }
+html[data-style="30"][data-page="register"] .tile[data-a="customer"] .info { color: #fbeee8; opacity: .75; margin: 0; font-size: 12px; order: 3; }
+html[data-style="30"][data-page="register"] .tile[data-a="customer"] .info::before { content: "\00B7  "; }
+html[data-style="30"][data-page="register"] .tile[data-a="customer"] .k {
+  position: static; order: 4; margin-left: auto; font: 600 10px/1 var(--cd-mono); background: rgba(255,255,255,.14); color: #fff; border-radius: 4px; padding: 3px 5px;
+}
+
+/* totals = the "pot" */
+html[data-style="30"][data-page="register"] #totals {
+  position: absolute; z-index: 1; left: 14px; width: calc(var(--cd-L) - 28px); bottom: 14px; height: 160px; overflow: auto;
+  background: rgba(0,0,0,.18); border: 0; border-radius: 14px; padding: 10px 14px; color: #fbeee8; font-size: 12.5px;
+  display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; align-content: end;
+}
+html[data-style="30"][data-page="register"] #totals div { border: 0; padding: 2px 0; opacity: .88; }
+html[data-style="30"][data-page="register"] #totals div span:last-child { font-weight: 600; }
+html[data-style="30"][data-page="register"] #totals .pretax { font-weight: 600; }
+html[data-style="30"][data-page="register"] #totals .taxoffline { color: #ffd38a; opacity: 1; }
+html[data-style="30"][data-page="register"] #totals .negline span, html[data-style="30"][data-page="register"] #totals .neg span { color: #ffc2cc; }
+html[data-style="30"][data-page="register"] #totals .total {
+  grid-column: 1 / -1; background: none; opacity: 1; border-top: 1px dashed rgba(255,255,255,.25); margin-top: 6px; padding: 8px 0 0;
+  align-items: baseline;
+}
+html[data-style="30"][data-page="register"] #totals .total span:first-child { font: 700 12px var(--cd-disp); letter-spacing: 2px; text-transform: uppercase; }
+html[data-style="30"][data-page="register"] #totals .total span:last-child { font: 800 30px var(--cd-disp); letter-spacing: -1px; color: #fff; }
+
+/* ================= centre: deal an item ================= */
+/* scan box (always focused) + quick search (F2) = the search pills top right */
+html[data-style="30"][data-page="register"] .bottom > div:first-child {
+  position: absolute; z-index: 3; top: 18px; right: calc(var(--cd-R) + 26px); width: 260px;
+}
+html[data-style="30"][data-page="register"] .scanrow input {
+  height: 44px; border-radius: 99px; background: #fff; border: 1.5px solid var(--cd-line); padding: 0 16px 0 38px; font: 500 14px var(--cd-ui); color: var(--cd-ink);
+  background-image: radial-gradient(circle at 19px 50%, transparent 5px, var(--cd-r) 5.5px, var(--cd-r) 7px, transparent 7.5px);
+}
+html[data-style="30"][data-page="register"] .scanrow input:focus { outline: none; border-color: var(--cd-gold); box-shadow: 0 0 0 3px rgba(214,167,74,.25); }
+html[data-style="30"][data-page="register"] .scanrow input.bad { border-color: #c0392b; background-color: #fdecea; }
+html[data-style="30"][data-page="register"] .scanrow .drawerbtn { border-radius: 99px; background: var(--cd-r); box-shadow: none; }
+html[data-style="30"][data-page="register"] #toast, html[data-style="30"][data-page="register"] .scanmsg { font-size: 12.5px; padding-left: 16px; margin-top: 4px; }
+html[data-style="30"][data-page="register"] #toast.ok { color: #2f6b2a; } html[data-style="30"][data-page="register"] #toast.err { color: #a1213c; }
+html[data-style="30"][data-page="register"] .noteline { background: var(--cd-card); border-color: var(--cd-gold); border-radius: 10px; }
+html[data-style="30"][data-page="register"] #qsPanel {
+  position: absolute; z-index: 4; top: 18px; right: calc(var(--cd-R) + 26px + 270px); width: 190px;
+  background: none; border: 0; padding: 0; margin: 0;
+}
+html[data-style="30"][data-page="register"] #qsPanel h3 {
+  position: absolute; right: 12px; top: 13px; margin: 0 !important; z-index: 2; font-size: 0; pointer-events: none;
+}
+html[data-style="30"][data-page="register"] #qsPanel h3 small { font: 600 9px/1 var(--cd-mono); color: var(--cd-r); background: var(--cd-kbd); border-radius: 4px; padding: 3px 4px; }
+html[data-style="30"][data-page="register"] #qsIn {
+  height: 44px; border-radius: 99px; background: #fff; border: 1.5px solid var(--cd-line); padding: 0 92px 0 16px; font: 500 13.5px var(--cd-ui); color: var(--cd-ink);
+}
+html[data-style="30"][data-page="register"] #qsIn:focus { outline: none; border-color: var(--cd-gold); box-shadow: 0 0 0 3px rgba(214,167,74,.25); }
+html[data-style="30"][data-page="register"] #qsRes {
+  position: absolute; left: 0; width: 320px; top: 48px; max-height: 50vh; background: var(--cd-card); border-radius: 12px; z-index: 6;
+}
+html[data-style="30"][data-page="register"] #qsRes:not(:empty) { border: 1.5px solid var(--cd-line); box-shadow: 0 18px 30px -14px rgba(60,20,30,.45); }
+html[data-style="30"][data-page="register"] .qsres div.sel, html[data-style="30"][data-page="register"] .qsres div:hover { background: #f6ebdc; }
+
+/* bulk items = the fanned deck */
+html[data-style="30"][data-page="register"] #bulkPanel {
+  position: absolute; z-index: 1; left: calc(var(--cd-L) + 26px); right: calc(var(--cd-R) + 26px); top: 126px; bottom: 132px;
+  background: none; border: 0; padding: 0; margin: 0; overflow: visible;
+}
+html[data-style="30"][data-page="register"] #bulkPanel h3 { display: none; } /* "Bulk items" heading: the deck title replaces it */
+html[data-style="30"][data-page="register"] #bulkBtns {
+  position: relative; height: 100%; display: flex; justify-content: center; align-items: center; gap: 0; padding: 0 56px; /* room for the tilted end cards inside the centre */
+  counter-reset: cdcard;
+}
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn {
+  --cd-i: 0; --cd-j: 0; --cd-d: calc(var(--cd-i) - var(--cd-j));
+  position: relative; flex: 0 1 150px; min-width: 70px; height: min(270px, 92%); min-height: 120px; margin: 0 -8px;
+  background: var(--cd-card); color: var(--cd-ink); border: 1px solid #e3d2bd; border-radius: 16px;
+  box-shadow: 0 18px 30px -14px rgba(60,20,30,.45); padding: 34px 12px 14px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  text-align: left; font: 700 14px/1.2 var(--cd-ui); overflow: hidden; counter-increment: cdcard;
+  transform-origin: 50% 130%; transform: translateX(calc(var(--cd-d) * -9px)) rotate(calc(var(--cd-d) * 4deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 6px));
+  transition: transform .15s, box-shadow .15s;
+}
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn::before { /* suit corner + "Alt+n" */
+  position: absolute; left: 12px; right: 12px; top: 10px; font: 700 12px var(--cd-disp); color: var(--cd-r); display: flex; justify-content: space-between;
+}
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn::after { /* the card art: a big suit */
+  position: absolute; left: 0; right: 0; top: 30%; text-align: center; font-size: 64px; line-height: 1; color: var(--cd-r); opacity: .85;
+}
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4n+1)::after { content: "\2660"; color: var(--cd-ink); }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4n+2)::after { content: "\2665"; color: var(--cd-r2); }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4n+3)::after { content: "\2666"; color: var(--cd-r2); }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4n+4)::after { content: "\2663"; color: var(--cd-ink); }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(1)::before { content: "\2660  01"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(2)::before { content: "\2665  02"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(3)::before { content: "\2666  03"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4)::before { content: "\2663  04"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(5)::before { content: "\2660  05"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(6)::before { content: "\2665  06"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(7)::before { content: "\2666  07"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(8)::before { content: "\2663  08"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(9)::before { content: "\2660  09"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(10)::before { content: "\2665  10"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(11)::before { content: "\2666  11"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(12)::before { content: "\2663  12"; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(1) { --cd-i: 1; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(2) { --cd-i: 2; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(3) { --cd-i: 3; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(4) { --cd-i: 4; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(5) { --cd-i: 5; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(6) { --cd-i: 6; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(7) { --cd-i: 7; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(8) { --cd-i: 8; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(9) { --cd-i: 9; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(10) { --cd-i: 10; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(11) { --cd-i: 11; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-child(12) { --cd-i: 12; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(1) { --cd-j: 1; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(2) { --cd-j: 2; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(3) { --cd-j: 3; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(4) { --cd-j: 4; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(5) { --cd-j: 5; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(6) { --cd-j: 6; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(7) { --cd-j: 7; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(8) { --cd-j: 8; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(9) { --cd-j: 9; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(10) { --cd-j: 10; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(11) { --cd-j: 11; } html[data-style="30"][data-page="register"] #bulkBtns .rbtn:nth-last-child(12) { --cd-j: 12; }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn small { font: 600 11px var(--cd-ui); color: var(--cd-mut); }
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:first-child { /* the gold card: Alt+1 */
+  box-shadow: 0 0 0 3px var(--cd-gold), 0 30px 40px -14px rgba(60,20,30,.5); z-index: 2;
+}
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:hover,
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn:focus-visible {
+  z-index: 3; box-shadow: 0 0 0 3px var(--cd-gold), 0 30px 40px -14px rgba(60,20,30,.5);
+  transform: translateX(calc(var(--cd-d) * -9px)) rotate(calc(var(--cd-d) * 4deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 6px - 18px));
+}
+/* empty deck: the set-up button is the face-up gold card, card backs fan out behind it */
+html[data-style="30"][data-page="register"] #bulkBtns #bulkSetup {
+  --cd-d: 0; flex: 0 0 170px; height: min(270px, 92%); margin: 0; background: var(--cd-card) !important; color: var(--cd-ink) !important;
+  justify-content: center; align-items: center; text-align: center; padding: 20px 14px; font: 700 15px/1.25 var(--cd-ui);
+  box-shadow: 0 0 0 3px var(--cd-gold), 0 30px 40px -14px rgba(60,20,30,.5); transform: none; z-index: 2;
+}
+html[data-style="30"][data-page="register"] #bulkBtns #bulkSetup::before { content: "\2666  Deck"; }
+html[data-style="30"][data-page="register"] #bulkBtns #bulkSetup::after { content: "\2660"; top: 18%; font-size: 54px; color: var(--cd-r); }
+html[data-style="30"][data-page="register"] #bulkBtns #bulkSetup small { display: block; margin-top: 6px; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(#bulkSetup)::before,
+html[data-style="30"][data-page="register"] #bulkBtns:has(#bulkSetup)::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 150px; height: min(250px, 85%); margin: 0 0 0 -75px;
+  transform-origin: 50% 130%; border-radius: 16px; border: 6px solid var(--cd-card); pointer-events: none;
+  background: repeating-linear-gradient(45deg, var(--cd-r) 0 8px, var(--cd-r2) 8px 16px);
+  box-shadow: 0 18px 30px -14px rgba(60,20,30,.45); translate: 0 -50%;
+}
+html[data-style="30"][data-page="register"] #bulkBtns:has(#bulkSetup)::before { rotate: -14deg; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(#bulkSetup)::after { rotate: 14deg; }
+
+/* bottom tool bar: Items (Esc), Open Item (F7), Sale Discount (F6), Tax Off (F5) */
+html[data-style="30"][data-page="register"] .tile[data-a="close"],
+html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"],
+html[data-style="30"][data-page="register"] .rbtn[data-a="discount"],
+html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"] {
+  position: absolute; z-index: 2; bottom: 38px; height: 46px !important; min-height: 0;
+  width: calc((100% - var(--cd-L) - var(--cd-R) - 52px - 24px) / 4);
+  display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; padding: 0 12px;
+  background: var(--cd-card); color: var(--cd-ink); border: 1.5px solid var(--cd-line); border-radius: 12px; box-shadow: none;
+  font: 600 13px var(--cd-ui) !important; white-space: nowrap; overflow: hidden; text-align: left;
+}
+html[data-style="30"][data-page="register"] .tile[data-a="close"] { left: calc(var(--cd-L) + 26px); }
+html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"] { left: calc(var(--cd-L) + 26px + (100% - var(--cd-L) - var(--cd-R) - 76px) / 4 + 8px); }
+html[data-style="30"][data-page="register"] .rbtn[data-a="discount"] { left: calc(var(--cd-L) + 26px + (100% - var(--cd-L) - var(--cd-R) - 76px) / 2 + 16px); }
+html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"] { left: calc(var(--cd-L) + 26px + (100% - var(--cd-L) - var(--cd-R) - 76px) * 3 / 4 + 24px); }
+html[data-style="30"][data-page="register"] .tile[data-a="close"] .ic { font-size: 15px !important; filter: grayscale(1) sepia(1) hue-rotate(300deg) saturate(4) brightness(.7); }
+html[data-style="30"][data-page="register"] .tile[data-a="close"] .info { order: 3; margin: 0; font-size: 11.5px; color: var(--cd-mut); flex: 1; }
+html[data-style="30"][data-page="register"] .tile[data-a="close"] .k,
+html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"] small,
+html[data-style="30"][data-page="register"] .rbtn[data-a="discount"] small,
+html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"] small {
+  position: static; order: 4; margin-left: auto; display: inline-block; font: 600 10px/1 var(--cd-mono); color: var(--cd-r); background: var(--cd-kbd); border-radius: 4px; padding: 3px 5px;
+}
+html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"]::before { content: "\26A1"; color: var(--cd-r); filter: grayscale(1); }
+html[data-style="30"][data-page="register"] .rbtn[data-a="discount"]::before { content: "\0025"; color: var(--cd-r); font-weight: 800; }
+html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"]::before { content: "\2215"; color: var(--cd-r); font-weight: 800; }
+html[data-style="30"][data-page="register"] .tile.active { border-color: var(--cd-line); }
+html[data-style="30"][data-page="register"] .tile.on,
+html[data-style="30"][data-page="register"] .rbtn.on { border-color: var(--cd-r) !important; background: #f6dfe4 !important; color: var(--cd-r) !important; }
+
+/* status line under the tool bar */
+html[data-style="30"][data-page="register"] .status {
+  position: absolute; z-index: 1; left: var(--cd-L); right: var(--cd-R); bottom: 0; height: 28px; background: none; color: var(--cd-mut);
+  font-size: 11px; padding: 0 26px; gap: 12px;
+}
+html[data-style="30"][data-page="register"] .status .net { color: #2f8a4a; } html[data-style="30"][data-page="register"] .status .net.off { color: #a1213c; }
+
+/* ================= right: ticket / store menu ================= */
+html[data-style="30"][data-page="register"] aside.actions h2 {
+  position: absolute; z-index: 1; right: 0; width: var(--cd-R); top: 12px; margin: 0; padding: 4px 18px; background: none;
+  color: var(--cd-mut); font: 700 0/1 var(--cd-disp);
+}
+html[data-style="30"][data-page="register"] aside.actions h2::after { content: "TICKET"; font-size: 11px; letter-spacing: 1.8px; }
+html[data-style="30"][data-page="register"] #actions {
+  position: absolute; z-index: 1; right: 12px; width: calc(var(--cd-R) - 24px); top: 38px; max-height: calc(100% - 48px);
+  display: flex; flex-direction: column; gap: 1px; padding: 0; overflow: auto; background: none;
+}
+html[data-style="30"][data-page="register"] .abtn {
+  min-height: 0; height: 33px; padding: 0 10px; gap: 9px; border-radius: 10px; background: none; box-shadow: none; color: var(--cd-ink);
+  font: 600 13px var(--cd-ui); flex: none;
+}
+html[data-style="30"][data-page="register"] .abtn:hover { background: #fff; }
+html[data-style="30"][data-page="register"] .abtn .ic { width: 16px; font-size: 13px; filter: grayscale(1) sepia(1) hue-rotate(300deg) saturate(4) brightness(.7); }
+html[data-style="30"][data-page="register"] .abtn > span:last-child { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 6px; min-width: 0; }
+html[data-style="30"][data-page="register"] .abtn .t { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="30"][data-page="register"] .abtn .k { font: 600 9.5px/1 var(--cd-mono); color: var(--cd-r); opacity: 1; white-space: nowrap; letter-spacing: -.3px; }
+html[data-style="30"][data-page="register"] .abtn.red { background: none; color: #a1213c; box-shadow: none; }
+html[data-style="30"][data-page="register"] .abtn.on { background: #f6dfe4; }
+html[data-style="30"][data-page="register"] .abtn[data-a="end-of-day"] { margin-top: 88px; position: relative; }
+html[data-style="30"][data-page="register"] .abtn[data-a="end-of-day"]::before {
+  content: "STORE"; position: absolute; left: 6px; top: -15px; font: 700 11px var(--cd-disp); letter-spacing: 1.8px; color: var(--cd-mut);
+}
+
+/* Payment tile (F12) = the hot button */
+html[data-style="30"][data-page="register"] .tile[data-a="checkout"] {
+  position: absolute; z-index: 1; right: 12px; width: calc(var(--cd-R) - 24px); top: 216px; height: 46px !important;
+  flex-direction: row; justify-content: flex-start; gap: 10px; padding: 0 12px; background: var(--cd-r); color: #fff; border: 0;
+  font: 600 15px var(--cd-ui) !important; box-shadow: 0 10px 20px -10px rgba(122,31,61,.6);
+}
+html[data-style="30"][data-page="register"] .tile[data-a="checkout"] .ic { font-size: 16px !important; filter: grayscale(1) brightness(3); }
+html[data-style="30"][data-page="register"] .tile[data-a="checkout"] .info { order: 3; margin: 0; color: #fbeee8; font-size: 11px; opacity: .85; }
+html[data-style="30"][data-page="register"] .tile[data-a="checkout"] .k {
+  position: static; order: 4; margin-left: auto; font: 600 10px/1 var(--cd-mono); background: rgba(255,255,255,.18); color: #fff; border-radius: 4px; padding: 3px 5px;
+}
+
+/* #right: every other action as compact chips (kept visible, like Classic) */
+html[data-style="30"][data-page="register"] #right { display: contents; }
+html[data-style="30"][data-page="register"] #right h3 { display: none; } /* group titles: one "MORE" label instead */
+html[data-style="30"][data-page="register"] #right .rgrid { display: contents; }
+html[data-style="30"][data-page="register"] #right .rbtn:not([data-a="open-item"]):not([data-a="discount"]):not([data-a="tax-off"]) {
+  min-height: 0; height: 26px; padding: 0 6px; border-radius: 8px; background: var(--cd-card); border: 1px solid var(--cd-line); box-shadow: none;
+  color: var(--cd-ink); font: 600 11px var(--cd-ui); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;
+}
+html[data-style="30"][data-page="register"] #right .rbtn small { display: none; } /* key labels are in the F1 key list and the tooltip-free chips */
+html[data-style="30"][data-page="register"] #right .rbtn.red { color: #a1213c; }
+html[data-style="30"][data-page="register"] .rbtn:active, html[data-style="30"][data-page="register"] .abtn:active { transform: translateY(1px); }
+
+/* decoration from demo-style-30-card-deck.js */
+html[data-style="30"][data-page="register"] .cd-title {
+  position: absolute; z-index: 1; left: calc(var(--cd-L) + 26px); top: 18px; color: var(--cd-ink);
+}
+html[data-style="30"][data-page="register"] .cd-title b { display: block; font: 800 27px/1.05 var(--cd-disp); letter-spacing: -1px; white-space: nowrap; }
+html[data-style="30"][data-page="register"] .cd-title small { display: block; font: 500 13px var(--cd-ui); color: var(--cd-mut); white-space: nowrap; }
+html[data-style="30"][data-page="register"] .cd-hint {
+  position: absolute; z-index: 1; left: var(--cd-L); right: var(--cd-R); bottom: 96px; text-align: center; font: 600 13px var(--cd-ui); color: var(--cd-mut); letter-spacing: .5px;
+}
+html[data-style="30"][data-page="register"][data-mode="return"] .cd-title b, html[data-style="30"][data-page="register"] body.cd-ret .cd-title b { color: var(--cd-r); }
+@media (max-width: 1250px) { html[data-style="30"][data-page="register"] .cd-title small { display: none; } }
+
+/* Ctrl+B (hide side panels): the hand stays, the deck uses the space */
+html[data-style="30"][data-page="register"] body.nosides #app::after { display: none; }
+
+/* ================= login ================= */
+html[data-style="30"] #login { background: radial-gradient(800px 500px at 50% 40%, #a3324f, #7a1f3d 60%, #4a1025); }
+html[data-style="30"] #login .card { background: var(--cd-card); border-radius: 18px; box-shadow: 0 0 0 3px var(--cd-gold), 0 30px 60px -20px rgba(0,0,0,.6); }
+html[data-style="30"] #login h1 { font: 800 26px var(--cd-disp); color: var(--cd-r); }
+html[data-style="30"] #login h1::before { content: "\2660  "; color: var(--cd-gold); }
+
+/* ================= dialogs ================= */
+html[data-style="30"] .modal { background: var(--cd-card); border-radius: 16px; box-shadow: 0 0 0 2px var(--cd-gold), 0 30px 60px -20px rgba(42,15,25,.6); color: var(--cd-ink); }
+html[data-style="30"] .modal h2 { font: 800 22px var(--cd-disp); color: var(--cd-r); letter-spacing: -.5px; }
+html[data-style="30"] .el-overlay { background: rgba(42,15,25,.55); }
+html[data-style="30"] .pbtn { background: var(--cd-r); border-radius: 12px; }
+html[data-style="30"] .pbtn.g { background: #2f6b2a; } html[data-style="30"] .pbtn.r { background: #a1213c; }
+html[data-style="30"] .pbtn.s { background: #efe4d4; color: var(--cd-ink); }
+html[data-style="30"] input.f, html[data-style="30"] select.f { border-color: var(--cd-line); border-radius: 10px; background: #fff; }
+html[data-style="30"] input.f:focus, html[data-style="30"] select.f:focus { outline: 2px solid var(--cd-gold); outline-offset: 0; }
+html[data-style="30"] .tab.on { background: var(--cd-r); border-color: var(--cd-r); }
+html[data-style="30"] .refl.hi { border-color: var(--cd-gold); background: #fff6e6; }
+html[data-style="30"] .refbig { color: var(--cd-r); font-family: var(--cd-disp); }
+
+/* ================= payment: "Pick a payment card" ================= */
+html[data-style="30"] .modal.fullpay {
+  position: relative; border-radius: 0; box-shadow: none; padding: 20px calc(var(--cd-R) + 26px) 18px calc(var(--cd-L) + 26px);
+  background: radial-gradient(900px 500px at 50% 60%, #fffaf1, transparent 70%), var(--cd-bg);
+}
+html[data-style="30"] .modal.fullpay::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--cd-L); background: var(--cd-r); }
+html[data-style="30"] .modal.fullpay::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: var(--cd-R); background: var(--cd-side); border-left: 1px solid var(--cd-line); }
+html[data-style="30"] .fullpay .payhead { background: none; color: var(--cd-ink); margin: 0 0 6px; padding: 0; display: block; position: relative; z-index: 1; }
+html[data-style="30"] .fullpay .payhead h2 { font: 800 30px/1.05 var(--cd-disp); letter-spacing: -1px; color: var(--cd-ink); }
+html[data-style="30"] .fullpay:has(#payBody) .payhead h2::after { content: "Pick a card \00B7  Enter = next card / pay \00B7  + = full balance"; display: block; font: 500 13px var(--cd-ui); color: var(--cd-mut); letter-spacing: 0; margin-top: 4px; }
+html[data-style="30"] .fullpay .payhead .note { color: var(--cd-mut); }
+html[data-style="30"] .fullpay #payBody, html[data-style="30"] .fullpay #refBody { position: static; z-index: 1; }
+html[data-style="30"] .fullpay .paygrid { position: static; display: block; height: 100%; }
+/* Due / Paid / Balance / Change = the maroon hand column */
+html[data-style="30"] .fullpay .paynums {
+  position: absolute; z-index: 2; left: 14px; top: 18px; bottom: 14px; width: calc(var(--cd-L) - 28px); gap: 10px;
+}
+html[data-style="30"] .fullpay .paynums::before { content: "PAYING"; font: 700 13px var(--cd-disp); letter-spacing: 1.5px; color: #fbeee8; opacity: .85; padding: 0 4px; }
+html[data-style="30"] .fullpay .paynums .pn { background: var(--cd-card); color: var(--cd-ink); border-radius: 12px; box-shadow: 0 6px 14px -6px rgba(0,0,0,.45); padding: 10px 16px; flex: 1; }
+html[data-style="30"] .fullpay .paynums .pn span { font: 700 12px var(--cd-disp); letter-spacing: 1.5px; text-transform: uppercase; color: var(--cd-mut); }
+html[data-style="30"] .fullpay .paynums .pn b { font: 800 34px var(--cd-disp); letter-spacing: -1px; color: var(--cd-ink); }
+html[data-style="30"] .fullpay .paynums .pn.left { flex: 1.5; background: rgba(0,0,0,.18); box-shadow: none; }
+html[data-style="30"] .fullpay .paynums .pn.left span { color: #fbeee8; }
+html[data-style="30"] .fullpay .paynums .pn.left b { font-size: 50px; color: #fff; }
+html[data-style="30"] .fullpay .paynums .pn.left.zero { background: #2f6b2a; }
+html[data-style="30"] .fullpay .paynums .pn.chg b { color: #2f6b2a; }
+/* tender lines = fanned payment cards */
+html[data-style="30"] .fullpay .payact { height: 100%; overflow: visible; padding-top: 10px; }
+html[data-style="30"] .fullpay .plist {
+  flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 0; padding: 20px 10px 0; counter-reset: cdpay;
+}
+html[data-style="30"] .fullpay .pline {
+  --cd-i: 0; --cd-j: 0; --cd-d: calc(var(--cd-i) - var(--cd-j));
+  position: relative; flex: 0 1 158px; min-width: 112px; height: 230px; margin: 0 -8px; padding: 34px 12px 12px; order: 0;
+  flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 8px;
+  background: var(--cd-card); border: 1px solid #e3d2bd; border-radius: 16px; box-shadow: 0 18px 30px -14px rgba(60,20,30,.45);
+  transform-origin: 50% 130%; transform: rotate(calc(var(--cd-d) * 3deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 5px));
+  counter-increment: cdpay; transition: transform .15s;
+}
+html[data-style="30"] .fullpay .pline::before {
+  content: "\2666  PAY"; position: absolute; left: 12px; top: 10px; font: 700 11px var(--cd-disp); color: var(--cd-r);
+}
+html[data-style="30"] .fullpay .pline::after {
+  content: counter(cdpay, decimal-leading-zero); position: absolute; right: 12px; top: 10px; font: 700 11px var(--cd-disp); color: var(--cd-r);
+}
+html[data-style="30"] .fullpay .pline .plbl { flex: none; font: 700 15px var(--cd-ui); color: var(--cd-ink); position: relative; }
+html[data-style="30"] .fullpay .pline .plbl::before { content: none !important; }
+html[data-style="30"] .fullpay .pline .plbl::after { /* the card art */
+  position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); font-size: 46px; line-height: 1; color: var(--cd-r); font-weight: 400;
+}
+html[data-style="30"] .fullpay .pline[data-t="20"] .plbl::after { content: "\25AD"; font-size: 60px; }
+html[data-style="30"] .fullpay .pline[data-t="10"] .plbl::after { content: "$"; font-family: var(--cd-disp); font-weight: 800; }
+html[data-style="30"] .fullpay .pline[data-t="40"] .plbl::after { content: "\2726"; }
+html[data-style="30"] .fullpay .pline[data-t="50"] .plbl::after { content: "\270E"; }
+html[data-style="30"] .fullpay .pline[data-t="30"] .plbl::after { content: "\2328"; }
+html[data-style="30"] .fullpay .pline[data-t="11"] .plbl::after { content: "\2605"; }
+html[data-style="30"] .fullpay .pline .pamt { width: 100%; font: 700 18px var(--cd-disp); padding: 6px 8px; border-color: var(--cd-line); border-radius: 8px; text-align: right; }
+html[data-style="30"] .fullpay .pline .pamt:focus { outline: 2px solid var(--cd-gold); }
+html[data-style="30"] .fullpay .pline.on {
+  border-color: var(--cd-gold); background: var(--cd-card); z-index: 2;
+  box-shadow: 0 0 0 3px var(--cd-gold), 0 30px 40px -14px rgba(60,20,30,.5);
+  transform: rotate(calc(var(--cd-d) * 3deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 5px - 16px));
+}
+html[data-style="30"] .fullpay .pline:nth-child(1) { --cd-i: 1; } html[data-style="30"] .fullpay .pline:nth-child(2) { --cd-i: 2; }
+html[data-style="30"] .fullpay .pline:nth-child(3) { --cd-i: 3; } html[data-style="30"] .fullpay .pline:nth-child(4) { --cd-i: 4; }
+html[data-style="30"] .fullpay .pline:nth-child(5) { --cd-i: 5; } html[data-style="30"] .fullpay .pline:nth-child(6) { --cd-i: 6; }
+html[data-style="30"] .fullpay .pline:nth-child(7) { --cd-i: 7; }
+html[data-style="30"] .fullpay .plist .pline:nth-last-child(1 of .pline) { --cd-j: 1; } html[data-style="30"] .fullpay .plist .pline:nth-last-child(2 of .pline) { --cd-j: 2; }
+html[data-style="30"] .fullpay .plist .pline:nth-last-child(3 of .pline) { --cd-j: 3; } html[data-style="30"] .fullpay .plist .pline:nth-last-child(4 of .pline) { --cd-j: 4; }
+html[data-style="30"] .fullpay .plist .pline:nth-last-child(5 of .pline) { --cd-j: 5; } html[data-style="30"] .fullpay .plist .pline:nth-last-child(6 of .pline) { --cd-j: 6; }
+html[data-style="30"] .fullpay .plist .pline:nth-last-child(7 of .pline) { --cd-j: 7; }
+html[data-style="30"] .fullpay .plist .pline:nth-child(1 of .pline) { --cd-i: 1; } html[data-style="30"] .fullpay .plist .pline:nth-child(2 of .pline) { --cd-i: 2; }
+html[data-style="30"] .fullpay .plist .pline:nth-child(3 of .pline) { --cd-i: 3; } html[data-style="30"] .fullpay .plist .pline:nth-child(4 of .pline) { --cd-i: 4; }
+html[data-style="30"] .fullpay .plist .pline:nth-child(5 of .pline) { --cd-i: 5; } html[data-style="30"] .fullpay .plist .pline:nth-child(6 of .pline) { --cd-i: 6; }
+html[data-style="30"] .fullpay .plist .pline:nth-child(7 of .pline) { --cd-i: 7; }
+html[data-style="30"] .fullpay .pextra { order: 1; flex: 0 0 100%; justify-content: center; padding: 34px 0 0; }
+html[data-style="30"] .fullpay .pextra input.f { max-width: 300px; }
+html[data-style="30"] .fullpay .pextra.quick::before {
+  content: "QUICK CASH CHIPS"; width: 76px; align-self: center; font: 700 10.5px/1.5 var(--cd-disp); letter-spacing: 2px; color: var(--cd-mut); white-space: normal;
+}
+html[data-style="30"] .fullpay .quick { gap: 12px; align-items: center; }
+html[data-style="30"] .fullpay .quick #nextBills { display: contents; }
+html[data-style="30"] .fullpay .quick button {
+  position: relative; width: 84px; height: 84px; min-width: 0; padding: 0; border-radius: 50%; border: 0; color: #fff;
+  font: 800 17px var(--cd-disp); background: #2d6a4f; box-shadow: 0 10px 20px -8px rgba(0,0,0,.4);
+}
+html[data-style="30"] .fullpay .quick button::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 3px dashed rgba(255,255,255,.55); pointer-events: none; }
+html[data-style="30"] .fullpay .quick button[data-l="Exact"] { background: #a3324f; font-size: 13px; }
+html[data-style="30"] .fullpay .quick button[data-l="5"] { background: #b5651d; }
+html[data-style="30"] .fullpay .quick button[data-l="10"] { background: #6b4fa3; }
+html[data-style="30"] .fullpay .quick button[data-l="20"] { background: #2d6a4f; }
+html[data-style="30"] .fullpay .quick button[data-l="50"] { background: #1f4e9a; }
+html[data-style="30"] .fullpay .quick button[data-l="100"] { background: #161616; }
+html[data-style="30"] .fullpay .quick button.nb { background: #7a1f3d; font-size: 14px; }
+html[data-style="30"] .fullpay .quick button:focus { outline: 3px solid var(--cd-gold); outline-offset: 2px; }
+html[data-style="30"] .fullpay table.mini { background: var(--cd-card); border-radius: 10px; margin-bottom: 8px; }
+html[data-style="30"] .fullpay .cardbox { border-color: var(--cd-gold); border-radius: 16px; background: var(--cd-card); max-width: 460px; margin: 30px auto 8px; box-shadow: 0 18px 30px -14px rgba(60,20,30,.45); }
+html[data-style="30"] .fullpay .cardbox .big { font-family: var(--cd-disp); color: var(--cd-r); }
+html[data-style="30"] .fullpay .cardbox.bad .big { color: #a1213c; }
+html[data-style="30"] .fullpay #payMsg { text-align: center; }
+/* Back / Pay / Finish / Cancel card = the right column */
+html[data-style="30"] .fullpay .payact .row2 {
+  position: absolute; z-index: 2; right: 12px; top: 40px; width: calc(var(--cd-R) - 24px); margin: 0; padding: 0;
+  display: flex; flex-direction: column-reverse; gap: 8px;
+}
+html[data-style="30"] .fullpay .payact .row2::after { content: "PAYMENT"; order: 9; font: 700 11px var(--cd-disp); letter-spacing: 1.8px; color: var(--cd-mut); padding: 0 6px; }
+html[data-style="30"] .fullpay .payact .row2 .pbtn { min-height: 48px; font: 600 14px var(--cd-ui); padding: 12px; border-radius: 10px; text-align: left; }
+html[data-style="30"] .fullpay .payact .row2 .pbtn.g { background: var(--cd-r); color: #fff; font-size: 15px; }
+html[data-style="30"] .fullpay .payact .row2 .pbtn.s { background: none; color: var(--cd-ink); }
+html[data-style="30"] .fullpay .payact .row2 .pbtn.s:hover { background: #fff; }
+html[data-style="30"] .fullpay .payact .row2 .pbtn.r { background: #a1213c; }
+html[data-style="30"] .fullpay .note a { color: var(--cd-r); }
+/* refund (also a full-screen .fullpay page) */
+html[data-style="30"] .fullpay #refBody { position: relative; z-index: 1; }
+
+/* ================= Settings page ================= */
+html[data-style="30"] .modal.stpage { background: var(--cd-bg); box-shadow: none; border-radius: 0; }
+html[data-style="30"] .stpage .sthead { background: var(--cd-r); }
+html[data-style="30"] .stpage .sthead h1 { font: 800 22px var(--cd-disp); letter-spacing: -.5px; }
+html[data-style="30"] .stpage .sthead h1::before { content: "\2660  "; color: var(--cd-gold); }
+html[data-style="30"] .sttabs { background: var(--cd-side); border-bottom: 1px solid var(--cd-line); }
+html[data-style="30"] .sttabs button { color: var(--cd-ink); }
+html[data-style="30"] .sttabs button.on { background: var(--cd-card); color: var(--cd-r); box-shadow: 0 -3px 0 var(--cd-gold) inset; }
+html[data-style="30"] .stpage .stbody h3 { color: var(--cd-mut); font-family: var(--cd-disp); }
+html[data-style="30"] .btrow { background: var(--cd-card); }
+html[data-style="30"] .sybtn { background: var(--cd-card); border-color: var(--cd-line); border-radius: 12px; color: var(--cd-ink); }
+html[data-style="30"] .sybtn.on { border-color: var(--cd-gold); background: #fff6e6; box-shadow: 0 0 0 2px var(--cd-gold); }
+html[data-style="30"] .sybtn:focus { outline-color: var(--cd-r); }
+
+/* ================= customer display ================= */
+html[data-style="30"][data-page="customer"] body { background: var(--cd-bg); color: var(--cd-ink); font-family: var(--cd-ui); }
+html[data-style="30"][data-page="customer"] #idle,
+html[data-style="30"][data-page="customer"] #done { background: radial-gradient(900px 600px at 50% 45%, #a3324f, #7a1f3d 60%, #4a1025); color: #fbeee8; }
+html[data-style="30"][data-page="customer"] #idle h1,
+html[data-style="30"][data-page="customer"] #done h1 { font-family: var(--cd-disp); font-weight: 800; letter-spacing: -2px; }
+html[data-style="30"][data-page="customer"] #idle h1::before { content: "\2660 \2665 \2666 \2663"; display: block; font-size: .32em; letter-spacing: .4em; color: var(--cd-gold); margin-bottom: .3em; }
+html[data-style="30"][data-page="customer"] #done .sum .chg { color: var(--cd-gold); }
+html[data-style="30"][data-page="customer"] #sale { background: radial-gradient(900px 500px at 40% 60%, #fffaf1, transparent 70%), var(--cd-bg); }
+html[data-style="30"][data-page="customer"] .lines { background: none; padding: 18px 22px; }
+html[data-style="30"][data-page="customer"] .lines h2 { background: none; color: var(--cd-ink); font: 800 clamp(24px, 2.6vw, 40px) var(--cd-disp); letter-spacing: -1px; padding: 0 4px 14px; }
+html[data-style="30"][data-page="customer"] .lines h2.ret { background: none; color: var(--cd-r); }
+html[data-style="30"][data-page="customer"] .list { gap: 10px; }
+html[data-style="30"][data-page="customer"] .row {
+  background: var(--cd-card); border: 1px solid #e3d2bd; border-bottom: 1px solid #e3d2bd; border-radius: 14px; padding: 12px 22px;
+  box-shadow: 0 10px 18px -12px rgba(60,20,30,.45); flex: none;
+}
+html[data-style="30"][data-page="customer"] .row .t { font-family: var(--cd-disp); color: var(--cd-r); }
+html[data-style="30"][data-page="customer"] .row .q { color: var(--cd-mut); }
+html[data-style="30"][data-page="customer"] .row .d { color: #2f6b2a; }
+html[data-style="30"][data-page="customer"] .row.ret { color: #a1213c; }
+html[data-style="30"][data-page="customer"] .row:last-child { background: var(--cd-card); box-shadow: 0 0 0 3px var(--cd-gold), 0 16px 24px -12px rgba(60,20,30,.5); }
+html[data-style="30"][data-page="customer"] .side { background: var(--cd-r); color: #fbeee8; }
+html[data-style="30"][data-page="customer"] .side .big { border-top: 1px dashed rgba(255,255,255,.3); font-family: var(--cd-disp); color: #fff; letter-spacing: -1px; }
+html[data-style="30"][data-page="customer"] .side .due { color: var(--cd-gold); font-family: var(--cd-disp); }
+html[data-style="30"][data-page="customer"] .side .chg { color: #bfe8b8; font-family: var(--cd-disp); }
+html[data-style="30"][data-page="customer"] .side .off,
+html[data-style="30"][data-page="customer"] .side .ret { color: #ffc2cc; }
+
+html[data-style="30"][data-page="register"] #bulkBtns .rbtn .bk { display: inline-block; margin-top: 4px; font: 600 10px/1 var(--cd-mono); color: var(--cd-r); background: var(--cd-kbd); border-radius: 4px; padding: 3px 5px; }
+html[data-style="30"] .fullpay .quick button kbd.dk { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: 8.5px; padding: 2px 4px; background: rgba(255,255,255,.85); color: var(--cd-r); margin: 0; }
+html[data-style="30"] .fullpay:has(#payBody) .payhead h2 { font-size: 0 !important; }
+html[data-style="30"] .fullpay:has(#payBody) .payhead h2::before { content: "Pick a payment card"; font: 800 30px/1.05 var(--cd-disp); letter-spacing: -1px; }
+html[data-style="30"][data-page="register"] #actions { overflow-x: hidden; }
+html[data-style="30"] .fullpay:has(#refBody) .payhead h2::after { content: "Pick how to give it back \00B7  Enter gives it back \00B7  Esc goes back"; display: block; font: 500 13px var(--cd-ui); color: var(--cd-mut); letter-spacing: 0; margin-top: 4px; }
+html[data-style="30"] .fullpay:has(#refBody)::before { content: "\2666"; color: var(--cd-gold); font-size: 120px; display: grid; place-items: center; opacity: .35; }
+html[data-style="30"] .fullpay #refBody .refl { border-radius: 14px; border: 1px solid #e3d2bd; background: var(--cd-card); box-shadow: 0 10px 18px -12px rgba(60,20,30,.45); }
+html[data-style="30"] .fullpay #refBody .refl.hi { border-color: var(--cd-gold); box-shadow: 0 0 0 3px var(--cd-gold), 0 16px 24px -12px rgba(60,20,30,.5); background: #fff6e6; }
+html[data-style="30"][data-page="customer"] .side div { gap: 16px; }
+
+/* ---- only the mockup's buttons are shown (CSS only: the buttons stay in the page, so every shortcut still runs them) ---- */
+html[data-style="30"][data-page="register"] .actions .list .hgrp { display: contents; }
+html[data-style="30"][data-page="register"] #actions .hgrp .abtn .ic { display: inline-block; }
+html[data-style="30"][data-page="register"] #actions .hgrp .abtn .k { display: inline; }
+html[data-style="30"][data-page="register"] #actions .hgrp .abtn { flex-direction: row; justify-content: flex-start; text-align: left; }
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="aside-put"],
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="aside-load"],
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="drawer"],
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="clock-out"],
+html[data-style="30"][data-page="register"] #right .rbtn:not([data-a="open-item"]):not([data-a="discount"]):not([data-a="tax-off"]):not([data-a="settings"]),
+html[data-style="30"][data-page="register"] .top .topset { display: none !important; }
+/* Settings sits in the STORE list between End of Day and Log out */
+html[data-style="30"][data-page="register"] #right .rbtn[data-a="settings"] {
+  position: absolute; z-index: 1; right: 12px; width: calc(var(--cd-R) - 24px); top: 330px; height: 33px !important; min-height: 0 !important;
+  display: flex; align-items: center; gap: 9px; padding: 0 10px; border: 0 !important; border-radius: 10px; background: none !important; box-shadow: none !important;
+  color: var(--cd-ink) !important; font: 600 13px var(--cd-ui) !important; text-align: left;
+}
+html[data-style="30"][data-page="register"] #right .rbtn[data-a="settings"]::before { content: "\2699"; width: 16px; color: var(--cd-r); font-size: 14px; }
+html[data-style="30"][data-page="register"] #right .rbtn[data-a="settings"] small { display: inline-block; margin-left: auto; font: 600 9.5px/1 var(--cd-mono); color: var(--cd-r); background: none; padding: 0; }
+html[data-style="30"][data-page="register"] #right .rbtn[data-a="settings"]:hover { background: #fff !important; }
+html[data-style="30"][data-page="register"] .abtn[data-a="logout"] { margin-top: 34px; }
+/* Load Hold = the "Held" strip in the hand column */
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] {
+  position: fixed; z-index: 2; left: 14px; width: calc(var(--cd-L) - 28px); bottom: 216px; height: 34px;
+  border: 1.5px dashed rgba(255,255,255,.35); border-radius: 10px; background: none; color: #fbeee8;
+}
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"]:hover { background: rgba(255,255,255,.08); }
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] .ic { filter: grayscale(1) brightness(2.2); }
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] .t::before { content: "Held tickets \00B7  "; opacity: .75; font-weight: 500; }
+html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] .k { color: #fff; background: rgba(255,255,255,.14); border-radius: 4px; padding: 3px 5px; }
+html[data-style="30"][data-page="register"] .abtn .k { letter-spacing: -.4px; }
+/* version / session footer at the bottom of the menu column (status pills stay in the centre pill row) */
+/* payment: the mockup's chips are $20, $50, $100 and Exact */
+html[data-style="30"] .fullpay .quick button[data-l="5"],
+html[data-style="30"] .fullpay .quick button[data-l="10"],
+html[data-style="30"] .fullpay .quick button.nb { display: none !important; }
+
+/* ================= narrow window / zoom (Ctrl +, 125% display scaling) =================
+ * The app zooms with body.style.zoom, which media queries never see, so #app and the payment page are size
+ * containers and the layout reacts to the space it really has (about 1093x640 at 125%). */
+html[data-style="30"][data-page="register"] #app { container: cdapp / size; }
+html[data-style="30"] .modal.fullpay { width: 100%; max-width: 100%; height: 100%; max-height: 100%; container: cdpay / size; } /* 100vw/100vh ignore body zoom */
+@container cdapp (max-width: 1290px) {
+  /* header: title + quick search on row 1, the scan pill full width on row 2, then status pills, then the deck */
+  html[data-style="30"][data-page="register"] .cd-title { top: 16px; }
+  html[data-style="30"][data-page="register"] .cd-title b { font-size: clamp(20px, 2.2cqw, 27px); }
+  html[data-style="30"][data-page="register"] .cd-title small { display: none; }
+  html[data-style="30"][data-page="register"] #qsPanel { top: 10px; right: calc(var(--cd-R) + 26px); width: min(190px, calc(100cqw - var(--cd-L) - var(--cd-R) - 52px - 230px)); }
+  html[data-style="30"][data-page="register"] #qsIn { height: 38px; }
+  html[data-style="30"][data-page="register"] #qsRes { left: auto; right: 0; top: 42px; } /* open leftwards: stay inside the centre */
+  html[data-style="30"][data-page="register"] #qsPanel h3 { top: 11px; }
+  html[data-style="30"][data-page="register"] .bottom > div:first-child { top: 56px; left: calc(var(--cd-L) + 26px); right: calc(var(--cd-R) + 26px); width: auto; }
+  html[data-style="30"][data-page="register"] .scanrow input { height: 40px; }
+  html[data-style="30"][data-page="register"] #toast, html[data-style="30"][data-page="register"] .scanmsg { position: absolute; right: 18px; top: 12px; margin: 0; padding: 0; font-size: 11.5px; pointer-events: none; max-width: 45%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  html[data-style="30"][data-page="register"] .top { margin-top: 106px; flex-wrap: wrap; height: 30px; row-gap: 20px; }
+  html[data-style="30"][data-page="register"] .top .pill { font-size: 11.5px; padding: 5px 9px; }
+  html[data-style="30"][data-page="register"] #bulkPanel { top: 150px; bottom: 124px; }
+  html[data-style="30"][data-page="register"] #bulkBtns { padding: 0 72px; }
+  html[data-style="30"][data-page="register"] #bulkBtns .rbtn { height: min(250px, 90%); font-size: 13px; padding: 30px 10px 12px; }
+  html[data-style="30"][data-page="register"] #bulkBtns .rbtn::after { font-size: 50px; }
+  html[data-style="30"][data-page="register"] .cd-hint { bottom: 92px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 12px; }
+  /* bottom bar: drop the key caps, let a long label wrap onto a second line instead of being cut */
+  html[data-style="30"][data-page="register"] .tile[data-a="close"],
+  html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"],
+  html[data-style="30"][data-page="register"] .rbtn[data-a="discount"],
+  html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"] { white-space: normal; line-height: 1.1; gap: 6px; padding: 0 9px; font-size: 12.5px !important; }
+  html[data-style="30"][data-page="register"] .tile[data-a="close"] .k,
+  html[data-style="30"][data-page="register"] .rbtn[data-a="open-item"] small,
+  html[data-style="30"][data-page="register"] .rbtn[data-a="discount"] small,
+  html[data-style="30"][data-page="register"] .rbtn[data-a="tax-off"] small { display: none; }
+  html[data-style="30"][data-page="register"] .tile[data-a="close"] .info { font-size: 11px; flex: 0 1 auto; }
+  html[data-style="30"][data-page="register"] .status { font-size: 10.5px; gap: 9px; padding: 0 14px; white-space: nowrap; overflow: hidden; }
+  html[data-style="30"][data-page="register"] .status #stStation, html[data-style="30"][data-page="register"] .status #stVer { display: none; }
+}
+@container cdpay (max-width: 1290px) {
+  html[data-style="30"] .fullpay .payhead h2 { font-size: clamp(22px, 2.4cqw, 30px); }
+  html[data-style="30"] .fullpay .plist { padding: 18px 4px 0; }
+  html[data-style="30"] .fullpay .pline { flex: 1 1 100px; min-width: 90px; max-width: 150px; padding: 30px 10px 10px; }
+  html[data-style="30"] .fullpay .pline .plbl { font-size: 14px; }
+  html[data-style="30"] .fullpay .pline .pamt { font-size: 16px; }
+}
+@container cdpay (max-height: 720px) {
+  html[data-style="30"] .fullpay .pline { height: 196px; }
+  html[data-style="30"] .fullpay .pline .plbl::after { bottom: 34px; font-size: 40px; }
+  html[data-style="30"] .fullpay .pextra { padding-top: 24px; }
+  html[data-style="30"] .fullpay .quick button { width: 70px; height: 70px; font-size: 15px; }
+  html[data-style="30"] .fullpay .quick button[data-l="Exact"] { font-size: 12px; }
+  html[data-style="30"] .fullpay .paynums .pn b { font-size: 28px; }
+  html[data-style="30"] .fullpay .paynums .pn.left b { font-size: 40px; }
+}
+
+/* big decks (7+ bulk items): the one-row fan ran over both side columns. Deal them in rows of up to 6 instead,
+ * each row fanned on its own (--cd-i / --cd-j count within the row), cards sized to the space the row really has. */
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) { flex-wrap: wrap; align-content: center; row-gap: 14px; max-width: calc(6 * 136px + 60px); margin: 0 auto; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn {
+  flex: 0 0 calc(100% / 6 + 15.9px); min-width: 0; max-width: 150px; height: calc(50% - 10px); max-height: 230px; min-height: 0;
+  padding: 24px 8px 9px; font-size: 12.5px; overflow-wrap: anywhere;
+  transform: rotate(calc(var(--cd-d) * 2deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 3px));
+}
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:hover, html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:focus-visible { transform: rotate(calc(var(--cd-d) * 2deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 3px - 12px)); }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn::before { left: 8px; right: 8px; top: 7px; font-size: 11px; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn::after { top: 24%; font-size: clamp(26px, 34%, 52px); }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn small { font-size: 10px; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(1) { --cd-j: 6; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(2) { --cd-j: 5; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(3) { --cd-j: 4; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(4) { --cd-j: 3; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(5) { --cd-j: 2; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(6) { --cd-j: 1; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(7) { --cd-i: 1; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(8) { --cd-i: 2; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(9) { --cd-i: 3; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(10) { --cd-i: 4; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(11) { --cd-i: 5; }
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(7)) > .rbtn:nth-child(12) { --cd-i: 6; }
+/* 13+ cards: three or more rows, laid flat */
+html[data-style="30"][data-page="register"] #bulkBtns:has(> .rbtn:nth-child(13)) > .rbtn { --cd-d: 0 !important; height: calc(33.3% - 10px); }
+/* short windows (1366x768 at 125% = about 1093x614): keep the lower row of cards clear of the hint line */
+@container cdapp (max-height: 680px) {
+  html[data-style="30"][data-page="register"] #bulkPanel { bottom: 132px; }
+  html[data-style="30"][data-page="register"] .cd-hint { bottom: 94px; }
+}
+@container cdapp (max-width: 1120px) {
+  html[data-style="30"][data-page="register"] .cd-hint { font-size: 11px; letter-spacing: 0; }
+  html[data-style="30"][data-page="register"] .status #stSession, html[data-style="30"][data-page="register"] .status #stShop { display: none; }
+}
+@container cdpay (max-width: 1120px) {
+  html[data-style="30"] .fullpay .plist { padding: 20px 26px 0; }
+  html[data-style="30"] .fullpay .pline { margin: 0 -4px; transform: rotate(calc(var(--cd-d) * 2deg)) translateY(calc(max(var(--cd-d), var(--cd-d) * -1) * 4px)); }
+  html[data-style="30"] .fullpay .quick { gap: 8px; }
+  html[data-style="30"] .fullpay .quick button { width: 68px; height: 68px; font-size: 14px; }
+  html[data-style="30"] .fullpay .quick button[data-l="Exact"] { font-size: 11px; }
+  html[data-style="30"] .fullpay .pextra.quick::before { width: 64px; letter-spacing: 1px; }
+}
