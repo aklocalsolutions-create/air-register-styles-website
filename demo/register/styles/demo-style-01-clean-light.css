@@ -1,0 +1,387 @@
+/* Air Register Styles — Style 01 Clean Light
+ * OWNER: the style-01 assistant ONLY (this file + demo-style-01-clean-light.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v2/style-1-clean-light (sale.png, payment.png, index.html, style.css)
+ * Rules: every selector starts with  html[data-style="01"]  — look only; never hide a working control; no key changes.
+ * Hooks: see STYLES-PLAN.md "Shared DOM hooks". Test: FAKE_PORT=6100 CHROME_PORT=9500 node tests/e2e-styles.js --style 01
+ * STATUS: STYLED (v1, 2026-10-29)
+ *
+ * Layout map (CSS only; DOM order, ids and handlers untouched):
+ *   left  #actions          -> thin icon rail (New, History, Hold…, Return, Customer, End of Day, …, Log Out at the bottom)
+ *   top   .scanrow + #qsPanel -> "Search or scan items" bar + quick search (Ctrl+Shift+S)
+ *   chips [data-a=close] (Items)  ·  grid #bulkPanel = item tiles  ·  #right = only Discount/Promo/Open item shown as the ticket action row (all other buttons hidden by CSS, keys still work)
+ *   right ticket card: #gridhead (title) · [data-a=customer] tile = "Add customer" · #cart lines as cards · #totals
+ *         · Discount / Promo / Open Item / Tax Off action row · [data-a=checkout] tile = indigo Pay bar (F12)
+ * Wrappers .center, .bottom, .gridbox, #tiles, #rightAside get display:contents so their children sit in one .wrap grid.
+ */
+
+/* ---------------------------------------------------------------- tokens */
+html[data-style="01"] {
+  --c1-acc:#4f46e5; --c1-acc2:#6366f1; --c1-soft:#eef0ff; --c1-glow:rgba(79,70,229,.30);
+  --c1-hero:linear-gradient(135deg,#1e1b4b,#312e81 60%,#4f46e5);
+  --c1-bg:#f4f3f8; --c1-card:#fff; --c1-ink:#15131f; --c1-ink2:#4a4760; --c1-muted:#8a87a0; --c1-line:rgba(20,16,40,.08);
+  --c1-chip:#f1f0f6; --c1-chipline:rgba(20,16,40,.12); --c1-ok:#12b76a; --c1-bad:#f04438; --c1-badsoft:#fdeceb;
+  --c1-sh1:0 1px 2px rgba(20,16,40,.05),0 4px 14px rgba(20,16,40,.05); --c1-sh2:0 10px 30px rgba(40,20,120,.10),0 2px 6px rgba(20,16,40,.05);
+  --c1-font:Inter,'Segoe UI Variable','Segoe UI',Roboto,system-ui,Arial,sans-serif;
+  /* the shared payment knobs from index.html, tuned for this look */
+  --pay-num-size:28px; --pay-due-size:72px; --pay-tab-h:64px; --pay-tab-size:17px; --pay-input-size:26px; --pay-bill-size:18px; --pay-gap:14px;
+  --slate:#312e81; --sel:#4f46e5; --line:#e6e5ef; --btn:#f1f0f6; --btnText:#15131f;
+}
+html[data-style="01"] body { font-family:var(--c1-font); color:var(--c1-ink); -webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 500px at 85% -10%, rgba(79,70,229,.10), transparent 60%), var(--c1-bg); }
+html[data-style="01"] kbd { font:600 10.5px/1 var(--c1-font); color:var(--c1-ink2); background:var(--c1-chip); border:1px solid var(--c1-chipline);
+  border-bottom-width:2px; border-radius:6px; padding:3px 6px; white-space:nowrap; }
+
+/* ---------------------------------------------------------------- frame: top bar + status bar (light, slim) */
+html[data-style="01"] #app { grid-template-rows:46px minmax(0,1fr) 24px; background:transparent; }
+html[data-style="01"] .top { background:transparent; color:var(--c1-ink); padding:0 18px; gap:10px; }
+html[data-style="01"] .top > b { font-size:15px; font-weight:750; letter-spacing:-.2px; display:flex; align-items:center; gap:8px; }
+html[data-style="01"] .top > b::before { content:''; width:22px; height:22px; border-radius:7px; background:linear-gradient(135deg,var(--c1-acc),#38bdf8); box-shadow:0 4px 10px var(--c1-glow); }
+html[data-style="01"] .top .sub { color:var(--c1-muted); opacity:1; font-size:12.5px; }
+html[data-style="01"] .top .pill { background:var(--c1-card); color:var(--c1-ink2); border:1px solid var(--c1-line); box-shadow:var(--c1-sh1); font-weight:600; padding:4px 11px; }
+html[data-style="01"] .top .pill.ok::before, html[data-style="01"] .top .pill.warn::before, html[data-style="01"] .top .pill.bad::before { content:''; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:1px; background:var(--c1-ok); box-shadow:0 0 0 3px rgba(18,183,106,.18); }
+html[data-style="01"] .top .pill.warn::before { background:#f79009; box-shadow:0 0 0 3px rgba(247,144,9,.18); }
+html[data-style="01"] .top .pill.bad { color:var(--c1-bad); } html[data-style="01"] .top .pill.bad::before { background:var(--c1-bad); box-shadow:0 0 0 3px rgba(240,68,56,.18); }
+html[data-style="01"] .top .topset { background:var(--c1-soft); color:var(--c1-acc); border:0; box-shadow:none; }
+html[data-style="01"] .top .topset:hover { background:#e2e5ff; }
+html[data-style="01"] .top .topset kbd { background:#fff; }
+html[data-style="01"] .status { background:transparent; color:var(--c1-muted); font-size:11.5px; padding:0 18px; }
+html[data-style="01"] .status .net { color:var(--c1-ok); } html[data-style="01"] .status .net.off { color:var(--c1-bad); }
+
+/* ---------------------------------------------------------------- the one sale grid */
+html[data-style="01"] .wrap {
+  grid-template-columns:84px minmax(0,1.45fr) minmax(0,1fr) 392px;
+  grid-template-rows:52px 40px minmax(0,1fr) auto auto 84px;
+  grid-template-areas:
+    "rail scan qs   thd"
+    "rail chip chip cust"
+    "rail bulk bulk cart"
+    "rail more more cart"
+    "rail more more tot"
+    "rail more more pay";
+  gap:12px 14px; padding:4px 14px 10px; min-height:0;
+}
+/* the ticket card behind the right column */
+html[data-style="01"] .wrap::before { content:''; grid-column:4; grid-row:1 / -1; margin:0 -2px; border-radius:26px;
+  background:rgba(255,255,255,.82); border:1px solid rgba(255,255,255,.7); box-shadow:var(--c1-sh2); }
+html[data-style="01"] .center, html[data-style="01"] .bottom, html[data-style="01"] .gridbox,
+html[data-style="01"] #tiles, html[data-style="01"] #rightAside { display:contents; }
+html[data-style="01"] .sizer { display:none; } /* fixed widths in this style; drag-resize is a Classic feature (see report) */
+
+/* ---------------------------------------------------------------- left icon rail (#actions) */
+html[data-style="01"] aside.actions { grid-area:rail; background:rgba(255,255,255,.82); border:1px solid rgba(255,255,255,.7); border-radius:24px;
+  box-shadow:var(--c1-sh2); padding:12px 0 10px; align-items:center; overflow:hidden; }
+html[data-style="01"] aside.actions h2 { font-size:0; padding:0; margin:0 0 8px; width:44px; height:44px; flex:none; border-radius:15px; background:linear-gradient(135deg,var(--c1-acc),#38bdf8);
+  box-shadow:0 8px 20px var(--c1-glow); display:grid; place-items:center; color:#fff; }
+html[data-style="01"] aside.actions h2::before { content:'🛒'; font-size:20px; filter:grayscale(1) brightness(5); }
+html[data-style="01"] .actions .list { flex:1 1 auto; min-height:0; display:flex; flex-direction:column; align-items:center; gap:2px; padding:0; overflow-y:auto; overflow-x:hidden; width:100%; scrollbar-width:none; }
+html[data-style="01"] .actions .list .hgrp { display:contents; }
+html[data-style="01"] .actions .abtn { width:70px; min-height:0; flex:none; padding:5px 0 4px; border-radius:14px; background:transparent; box-shadow:none;
+  flex-direction:column; align-items:center; gap:2px; text-align:center; color:var(--c1-ink2); }
+html[data-style="01"] .actions .abtn:hover { background:var(--c1-chip); }
+html[data-style="01"] .actions .abtn .ic, html[data-style="01"] .hgrp .abtn .ic { display:block; width:auto; font-size:16px; line-height:20px; filter:grayscale(1) contrast(.9); }
+html[data-style="01"] .actions .abtn .t { font-size:10.5px; font-weight:600; line-height:1.15; }
+html[data-style="01"] .actions .abtn .k { display:none; }
+html[data-style="01"] .actions .abtn[data-a="new-sale"] { background:var(--c1-soft); color:var(--c1-acc); }
+html[data-style="01"] .actions .abtn[data-a="new-sale"] .ic { filter:none; }
+html[data-style="01"] .actions .abtn.red { background:transparent; color:var(--c1-bad); }
+html[data-style="01"] .actions .abtn.on { background:var(--c1-badsoft); }
+html[data-style="01"] .actions .abtn[data-a="logout"] { margin-top:auto; }
+html[data-style="01"] .actions .abtn[data-a="logout"]::before { content:''; display:block; width:36px; height:1px; background:var(--c1-line); margin:0 0 6px; }
+
+/* ---------------------------------------------------------------- search / scan bar */
+html[data-style="01"] .bottom > div:first-child { grid-area:scan; position:relative; min-width:0; }
+html[data-style="01"] .scanrow { height:52px; }
+html[data-style="01"] .scanrow input, html[data-style="01"] #scanInput { height:52px; border-radius:16px; border:1px solid var(--c1-line); background:var(--c1-card) no-repeat 16px 50%;
+  box-shadow:var(--c1-sh1); font:500 15px var(--c1-font); color:var(--c1-ink); padding:0 130px 0 44px; outline:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238a87a0' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E"); }
+html[data-style="01"] #scanInput:focus { border-color:var(--c1-acc2); box-shadow:0 0 0 4px rgba(99,102,241,.16), var(--c1-sh1); }
+html[data-style="01"] #scanInput::placeholder { color:var(--c1-muted); }
+html[data-style="01"] .scanrow input.bad { border-color:var(--c1-bad); background-color:var(--c1-badsoft); }
+html[data-style="01"] .scanrow::after { content:'▦  Scanner ready'; position:absolute; right:10px; top:10px; height:32px; display:flex; align-items:center; padding:0 11px;
+  border-radius:10px; background:var(--c1-soft); color:var(--c1-acc); font-size:12.5px; font-weight:650; pointer-events:none; }
+html[data-style="01"] #scanMsg, html[data-style="01"] #toast, html[data-style="01"] #noteLine { position:absolute; left:8px; top:calc(100% + 10px); z-index:4; margin:0; }
+html[data-style="01"] #toast { min-height:0; font-size:12.5px; left:auto; right:6px; top:calc(100% + 18px); }
+html[data-style="01"] #toast:empty { display:none; }
+html[data-style="01"] #toast.ok { color:#067647; } html[data-style="01"] #toast.err { color:var(--c1-bad); }
+html[data-style="01"] #scanMsg { background:var(--c1-badsoft); color:var(--c1-bad); border-radius:10px; padding:5px 10px; font-size:13px; box-shadow:var(--c1-sh1); }
+html[data-style="01"] #noteLine { left:auto; right:6px; top:calc(100% + 40px); background:#fff8e1; border-color:#f5dfa0; border-radius:10px; }
+
+/* quick search (F2 / Ctrl+Shift+S) as a second search pill */
+html[data-style="01"] #qsPanel { grid-area:qs; position:relative; margin:0; height:52px; padding:0 10px 0 12px; display:flex; align-items:center; gap:8px; z-index:6;
+  background:var(--c1-card); border:1px solid var(--c1-line); border-radius:16px; box-shadow:var(--c1-sh1); min-width:0; }
+html[data-style="01"] #qsPanel h3 { order:2; margin:0 !important; font-size:0; color:var(--c1-muted); flex:none; }
+html[data-style="01"] #qsPanel h3 small { font:600 10.5px/1 var(--c1-font); color:var(--c1-ink2); background:var(--c1-chip); border:1px solid var(--c1-chipline); border-bottom-width:2px; border-radius:6px; padding:3px 6px; }
+html[data-style="01"] #qsIn { order:1; flex:1; min-width:0; width:auto; border:0; background:transparent; font:500 14px var(--c1-font); padding:6px 4px; outline:none; color:var(--c1-ink); }
+html[data-style="01"] #qsPanel:focus-within { border-color:var(--c1-acc2); box-shadow:0 0 0 4px rgba(99,102,241,.16), var(--c1-sh1); }
+html[data-style="01"] #qsRes { position:absolute; left:0; right:0; top:calc(100% + 6px); margin:0; max-height:46vh; background:var(--c1-card); border-radius:16px; box-shadow:var(--c1-sh2); }
+html[data-style="01"] #qsRes:empty { display:none; }
+html[data-style="01"] .qsres div { padding:9px 12px; border-bottom:1px solid var(--c1-line); }
+html[data-style="01"] .qsres div.sel, html[data-style="01"] .qsres div:hover { background:var(--c1-soft); }
+
+/* ---------------------------------------------------------------- chips row: the Items tile as the dark "All" chip */
+html[data-style="01"] .tile { border-radius:999px; font-family:var(--c1-font); }
+html[data-style="01"] .tile[data-a="close"] { grid-area:chip; justify-self:start; align-self:center; height:38px !important; padding:0 16px; flex-direction:row; gap:8px;
+  background:var(--c1-ink); color:#fff; border:0; font-size:13.5px !important; font-weight:650; box-shadow:var(--c1-sh1); }
+html[data-style="01"] .tile[data-a="close"] .ic { font-size:14px !important; filter:grayscale(1) brightness(4); }
+html[data-style="01"] .tile[data-a="close"] .info { color:#fff; opacity:.6; margin:0; font-size:11.5px; font-weight:600; }
+html[data-style="01"] .tile[data-a="close"] .k { position:static; order:9; color:#fff; opacity:.55; font-size:10.5px; }
+html[data-style="01"] .tile.active { border-color:transparent; }
+
+/* ---------------------------------------------------------------- item grid = Bulk items */
+html[data-style="01"] #bulkPanel { grid-area:bulk; margin:0; background:transparent; border:0; padding:0; overflow:auto; min-height:0; }
+html[data-style="01"] #bulkPanel h3 { margin:0 2px 8px !important; font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--c1-muted); }
+html[data-style="01"] .bulkgrid { grid-template-columns:repeat(5,minmax(0,1fr)); grid-auto-rows:minmax(96px,1fr); gap:12px; }
+html[data-style="01"] .bulkgrid .rbtn { position:relative; min-height:96px; border-radius:20px; background:var(--c1-card); color:var(--c1-ink); border:1px solid var(--c1-line);
+  box-shadow:var(--c1-sh1); display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; text-align:left; padding:12px 14px; font:650 13.5px/1.25 var(--c1-font); }
+html[data-style="01"] .bulkgrid .rbtn::before { content:'🍬'; position:absolute; left:14px; top:12px; width:42px; height:42px; border-radius:14px; background:#f3e8ff; display:grid; place-items:center; font-size:22px; }
+html[data-style="01"] .bulkgrid .rbtn:nth-child(5n+2)::before { content:'🧸'; background:#ffe3ec; } html[data-style="01"] .bulkgrid .rbtn:nth-child(5n+3)::before { content:'🧱'; background:#e3f1ff; }
+html[data-style="01"] .bulkgrid .rbtn:nth-child(5n+4)::before { content:'🫧'; background:#dffaf6; } html[data-style="01"] .bulkgrid .rbtn:nth-child(5n)::before { content:'🧩'; background:#fff6cc; }
+html[data-style="01"] .bulkgrid #bulkSetup::before { content:'+'; background:var(--c1-soft); color:var(--c1-acc); font-weight:700; }
+html[data-style="01"] .bulkgrid .rbtn .bk, html[data-style="01"] .bulkgrid .rbtn small { position:absolute; top:12px; right:12px; font-size:10px; font-weight:700; color:#fff; background:var(--c1-acc);
+  border-radius:999px; padding:3px 7px; opacity:1; box-shadow:0 4px 10px var(--c1-glow); }
+html[data-style="01"] .bulkgrid .rbtn:hover { box-shadow:0 0 0 1.5px rgba(79,70,229,.45), var(--c1-sh1); }
+
+/* ---------------------------------------------------------------- #right: only the mockup's ticket actions are shown (lead rule: hide non-mockup
+   buttons with CSS only; the DOM + handlers stay, so F5, Ctrl+P, Ctrl+F, F8, Shift+F3, +, -, *, Del, F4, Ctrl+K, Ctrl+, , F1, Ctrl+Shift+D all still run) */
+html[data-style="01"] #right { grid-area:more; display:block; height:0; min-height:0; padding:0; margin:0; border:0; background:transparent; overflow:visible; }
+html[data-style="01"] #right h3 { display:none; }
+html[data-style="01"] #right .rgrid { display:contents; }
+html[data-style="01"] #right .rbtn:not([data-a="discount"]):not([data-a="promo"]):not([data-a="open-item"]) { display:none; }
+html[data-style="01"] .rbtn.on, html[data-style="01"] .tile.on { border-color:var(--c1-bad) !important; background:var(--c1-badsoft) !important; color:var(--c1-bad) !important; }
+
+/* ticket action row (mockup: Hold · Discount · Promo · Open item; Hold stays in the rail): on the ticket card, above the Pay bar */
+html[data-style="01"] #right .rbtn:is([data-a="discount"],[data-a="promo"],[data-a="open-item"]) {
+  position:absolute; bottom:106px; width:112px; height:54px; min-height:0; z-index:3; border-radius:14px; background:var(--c1-card); border:1px solid var(--c1-line); box-shadow:var(--c1-sh1);
+  font:650 12px/1.15 var(--c1-font); color:var(--c1-ink2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; padding:4px 6px; overflow:visible; }
+html[data-style="01"] #right .rbtn:is([data-a="discount"],[data-a="promo"],[data-a="open-item"]):hover { background:var(--c1-soft); color:var(--c1-acc); }
+html[data-style="01"] #right .rbtn[data-a="discount"] { right:288px; } html[data-style="01"] #right .rbtn[data-a="promo"] { right:164px; } html[data-style="01"] #right .rbtn[data-a="open-item"] { right:40px; }
+html[data-style="01"] #right .rbtn:is([data-a="discount"],[data-a="promo"],[data-a="open-item"]) :is(small,.bk) {
+  position:absolute; top:-7px; right:-4px; font:600 8.5px/1 var(--c1-font); color:var(--c1-ink2); background:var(--c1-card); border:1px solid var(--c1-chipline); border-bottom-width:2px; border-radius:5px; padding:2px 4px; }
+
+/* rail: only the mockup's items (New, History, Hold, Return, Customers, End of Day, Log out); the rest keep their keys */
+html[data-style="01"] .actions .abtn:is([data-a="load-hold"],[data-a="aside-put"],[data-a="aside-load"],[data-a="drawer"],[data-a="clock-out"]) { display:none; }
+html[data-style="01"] .actions .abtn { padding:8px 0 6px; }
+
+/* ---------------------------------------------------------------- ticket card */
+html[data-style="01"] .gridhead { grid-area:thd; z-index:1; margin:0 14px; align-self:end; padding:4px 2px 0; border:0; background:transparent; display:flex; flex-direction:column;
+  justify-content:flex-end; gap:2px; min-width:0; }
+html[data-style="01"] #gridTitle { font-size:19px; font-weight:750; letter-spacing:-.2px; color:var(--c1-ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+html[data-style="01"] #gridInfo { font-size:12px; color:var(--c1-muted); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+html[data-style="01"] #gridInfo:empty::before { content:'Current ticket'; }
+html[data-style="01"] .gridhead.ret #gridTitle { color:var(--c1-bad); font-size:15px; white-space:normal; line-height:1.2; }
+html[data-style="01"] .gridhead.ret { background:transparent; }
+html[data-style="01"] .taxoff { background:var(--c1-bad); border-radius:6px; }
+html[data-style="01"] .memchip { background:var(--c1-soft); color:var(--c1-acc); }
+
+/* "Add customer" = the Customers tile (F3) */
+html[data-style="01"] .tile[data-a="customer"] { grid-area:cust; z-index:1; margin:0 14px; height:40px !important; border-radius:14px; border:1.5px dashed var(--c1-chipline); background:transparent;
+  flex-direction:row; justify-content:flex-start; gap:10px; padding:0 12px; font-size:13.5px !important; font-weight:600; color:var(--c1-ink2); }
+html[data-style="01"] .tile[data-a="customer"] .ic { font-size:15px !important; filter:grayscale(1); }
+html[data-style="01"] .tile[data-a="customer"] .info { margin:0 0 0 auto; font-size:12px; color:var(--c1-muted); }
+html[data-style="01"] .tile[data-a="customer"] .k { position:static; order:9; font:600 10.5px/1 var(--c1-font); color:var(--c1-ink2); background:var(--c1-chip); border:1px solid var(--c1-chipline); border-bottom-width:2px; border-radius:6px; padding:3px 6px; }
+
+/* the cart lines as cards */
+html[data-style="01"] .gridbox > table { grid-area:cart; z-index:1; display:block; width:auto; margin:0 8px; padding:2px 6px 6px; overflow:auto; min-height:0; font-size:13.5px; }
+html[data-style="01"] #cartHead { display:none; } /* column captions only (the lines below carry name / code / qty / total) */
+html[data-style="01"] #cart { display:flex; flex-direction:column; gap:8px; }
+html[data-style="01"] #cart tr.row { display:grid; grid-template-columns:40px minmax(0,auto) minmax(0,1fr) 46px 74px;
+  grid-template-areas:"n nm nm q t" "n cd pr q d"; column-gap:10px; align-items:center; padding:8px 10px; border-radius:16px;
+  background:var(--c1-card); border:1px solid var(--c1-line); box-shadow:var(--c1-sh1); }
+html[data-style="01"] #cart tr.row td { padding:0; border:0; background:transparent !important; color:inherit; }
+html[data-style="01"] #cart tr.row td:nth-child(1) { grid-area:n; width:40px; height:40px; border-radius:12px; background:var(--c1-soft) !important; color:var(--c1-acc); display:grid; place-items:center; font-weight:700; font-size:14px; }
+html[data-style="01"] #cart tr.row td:nth-child(2) { grid-area:cd; color:var(--c1-muted); font-size:11.5px; white-space:nowrap; }
+html[data-style="01"] #cart tr.row td:nth-child(2)::after { content:' ·'; }
+html[data-style="01"] #cart tr.row td:nth-child(3) { grid-area:nm; font-weight:650; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--c1-ink); }
+html[data-style="01"] #cart tr.row td:nth-child(4) { grid-area:q; justify-self:center; min-width:40px; height:30px; display:grid; place-items:center; border-radius:10px; background:var(--c1-chip) !important; font-weight:700; color:var(--c1-ink2); }
+html[data-style="01"] #cart tr.row td:nth-child(5) { grid-area:pr; text-align:left; color:var(--c1-muted); font-size:11.5px; white-space:nowrap; }
+html[data-style="01"] #cart tr.row td:nth-child(5)::after { content:' each'; }
+html[data-style="01"] #cart tr.row td:nth-child(6) { grid-area:d; font-size:11px; color:#067647; }
+html[data-style="01"] #cart tr.row td:nth-child(7) { grid-area:t; font-weight:700; font-size:14px; font-variant-numeric:tabular-nums; color:var(--c1-ink); }
+html[data-style="01"] #cart tr.row.sel { box-shadow:0 0 0 2px var(--c1-acc), var(--c1-sh1); }
+html[data-style="01"] #cart tr.row.sel td:not(:nth-child(1)):not(:nth-child(4)) { background:transparent !important; }
+html[data-style="01"] #cart tr.row.sel td:nth-child(1) { background:var(--c1-acc) !important; color:#fff; }
+html[data-style="01"] #cart tr.row.neg { background:#fff7f6; }
+html[data-style="01"] #cart tr.row.neg td:nth-child(1) { background:var(--c1-badsoft) !important; color:var(--c1-bad); }
+html[data-style="01"] #cart tr.row.neg td:is(:nth-child(3),:nth-child(7)) { color:var(--c1-bad); }
+html[data-style="01"] #cart tr.row .tag { background:var(--c1-badsoft); color:var(--c1-bad); border-radius:6px; }
+html[data-style="01"] #cart tr:not(.row) { display:block; } html[data-style="01"] #cart td.empty { display:block; border:0; padding:40px 8px; color:var(--c1-muted); font-size:14px; }
+html[data-style="01"] #cart td.empty:empty::before { content:'Scan or search an item to start the ticket'; }
+html[data-style="01"] #retLines { grid-area:cart; z-index:2; align-self:start; margin:0 14px; border-radius:14px; border:1px solid #f6c7c2; background:#fff7f6; max-height:40%; overflow:auto; }
+html[data-style="01"] #retLines .rl { border-radius:10px; border-color:#f6c7c2; }
+html[data-style="01"] #retLines:not([style*="none"]) ~ table { padding-top:calc(40% + 8px); }
+
+/* totals */
+html[data-style="01"] #totals { grid-area:tot; z-index:1; margin:0 14px 64px; padding:10px 2px 0; background:transparent; border:0; border-top:1px dashed var(--c1-chipline);
+  font-size:13px; color:var(--c1-ink2); column-gap:18px; }
+html[data-style="01"] #totals div { padding:2px 2px; border:0; }
+html[data-style="01"] #totals div span:last-child { color:var(--c1-ink); font-weight:650; font-variant-numeric:tabular-nums; }
+html[data-style="01"] #totals .pretax { font-weight:600; }
+html[data-style="01"] #totals .total { font-size:15px; font-weight:750; padding:6px 2px 0; margin-top:4px; background:transparent; border-top:1px solid var(--c1-line); }
+html[data-style="01"] #totals .total span:last-child { font-weight:800; }
+html[data-style="01"] #totals .taxoffline, html[data-style="01"] #totals .negline span, html[data-style="01"] #totals .neg span { color:var(--c1-bad) !important; }
+
+/* Pay bar = the Payment tile (F12; Enter on an empty scan box does the same) */
+html[data-style="01"] .tile[data-a="checkout"] { grid-area:pay; z-index:1; margin:0 14px 12px; height:72px !important; border:0; border-radius:22px; flex-direction:row; justify-content:flex-start;
+  gap:12px; padding:0 18px 0 22px; color:#fff; font-size:18px !important; font-weight:700; background:linear-gradient(135deg,var(--c1-acc),var(--c1-acc2));
+  box-shadow:0 14px 30px var(--c1-glow), inset 0 1px 0 rgba(255,255,255,.25); }
+html[data-style="01"] .tile[data-a="checkout"] .ic { display:none; } /* decorative emoji only */
+html[data-style="01"] .tile[data-a="checkout"]::after { content:'Enter or F12'; position:absolute; left:22px; bottom:13px; font-size:11.5px; font-weight:500; opacity:.8; }
+html[data-style="01"] .tile[data-a="checkout"] { padding-bottom:16px; }
+html[data-style="01"] .tile[data-a="checkout"] .info { order:5; margin:0 0 0 auto; color:#fff; font-size:27px; font-weight:800; letter-spacing:-.5px; font-variant-numeric:tabular-nums; padding-top:16px; }
+html[data-style="01"] .tile[data-a="checkout"] .k { position:static; order:9; font:600 11px/1 var(--c1-font); color:#fff; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.28);
+  border-bottom-width:2px; border-radius:6px; padding:3px 6px; margin-top:16px; }
+html[data-style="01"] .tile[data-a="checkout"]:hover { filter:brightness(1.05); }
+
+/* return mode: same layout, red accents */
+html[data-style="01"][data-mode="return"] .tile[data-a="checkout"] { background:linear-gradient(135deg,#e5372c,#f97066); box-shadow:0 14px 30px rgba(240,68,56,.30); }
+
+/* Ctrl+B (hide sidebars): the rail and side panels go away, the ticket stays */
+html[data-style="01"] body.nosides .wrap { grid-template-columns:0 minmax(0,1.45fr) minmax(0,1fr) 392px !important; column-gap:0; }
+
+/* busy state keeps Classic behaviour (pointer-events) */
+html[data-style="01"] body.busy .tile[data-a="checkout"] { opacity:.75; }
+
+/* ---------------------------------------------------------------- dialogs (all) */
+html[data-style="01"] .el-overlay { background:rgba(21,19,31,.38); backdrop-filter:blur(3px); }
+html[data-style="01"] .modal { border-radius:22px; padding:20px 24px; box-shadow:0 24px 60px rgba(30,27,75,.28); font-family:var(--c1-font); color:var(--c1-ink); }
+html[data-style="01"] .modal h2 { font-size:20px; font-weight:750; letter-spacing:-.2px; }
+html[data-style="01"] .pbtn { border-radius:13px; background:var(--c1-acc); font-family:var(--c1-font); font-weight:700; box-shadow:0 6px 14px var(--c1-glow); }
+html[data-style="01"] .pbtn.g { background:linear-gradient(135deg,#12b76a,#0e9f6e); box-shadow:0 8px 18px rgba(18,183,106,.30); }
+html[data-style="01"] .pbtn.r { background:var(--c1-bad); box-shadow:0 6px 14px rgba(240,68,56,.25); }
+html[data-style="01"] .pbtn.s { background:var(--c1-chip); color:var(--c1-ink); box-shadow:none; border:1px solid var(--c1-line); }
+html[data-style="01"] .modal button kbd.dk { opacity:.8; }
+html[data-style="01"] input.f, html[data-style="01"] select.f, html[data-style="01"] .sfield { border-radius:12px; border:1px solid #d9d7e6; font-family:var(--c1-font); }
+html[data-style="01"] input.f:focus, html[data-style="01"] select.f:focus { outline:none; border-color:var(--c1-acc2); box-shadow:0 0 0 4px rgba(99,102,241,.16); }
+html[data-style="01"] .tab { border-radius:12px; border-color:#dedcea; }
+html[data-style="01"] .tab.on { background:var(--c1-acc); border-color:var(--c1-acc); }
+html[data-style="01"] .quick button { background:var(--c1-chip); border-radius:12px; color:var(--c1-ink); }
+html[data-style="01"] .refl { border-radius:16px; border-color:#e2e0ee; }
+html[data-style="01"] .refl.hi { border-color:var(--c1-acc); background:var(--c1-soft); box-shadow:0 0 0 3px rgba(79,70,229,.16); }
+html[data-style="01"] .refbig { color:var(--c1-bad); }
+html[data-style="01"] th { background:#f7f6fb; color:var(--c1-muted); }
+html[data-style="01"] tr.row.sel td { background:var(--c1-acc); }
+html[data-style="01"] .banner, html[data-style="01"] .notice { border-radius:12px; }
+
+/* ---------------------------------------------------------------- payment (full screen) — balance hero, method cards, green finish */
+html[data-style="01"] .modal.fullpay { background:var(--c1-bg); padding:16px 20px 16px; }
+html[data-style="01"] .fullpay .payhead { background:transparent; color:var(--c1-ink); margin:0 0 12px; padding:0 4px; align-items:center; }
+html[data-style="01"] .fullpay .payhead h2 { font-size:22px; font-weight:750; }
+html[data-style="01"] .fullpay .payhead .note { color:var(--c1-muted); font-size:14px; }
+html[data-style="01"] .paygrid { flex-direction:column; gap:14px; }
+html[data-style="01"] .paynums { width:auto; flex:none; display:grid; grid-template-columns:1fr auto; grid-template-rows:repeat(3,auto); column-gap:30px; row-gap:2px;
+  padding:22px 30px; border-radius:28px; background:var(--c1-hero); color:#fff; box-shadow:0 20px 40px var(--c1-glow); position:relative; overflow:hidden; }
+html[data-style="01"] .paynums::after { content:''; position:absolute; right:-80px; top:-120px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%); pointer-events:none; }
+html[data-style="01"] .paynums .pn { background:transparent !important; padding:0; border-radius:0; flex:none; flex-direction:row; justify-content:space-between; align-items:baseline; gap:26px; z-index:1; }
+html[data-style="01"] .paynums .pn span { color:rgba(255,255,255,.72); font-size:14px; font-weight:600; }
+html[data-style="01"] .paynums .pn b { color:#fff; font-size:20px; font-weight:750; font-variant-numeric:tabular-nums; }
+html[data-style="01"] .paynums .pn.total { grid-column:2; grid-row:1; } html[data-style="01"] .paynums .pn.tend { grid-column:2; grid-row:2; } html[data-style="01"] .paynums .pn.chg { grid-column:2; grid-row:3; }
+html[data-style="01"] .paynums .pn.left { grid-column:1; grid-row:1 / span 3; flex-direction:column; align-items:flex-start; justify-content:center; gap:0; }
+html[data-style="01"] .paynums .pn.left span { font-size:13px; letter-spacing:1.4px; text-transform:uppercase; color:rgba(255,255,255,.7); }
+html[data-style="01"] .paynums .pn.left b { font-size:var(--pay-due-size); font-weight:800; letter-spacing:-2.5px; line-height:1.05; }
+html[data-style="01"] .paynums .pn.left.zero b { color:#a6f4c5; }
+html[data-style="01"] .paynums .pn.chg b { color:#a6f4c5; }
+html[data-style="01"] .payact { overflow:auto; gap:12px; }
+html[data-style="01"] .fullpay .plist { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; }
+html[data-style="01"] .fullpay .plist > .pline { flex:1 1 160px; min-width:0; }
+html[data-style="01"] .fullpay .pline { min-height:118px; flex-direction:column; align-items:stretch; justify-content:space-between; gap:10px; padding:14px 16px; border-radius:20px;
+  background:var(--c1-card); border:1px solid var(--c1-line); box-shadow:var(--c1-sh1); }
+html[data-style="01"] .fullpay .pline .plbl { flex:none; font-size:var(--pay-tab-size); font-weight:700; display:flex; align-items:center; gap:10px; }
+html[data-style="01"] .fullpay .pline .plbl::before { content:'💳'; width:38px; height:38px; border-radius:12px; display:grid; place-items:center; background:var(--c1-chip); font-size:18px; color:inherit; filter:grayscale(1); }
+html[data-style="01"] .fullpay .pline[data-t="10"] .plbl::before { content:'💵'; } html[data-style="01"] .fullpay .pline[data-t="40"] .plbl::before { content:'🎁'; }
+html[data-style="01"] .fullpay .pline[data-t="50"] .plbl::before { content:'🧾'; }
+html[data-style="01"] .fullpay .pline.on { border-color:transparent; background:var(--c1-card); box-shadow:0 0 0 2.5px var(--c1-acc), 0 12px 26px var(--c1-glow); }
+html[data-style="01"] .fullpay .pline.on .plbl::before { content:'💳'; background:var(--c1-acc); filter:none; }
+html[data-style="01"] .fullpay .pline.on[data-t="10"] .plbl::before { content:'💵'; } html[data-style="01"] .fullpay .pline.on[data-t="40"] .plbl::before { content:'🎁'; } html[data-style="01"] .fullpay .pline.on[data-t="50"] .plbl::before { content:'🧾'; }
+html[data-style="01"] .fullpay .pline .pamt { width:100%; height:52px; border-radius:14px; border:1.5px solid #dedcea; font:750 var(--pay-input-size) var(--c1-font); letter-spacing:-.5px; text-align:left; padding:0 14px; font-variant-numeric:tabular-nums; }
+html[data-style="01"] .fullpay .pline.on .pamt { border:2px solid var(--c1-acc); box-shadow:0 0 0 5px rgba(79,70,229,.18); outline:none; }
+html[data-style="01"] .fullpay .plist > .pextra { order:1; flex:1 1 100%; box-sizing:border-box; margin:0; padding:12px 14px; border-radius:20px; background:#fff; box-shadow:var(--c1-sh1); display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+html[data-style="01"] .fullpay .plist > .pextra.quick #nextBills { display:contents; }
+html[data-style="01"] .fullpay .plist > .pextra.quick button { min-height:54px; padding:0 18px; min-width:90px; border-radius:15px; background:var(--c1-chip); border:0; font-size:var(--pay-bill-size); }
+html[data-style="01"] .fullpay .plist > .pextra.quick button[data-l="Exact"]:first-child { background:var(--c1-soft); color:var(--c1-acc); min-width:150px; }
+html[data-style="01"] .fullpay .pextra { padding:0; } html[data-style="01"] .fullpay .pextra input.f { font-size:16px; }
+html[data-style="01"] .fullpay .quick button { background:var(--c1-chip); border-radius:15px; font-weight:700; min-width:96px; }
+html[data-style="01"] .fullpay #payMsg { min-height:18px; }
+html[data-style="01"] .fullpay .row2 { padding-top:10px; gap:12px; align-items:stretch; }
+html[data-style="01"] .fullpay .row2 .pbtn { min-height:72px; border-radius:22px; font-size:19px; padding:0 26px; }
+html[data-style="01"] .fullpay .row2 .pbtn.s { background:var(--c1-card); }
+html[data-style="01"] .fullpay .row2 #payOk { min-width:320px; text-align:left; padding:0 24px; }
+html[data-style="01"] .fullpay .row2 #payOk kbd.dk { margin-left:14px; font-size:12px; padding:3px 7px; border-radius:6px; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.3); color:#fff; opacity:1; }
+html[data-style="01"] .fullpay .cardbox { border-radius:18px; border-color:var(--c1-acc); background:var(--c1-soft); }
+html[data-style="01"] .fullpay table.mini td { border-color:var(--c1-line); }
+
+/* ---------------------------------------------------------------- Settings page */
+html[data-style="01"] .modal.stpage { background:var(--c1-bg); border-radius:0; padding:0; }
+html[data-style="01"] .stpage .sthead { background:transparent; color:var(--c1-ink); padding:16px 24px 8px; }
+html[data-style="01"] .stpage .sthead h1 { font-size:22px; font-weight:750; letter-spacing:-.3px; }
+html[data-style="01"] .stpage #stFlash { color:#067647; }
+html[data-style="01"] .sttabs { background:transparent; padding:4px 22px 10px; border:0; gap:6px; }
+html[data-style="01"] .sttabs button { border-radius:999px; padding:8px 14px; background:var(--c1-card); color:var(--c1-ink2); border:1px solid var(--c1-line); box-shadow:var(--c1-sh1); font-size:13.5px; }
+html[data-style="01"] .sttabs button.on { background:var(--c1-ink); color:#fff; box-shadow:none; border-color:transparent; }
+html[data-style="01"] .sttabs button.on kbd { background:rgba(255,255,255,.15); color:#fff; border-color:rgba(255,255,255,.25); }
+html[data-style="01"] .stpage .stbody { margin:0 22px 18px; padding:16px 24px 20px; background:var(--c1-card); border-radius:22px; box-shadow:var(--c1-sh1); border:1px solid var(--c1-line); }
+html[data-style="01"] .stpage .stbody h3 { color:var(--c1-muted); }
+html[data-style="01"] .btrow { background:#f7f6fb; border-radius:12px; }
+html[data-style="01"] .btsel { border-radius:10px; }
+html[data-style="01"] .sybtn { border-radius:14px; border-color:#e2e0ee; font-family:var(--c1-font); }
+html[data-style="01"] .sybtn.on { border-color:var(--c1-acc); background:var(--c1-soft); box-shadow:0 0 0 3px rgba(79,70,229,.14); }
+html[data-style="01"] .sybtn:focus { outline-color:var(--c1-acc2); }
+
+/* ---------------------------------------------------------------- login */
+html[data-style="01"] #login { background:radial-gradient(900px 500px at 85% -10%, rgba(79,70,229,.18), transparent 60%), var(--c1-bg); }
+html[data-style="01"] #login .card { border-radius:26px; box-shadow:var(--c1-sh2); font-family:var(--c1-font); }
+html[data-style="01"] #lgBtn { background:linear-gradient(135deg,var(--c1-acc),var(--c1-acc2)); }
+
+/* ---------------------------------------------------------------- customer display */
+html[data-style="01"][data-page="customer"] body { font-family:var(--c1-font); color:var(--c1-ink); background:radial-gradient(900px 520px at 85% -10%, rgba(79,70,229,.14), transparent 60%), var(--c1-bg); }
+html[data-style="01"][data-page="customer"] #idle, html[data-style="01"][data-page="customer"] #done { background:var(--c1-hero); position:relative; overflow:hidden; }
+html[data-style="01"][data-page="customer"] #idle::after, html[data-style="01"][data-page="customer"] #done::after { content:''; position:absolute; right:-160px; top:-200px; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%); pointer-events:none; }
+html[data-style="01"][data-page="customer"] #idle h1, html[data-style="01"][data-page="customer"] #done h1 { font-weight:800; letter-spacing:-2px; }
+html[data-style="01"][data-page="customer"] #done .sum .chg { color:#a6f4c5; }
+html[data-style="01"][data-page="customer"] #sale { gap:20px; padding:20px; }
+html[data-style="01"][data-page="customer"] .lines { flex:1.6; border-radius:30px; background:rgba(255,255,255,.85); box-shadow:var(--c1-sh2); padding:22px 26px; }
+html[data-style="01"][data-page="customer"] .lines h2 { background:transparent; color:var(--c1-ink); padding:0 4px 14px; font-size:24px; font-weight:750; letter-spacing:-.3px; display:flex; align-items:center; gap:14px; }
+html[data-style="01"][data-page="customer"] .lines h2::before { content:''; width:44px; height:44px; border-radius:14px; flex:none; background:linear-gradient(135deg,var(--c1-acc),#38bdf8); box-shadow:0 8px 20px var(--c1-glow); }
+html[data-style="01"][data-page="customer"] .lines h2.ret { background:transparent; color:var(--c1-bad); }
+html[data-style="01"][data-page="customer"] .row { padding:14px 6px; border-bottom:1px solid var(--c1-line); font-weight:650; }
+html[data-style="01"][data-page="customer"] .row .q { color:var(--c1-muted); font-weight:500; }
+html[data-style="01"][data-page="customer"] .row .t { font-variant-numeric:tabular-nums; }
+html[data-style="01"][data-page="customer"] .row:last-child { background:var(--c1-soft); border-radius:16px; border:0; padding:14px 16px; margin:4px -10px 0; }
+html[data-style="01"][data-page="customer"] .row .d { color:#067647; } html[data-style="01"][data-page="customer"] .row.ret { color:var(--c1-bad); }
+html[data-style="01"][data-page="customer"] .side { flex:1; border-radius:30px; background:var(--c1-hero); color:#fff; padding:30px 34px; box-shadow:0 24px 50px var(--c1-glow); position:relative; overflow:hidden; }
+html[data-style="01"][data-page="customer"] .side::after { content:''; position:absolute; right:-90px; bottom:-140px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%); pointer-events:none; }
+html[data-style="01"][data-page="customer"] .side div { opacity:.9; font-variant-numeric:tabular-nums; z-index:1; }
+html[data-style="01"][data-page="customer"] .side .big { opacity:1; font-weight:800; letter-spacing:-1.5px; border-top:1px solid rgba(255,255,255,.2); }
+html[data-style="01"][data-page="customer"] .side .due { color:#fff; } html[data-style="01"][data-page="customer"] .side .chg { color:#a6f4c5; }
+html[data-style="01"][data-page="customer"] .side .off, html[data-style="01"][data-page="customer"] .side .ret { color:#fecdca; }
+
+/* payment extras drawn by demo-style-01-clean-light.js (.st-deco, read-only): ticket card on the left, keyboard help card */
+html[data-style="01"] .st-deco.c1-payticket, html[data-style="01"] .st-deco.c1-paykeys { display:none; }
+html[data-style="01"] body:has(.modal.fullpay) .modal.fullpay { position:relative; padding-left:372px; }
+html[data-style="01"] body:has(.modal.fullpay) .st-deco.c1-payticket { display:flex; flex-direction:column; position:fixed; z-index:61; left:16px; top:16px; bottom:16px; width:336px;
+  box-sizing:border-box; padding:20px 20px 18px; border-radius:26px; background:#fff; box-shadow:var(--c1-sh2); font-family:var(--c1-font); color:var(--c1-ink); }
+html[data-style="01"] .c1-payticket .c1t-head b { display:block; font-size:19px; font-weight:750; letter-spacing:-.2px; }
+html[data-style="01"] .c1-payticket .c1t-head small { color:var(--c1-muted); font-size:12px; }
+html[data-style="01"] .c1-payticket .c1t-list { flex:1; min-height:0; overflow:hidden; margin-top:12px; }
+html[data-style="01"] .c1-payticket .c1t-row { display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--c1-line); font-size:13.5px; font-weight:600; }
+html[data-style="01"] .c1-payticket .c1t-row i { font-style:normal; width:30px; height:30px; flex:none; border-radius:10px; display:grid; place-items:center; background:var(--c1-soft); color:var(--c1-acc); font-size:12px; font-weight:700; }
+html[data-style="01"] .c1-payticket .c1t-row .n { flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+html[data-style="01"] .c1-payticket .c1t-row .q { color:var(--c1-muted); font-size:11.5px; font-weight:500; }
+html[data-style="01"] .c1-payticket .c1t-row .t { font-weight:700; font-variant-numeric:tabular-nums; min-width:62px; text-align:right; }
+html[data-style="01"] .c1-payticket .c1t-row.neg { color:var(--c1-bad); } html[data-style="01"] .c1-payticket .c1t-row.neg i { background:var(--c1-badsoft); color:var(--c1-bad); }
+html[data-style="01"] .c1-payticket .c1t-sum { border-top:1px dashed var(--c1-chipline); padding-top:10px; font-size:13px; color:var(--c1-ink2); }
+html[data-style="01"] .c1-payticket .c1t-sum div { display:flex; justify-content:space-between; padding:2px 0; }
+html[data-style="01"] .c1-payticket .c1t-sum .big { margin-top:8px; padding-top:10px; border-top:1px solid var(--c1-line); color:var(--c1-ink); font-weight:700; font-size:14px; align-items:baseline; }
+html[data-style="01"] .c1-payticket .c1t-sum .big span:last-child { font-size:26px; font-weight:800; letter-spacing:-.5px; }
+html[data-style="01"] body:has(.modal.fullpay .row2 #payOk) .st-deco.c1-paykeys { display:block; position:fixed; z-index:61; right:20px; bottom:112px; width:380px; box-sizing:border-box;
+  padding:14px 18px; border-radius:20px; background:#fff; box-shadow:var(--c1-sh1); font:500 12.5px var(--c1-font); color:var(--c1-ink2); }
+html[data-style="01"] .c1-paykeys b { display:block; font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--c1-muted); margin-bottom:8px; }
+html[data-style="01"] .c1-paykeys div { display:flex; align-items:center; gap:10px; padding:3px 0; }
+html[data-style="01"] .c1-paykeys kbd { min-width:44px; text-align:center; }
+/* Back (Esc) up by the title, like the mockup; Pay = the big green finish bar */
+html[data-style="01"] .fullpay .payhead { padding-left:190px; min-height:46px; }
+html[data-style="01"] .fullpay .row2 #payBack { position:absolute; top:16px; left:372px; min-height:46px; height:46px; font-size:14px; padding:0 16px; border-radius:14px; box-shadow:var(--c1-sh1); }
+html[data-style="01"] .fullpay .row2 #payBack::before { content:'‹'; font-size:22px; margin-right:8px; line-height:0; vertical-align:-2px; }
+html[data-style="01"] .fullpay .row2 #payOk { min-width:380px; min-height:80px; border-radius:22px; font-size:20px; }
+html[data-style="01"] .fullpay .row2 #payOk::after { content:'Finish sale'; display:block; font-size:12px; font-weight:500; opacity:.85; margin-top:2px; }
+/* customer display: label on the total card */
+html[data-style="01"][data-page="customer"] .side::before { content:'Your total'; margin-bottom:auto; font-size:clamp(14px,1.3vw,18px); font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.7); }

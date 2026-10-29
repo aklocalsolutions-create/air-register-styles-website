@@ -7,7 +7,7 @@
   const KEY = 'demoStore.register.v1';
   const TAX = 8; // pretend sales tax %
   const STORE = 'Demo Store';
-  const ICON = n => '../assets/icons/' + n + '.svg';
+  const ICON = n => '../assets/icons/demo-' + n + '.svg';
   // Made-up demo products (fake names, fake prices). code = what you type in the scan box.
   const PRODUCTS = [
     { number: '1001', upc: '000000100017', name: 'Demo Item A - Toy Robot', label: 'Toy Robot', price: 24.99, icon: 'robot' },
@@ -41,11 +41,12 @@
     let item = 0, orig = 0, ldisc = 0, ltax = 0, qty = 0;
     M.cart.forEach(l => { const c = lineCalc(l); item += c.net; orig += c.gross; ldisc += c.disc; qty += l.qty; if (!M.order.taxExempt) ltax += r2(c.net * TAX / 100); });
     item = r2(item);
-    const od = M.order.method === 20 ? Math.min(M.order.amount, item) : r2(M.order.pct / 100 * item);
+    const od = M.order.method === 20 ? r2(Math.min(Number(M.order.amount) || 0, item)) : r2(M.order.pct / 100 * item);
     const pct = item > 0 ? od / item * 100 : 0;
-    const orderAmount = item - od, tax = ltax * (1 - pct / 100);
+    // Round the lines the screen prints before adding them, so pretax + tax equals the total (no 1-cent drift).
+    const orderAmount = r2(item - od), tax = r2(ltax * (1 - pct / 100));
     return { itemAmount: item, orderAmount, tax, discountAmount: r2(ldisc + od), discountRate: orig ? r2((ldisc + od) / orig * 100) : 0, promotionDiscount: 0, pointDiscount: 0,
-      due: r2(r2(orderAmount) + r2(tax)), quantity: qty, original: r2(orig), orderPct: pct, orderDisc: r2(od) };
+      due: r2(orderAmount + tax), quantity: qty, original: r2(orig), orderPct: pct, orderDisc: r2(od) };
   }
   const paidOf = () => M.pay ? r2(M.pay.tenders.filter(t => t.status === 'done').reduce((a, t) => a + t.amount, 0)) : 0;
   const remaining = () => Math.max(0, r2(totals().due - paidOf()));
@@ -176,14 +177,76 @@
   window.DEMO_MODEL = () => M;
   // Re-read the model when another tab (the customer screen or the register) changes it.
   window.addEventListener('storage', e => { if (e.key === KEY) M = load(); });
-  const realFetch = window.fetch.bind(window);
+  // Block every way off this page: fetch, XHR, beacon, sockets, and script/image/frame URLs.
+  // /api/* stays here and is answered by the pretend register. Same-origin files (css, js, icons) still load.
+  function blockedUrl(raw) {
+    const s = String(raw ?? '').trim();
+    if (!s || s.startsWith('data:') || s.startsWith('blob:') || s.startsWith('about:')) return false;
+    try {
+      const u = new URL(s, location.href);
+      if (u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'ws:' || u.protocol === 'wss:') return u.origin !== location.origin;
+      return true;
+    } catch { return true; }
+  }
+  function apiName(raw) {
+    try {
+      const u = new URL(String(raw ?? ''), location.href);
+      if (u.origin !== location.origin) return null;
+      const m = /\/api\/([a-z0-9-]+)/i.exec(u.pathname);
+      return m ? m[1] : null;
+    } catch { return null; }
+  }
+  function guardURLProp(proto, prop) {
+    if (!proto) return;
+    const d = Object.getOwnPropertyDescriptor(proto, prop);
+    if (!d || !d.set) return;
+    const set = function (v) { if (blockedUrl(v)) { try { this.dispatchEvent(new Event('error')); } catch {} return; } return d.set.call(this, v); };
+    const desc = { configurable: true, enumerable: d.enumerable, set };
+    if (d.get) desc.get = function () { return d.get.call(this); };
+    Object.defineProperty(proto, prop, desc);
+  }
+  guardURLProp(window.HTMLScriptElement && HTMLScriptElement.prototype, 'src');
+  guardURLProp(window.HTMLImageElement && HTMLImageElement.prototype, 'src');
+  guardURLProp(window.HTMLIFrameElement && HTMLIFrameElement.prototype, 'src');
+  guardURLProp(window.HTMLLinkElement && HTMLLinkElement.prototype, 'href');
+  guardURLProp(window.HTMLMediaElement && HTMLMediaElement.prototype, 'src');
+  const origSetAttr = Element.prototype.setAttribute;
+  Element.prototype.setAttribute = function (name, value) {
+    const n = String(name || '').toLowerCase();
+    if ((n === 'src' || n === 'href') && blockedUrl(value)) { try { this.dispatchEvent(new Event('error')); } catch {} return; }
+    return origSetAttr.call(this, name, value);
+  };
+  if (window.XMLHttpRequest) {
+    const origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function (method, url) {
+      if (!apiName(url)) throw new TypeError('Demo mode: outside network calls are blocked');
+      return origOpen.apply(this, arguments);
+    };
+  }
+  if (navigator.sendBeacon) {
+    const origBeacon = navigator.sendBeacon.bind(navigator);
+    navigator.sendBeacon = function (url) {
+      if (!apiName(url)) return false;
+      return origBeacon.apply(navigator, arguments);
+    };
+  }
+  if (window.WebSocket) {
+    const OrigWS = WebSocket;
+    const Wrapped = function (url, protocols) { if (blockedUrl(url)) throw new TypeError('Demo mode: outside network calls are blocked'); return protocols === undefined ? new OrigWS(url) : new OrigWS(url, protocols); };
+    Wrapped.prototype = OrigWS.prototype; window.WebSocket = Wrapped;
+  }
+  if (window.EventSource) {
+    const OrigES = EventSource;
+    const WrappedES = function (url, opts) { if (!apiName(url)) throw new TypeError('Demo mode: outside network calls are blocked'); return new OrigES(url, opts); };
+    WrappedES.prototype = OrigES.prototype; window.EventSource = WrappedES;
+  }
   window.fetch = async (input, init = {}) => {
     const url = typeof input === 'string' ? input : (input && input.url) || '';
-    const m = /\/api\/([a-z0-9-]+)/i.exec(url);
-    if (!m) { if (/^https?:/i.test(url) && !url.startsWith(location.origin)) throw new TypeError('Demo mode: outside network calls are blocked'); return realFetch(input, init); }
+    const name = apiName(url);
+    if (!name) throw new TypeError('Demo mode: outside network calls are blocked');
     if (document.hidden || /customer/.test(location.pathname)) M = load();
     let body = {}; try { body = init && init.body ? JSON.parse(init.body) : {}; } catch {}
-    const r = await handle(m[1], body);
+    const r = await handle(name, body);
     return new Response(JSON.stringify(r), { status: 200, headers: { 'Content-Type': 'application/json' } });
   };
 })();

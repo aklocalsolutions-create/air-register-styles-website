@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Demo Store register (DEMO - nothing is real)</title>
-<link rel="icon" href="icon.ico" sizes="any">
+<title>DEMO - Demo Store register</title>
+<link rel="icon" href="demo-icon.ico" sizes="any">
 <style>
   :root { --slate:#34495e; --btn:#b6d4e7; --btnText:#2c3e50; --green:#c7ebcf; --greenText:#1e7b34; --red:#f8b4b8; --redText:#c0392b; --line:#d5dde5; --sel:#3c8dbc; }
   * { box-sizing:border-box; }
@@ -73,7 +73,7 @@
   .paytop .left { background:#e8f6ec; } .paytop .left b { color:#1e7b34; font-size:26px; }
   .tabs { display:flex; gap:4px; margin:6px 0; flex-wrap:wrap; } .tab { padding:9px 14px; border:1px solid #ccd; background:#fff; border-radius:6px; cursor:pointer; font-weight:600; }
   .tab.on { background:#2d6cdf; border-color:#2d6cdf; color:#fff; }
-  /* 1.2.0: full-screen payment view. Adjust the layout here (sizes, column widths, colours) without touching app.js. */
+  /* 1.2.0: full-screen payment view. Adjust the layout here (sizes, column widths, colours) without touching demo-app.js. */
   :root { --pay-nums-w: 38%; --pay-num-size: 44px; --pay-due-size: 64px; --pay-tab-h: 76px; --pay-tab-size: 22px; --pay-input-size: 30px; --pay-bill-size: 22px; --pay-gap: 14px; }
   .fullpay-ov { align-items:stretch; justify-content:stretch; }
   .modal.fullpay { width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0; padding:14px 20px; display:flex; flex-direction:column; box-sizing:border-box; }
@@ -157,7 +157,7 @@
   .rbtn .bk { display:block; font-size:10.5px; font-weight:500; opacity:.8; }
   .actions .list .hgrp { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:5px; } .hgrp .abtn { padding:6px 7px; } .hgrp .abtn .ic { display:none; }
   body.nosides .wrap { grid-template-columns:1fr !important; } body.nosides .wrap > aside, body.nosides .sizer { display:none !important; }
-  /* 1.2.0: full-screen tabbed Settings page (settings.js) and the Buttons tab */
+  /* 1.2.0: full-screen tabbed Settings page (demo-settings.js) and the Buttons tab */
   .stpage-ov { align-items:stretch; justify-content:stretch; }
   .modal.stpage { width:100vw; max-width:100vw; height:100vh; max-height:100vh; border-radius:0; padding:0; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }
   .stpage .sthead { display:flex; align-items:center; gap:16px; background:var(--slate); color:#fff; padding:10px 20px; } .stpage .sthead h1 { margin:0; font-size:22px; flex:1; }
@@ -179,17 +179,17 @@
   .uhid { display:none !important; }
 </style>
 <!-- Air Register Styles (look only): base + one CSS per style, all scoped under html[data-style="NN"]; 00 = Classic matches none -->
-<link rel="stylesheet" href="styles/style-base.css">
-<script src="../styles-config.js"></script>
-<script src="demo-kit/shortcuts.js"></script>
+<link rel="stylesheet" href="styles/demo-style-base.css">
+<script src="../demo-styles-config.js"></script>
+<script src="demo-kit/demo-shortcuts.js"></script>
 <script src="demo-kit/demo-backend.js"></script>
-<script src="style-boot.js"></script>
-<script src="styles/catalog.js"></script>
-<script src="demo-kit/style-loader.js"></script>
-<script src="style.js"></script>
+<script src="demo-style-boot.js"></script>
+<script src="styles/demo-catalog.js"></script>
+<script src="demo-kit/demo-style-loader.js"></script>
+<script src="demo-style.js"></script>
 </head>
 <body>
-<!-- DEMO: no login in the demo. Empty placeholder only so the copied app.js keeps working. -->
+<!-- DEMO: no login in the demo. Empty placeholder only so the copied demo-app.js keeps working. -->
 <div id="login" hidden style="display:none"><form id="loginForm"></form></div>
 
 <div id="app">
@@ -223,17 +223,17 @@
   <div class="status"><span id="stNet" class="net">● online</span><span id="stShop"></span><span id="stStation"></span><span id="stUser"></span><span id="stSession"></span><span id="stOrder"></span><span id="stAside"></span><span style="margin-left:auto" id="stZoom"></span><span id="stVer"></span><span id="stTime"></span></div>
 </div>
 <div id="modalRoot"></div>
-<script src="shortcut-core.js"></script>
-<script src="app.js"></script>
-<script src="extras.js"></script>
-<script src="touch.js"></script>
-<script src="pos.js"></script>
-<script src="side.js"></script>
-<script src="dlgkeys.js"></script>
-<script src="settings.js"></script>
+<script src="demo-shortcut-core.js"></script>
+<script src="demo-app.js"></script>
+<script src="demo-extras.js"></script>
+<script src="demo-touch.js"></script>
+<script src="demo-pos.js"></script>
+<script src="demo-side.js"></script>
+<script src="demo-dlgkeys.js"></script>
+<script src="demo-settings.js"></script>
 <!-- Air Register Styles: optional per-style look hooks -->
 <script>window.DEMO_LOAD_STYLE_JS && window.DEMO_LOAD_STYLE_JS()</script>
-<script src="../assets/receipt.js"></script>
+<script src="../assets/demo-receipt.js"></script>
 <script src="demo-kit/demo-inpage.js"></script>
 </body>
 </html>

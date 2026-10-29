@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DEMO - Demo Store customer screen</title>
+<link rel="icon" href="demo-icon.ico" sizes="any">
+<style>
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; overflow:hidden; font-family:'Segoe UI', Roboto, Arial, sans-serif; background:#f3f6f8; color:#1f2d3a; user-select:none; -webkit-user-select:none; cursor:none; }
+  .scr { display:none; height:100vh; }
+  .scr.on { display:flex; }
+  #idle, #done { flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(160deg,#1f3b57,#2d5f73); color:#fff; text-align:center; }
+  #idle h1, #done h1 { font-size:clamp(48px, 9vw, 120px); font-weight:300; margin:0; letter-spacing:1px; }
+  #idle p { font-size:clamp(22px, 3vw, 40px); margin:18px 0 0; opacity:.85; }
+  #done .sum { margin-top:34px; font-size:clamp(24px, 3vw, 40px); display:grid; grid-template-columns:auto auto; gap:10px 40px; text-align:left; }
+  #done .sum b { text-align:right; }
+  #done .sum .chg { font-size:1.5em; color:#ffe08a; }
+  #sale { flex-direction:row; }
+  .lines { flex:1.6; overflow:hidden; display:flex; flex-direction:column; background:#fff; }
+  .lines h2 { margin:0; padding:16px 26px; font-size:22px; font-weight:600; background:#1f3b57; color:#fff; }
+  .lines h2.ret { background:#9b2c2c; }
+  .list { flex:1; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-start; }
+  .row { display:grid; grid-template-columns:1fr auto auto; gap:18px; align-items:baseline; padding:12px 26px; border-bottom:1px solid #e5ebf0; font-size:clamp(18px, 1.8vw, 28px); }
+  .row .q { color:#5b6b78; font-size:.8em; white-space:nowrap; } .row .t { font-weight:700; text-align:right; min-width:5.5em; }
+  .row .d { display:block; color:#1e7b34; font-size:.7em; } .row.ret { color:#9b2c2c; }
+  .row:last-child { background:#eef6fb; }
+  .side { flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:28px 30px; gap:10px; background:#f3f6f8; }
+  .side div { display:flex; justify-content:space-between; font-size:clamp(20px, 2vw, 30px); }
+  .side .big { font-size:clamp(34px, 4.2vw, 64px); font-weight:800; padding-top:12px; border-top:2px solid #c9d4dc; }
+  .side .due { color:#1f3b57; font-weight:800; font-size:clamp(28px, 3.4vw, 52px); }
+  .side .chg { color:#1e7b34; font-weight:800; font-size:clamp(28px, 3.4vw, 52px); }
+  .side .off { color:#9b2c2c; font-weight:700; }
+  .side .ret { color:#9b2c2c; }
+</style>
+<!-- Air Register Styles (look only): base + one CSS per style, all scoped under html[data-style="NN"]; 00 = Classic matches none -->
+<link rel="stylesheet" href="styles/demo-style-base.css">
+<script src="../demo-styles-config.js"></script>
+<script src="demo-kit/demo-shortcuts.js"></script>
+<script src="demo-kit/demo-backend.js"></script>
+<script src="demo-style-boot.js"></script>
+<script src="styles/demo-catalog.js"></script>
+<script src="demo-kit/demo-style-loader.js"></script>
+<script src="demo-style.js"></script>
+</head>
+<body>
+<section id="idle" class="scr on"><h1>Welcome</h1><p id="shop"></p></section>
+<section id="sale" class="scr">
+  <div class="lines"><h2 id="head">Your items</h2><div class="list" id="list"></div></div>
+  <div class="side" id="side"></div>
+</section>
+<section id="done" class="scr"><h1>Thank you</h1><div class="sum" id="sum"></div></section>
+<script src="demo-customer.js"></script>
+<!-- Air Register Styles: optional per-style look hooks -->
+<script>window.DEMO_LOAD_STYLE_JS && window.DEMO_LOAD_STYLE_JS()</script>
+<script src="../assets/demo-receipt.js"></script>
+<script src="demo-kit/demo-inpage.js"></script>
+</body>
+</html>

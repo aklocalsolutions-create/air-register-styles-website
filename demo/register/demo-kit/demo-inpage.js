@@ -1,5 +1,5 @@
 // DEMO STORE: small in-page extras for the copied register / customer screens.
-// - (the DEMO label is drawn by the page around this screen - style.html or window.html - never on top of the app)
+// - (the DEMO label is drawn by the page around this screen - demo-style.html or demo-window.html - never on top of the app)
 // - original product icons on the product buttons
 // - the receipt opens in the demo frame (or here when opened alone)
 'use strict';
@@ -20,8 +20,37 @@
     document.querySelectorAll('#payBody .pline .plbl').forEach(l => { const t = l.parentElement.dataset.t; const n = t === '20' ? 'card' : t === '10' ? 'cash' : t === '50' ? 'receipt' : null; if (n) ico(l, n, 'width:22px;height:22px;vertical-align:middle;margin-right:6px'); });
     document.querySelectorAll('#payBody .cardbox').forEach(c => { if (/approved - demo/i.test(c.textContent) && !c.querySelector('.demoOk')) { const d = document.createElement('div'); d.className = 'demoOk'; d.textContent = 'APPROVED - DEMO (pretend card, no money moved)'; d.style.cssText = 'margin:8px auto 0;display:inline-block;background:#2b8a3e;color:#fff;font-weight:800;border-radius:6px;padding:4px 10px;font-size:13px'; c.appendChild(d); } });
   }
+  // Password boxes from the copied register must not look like a real login, and must not keep what someone types.
+  // Root-absolute links such as /export/log would leave this demo (and on GitHub Pages jump to the domain root).
+  function disarm() {
+    document.querySelectorAll('input[type="password"]').forEach(el => {
+      if (el.dataset.demoLock) return;
+      el.dataset.demoLock = '1';
+      el.readOnly = true;
+      el.value = '';
+      el.setAttribute('autocomplete', 'off');
+      el.setAttribute('name', 'demo-unused');
+      el.placeholder = 'Demo only — leave blank';
+      el.title = 'Demo only. Do not type a real password. Nothing is checked and nothing is sent.';
+      const clear = () => { el.value = ''; };
+      el.addEventListener('input', clear);
+      el.addEventListener('change', clear);
+    });
+    document.querySelectorAll('a[href]').forEach(a => {
+      if (a.dataset.demoLink) return;
+      const href = a.getAttribute('href') || '';
+      const leaves = href.startsWith('/') || href.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(href);
+      if (!leaves) return;
+      a.dataset.demoLink = '1';
+      a.removeAttribute('href');
+      a.removeAttribute('download');
+      a.title = 'Not available in the demo';
+      a.addEventListener('click', e => e.preventDefault());
+    });
+  }
   window.DEMO_ICON_FOR = iconFor;
-  new MutationObserver(() => decorate()).observe(document.documentElement, { childList: true, subtree: true });
+  new MutationObserver(() => { decorate(); disarm(); }).observe(document.documentElement, { childList: true, subtree: true });
+  disarm();
   window.DEMO_SHOW_RECEIPT = () => {
     const rec = window.DEMO_RECEIPT && window.DEMO_RECEIPT();
     try { if (window.parent !== window && window.parent.DEMO_OPEN_RECEIPT) return window.parent.DEMO_OPEN_RECEIPT(rec); } catch {}
