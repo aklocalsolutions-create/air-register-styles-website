@@ -17,7 +17,7 @@ function expectTotals(lines, pct) { // same math as register.js recalc (8% tax o
 (async () => {
   fs.mkdirSync(SHOTS, { recursive: true }); 
   const browser = await chromium.launch(); const results = [];
-  for (const s of STYLES.filter(x => !only || only.includes(x.id))) {
+  for (const s of STYLES.filter(x => x.stage === 'tested' && (!only || only.includes(x.id)))) { // 'preview' styles have no register: see demo-preview-tests.js
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } }); const page = await ctx.newPage();
     const errs = [], ext = [], steps = []; const step = (name, ok, info = '') => { steps.push({ name, ok: !!ok, info }); if (!ok) console.log(`  FAIL ${s.id} ${name} ${info}`); };
     await ctx.addInitScript(() => { window.addEventListener('error', e => { try { (window.top.__errs = window.top.__errs || []).push(location.pathname + ': ' + (e.message || e.error)); } catch {} }); window.addEventListener('unhandledrejection', e => { try { (window.top.__errs = window.top.__errs || []).push(location.pathname + ': rejection ' + (e.reason && e.reason.message || e.reason)); } catch {} }); });

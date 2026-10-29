@@ -1,0 +1,113 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DEMO - Style 32 Order Desk - Preview</title>
+<script src="../common/demo-data.js"></script><script src="../common/demo-ribbon.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;width:1366px;height:768px;overflow:hidden;background:#7fd1ee;font:13px 'Liberation Sans',Arial,sans-serif;color:#0d2a36;position:relative}
+body[data-screen=sale] .pay,body[data-screen=pay] .sale,body:not([data-screen=cfd]) .cfd,body[data-screen=cfd] .op,body[data-screen=cfd] .menu,
+body:not([data-screen=menu]) .menu,body[data-screen=menu] .op{display:none!important}
+body[data-screen=menu]{background:#a9d8de}
+.a{position:absolute}
+.mono{font-family:'DejaVu Sans Mono','Liberation Mono',monospace}
+.tb{left:0;top:0;width:1366px;height:24px;background:#f3f3f3;border-bottom:1px solid #c9c9c9;display:flex;align-items:center;gap:10px;padding:0 10px;font-size:11.5px;color:#222;white-space:nowrap}
+.tb .ic{width:12px;height:12px;background:#3a4a3a;border-radius:2px}.tb .sp{flex:1}.tb .w{letter-spacing:18px;color:#555;font-size:12px}
+.who{left:300px;top:60px;font:700 15px 'DejaVu Sans Mono';color:#0d2a36;white-space:nowrap}
+.who small{font:400 12px 'Liberation Sans';color:#245466;margin-left:14px}
+.tbox{left:30px;top:84px;width:916px;height:234px;border:1px solid #2d6a80}
+.hdr{left:30px;top:84px;width:916px;height:29px;background:#e01fd6;display:grid;grid-template-columns:131px 520px 115px 108px 42px;align-items:center;color:#2b0230;font:700 13px 'Liberation Sans';border-bottom:1px solid #8a1584}
+.hdr span{text-align:center;border-left:1px solid #9a1a94;height:100%;line-height:29px}.hdr span:first-child{border-left:0}
+.rw{display:grid;grid-template-columns:131px 520px 115px 108px 42px;height:28px;align-items:center;border-bottom:1px solid #4f8ea3;font:700 13.5px 'Liberation Sans';color:#06202a;white-space:nowrap}
+.rw span{height:100%;line-height:28px;border-left:1px solid #4f8ea3;padding:0 8px;overflow:hidden}.rw span:first-child{border-left:0;text-align:right;padding-right:16px}
+.rw span:nth-child(n+3){text-align:right;font-family:'Liberation Mono',monospace}.rw:last-child{border-bottom:0}
+.rule{left:0;width:960px;height:0;border-top:1px solid #2d6a80}
+.lbl{font:700 14px 'Liberation Sans';color:#06202a;white-space:nowrap}
+.fld{height:28px;background:#c4ecf8;border:1px solid #3f7f95;display:flex;align-items:center;padding:0 8px;font:13px 'Liberation Mono';color:#2d5c6c;white-space:nowrap}
+.qs{gap:10px}.qs b{font-family:'Liberation Sans';color:#06202a}.qs .kk{margin-left:auto;font-weight:700;color:#0b5d74}
+.cap{height:26px;background:#1fa0ea;color:#06233a;font:700 18px/26px 'DejaVu Sans Mono',monospace;text-align:center;white-space:nowrap;letter-spacing:.5px;border:1px solid #0d6aa6}
+.yl{background:#f1ee3a;display:grid;grid-template-columns:58px 1fr;align-content:center;row-gap:5px;padding:0 10px 0 4px;font:700 11.5px 'Liberation Sans';color:#2a2600;white-space:nowrap}
+.yl span:nth-child(odd){text-align:right;padding-right:6px}.yl span:nth-child(even){text-align:right}
+.lcd{background:#121514;color:#3ff23f;font:700 34px 'Orbitron','DejaVu Sans Mono',monospace;letter-spacing:4px;display:flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid #000;text-shadow:0 0 3px rgba(63,242,63,.5)}
+.gbar{left:0;top:738px;width:1366px;height:30px;background:#1fdc1f;color:#063d06;font-size:11.5px;display:flex;align-items:center;gap:16px;padding:0 10px;white-space:nowrap}
+.gbar .st{font-weight:700;font-size:12.5px}.gbar .st:before{content:'';display:inline-block;width:8px;height:8px;border:2px solid #063d06;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.gbar .sp{flex:1}.gbar .dt{background:#7cf07c;height:22px;line-height:22px;padding:0 10px;font-weight:700}
+.gbar [data-legend] b{font-family:'Liberation Mono';font-size:11px}
+.kp{left:960px;top:24px;width:406px;height:714px;border-left:1px solid #2d6a80;padding:6px 10px 0}
+.kp h4{margin:0 0 4px;font:700 13px 'Orbitron';letter-spacing:2px;color:#0d2a36;white-space:nowrap}
+.kp .cols{display:grid;grid-template-columns:1fr 1fr;column-gap:8px}
+.kp .g{font:700 10px/16px 'Liberation Sans';color:#245466;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.bar{display:flex;flex-direction:column;justify-content:center;width:100%;height:27px;margin-bottom:1px;background:#b6e8f5;border:1px solid #3f7f95;border-radius:0;padding:0 6px;font-family:inherit;text-align:left;color:#0d2a36;overflow:hidden}
+.bar .l{font:700 10px/1.15 'Orbitron';letter-spacing:.6px;text-transform:uppercase;white-space:nowrap}
+.bar .k{font:700 10px/1.15 'Liberation Mono';color:#0b5d74;white-space:nowrap}
+.bar.red .l{color:#b0122a}
+.nv{left:14px;top:30px;width:932px;height:420px;background:#1b22a8;border:2px solid #e9ecff;outline:1px solid #0a0f66}
+.vl{position:absolute;top:0;bottom:62px;width:0;border-left:2px solid #e9ecff}.hl{position:absolute;left:0;right:0;height:0;border-top:2px solid #e9ecff}
+.ch{position:absolute;height:24px;background:#b42fb8;color:#ffe46a;font:700 15px/24px 'DejaVu Sans Mono',monospace;padding:0 7px;white-space:nowrap;text-align:right}
+.ch.c{text-align:center}.ch.on{outline:2px solid #ffe46a}
+.nvv{position:absolute;color:#f4f4ff;font:700 16px/24px 'DejaVu Sans Mono',monospace;text-align:right;white-space:nowrap}
+.nvl{position:absolute;color:#f4f4ff;font:700 16px/24px 'DejaVu Sans Mono',monospace;white-space:nowrap}
+.pop{left:322px;top:360px;height:46px;background:#c22fc6;padding:4px;display:flex;gap:4px;border:0;font:inherit;cursor:pointer}
+.pop span{border:2px double #ffe46a;outline:1px solid #ffe46a;outline-offset:-5px;color:#ffe46a;font:700 17px/34px 'DejaVu Sans Mono',monospace;padding:0 12px;white-space:nowrap}
+.lowp{left:0;top:450px;width:960px;height:288px;background:#9fdcef}
+.mb{position:absolute;left:137px;width:1092px;height:50px;background:#b3e0e5;border:1.5px solid #557f87;display:flex;align-items:center;padding:0 24px;font:700 26px 'Orbitron';letter-spacing:5px;color:#151a1a;white-space:nowrap}
+.mb .k{margin-left:auto;font:700 14px 'Liberation Mono';letter-spacing:0;color:#245466}
+.cfd{position:absolute;inset:0}
+</style></head><body>
+<div class="op" id="op"></div><div class="cfd" id="cfd"></div><div class="menu" id="menu"></div>
+<script>const C=D.cust,L_=D.lines,m2=v=>v.toFixed(2);
+const P=(x,y,w,h)=>`left:${x}px;top:${y}px${w!=null?';width:'+w+'px':''}${h!=null?';height:'+h+'px':''}`;
+const div=(cls,x,y,w,h,html='',st='')=>`<div class="a ${cls}"${/\bqs\b/.test(cls)?' data-qs="1"':''} style="${P(x,y,w,h)};${st}">${html}</div>`;
+const tbar=t=>`<div class="a tb"><span class="ic"></span><span>Air Register — ${D.store} · Register-1</span><span>${t}</span><span class="sp"></span><span class="w">–▢×</span></div>`;
+const COL={A:[88,390],B:[490,153],C:[656,143]}, ROW=[[548,50],[628,50]];
+const tot=(col,r,cap,val,yl)=>{const [x,w]=COL[col],[y,h]=ROW[r];
+  return div('',x,y,w,26+h,`<div class="cap">${cap}</div>`+(yl?`<div style="display:flex;height:${h}px"><div class="yl" style="width:162px">${yl.map(([a,b])=>`<span>${a}:</span><span>${b}</span>`).join('')}</div><div class="lcd" style="flex:1">${val}</div></div>`:`<div class="lcd" style="height:${h}px">${val}</div>`));};
+const gbar=(st,mid,full)=>`<div class="a gbar"><span class="st">${st}</span>${mid||''}<span class="sp"></span><span>● online</span>${full?`<span>User: ${D.cashier}</span><span>Session ${D.session}</span>`:''}<span class="dt">10/29/26 4:12P</span></div>`;
+const vis=L_.slice(-7);
+const tbl=`<div class="a hdr"><span>Qty</span><span>Item</span><span>Price</span><span>Total</span><span>Disc</span></div>
+<div class="a" style="${P(30,113,916,205)}">${vis.map(l=>`<div class="rw"><span>${l.q}</span><span>${l.n.toUpperCase()}</span><span>${m2(l.p)}</span><span>${m2(l.t)}</span><span></span></div>`).join('')}</div><div class="a tbox"></div>`;
+const kb=k=>`<span class="l">${k.l}</span>${k.k?`<span class="k">${D.kc(k.k)}</span>`:''}`;
+const grp=g=>`<div class="g">${g}</div>`+D.group(g).map(id=>D.b(id,'bar',kb)).join('');
+const keys=`<div class="a kp"><h4>REGISTER KEYS</h4><div class="cols"><div>${['Actions','Tiles','Items'].map(grp).join('')}</div><div>${['Transaction Actions','Gift Cards','Lookups','Register'].map(grp).join('')}</div></div></div>`;
+const last=L_[L_.length-1];
+const sale=`<div class="sale">${tbar(D.ver)}<div class="a who">${D.cashier.toUpperCase()}<small>Customer: ${C.name} · ${C.pts} pts</small></div>${tbl}
+<div class="a rule" style="top:335px"></div>
+${div('lbl',72,362,null,null,'Item:')}${div('fld',132,356,420,30,'Scan items....')}
+${div('fld qs',132,398,800,30,`<b>Quick search</b> ${D.qs.ph}<span class="kk">${D.qs.alt} · ${D.qs.k}</span>`,'')}
+${div('lbl',548,450,null,null,`Price: <span class="mono">${m2(last.p)}</span>`)}${div('lbl',94,480,null,null,`Qty: <span class="mono">${last.q}</span>`)}
+<div class="a rule" style="top:510px"></div>
+${tot('A',0,'Total',m2(D.total),[['ROWS',L_.length],['QTY',D.count]])}${tot('B',0,'Items',L_.length+'/'+D.count)}
+${tot('A',1,'Subtotal',m2(D.sub),[['PTS',C.pts],['CREDIT',m2(C.acct)]])}${tot('B',1,'Discount',m2(D.disc))}${tot('C',1,'Tax',m2(D.tax))}
+${keys}${gbar('Scan items....','<span style="margin-left:24px">'+D.legendHTML('  ·  ')+'</span>')}</div>`;
+const T=[['Credit Card','','20.00','✔ paid',''],['Cash','40.00','.00','','7.21'],['Gift Card','','.00','',''],['Check','','.00','',''],['Store credit','','.00','','']];
+const cx=[172,284,396,508,620], cw=112, ry=[108,160,212,264];
+const nv=`<div class="a nv">${cx.map(x=>`<div class="vl" style="left:${x}px"></div>`).join('')}<div class="vl" style="left:${cx[4]+cw+4}px"></div><div class="hl" style="top:54px"></div><div class="hl" style="top:354px"></div>
+${T.map((t,i)=>`<div class="ch c${i==1?' on':''}" style="left:${cx[i]+4}px;top:16px;width:${cw-4}px;font-size:12.5px">${t[0]}</div>`).join('')}
+${['Amount','Paid','Status','Change'].map((l,j)=>`<div class="ch" style="left:12px;top:${ry[j]}px;width:150px">${l}</div>`).join('')}
+${T.map((t,i)=>[1,2,3,4].map(j=>`<div class="nvv" style="left:${cx[i]+4}px;top:${ry[j-1]}px;width:${cw-14}px">${t[j]}</div>`).join('')).join('')}
+${[['Due:',m2(D.total)],['Paid:','60.00'],['Balance:','0.00']].map(([l,v],j)=>`<div class="nvl" style="left:${cx[4]+cw+8}px;top:${ry[j]}px;width:92px;text-align:right">${l}</div><div class="ch" style="left:${cx[4]+cw+104}px;top:${ry[j]}px;width:84px">${v}</div>`).join('')}
+${[['Subtotal:',m2(D.sub),12,108,90],['Discount:','.00',300,400,90],['Quantity:',D.count,580,690,70]].map(([l,v,x,cxx,w])=>`<div class="nvl" style="left:${x}px;top:372px">${l}</div><div class="ch" style="left:${cxx}px;top:372px;width:${w}px">${v}</div>`).join('')}
+</div><button class="a pop" data-pay="ok"><span style="padding:0 8px">↵</span><span>${D.PAY.ok}...</span></button>`;
+const pb=(l,k)=>`<div class="bar" style="height:34px"><span class="l" style="font-size:11px">${l}</span><span class="k">${k}</span></div>`;
+const pkp=`<div class="a kp"><h4>PAYMENT KEYS</h4><div class="g">Quick cash (puts the amount on the Cash line)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px">${D.PAY.quick.map(q=>pb(q,'quick cash')).join('')}</div>
+<div class="g">Finish</div>${pb(D.PAY.ok,'Enter (when fully paid)')}<div style="height:6px"></div>${pb(D.PAY.back,'Esc — back to the sale')}
+<div class="g" style="margin-top:12px">Keys</div>${D.PAY.keys.map(k=>`<div style="font-size:12.5px;line-height:22px;white-space:nowrap"><b class="mono" style="color:#0b5d74;display:inline-block;width:52px">${k[0]}</b>${k[1]}</div>`).join('')}
+<div class="g" style="margin-top:12px">Payment lines</div><div style="font-size:12px;line-height:18px;color:#245466">${D.PAY.lines.map(l=>l[0]).join(' · ')}<br>Store credit shows when a customer is on the sale.</div></div>`;
+const pay=`<div class="pay" data-pay="1">${tbar(D.ver)}${nv}<div class="a lowp"></div>
+${tot('A',0,'Due',m2(D.total),[['SUB',m2(D.sub)],['TAX',m2(D.tax)]])}${tot('B',0,'Items',L_.length+'/'+D.count)}
+${tot('A',1,'Paid','60.00',[['CARD','20.00'],['CASH','40.00']])}${tot('B',1,'Balance','0.00')}${tot('C',1,'Change',m2(D.change))}
+${pkp}${gbar('Payment..','<span style="margin-left:24px"><b class="mono">Enter</b> next line / finish · <b class="mono">+</b> full balance · <b class="mono">Esc</b> back to sale</span>',1)}</div>`;
+op.innerHTML=sale+pay;
+cfd.innerHTML=`${tbar('customer view')}<div class="a who" style="left:40px;font-size:20px">WELCOME, ${C.name.toUpperCase()}<small style="font-size:14px">${C.pts} points</small></div>
+<div class="a hdr" style="width:1306px;left:30px;height:34px;grid-template-columns:150px 1fr 200px 200px;font-size:16px"><span style="line-height:34px">Qty</span><span style="line-height:34px">Item</span><span style="line-height:34px">Price</span><span style="line-height:34px">Total</span></div>
+<div class="a" style="${P(30,118,1306,378)};border:1px solid #2d6a80">${L_.map(l=>`<div class="rw" style="height:42px;font-size:19px;grid-template-columns:150px 1fr 200px 200px"><span style="line-height:42px">${l.q}</span><span style="line-height:42px">${l.n.toUpperCase()}</span><span style="line-height:42px">${m2(l.p)}</span><span style="line-height:42px">${m2(l.t)}</span></div>`).join('')}</div>
+<div class="a rule" style="top:510px;width:1366px"></div>
+${div('',88,540,560,180,`<div class="cap" style="height:34px;line-height:34px;font-size:22px">Total</div><div class="lcd" style="height:146px;font-size:76px">${m2(D.total)}</div>`)}
+${[['Items',L_.length+'/'+D.count,672],['Subtotal',m2(D.sub),872],['Tax',m2(D.tax),1072]].map(([c,v,x])=>div('',x,540,190,96,`<div class="cap">${c}</div><div class="lcd" style="height:70px">${v}</div>`)).join('')}
+${div('',672,650,590,70,`<div class="cap">Discount</div><div class="lcd" style="height:44px;font-size:28px">${m2(D.disc)}</div>`)}
+<div class="a gbar" style="justify-content:center;font:700 15px 'Liberation Sans'">Thank you for shopping at ${D.store}</div>`;
+const M=[['1.','CLOCK IN','Enter (at sign-in)'],['2.','NEW SALE','Ctrl+Shift+N'],['3.','LOAD HOLD','Ctrl+Shift+H'],['4.','X-REPORT (END OF DAY)','Ctrl+E'],['5.','Z-REPORT (END OF DAY)','Ctrl+E'],['6.','PRINTER & DRAWER','Ctrl+,'],['7.','CASH IN / OUT','Ctrl+K'],['8.','CLOCK OUT','Ctrl+Shift+X'],['9.','LOG OUT','Ctrl+Shift+U']];
+menu.innerHTML=`${tbar(D.ver)}${M.map(([n,t,k],i)=>`<div class="mb" style="top:${44+i*58}px">${n}&nbsp; ${t}<span class="k">${k}</span></div>`).join('')}
+<div class="a" style="left:170px;top:578px;font:700 24px 'Orbitron';letter-spacing:5px;color:#151a1a">PRESS A KEY:</div>
+<div class="a" style="left:170px;top:622px;font:13px 'Liberation Sans';color:#245466">Each line is an action Air Register 1.2.0 already has; press its key (the numbers are only list order).</div>
+<div class="a gbar"><span class="st">Register menu</span><span class="sp"></span><span>● online</span><span>User: ${D.cashier}</span><span>${D.ver}</span><span class="dt">10/29/26 4:12P</span></div>`;
+D.show();
+</script></body></html>

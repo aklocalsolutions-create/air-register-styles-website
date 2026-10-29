@@ -5,7 +5,7 @@ const port = fs.readFileSync(__dirname + '/demo-port.txt', 'utf8').trim(), BASE 
 fs.mkdirSync(SH, { recursive: true });
 const SIZES = [[1366, 768, 1], [1024, 768, 1], [390, 844, 2], [1093, 614, 1.25]];
 (async () => { const b = await chromium.launch(); const out = []; let ok = true;
-  for (const s of window.DEMO_STYLES) for (const [w, h, dsf] of (['11', '25', '30', '19'].includes(s.id) ? SIZES : [SIZES[0]])) {
+  for (const s of window.DEMO_STYLES.filter(x => x.stage === 'tested')) for (const [w, h, dsf] of (['11', '25', '30', '19'].includes(s.id) ? SIZES : [SIZES[0]])) {
     const p = await b.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: dsf }); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(BASE + `demo-style.html?style=${s.id}&view=split`); await p.waitForTimeout(1300);
     const r = await p.evaluate(() => [...document.querySelectorAll('.pane')].filter(pn => pn.offsetParent).map(pn => {

@@ -1,0 +1,107 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DEMO - Style 35 Tabbed Pantry - Preview</title>
+<script src="../common/demo-data.js"></script><script src="../common/demo-ribbon.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;width:1366px;height:768px;overflow:hidden;background:#c4c4c4;font:13px 'Liberation Sans',Arial,sans-serif;color:#000;position:relative}
+body[data-screen=sale] .pay,body[data-screen=pay] .sale,body:not([data-screen=cfd]) .cfd,body[data-screen=cfd] .op{display:none!important}
+.L{position:absolute;left:0;top:0;width:716px;height:768px;background:#f0f0f0;border-right:4px solid #b4b4b4}
+.pr{height:64px;background:#fff;display:flex;align-items:center;padding:0 8px 0 4px;gap:8px;border-bottom:2px solid #9c9c9c}
+.pr .gt{font:700 18px 'Liberation Sans';width:12px}
+.pr .in{width:316px;height:52px;background:#ffffc8;border:1px solid #a8a8a8;display:flex;align-items:center;padding:0 10px;font:700 20px 'Liberation Mono',monospace;color:#333}
+.pr label{font:700 18px 'Liberation Sans';margin-left:14px}
+.pr .bx{height:52px;border:1px solid #a8a8a8;background:#fff;display:flex;align-items:center;justify-content:flex-end;padding:0 8px;font:700 32px 'Liberation Sans'}
+table{border-collapse:collapse;width:690px;table-layout:fixed}
+th{height:34px;background:linear-gradient(#f4f4f4,#d4d4d4);border:1px solid #9a9a9a;font:700 16px 'Liberation Sans';text-align:center}
+td{height:44px;border:1px solid #c8c8c8;font:700 15px 'Liberation Sans';padding:0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#f0f0f0}
+td.no{background:#5e5e5e;color:#fff;text-align:center;border-color:#5e5e5e}
+td.r{text-align:right}td.c{text-align:center}
+tr.sel td{background:#000;color:#fff;border-color:#000}tr.sel td.no{background:#3c3c3c}
+.sb{position:absolute;left:692px;top:66px;width:20px;height:464px;background:#e8e8e8;border-left:1px solid #c8c8c8}
+.sb:before,.sb:after{content:'▲';position:absolute;left:5px;top:3px;font-size:9px;color:#444}.sb:after{content:'▼';top:auto;bottom:3px}
+.sb i{position:absolute;left:3px;top:20px;width:13px;height:330px;background:#c8c8c8;border:1px solid #aaa}
+.lb{position:absolute;left:0;right:0;top:532px;bottom:0;border-top:2px solid #9c9c9c;background:#e4e4e4;padding:8px;display:flex;flex-direction:column;gap:7px}
+.tt{display:flex;gap:6px}
+.tt div{flex:1;background:#fff;border:1px solid #a8a8a8;height:56px;padding:3px 7px;display:flex;flex-direction:column;justify-content:space-between}
+.tt small{font:700 12px 'Liberation Sans';color:#333}.tt b{font:700 22px 'Liberation Sans';text-align:right}
+.tt div.T{flex:1.5;background:#000;color:#fff;border-color:#000}.tt div.T small{color:#ffffc8}.tt div.T b{font-size:30px;color:#ffff80}
+.cu{display:flex;gap:6px;align-items:center;height:30px}
+.cu .c{flex:1;height:30px;background:#fff;border:1px solid #a8a8a8;display:flex;align-items:center;padding:0 8px;font:700 13px 'Liberation Sans';gap:8px;white-space:nowrap}.cu .c em{font-style:normal;font-weight:400;color:#444}
+.qs{width:330px;height:30px;background:#ffffc8;border:1px solid #a8a8a8;display:flex;align-items:center;padding:0 8px;gap:8px;font:13px 'Liberation Sans';color:#555;white-space:nowrap}.qs b{color:#000}
+.lg{font:11.5px 'Liberation Sans';color:#222;line-height:1.35;background:#f8f8f8;border:1px solid #bdbdbd;padding:4px 7px}.lg b{font-family:'Liberation Mono',monospace;font-size:11px;background:#fff;border:1px solid #bbb;padding:0 3px}
+.st{display:flex;gap:14px;font:11.5px 'Liberation Sans';color:#333;white-space:nowrap}.st b{color:#000}
+.R{position:absolute;left:720px;top:0;right:0;bottom:0}
+.gb{position:absolute;border:1px solid #8a8a8a;border-radius:5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 1px 1px rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:700 13px/1.15 'Liberation Sans';padding:2px 3px;color:#000;overflow:hidden;background:linear-gradient(#ffffff,#ececec 45%,#d4d4d4)}
+.gb .k{display:block;font:700 10.5px 'Liberation Sans';margin-top:3px;opacity:.85}
+.gb.dk{color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.5)}
+.ar{width:54px;height:60px;top:6px;font-size:30px}
+.tab{top:6px;width:120px;height:60px;background:linear-gradient(#ececff,#c8c8f4 60%,#b0b0ec);font-size:14px}
+.tab.on{border:3px solid #5c5c5c;background:linear-gradient(#f4f4ff,#dcdcf8)}
+.dep{left:7px;width:116px;height:71px}
+.dep.on{border:3px solid #505050}
+.g{width:96px;height:71px;font-size:12.5px}
+.g .k{font-size:10px}
+.c1{background:linear-gradient(#fff4ec,#f9c7a8 50%,#ee8c5c)}.c2{background:linear-gradient(#f2c6c6,#b24a5a 50%,#7c1424)}.c3{background:linear-gradient(#ececff,#a8a8f4 50%,#6464e4)}
+.c4{background:linear-gradient(#c8c8ff,#4848f0 50%,#1a1ad4)}.c5{background:linear-gradient(#ffffff,#fdfbe0 50%,#f0eab8)}.c6{background:linear-gradient(#dcefff,#76b8f4 50%,#2a84e4)}
+.c7{background:linear-gradient(#e8f8e4,#7cc47c 50%,#3a963a)}.c8{background:linear-gradient(#ffffe4,#fcfc9c 50%,#f2ee4c)}.c9{background:linear-gradient(#ffe8ff,#f8a8f4 50%,#ec70e4)}
+.c10{background:linear-gradient(#ffffff,#fafafa 50%,#e4e4e4)}.c11{background:linear-gradient(#fff0dc,#fcbc80 50%,#f2903c)}.c12{background:linear-gradient(#f8f8f8,#dcdcdc 50%,#bcbcbc)}
+.c13{background:linear-gradient(#e8e8c4,#9c9c48 50%,#64641c)}.c14{background:linear-gradient(#ffffe0,#fdfd80 50%,#ecec28)}.c15{background:linear-gradient(#f0ffe0,#c8f49c 50%,#98d85c)}
+.c16{background:linear-gradient(#e0f4ff,#8ccfee 50%,#3a9ed4)}.c17{background:linear-gradient(#f4c8dc,#b04a7c 50%,#78184c)}
+.d1{background:linear-gradient(#f4f4ff,#dcdcfa)}.d2{background:linear-gradient(#ffb8ff,#ff40ff 50%,#d800d8)}.d3{background:linear-gradient(#fff0e0,#fbc490 50%,#f09040)}
+.d4{background:linear-gradient(#fff0f8,#f8c0e0 50%,#ee94c8)}.d5{background:linear-gradient(#f8f8ff,#e0e0fc 50%,#c8c8f4)}.d6{background:linear-gradient(#ffd8d8,#f45050 50%,#d81818)}
+.d7{background:linear-gradient(#e0ffe0,#80f090 50%,#30d850)}
+.red{background:linear-gradient(#ffd8d8,#f45050 50%,#d81818)!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.45)}
+.bt{top:685px;height:74px}
+.bt.cr{background:linear-gradient(#ffffff,#fdfdf0 50%,#f2f2d8)}
+.tri{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:9px solid #2c9a2c}.tri.dn{border-bottom:0;border-top:9px solid #2c9a2c}
+.pnum{position:absolute;left:850px;top:95px;width:506px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pnum div{background:#fff;border:1px solid #8a8a8a;height:76px;padding:4px 10px;display:flex;flex-direction:column;justify-content:space-between}
+.pnum small{font:700 15px 'Liberation Sans'}.pnum b{font:700 34px 'Liberation Sans';text-align:right}
+.pnum div.chg{background:#000;color:#ffff80;border-color:#000}.pnum div.chg small{color:#ffffc8}
+.pk{position:absolute;left:850px;top:430px;width:506px;font:12px 'Liberation Sans';background:#f4f4f4;border:1px solid #9a9a9a;padding:5px 8px;line-height:1.5}.pk b{font-family:'Liberation Mono';background:#fff;border:1px solid #bbb;padding:0 3px}
+.cfd{position:absolute;inset:0;background:#c4c4c4}
+.cfd .L{width:760px}
+.cbig{position:absolute;left:776px;top:16px;right:16px;display:flex;flex-direction:column;gap:10px}
+.cbig .bx{background:#fff;border:1px solid #8a8a8a;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;font:700 22px 'Liberation Sans'}
+.cbig .bx.T{background:#000;color:#ffff80;font-size:30px;height:110px}.cbig .bx.T b{font-size:60px}
+.cbig .msg{height:130px;flex-direction:column;border-radius:5px;display:flex;align-items:center;justify-content:center;text-align:center;font:700 24px/1.3 'Liberation Sans';border:1px solid #8a8a8a}
+</style></head><body>
+<div class="L op" id="L"></div><div class="R op" id="R"></div><div class="cfd" id="cfd"></div>
+<script>const m=D.m, C=D.cust, L_=D.lines;
+const rows=(n=9,cols=true)=>L_.slice(0,n).map((l,i)=>`<tr class="${i==L_.length-1?'sel':''}"><td class="no">${i+1}</td><td>${l.n}${l.w?' · '+l.w+' @ '+l.p.toFixed(2):''}</td><td class="c">${l.w?'':l.q}</td><td class="r">${l.t.toFixed(2)}</td><td class="c">${l.tx?'T':''}</td></tr>`).join('');
+const list=`<table><colgroup><col style="width:42px"><col><col style="width:54px"><col style="width:104px"><col style="width:52px"></colgroup>
+<tr><th style="background:#e4e4e4"></th><th>Description</th><th>Qty</th><th>Amount</th><th>Tax</th></tr>${rows()}</table><div class="sb"><i></i></div>`;
+const tots=`<div class="tt"><div><small>Items</small><b>${D.count}</b></div><div><small>Subtotal</small><b>${D.sub.toFixed(2)}</b></div><div><small>Discount</small><b>${D.disc.toFixed(2)}</b></div><div><small>${D.taxRate}</small><b>${D.tax.toFixed(2)}</b></div><div class="T"><small>TOTAL</small><b>${m(D.total)}</b></div></div>`;
+const status=`<div class="st"><b>Air Register</b><span>${D.store}</span><span>${D.cashier}</span><span>Session ${D.session}</span><span>Ticket #${D.ticket}</span><span>● online</span><span>Thu 10/29 4:12 PM</span><span>${D.ver}</span><span><b>F1</b> = keys</span></div>`;
+L.innerHTML=`<div class="pr"><span class="gt">&gt;</span><div class="in sale">2*</div><div class="in pay" style="color:#000">60.00</div><label>Qty</label><div class="bx" style="width:74px">1</div><label>lb</label><div class="bx" style="width:148px;font-size:24px">0.00</div></div>
+${list}<div class="lb">${tots}
+<div class="cu"><div class="c">Customer: ${C.name} <em>${C.phone} · ${C.pts} pts</em></div><div class="qs" data-qs="1"><b>${D.qs.title}</b> ${D.qs.ph} <b style="margin-left:auto;font-family:'Liberation Mono';font-size:11px">${D.qs.k}</b></div></div>
+<div class="lg">Keyboard: ${D.legendHTML(' · ')}</div>${status}</div>`;
+const pos=(x,y)=>`left:${x}px;top:${y}px`;
+const kt=k=>`<span class="l">${k.l}</span>${k.k?`<span class="k">${D.kc(k.k)}</span>`:''}`;
+const gbtn=(id,cls,st)=>D.b(id,'gb '+cls,kt).replace('<button','<button style="'+st+'"');
+const DK=['c2','c4','c13','c17'];
+let R1=`<div class="gb ar" style="${pos(7,6)};font-family:DejaVu Sans;font-weight:900">&#x2B06;</div><div class="gb ar" style="${pos(67,6)};font-family:DejaVu Sans;font-weight:900">&#x2B07;</div>`;
+const tabs=on=>['Sale Keys','Number Pad','Touch Item','Command'].map((t,i)=>`<div class="gb tab ${t==on?'on':''}" style="left:${134+i*125}px">${t}</div>`).join('');
+const depIds=['t-items','t-customers','a-hold','a-loadhold','a-putaside','a-return','t-payment'];
+const dep=depIds.map((id,i)=>gbtn(id,'dep d'+(i+1)+(i==0?' on':''),pos(7,95+i*84))).join('');
+const used=new Set([...depIds,'i-setqty']);
+const gIds=D.KEYS.map(k=>k.id).filter(i=>!used.has(i));
+const pal=['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13','c14','c15','c16','c17'];
+const grid=gIds.map((id,i)=>{const c=pal[(i*7)%pal.length];return gbtn(id,'g '+c+(DK.includes(c)?' dk':''),pos(134+(i%5)*101,95+Math.floor(i/5)*84))}).join('');
+const bottom=`<div class="gb bt d5" style="${pos(7,685)};width:54px"><i class="tri"></i></div><div class="gb bt d5" style="${pos(69,685)};width:54px"><i class="tri dn"></i></div>
+${gbtn('i-setqty','bt cr',pos(336,685)+';width:116px')}<div class="gb bt cr" style="${pos(458,685)};width:84px"><i class="tri"></i></div><div class="gb bt cr" style="${pos(548,685)};width:94px"><i class="tri dn"></i></div>`;
+const sale=`<div class="sale">${tabs('Command')}${dep}${grid}${bottom}</div>`;
+const pl=D.PAY.lines.map((l,i)=>`<div class="gb dep d${[1,7,3,4,5][i]}${i==1?' on':''}" style="${pos(7,95+i*84)}"><span>${l[0]}</span><span class="k">${l[1]||'—'}</span></div>`).join('');
+const pn=`<div class="pnum" style="left:134px;top:95px">${D.PAY.nums.map(([k,v],i)=>`<div class="${i==3?'chg':''}"><small>${k}</small><b>${m(v)}</b></div>`).join('')}</div>`;
+const qc=D.PAY.quick.map((q,i)=>`<div class="gb g ${['c10','c8','c15','c6','c11','c7'][i]}" style="${pos(134+(i%3)*101,275+Math.floor(i/3)*84)}">${q}</div>`).join('');
+const np=['7','8','9','4','5','6','1','2','3','0','00','.'].map((d,i)=>`<div class="gb g c5" style="${pos(445+(i%3)*68,275+Math.floor(i/3)*64)};width:62px;height:58px;font-size:22px">${d}</div>`).join('');
+const pk=`<div class="pk" style="left:134px;top:449px;width:300px">${D.PAY.keys.map(k=>`<b>${k[0]}</b> ${k[1]}`).join('<br>')}</div>`;
+const pb=`<div class="gb bt c12" style="${pos(134,685)};width:200px;font-size:16px">${D.PAY.back}</div><div class="gb bt c7" style="${pos(342,685)};width:300px;font-size:20px">${D.PAY.ok}</div>
+<div style="position:absolute;left:134px;top:540px;width:506px;height:130px;background:#f4f4f4;border:1px solid #9a9a9a;padding:8px;font:700 14px 'Liberation Sans'"><div style="font-size:20px;margin-bottom:6px">Payment</div>Cash 60.00 covers the $52.79 due. Store credit is listed because a customer is on the sale.<br>Change due <span style="font-size:22px">$7.21</span> · drawer opens on finish</div>`;
+const pay=`<div class="pay" data-pay="1">${tabs('Number Pad')}${pl}${pn}${qc}${np}${pk}${pb}</div>`;
+R.innerHTML=R1+sale+pay;
+cfd.innerHTML=`<div class="L"><div class="pr"><span class="gt"></span><span style="font:700 22px 'Liberation Sans'">Your order · ${D.store}</span></div><table style="width:756px"><colgroup><col style="width:42px"><col><col style="width:60px"><col style="width:120px"></colgroup><tr><th style="background:#e4e4e4"></th><th>Description</th><th>Qty</th><th>Amount</th></tr>${L_.map((l,i)=>`<tr class="${i==L_.length-1?'sel':''}"><td class="no">${i+1}</td><td>${l.n}${l.w?' · '+l.w:''}</td><td class="c">${l.w?'':l.q}</td><td class="r">${l.t.toFixed(2)}</td></tr>`).join('')}</table></div>
+<div class="cbig"><div class="bx"><span>Items</span><b>${D.count}</b></div><div class="bx"><span>Subtotal</span><b>${m(D.sub)}</b></div><div class="bx"><span>${D.taxRate}</span><b>${m(D.tax)}</b></div><div class="bx T"><span>TOTAL</span><b>${m(D.total)}</b></div>
+<div class="msg c8">Hello ${C.name.split(' ')[0]}!<br><span style="font-size:18px">${C.pts} points on your card</span></div><div class="msg c7" style="color:#fff">${D.promo}</div><div style="text-align:center;font:700 15px 'Liberation Sans'">Thank you for shopping at ${D.store}</div></div>`;
+D.show();
+</script></body></html>

@@ -1,0 +1,1958 @@
+[
+ {
+  "page": "gallery",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Air Register Styles - Demo Store"
+   },
+   {
+    "name": "14 tested + 5 preview = 19 cards",
+    "ok": true,
+    "info": "14+5=19"
+   },
+   {
+    "name": "no style 31 or 34",
+    "ok": true,
+    "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
+   },
+   {
+    "name": "preview badge text",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "\"Easy to switch\" shown below the DEMO band",
+    "ok": true,
+    "info": "{\"x\":0,\"y\":455.71875,\"width\":1920,\"height\":136.5}"
+   },
+   {
+    "name": "19 disabled download placeholders",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "all 19 thumbnails load",
+    "ok": true,
+    "info": "19"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 12,
+  "total": 12
+ },
+ {
+  "page": "32",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "33",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "35",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "36",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "37",
+  "size": "1920x1080",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":276,\"y\":172,\"width\":1368,\"height\":788}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1920"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "gallery",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Air Register Styles - Demo Store"
+   },
+   {
+    "name": "14 tested + 5 preview = 19 cards",
+    "ok": true,
+    "info": "14+5=19"
+   },
+   {
+    "name": "no style 31 or 34",
+    "ok": true,
+    "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
+   },
+   {
+    "name": "preview badge text",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "\"Easy to switch\" shown below the DEMO band",
+    "ok": true,
+    "info": "{\"x\":0,\"y\":455.71875,\"width\":1366,\"height\":136.5}"
+   },
+   {
+    "name": "19 disabled download placeholders",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "all 19 thumbnails load",
+    "ok": true,
+    "info": "19"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 12,
+  "total": 12
+ },
+ {
+  "page": "32",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "33",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "35",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "36",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "37",
+  "size": "1366x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":190,\"width\":1334,\"height\":770}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1366"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "gallery",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Air Register Styles - Demo Store"
+   },
+   {
+    "name": "14 tested + 5 preview = 19 cards",
+    "ok": true,
+    "info": "14+5=19"
+   },
+   {
+    "name": "no style 31 or 34",
+    "ok": true,
+    "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
+   },
+   {
+    "name": "preview badge text",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "\"Easy to switch\" shown below the DEMO band",
+    "ok": true,
+    "info": "{\"x\":0,\"y\":412,\"width\":1024,\"height\":136.5}"
+   },
+   {
+    "name": "19 disabled download placeholders",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "all 19 thumbnails load",
+    "ok": true,
+    "info": "19"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 12,
+  "total": 12
+ },
+ {
+  "page": "32",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "33",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "35",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":262,\"width\":992,\"height\":578}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "36",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "37",
+  "size": "1024x768",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":230,\"width\":992,\"height\":578}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "1024"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "gallery",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Air Register Styles - Demo Store"
+   },
+   {
+    "name": "14 tested + 5 preview = 19 cards",
+    "ok": true,
+    "info": "14+5=19"
+   },
+   {
+    "name": "no style 31 or 34",
+    "ok": true,
+    "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
+   },
+   {
+    "name": "preview badge text",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "\"Easy to switch\" shown below the DEMO band",
+    "ok": true,
+    "info": "{\"x\":0,\"y\":690.953125,\"width\":390,\"height\":182.5}"
+   },
+   {
+    "name": "19 disabled download placeholders",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "all 19 thumbnails load",
+    "ok": true,
+    "info": "19"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 12,
+  "total": 12
+ },
+ {
+  "page": "32",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 32 Order Desk - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":466,\"width\":358,\"height\":221}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "33",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 33 Counter Grid - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":427,\"width\":358,\"height\":221}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "35",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":427,\"width\":358,\"height\":221}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "36",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 36 Rail & Cards - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":447,\"width\":358,\"height\":221}"
+   },
+   {
+    "name": "screen buttons switch (3)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (3)",
+    "ok": true,
+    "info": "3/3"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ },
+ {
+  "page": "37",
+  "size": "390x844",
+  "steps": [
+   {
+    "name": "DEMO band visible",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+   },
+   {
+    "name": "name + preview label",
+    "ok": true,
+    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+   },
+   {
+    "name": "preview note shown",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no register on page",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "download disabled placeholder",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup loads with DEMO ribbon",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "mockup title starts \"DEMO -\"",
+    "ok": true,
+    "info": "DEMO - Style 37 Maroon Console - Preview"
+   },
+   {
+    "name": "mockup fits the window width",
+    "ok": true,
+    "info": "{\"x\":16,\"y\":414,\"width\":358,\"height\":221}"
+   },
+   {
+    "name": "screen buttons switch (4)",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "pictures load (4)",
+    "ok": true,
+    "info": "4/4"
+   },
+   {
+    "name": "no sideways scroll",
+    "ok": true,
+    "info": "390"
+   },
+   {
+    "name": "no JS errors",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no outside requests",
+    "ok": true,
+    "info": ""
+   },
+   {
+    "name": "no missing files",
+    "ok": true,
+    "info": ""
+   }
+  ],
+  "pass": true,
+  "passed": 15,
+  "total": 15
+ }
+]

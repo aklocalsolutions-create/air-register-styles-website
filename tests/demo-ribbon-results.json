@@ -626,7 +626,7 @@
  {
   "id": "window-index",
   "pass": true,
-  "url": "/demo/window.html?page=register&style=30",
+  "url": "/demo/demo-window.html?page=register&style=30",
   "strip": "DEMO REGISTER - nothing is real · Demo Store\nOpen the full demo page",
   "iframeTop": 22,
   "errs": []
@@ -634,7 +634,7 @@
  {
   "id": "window-customer",
   "pass": true,
-  "url": "/demo/window.html?page=customer&style=30",
+  "url": "/demo/demo-window.html?page=customer&style=30",
   "strip": "DEMO CUSTOMER SCREEN - nothing is real · Demo Store\nOpen the full demo page",
   "iframeTop": 22,
   "errs": []

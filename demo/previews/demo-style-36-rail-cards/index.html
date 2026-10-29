@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DEMO - Style 36 Rail &amp; Cards - Preview</title>
+<script src="../common/demo-data.js"></script><script src="../common/demo-ribbon.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;width:1366px;height:768px;overflow:hidden;background:#fff;font:13px 'Liberation Sans',Arial,sans-serif;color:#212529;position:relative}
+body[data-screen=sale] .pay,body[data-screen=pay] .sale,body:not([data-screen=cfd]) .cfd,body[data-screen=cfd] .op{display:none!important}
+.a{position:absolute}
+svg.i{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.rail{left:0;top:0;width:180px;height:768px;background:#dfe7ef;border-right:1px solid #c5d0dc}
+.rh{left:0;top:0;width:180px;height:50px;background:#2f3e4f;color:#fff;font:700 21px 'Liberation Sans';display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:0 12px 6px}
+.rh:after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:10px;background:radial-gradient(circle at 10px 0,#2f3e4f 9px,transparent 10px) 0 0/20px 10px repeat-x}
+.rb{left:5px;width:170px;height:48px;border:0;border-radius:5px;background:linear-gradient(#b9d8ec,#a7cbe4);box-shadow:inset 0 -2px 0 #8fb6d3,0 1px 1px rgba(0,0,0,.15);display:flex;align-items:center;gap:9px;padding:0 9px;text-align:left;color:#2c3e50;font-family:inherit}
+.rb .l{font:700 14px 'Liberation Sans';display:block}.rb .k{font-size:11px;display:block;color:#34495e}
+.rb .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#2c3e50}
+.rb.gr{background:linear-gradient(#cdeed4,#bfe6c8);box-shadow:inset 0 -2px 0 #9fd3ab;color:#1e7e34}.rb.gr .l,.rb.gr .k,.rb.gr .ic{color:#1e7e34}
+.rb.red{background:linear-gradient(#fbc4c8,#f6aab0);box-shadow:inset 0 -2px 0 #e88b93}.rb.red .l,.rb.red .k,.rb.red .ic{color:#c82333}
+.rft{left:5px;top:732px;width:170px;height:32px;display:flex;justify-content:space-between;align-items:center}.rft span{width:28px;height:28px;background:#2f3e4f;color:#fff;border-radius:4px;display:grid;place-items:center;font-size:14px}.rft i{width:10px;height:26px;border:1px solid #9aa9b8;border-radius:3px}
+.cd{top:6px;width:290px;height:100px;border:1px solid #d6dde4;border-radius:4px;background:#fff;padding:8px 10px;text-align:left;font-family:inherit;color:#212529;display:block}
+.cd.on{border-color:#4f8fcf;box-shadow:0 0 0 1px #4f8fcf}
+.cd .t{display:flex;gap:8px;align-items:center;font-size:15.5px}.cd .t .k{font-size:11px;color:#6c757d;margin-left:auto}
+.cd .s{font-size:12.5px;margin-top:6px;line-height:1.55}
+.cd.ctr{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:15.5px}.cd.ctr svg.i{width:46px;height:46px;stroke:#2f3e4f;stroke-width:2.2}.cd.ctr .k{font-size:11px;color:#6c757d}
+.tb{left:182px;top:108px;width:1184px;height:34px;display:flex;align-items:center;gap:16px;padding:0 14px;color:#4b5a6a;font-size:12px;white-space:nowrap}.tb .sp{flex:1}
+table{border-collapse:collapse;width:1184px;table-layout:fixed}
+th{height:32px;border:1px solid #dee2e6;font:700 14.5px 'Liberation Sans';white-space:nowrap;overflow:hidden}
+td{height:27px;border:1px solid #e3e7eb;text-align:center;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 6px}
+td.n{text-align:left}tr:nth-child(even) td{background:#f2f2f2}
+tr.sel td{background:#1a7bd6!important;color:#fff;font-weight:700;border-color:#1a7bd6}
+.pl{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#212529;color:#fff;font:700 12px/1 'Liberation Sans'}
+tr.sel .pl{background:#fff;color:#1a7bd6}
+.sa{left:182px;top:420px;width:1184px;height:164px;background:#f5f8fb;border-top:1px solid #dee2e6}
+.grp{position:absolute;top:0}
+.gt{height:30px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:1px solid #dee2e6;border-bottom:0;border-radius:4px 4px 0 0;background:#eef1f4;font:700 13.5px 'Liberation Sans';color:#212529;white-space:nowrap}
+.grp.f .gt{background:#1a7bd6;color:#fff;border-color:#1a7bd6}
+.gb{position:absolute;height:38px;border:1px solid #17a2b8;border-radius:3px;background:#fff;color:#138496;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;padding:0 7px;font-family:inherit;white-space:nowrap;text-align:left}
+.gb .l{font-size:12px;font-weight:700}.gb .k{font-size:10.5px;color:#4d7f88}
+.gb.red{border-color:#dc3545;color:#c82333}.gb.red .k{color:#c86a73}
+.pbox{left:182px;top:464px;width:1180px;height:114px;border:1px solid #dee2e6;background:#fff}
+.scan{left:194px;top:592px;width:320px;height:40px;border:1px solid #c7ced6;display:flex;align-items:center;padding:0 10px;font:700 15px 'Liberation Sans';color:#495057;gap:8px}
+.qs{left:522px;top:592px;width:304px;font-size:12px!important;gap:6px!important;height:40px;border:1px solid #c7ced6;border-radius:3px;display:flex;align-items:center;gap:8px;padding:0 10px;color:#6c757d;font-size:13px;white-space:nowrap}.qs b{color:#212529}.qs kbd{margin-left:auto;font:11px 'Liberation Mono';background:#eef1f4;border:1px solid #c7ced6;border-radius:3px;padding:1px 4px;color:#212529}
+.lg{left:194px;top:642px;width:630px;font-size:12px;color:#495057;line-height:1.6}.lg b{font:700 11.5px 'Liberation Mono';background:#eef1f4;border:1px solid #d6dde4;border-radius:3px;padding:0 3px;color:#212529}
+.cu{left:194px;top:730px;width:630px;font-size:12.5px;color:#495057;display:flex;gap:8px;align-items:center;white-space:nowrap}
+.tt{left:834px;top:612px;border-collapse:collapse;width:532px}
+.tt td{height:39px;border:1px solid #2b3846;text-align:left;font-size:15px;padding:0 10px}
+.tt td.h{background:#34495e;color:#fff}.tt td.v{background:#fff;font-size:18px}.tt td.g{color:#8796a5}
+.tt td.b{font-weight:700;font-size:16px}.tt td.vb{font-weight:700;font-size:21px}
+.ph{left:182px;top:110px;width:1184px;height:40px;background:#e8f1fa;border-bottom:1px solid #c8daea;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:20px;color:#1a5d96}
+.ph .sp{flex:1}.btn{height:28px;border-radius:3px;display:inline-flex;align-items:center;padding:0 12px;font-size:13.5px;border:1px solid}
+.ptab{left:192px;top:162px;border-collapse:collapse;width:240px}.ptab td,.ptab th{border:1px solid #dee2e6;height:34px;text-align:left;padding:0 10px;font-size:14px}.ptab th{background:#f8f9fa}.ptab tr.sel td{background:#1a7bd6;color:#fff;font-weight:700}
+.dbox{left:192px;top:380px;width:240px;border:2px solid #34495e;border-radius:6px;padding:6px 10px;font-size:14px}.dbox div{display:flex;justify-content:space-between;height:28px;align-items:center}.dbox b{font-size:15px}
+.pr{left:450px;top:162px;width:906px;height:440px;background:#f5f8fb;border:1px solid #dee2e6;border-radius:4px;padding:14px 20px}
+.bill{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:132px;height:66px;margin:0 10px 10px 0;border-radius:4px;border:2px solid #4c8a4c;background:linear-gradient(#e2f2df,#c4e3bf);color:#235a23;font:700 20px 'Liberation Sans'}
+.cfd{position:absolute;inset:0}
+</style></head><body>
+<div class="op" id="op"></div><div class="cfd" id="cfd"></div>
+<script>const m=D.m,C=D.cust,L_=D.lines;
+const P=(x,y,w,h)=>`left:${x}px;top:${y}px${w?';width:'+w+'px':''}${h?';height:'+h+'px':''}`;
+const B=(id,cls,st,tpl)=>D.b(id,'a '+cls,tpl).replace('<button','<button style="'+st+'"');
+const railIds=D.group('Actions');
+const rail=`<div class="a rail"></div><div class="a rh">Actions ${D.ic('list')}</div>`+railIds.map((id,i)=>B(id,'rb'+(id=='a-loadaside'?' gr':''),P(5,62+i*55),k=>`<span class="ic">${D.ic(k.ic)}</span><span><span class="l">${k.l}${id=='a-loadaside'?' (1)':''}</span><span class="k">${D.kc(k.k)}</span></span>`)).join('')+`<div class="a rft"><span>◀</span><i></i></div>`;
+const cards=on=>B('t-customers','cd',P(186,6),k=>`<span class="t">${D.ic('user')}<b style="font-weight:400">${C.name}</b><span class="k">${k.l} · ${D.kc(k.k)}</span></span><span class="s">☏ ${C.phone}<br>✉ demo@example.com · ${C.pts} pts</span>`)
+ +B('t-items','cd ctr'+(on=='items'?' on':''),P(484,6),k=>`${D.ic('cart')}<span>${k.l}</span><span class="k">${D.count} items · ${m(D.total)}</span>`)
+ +B('x-discount','cd',P(782,6),k=>`<span class="t">${D.ic('tag')}<span class="l">${k.l}</span><span class="k">${D.kc(k.k)}</span></span><span class="s" style="margin-top:30px">Total Discounted: $0.00</span>`)
+ +B('t-payment','cd ctr'+(on=='pay'?' on':''),P(1080,6,280),k=>`${D.ic('drawer')}<span class="l">${k.l}</span><span class="k">${on=='pay'?'Amount: $52.79 · Balance: $0.00':D.kc(k.k)}</span>`);
+const tb=`<div class="a tb">${D.ic('list')}<span><b>Air Register</b> · ${D.store} · ${D.cashier} · Session ${D.session} · Ticket #${D.ticket} · ● online · Thu 10/29 4:12 PM · ${D.ver} · <b>F1</b> = keys</span><span class="sp"></span>${D.ic('search')}</div>`;
+const codes=['2100001','4125550142','2311136','7312022','4170064','2100012','2304210','7110012','071234567893'];
+const grid=`<div class="a" style="${P(182,142)}"><table><colgroup><col style="width:38px"><col style="width:56px"><col style="width:150px"><col><col style="width:30px"><col style="width:80px"><col style="width:90px"><col style="width:100px"><col style="width:70px"><col style="width:120px"></colgroup>
+<tr><th></th><th>#</th><th>Lookup Code</th><th>Name</th><th></th><th>Qty</th><th>Price</th><th>Discount</th><th>Tax</th><th>Amount</th></tr>
+${L_.map((l,i)=>`<tr class="${i==L_.length-1?'sel':''}"><td><span class="pl">+</span></td><td>${i+1}</td><td>${codes[i]}</td><td>${l.n}</td><td>↗</td><td>${l.w||l.q}</td><td>${m(l.p)}</td><td>$0.00</td><td>${l.tx?'T':''}</td><td>${m(l.t)}</td></tr>`).join('')}</table></div>`;
+const groups=[['Transaction Actions',D.group('Transaction Actions').filter(i=>i!='x-discount'),3,'list'],['Gift Cards',D.group('Gift Cards'),1,'gift'],['Lookups',D.group('Lookups'),2,'search'],['Items',D.group('Items'),2,'cart'],['Register',D.group('Register'),2,'gear']];
+let x=186, sa=`<div class="a sa"></div>`;
+const BW={'Transaction Actions':106,'Gift Cards':130,'Lookups':106,'Items':100,'Register':106};
+groups.forEach(([g,ids,cols,ic],gi)=>{const w=BW[g];sa+=`<div class="a grp${gi==0?' f':''}" style="${P(x,424)}"><span class="gt">${D.ic(ic)}${g}</span></div>`;
+ ids.forEach((id,i)=>{const c=Math.floor(i/3),r=i%3;sa+=B(id,'gb',P(x+c*(w+5),458+r*41,w))});x+=cols*(w+5)+8;});
+const sale=`<div class="sale">${cards('items')}${tb}${grid}${sa}
+<div class="a scan">${D.ic('bag')}Scan items....</div><div class="a qs" data-qs="1"><b>${D.qs.title}</b>${D.qs.ph}<kbd>${D.qs.k}</kbd></div>
+<div class="a lg">Keys: ${D.legendHTML(' · ')}</div>
+<div class="a cu">${D.ic('user')}<b>${C.name}</b> · ${C.phone} · acct ${m(C.acct)} · ${C.pts} pts</div>
+<table class="a tt"><tr><td class="h g">⚖ Scale</td><td class="v g">0.00 lb.</td><td class="h">Subtotal</td><td class="v">${m(D.sub)}</td></tr><tr><td class="h">Rows</td><td class="v">${L_.length}</td><td class="h">Discount</td><td class="v">${m(D.disc)}</td></tr>
+<tr><td class="h">Quantity</td><td class="v">${D.count}</td><td class="h">${D.taxRate}</td><td class="v">${m(D.tax)}</td></tr><tr><td class="h">Cases</td><td class="v">0</td><td class="h b">Total</td><td class="v vb">${m(D.total)}</td></tr></table></div>`;
+const pay=`<div class="pay" data-pay="1">${cards('pay')}<div class="a ph">${D.ic('cash')} Payment<span class="sp"></span><span class="btn" style="border-color:#c69500;background:#ffc107;color:#212529">${D.PAY.back}</span><span class="btn" style="border-color:#1e7e34;background:#28a745;color:#fff;font-weight:700">${D.PAY.ok}</span></div>
+<table class="a ptab"><tr><th>Tender</th><th>Amount</th></tr>${D.PAY.lines.map(l=>`<tr class="${l[0]=='Cash'?'sel':''}"><td>${l[0]}</td><td>${l[1]?'$'+l[1]:'$0.00'}</td></tr>`).join('')}</table>
+<div class="a dbox">${D.PAY.nums.map(([k,v])=>`<div><span>${k}:</span><b style="${k=='Change'?'color:#1e7e34;font-size:18px':''}">${m(v)}</b></div>`).join('')}</div>
+<div class="a pr"><div style="font-size:22px;color:#1a5d96;text-align:center;margin-bottom:14px">Cash · count the bills</div>
+<div style="text-align:center">${D.PAY.quick.map(q=>`<span class="bill">${q}</span>`).join('')}</div>
+<div style="margin:20px auto 0;width:520px;border:1px solid #dee2e6;background:#fff;border-radius:4px;padding:10px 16px;font-size:14px;line-height:1.8">${D.PAY.keys.map(k=>`<b style="font-family:'Liberation Mono';background:#eef1f4;border:1px solid #d6dde4;padding:0 5px">${k[0]}</b> ${k[1]}`).join('<br>')}<br><span style="color:#6c757d">Store credit is listed because a customer is on the sale.</span></div>
+<div style="margin:20px auto 0;width:520px;height:60px;border-radius:4px;background:#28a745;color:#fff;display:flex;align-items:center;justify-content:center;font:700 22px 'Liberation Sans'">Change due ${m(D.change)}</div></div></div>`;
+op.innerHTML=rail+sale+pay;
+cfd.innerHTML=`<div class="a rh" style="width:1366px;justify-content:flex-start;padding-left:24px">Your order · ${D.store}</div><div class="a" style="${P(20,70)}"><table style="width:820px"><colgroup><col style="width:60px"><col><col style="width:110px"><col style="width:150px"></colgroup><tr><th>#</th><th>Name</th><th>Qty</th><th>Amount</th></tr>${L_.map((l,i)=>`<tr class="${i==L_.length-1?'sel':''}" style="height:44px"><td>${i+1}</td><td class="n" style="font-size:16px">${l.n}</td><td>${l.w||l.q}</td><td style="font-size:16px">${m(l.t)}</td></tr>`).join('')}</table></div>
+<table class="a tt" style="left:860px;top:70px;width:486px"><tr><td class="h">Subtotal</td><td class="v">${m(D.sub)}</td></tr><tr><td class="h">Discount</td><td class="v">${m(D.disc)}</td></tr><tr><td class="h">${D.taxRate}</td><td class="v">${m(D.tax)}</td></tr><tr><td class="h b" style="height:90px;font-size:24px">Total</td><td class="v vb" style="font-size:48px">${m(D.total)}</td></tr></table>
+<div class="a cd" style="${P(860,360,486,130)}"><span class="t" style="font-size:24px">${D.ic("user")}<b>Hello ${C.name.split(" ")[0]}!</b></span><span class="s" style="font-size:18px;display:block;margin-top:12px">${C.pts} points on your card · points are added after payment</span></div>
+<div class="a" style="${P(860,510,486,110)};background:#e8f1fa;border:1px solid #c8daea;border-radius:4px;display:flex;align-items:center;justify-content:center;font:700 20px 'Liberation Sans';color:#1a5d96;text-align:center">${D.promo}</div>`;
+D.show();
+</script></body></html>
