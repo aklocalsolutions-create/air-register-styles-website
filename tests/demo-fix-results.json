@@ -171,8 +171,8 @@
     "sale": [],
     "pay": {
      "clipped": [],
-     "payOk": false,
-     "back": false,
+     "payOk": true,
+     "back": true,
      "total": true
     }
    }
@@ -181,13 +181,13 @@
    "style": "27",
    "size": "1366x768 (demo page)",
    "check": "Pay and Back on screen with the cash chips open",
-   "ok": false,
+   "ok": true,
    "info": {
     "clipped": [],
-    "payOk": false,
-    "back": false,
+    "payOk": true,
+    "back": true,
     "total": true,
-    "payInScrollArea": true
+    "payInScrollArea": false
    }
   },
   {
@@ -201,11 +201,8 @@
    "style": "27",
    "size": "1024x768 (demo page)",
    "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
-   "ok": false,
-   "info": [
-    "DISCOUNT",
-    "TOTAL"
-   ]
+   "ok": true,
+   "info": []
   },
   {
    "style": "27",
@@ -288,11 +285,8 @@
    "style": "27",
    "size": "1024x768 (app window)",
    "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
-   "ok": false,
-   "info": [
-    "DISCOUNT",
-    "TOTAL"
-   ]
+   "ok": true,
+   "info": []
   },
   {
    "style": "27",
@@ -465,10 +459,10 @@
    "style": "01",
    "size": "1093x614@1.25 (app window)",
    "check": "125% zoom: payment Pay+Back on screen without scrolling",
-   "ok": false,
+   "ok": true,
    "info": {
     "cashIn": true,
-    "payOk": false,
+    "payOk": true,
     "back": true
    }
   },
@@ -909,11 +903,11 @@
    "style": "27",
    "size": "1093x614@1.25 (app window)",
    "check": "125% zoom: payment Pay+Back on screen without scrolling",
-   "ok": false,
+   "ok": true,
    "info": {
     "cashIn": true,
-    "payOk": false,
-    "back": false
+    "payOk": true,
+    "back": true
    }
   },
   {

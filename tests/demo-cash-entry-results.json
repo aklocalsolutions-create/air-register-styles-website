@@ -1,0 +1,104 @@
+[
+ {
+  "id": "01",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1366x768-cash-entry.png"
+ },
+ {
+  "id": "01",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1024x768-cash-entry.png"
+ },
+ {
+  "id": "01",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "pay": {
+   "full": true,
+   "bottom": 575
+  },
+  "back": {
+   "full": true,
+   "bottom": 575
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1366x768-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1024x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "pay": {
+   "full": false,
+   "bottom": 629
+  },
+  "back": {
+   "full": false,
+   "bottom": 629
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1024x768-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1024x620-app (app window)",
+  "pass": false,
+  "frameH": 620,
+  "pay": {
+   "full": false,
+   "bottom": 629
+  },
+  "back": {
+   "full": false,
+   "bottom": 629
+  },
+  "cash": "20",
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1024x620-app-cash-entry.png"
+ }
+]

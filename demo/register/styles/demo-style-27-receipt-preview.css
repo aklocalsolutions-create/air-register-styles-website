@@ -294,3 +294,34 @@ html[data-style="27"] #actions .abtn { flex:0 0 auto; min-width:122px; }
 html[data-style="27"] #actions .abtn[data-a="end-of-day"] { margin-left:auto; }
 /* top-bar pills that click (hardware check, F1 key list) are not in the mockup: CSS-hidden; Ctrl+Shift+D and F1 still work */
 html[data-style="27"] #hwPill, html[data-style="27"] #helpPill { display:none !important; }
+/* Website fix (29 Oct, 27 at 1024x768): the ticket table (7 columns) was wider than the 358px Ticket column, so Discount and
+   Total were cut off behind a sideways scroll. Below 1200px wide: tighter cells, smaller header text that may wrap, names wrap. Look only. */
+@media (max-width: 1199px) {
+  html[data-style="27"][data-page="register"] .gridbox table { width:100%; }
+  html[data-style="27"][data-page="register"] .gridbox th { padding:5px 4px; font-size:9px; letter-spacing:.2px; white-space:normal; line-height:1.15; vertical-align:bottom; }
+  html[data-style="27"][data-page="register"] .gridbox td { padding:8px 4px; font-size:12px; }
+  html[data-style="27"][data-page="register"] .gridbox th:first-child, html[data-style="27"][data-page="register"] #cart td:first-child { padding-left:10px; }
+  html[data-style="27"][data-page="register"] .gridbox th:last-child, html[data-style="27"][data-page="register"] #cart td:last-child { padding-right:10px; }
+  html[data-style="27"][data-page="register"] #cart td:nth-child(2) { font-size:11px; overflow-wrap:anywhere; }
+  html[data-style="27"][data-page="register"] #cart td:nth-child(3) { font-size:12.5px; overflow-wrap:anywhere; }
+  html[data-style="27"][data-page="register"] #cart td.n { font-size:11.5px; white-space:nowrap; letter-spacing:-.3px; }
+}
+/* Website fix (29 Oct, 27 at 1024x620 after cash is entered): the cash chips pushed Back and Pay below the window.
+   Below 700px tall only: a slimmer balance card, cards and chips, and shorter Back/Pay. Look only. */
+@media (max-height: 699px) {
+  html[data-style="27"][data-page="register"] .fullpay .payhead { padding:8px 14px; }
+  html[data-style="27"][data-page="register"] .fullpay #payBody { padding:8px 12px 10px; }
+  html[data-style="27"][data-page="register"] .paygrid { gap:6px; }
+  html[data-style="27"][data-page="register"] .paynums { gap:6px; }
+  html[data-style="27"][data-page="register"] .paynums .pn { padding:4px 10px; }
+  html[data-style="27"][data-page="register"] .paynums .pn b { font-size:15px; }
+  html[data-style="27"][data-page="register"] .paynums .pn.left { padding:6px 14px; }
+  html[data-style="27"][data-page="register"] .paynums .pn.left b { font-size:28px; }
+  html[data-style="27"][data-page="register"] .payact::before { margin:0 0 4px; }
+  html[data-style="27"][data-page="register"] .plist { gap:6px; }
+  html[data-style="27"][data-page="register"] .pline { padding:5px 10px !important; }
+  html[data-style="27"][data-page="register"] .pline .pamt { height:30px !important; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:30px; padding:0 8px; font-size:13px; }
+  html[data-style="27"][data-page="register"] .fullpay .row2 { padding-top:6px; }
+  html[data-style="27"][data-page="register"] #payBack, html[data-style="27"][data-page="register"] #payOk { height:44px; }
+}
