@@ -611,3 +611,29 @@ html[data-style="22"][data-page="register"] .modal .calc button { background: va
 html[data-style="22"][data-page="register"] .modal .calc button.op { background: #17332d; color: var(--s22-a2); }
 html[data-style="22"][data-page="register"] .modal .calc button.eq { background: linear-gradient(135deg, var(--s22-a), var(--s22-a2)); color: #06110f; border: 0; }
 html[data-style="22"][data-page="register"] .modal .calc button:hover { border-color: rgba(182,255,60,.5); }
+/* Website fix (29 Oct, 22 on short windows, e.g. 1024x620): the rail's Settings button sat on top of the Hold/History tabs, and the
+   hero's chips ran into the bottom key bar. Below 700px tall only: compact rail tabs, and the hero column keeps the 768 spacing
+   from the bottom up (smaller rings). Look only; same buttons, same keys. */
+@media (max-height: 699px) {
+  html[data-style="22"] { --s22-dy: calc(100vh - 768px); }
+  html[data-style="22"][data-page="register"] aside.actions > h2 { width:40px; height:40px; margin:10px 0 6px; border-radius:12px; }
+  html[data-style="22"][data-page="register"] aside.actions > h2::before { font-size:16px; }
+  html[data-style="22"][data-page="register"] #actions { padding:64px 0 72px; gap:4px; }
+  html[data-style="22"][data-page="register"] #actions .abtn:not([data-a="end-of-day"]):not([data-a="logout"]),
+  html[data-style="22"][data-page="register"] #tiles .tile[data-a="close"],
+  html[data-style="22"][data-page="register"] #setTop { height:56px; gap:3px; padding:2px; }
+  html[data-style="22"][data-page="register"] #actions .abtn:not([data-a="end-of-day"]):not([data-a="logout"]) > span:last-child { gap:3px; }
+  html[data-style="22"][data-page="register"] #actions .abtn::after, html[data-style="22"][data-page="register"] #tiles .tile[data-a="close"]::after,
+  html[data-style="22"][data-page="register"] #setTop::after { top:22px; }
+  html[data-style="22"][data-page="register"] #actions .abtn .ic, html[data-style="22"][data-page="register"] #tiles .tile[data-a="close"] .ic,
+  html[data-style="22"][data-page="register"] #setTop::before { width:16px; height:16px; }
+  html[data-style="22"][data-page="register"] #tiles .tile[data-a="close"] { top:60px; }
+  html[data-style="22"][data-page="register"] #setTop { bottom:8px; }
+  html[data-style="22"][data-page="register"] #setTop kbd::before { margin-bottom:3px; }
+  html[data-style="22"] .s22-hero { top:calc(var(--s22-dy) + 214px); }
+  html[data-style="22"] .s22-hero .s22-rings { width:150px; height:150px; }
+  html[data-style="22"] .s22-hero .s22-rings::after { inset:22px; }
+  html[data-style="22"] .s22-hero .s22-core { width:84px; height:84px; border-radius:26px; }
+  html[data-style="22"] .s22-hero .s22-core svg { width:44px; height:44px; }
+  html[data-style="22"] .s22-hero h1 { font-size:36px; margin-top:12px; }
+}

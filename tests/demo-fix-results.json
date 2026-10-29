@@ -40,10 +40,8 @@
    "style": "22",
    "size": "1366x768",
    "check": "left rail: Settings does not overlap other buttons",
-   "ok": false,
-   "info": [
-    "🕒"
-   ]
+   "ok": true,
+   "info": []
   },
   {
    "style": "22",
@@ -74,10 +72,8 @@
    "style": "22",
    "size": "1024x768",
    "check": "left rail: Settings does not overlap other buttons",
-   "ok": false,
-   "info": [
-    "🕒"
-   ]
+   "ok": true,
+   "info": []
   },
   {
    "style": "22",

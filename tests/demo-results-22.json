@@ -1,0 +1,22 @@
+[
+ {
+  "id": "22",
+  "name": "Scan Hero",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "gallery",
+  "pass": true,
+  "info": {
+   "cards": 19,
+   "disabledDownloads": 19,
+   "outsideLinks": 0,
+   "errors": []
+  }
+ }
+]
