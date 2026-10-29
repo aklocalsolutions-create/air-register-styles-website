@@ -1,0 +1,150 @@
+[
+ {
+  "id": "26",
+  "name": "Floating Windows",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 992,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 640,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 672,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 640,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 532,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ }
+]

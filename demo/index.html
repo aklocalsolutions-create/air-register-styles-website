@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Air Register Styles - Demo Store (DEMO)</title>
+<link rel="stylesheet" href="assets/site.css">
+<script src="styles-config.js"></script><script src="assets/site.js"></script>
+</head><body>
+<div class="demoBand" id="demoBand"><span class="pill">DEMO</span> Demo mode - nothing is real <small>· Demo Store · made-up products · pretend payments · no accounts</small></div>
+<header class="hero"><div class="in"><div>
+  <span class="tag">DEMO STORE</span>
+  <h1>Air Register <span>Styles</span></h1>
+  <p>Pick a look and try a working pretend register in it: ring up made-up items, change quantities, add a discount, take cash with change or a fake card (approved - demo), and see the receipt and the customer screen. Nothing here talks to a real store, a real account or a real payment.</p>
+  <p style="margin-top:14px"><a class="btn pri" href="#styles">Browse <span id="count"></span> styles</a></p>
+</div>
+<svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of a register and a customer screen" role="img">
+  <defs><linearGradient id="hg1" x1="0" x2="1"><stop offset="0" stop-color="#8e7dff"/><stop offset="1" stop-color="#4dabf7"/></linearGradient>
+  <linearGradient id="hg2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e9ecf8"/></linearGradient></defs>
+  <rect x="20" y="20" width="330" height="214" rx="16" fill="#0f1224"/><rect x="30" y="30" width="310" height="194" rx="10" fill="url(#hg2)"/>
+  <rect x="30" y="30" width="310" height="24" rx="10" fill="url(#hg1)"/><circle cx="46" cy="42" r="5" fill="#fff" opacity=".8"/><rect x="60" y="38" width="80" height="8" rx="4" fill="#fff" opacity=".7"/>
+  <g fill="#5b6275" opacity=".45"><rect x="44" y="68" width="120" height="9" rx="4"/><rect x="44" y="88" width="96" height="9" rx="4"/><rect x="44" y="108" width="132" height="9" rx="4"/><rect x="44" y="128" width="84" height="9" rx="4"/></g>
+  <g fill="#5b6275" opacity=".3"><rect x="186" y="68" width="34" height="9" rx="4"/><rect x="186" y="88" width="34" height="9" rx="4"/><rect x="186" y="108" width="34" height="9" rx="4"/><rect x="186" y="128" width="34" height="9" rx="4"/></g>
+  <g><rect x="236" y="64" width="44" height="40" rx="8" fill="#ffd43b"/><rect x="286" y="64" width="44" height="40" rx="8" fill="#ff8787"/><rect x="236" y="110" width="44" height="40" rx="8" fill="#69db7c"/><rect x="286" y="110" width="44" height="40" rx="8" fill="#74c0fc"/></g>
+  <circle cx="258" cy="84" r="9" fill="#fff" opacity=".7"/><rect x="298" y="78" width="20" height="12" rx="3" fill="#fff" opacity=".7"/><path d="M248 136l10-14 10 14z" fill="#fff" opacity=".7"/><rect x="300" y="122" width="16" height="16" rx="8" fill="#fff" opacity=".7"/>
+  <rect x="44" y="168" width="176" height="42" rx="9" fill="#eef0fb"/><rect x="54" y="180" width="60" height="8" rx="4" fill="#5b6275" opacity=".5"/><text x="210" y="198" font-family="Arial" font-weight="800" font-size="20" text-anchor="end" fill="#141826">$42.18</text>
+  <rect x="236" y="168" width="94" height="42" rx="9" fill="url(#hg1)"/><text x="283" y="195" font-family="Arial" font-weight="800" font-size="15" text-anchor="middle" fill="#fff">PAY</text>
+  <rect x="160" y="234" width="50" height="34" fill="#0f1224"/><rect x="110" y="266" width="150" height="14" rx="7" fill="#0f1224"/>
+  <rect x="372" y="96" width="132" height="168" rx="14" fill="#0f1224"/><rect x="380" y="104" width="116" height="140" rx="8" fill="#1d2244"/>
+  <text x="438" y="132" font-family="Arial" font-size="11" text-anchor="middle" fill="#cfd3ee">Your total</text><text x="438" y="160" font-family="Arial" font-weight="800" font-size="22" text-anchor="middle" fill="#ffd43b">$42.18</text>
+  <rect x="396" y="176" width="84" height="44" rx="7" fill="#5c7cfa"/><rect x="396" y="184" width="84" height="7" fill="#364fc7"/><rect x="404" y="200" width="12" height="9" rx="2" fill="#ffd43b"/>
+  <text x="438" y="236" font-family="Arial" font-size="9" text-anchor="middle" fill="#69db7c">Approved - demo</text>
+  <path d="M60 300h420" stroke="#ffd43b" stroke-width="3" stroke-dasharray="10 8" opacity=".6"/>
+</svg></div></header>
+<main class="wrap" id="styles"><h2>Choose a style</h2>
+<p class="sub">Every style runs the same pretend register for the made-up <b>Demo Store</b>. The Download buttons are placeholders until the Windows app for each style is ready.</p>
+<div class="grid" id="grid"></div></main>
+<div class="foot">Demo Store is pretend. All products, prices, receipts and payments on this site are made up. No real accounts, no real payments, no network calls to any store system.</div>
+<script>renderGallery()</script>
+</body></html>

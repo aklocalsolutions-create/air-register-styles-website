@@ -1,0 +1,59 @@
+[
+ {
+  "size": "1024x768",
+  "pass": true,
+  "title": {
+   "text": "Ticket #DEMO-1001",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pay": {
+   "text": "F12 💳 Payment",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pageOverflowX": false,
+  "errs": [],
+  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1024x768-header-payment.png"
+ },
+ {
+  "size": "1280x800",
+  "pass": true,
+  "title": {
+   "text": "Ticket #DEMO-1001",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pay": {
+   "text": "F12 💳 Payment",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pageOverflowX": false,
+  "errs": [],
+  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1280x800-header-payment.png"
+ },
+ {
+  "size": "1366x768",
+  "pass": true,
+  "title": {
+   "text": "Ticket #DEMO-1001",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pay": {
+   "text": "F12 💳 Payment",
+   "clipped": false,
+   "inView": true,
+   "overlaps": []
+  },
+  "pageOverflowX": false,
+  "errs": [],
+  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1366x768-header-payment.png"
+ }
+]

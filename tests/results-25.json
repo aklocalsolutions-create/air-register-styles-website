@@ -1,0 +1,22 @@
+[
+ {
+  "id": "25",
+  "name": "Chat Ticket",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "gallery",
+  "pass": true,
+  "info": {
+   "cards": 14,
+   "disabledDownloads": 14,
+   "outsideLinks": 0,
+   "errors": []
+  }
+ }
+]

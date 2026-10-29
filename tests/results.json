@@ -1,0 +1,152 @@
+[
+ {
+  "id": "01",
+  "name": "Clean Light",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "03",
+  "name": "Glass",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "10",
+  "name": "Retro Pop",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "11",
+  "name": "Liquid Glass",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "15",
+  "name": "Neumorphic Dial",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "16",
+  "name": "Terminal TUI",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "17",
+  "name": "Editorial",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "19",
+  "name": "Dual Cashier",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "22",
+  "name": "Scan Hero",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "23",
+  "name": "Spreadsheet",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "25",
+  "name": "Chat Ticket",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "26",
+  "name": "Floating Windows",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "27",
+  "name": "Receipt Preview",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "30",
+  "name": "Card Deck",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "gallery",
+  "pass": true,
+  "info": {
+   "cards": 14,
+   "disabledDownloads": 14,
+   "outsideLinks": 0,
+   "errors": []
+  }
+ }
+]

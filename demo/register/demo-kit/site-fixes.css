@@ -1,0 +1,10 @@
+/* DEMO STORE site-only layout fixes, loaded after the style's own CSS. The style files themselves stay identical
+   to the style bots' tested builds; these only patch what the site's widths/zoom checks found. */
+/* Style 26: the earlier clock workaround was removed on 29 Oct 2026 01:31 ET; the style bot fixed it in style-26-floating-windows.css. */
+/* Style 11: the earlier toolbar workaround was removed on 29 Oct 2026 01:35 ET; the style bot fixed it in style-11-liquid-glass.css. */
+/* Style 30: the earlier 125%-zoom title workaround was removed on 29 Oct 2026 01:38 ET; the style bot fixed it in style-30-card-deck.css. */
+/* Style 25: the earlier repeated send-button workaround was removed on 29 Oct 2026 01:36 ET; the style bot fixed it in style-25-chat-ticket.js/.css. */
+/* Style 10: at 1024 wide the clock at the end of the status bar was cut off; hide the station/session items there. */
+@media (max-width: 1100px) {
+  html[data-style="10"] .status #stStation, html[data-style="10"] .status #stSession { display: none !important; }
+}

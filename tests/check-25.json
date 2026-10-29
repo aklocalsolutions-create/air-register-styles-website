@@ -1,0 +1,86 @@
+{
+ "pass": true,
+ "errs": [],
+ "log": [
+  {
+   "step": "load",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 1 rung up",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 1 paid, new sale",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 2 rung up",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 2 paid, new sale",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 3 rung up",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 3 paid, new sale",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 4 rung up",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "sale 4 paid, new sale",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  },
+  {
+   "step": "reload",
+   "send": 1,
+   "sendVisible": 1,
+   "scanic": 1,
+   "scanicVisible": 1,
+   "sw": 1366
+  }
+ ]
+}

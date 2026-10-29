@@ -1,0 +1,25 @@
+/* Air Register Styles — shared base. OWNER: lead only (style assistants: do not edit; ask the lead).
+ *
+ * RULES FOR EVERY STYLE FILE
+ *  - Scope every rule under html[data-style="NN"] (your number). Style 00 (Classic) must match NO style rule:
+ *    today's look is the inline <style> in index.html / customer.html and stays exactly as it is.
+ *  - Look only: colours, fonts, borders, radius, shadows, spacing, grid areas/order, show/hide of DECORATION.
+ *  - Never hide or remove a working control (#scanInput, #cart, #totals, #actions buttons, #tiles buttons, #right
+ *    buttons, dialogs in #modalRoot, Settings tabs). Never change keys. Keep #scanInput focusable and visible.
+ *  - Use the hooks documented in STYLES-PLAN.md ("Shared DOM hooks").
+ */
+
+/* ---- Settings > Style tab (new elements only; they exist only on that tab, so Classic's register screen is untouched) ---- */
+.systyle-note { margin: 0 0 12px; color: #5b6b78; }
+.sylist { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; max-width: 980px; }
+.sybtn { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 2px solid #d5dde5; border-radius: 8px; background: #fff;
+  font: inherit; font-size: 15px; text-align: left; cursor: pointer; color: #2c3e50; }
+.sybtn:focus { outline: 3px solid #3c8dbc; outline-offset: 1px; }
+.sybtn.on { border-color: #3c8dbc; background: #eef6fb; }
+.sybtn em { color: #1e7b34; font-style: normal; font-size: 13px; }
+.sysw { display: inline-flex; border-radius: 4px; overflow: hidden; border: 1px solid #c9d4dc; flex: none; }
+.sysw i { display: block; width: 14px; height: 22px; }
+
+/* ---- shared helpers any non-Classic style may use (never match Classic) ---- */
+html[data-style]:not([data-style="00"]) .st-deco { pointer-events: none; }        /* decorative extras added by a style's JS */
+html[data-style="00"] .st-deco { display: none !important; }                      /* safety: decoration never shows in Classic */

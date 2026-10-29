@@ -1,0 +1,37 @@
+[
+ {
+  "mode": "browser",
+  "css": "1093x614",
+  "zoom": 1,
+  "lines": 0,
+  "title": "visible",
+  "titleOverlapsPills": false,
+  "cards": 12,
+  "leftEdge": 312,
+  "rightEdge": 891,
+  "cardsOverLeft": 0,
+  "cardsOverRight": 0,
+  "pageOverflowX": false,
+  "clipped": [],
+  "errors": [],
+  "shot": "/workspace/styles-website/tests/../screenshots/zoom/30-card-deck-1366at125pct-browser-zoom-12items.png"
+ },
+ {
+  "mode": "app",
+  "css": "1366x768",
+  "zoom": 1.25,
+  "lines": 0,
+  "title": "visible",
+  "titleOverlapsPills": false,
+  "cards": 12,
+  "leftEdge": 390,
+  "rightEdge": 1114,
+  "cardsOverLeft": 0,
+  "cardsOverRight": 0,
+  "pageOverflowX": false,
+  "clipped": [],
+  "errors": [],
+  "shot": "/workspace/styles-website/tests/../screenshots/zoom/30-card-deck-1366at125pct-app-zoom-12items.png"
+ }
+]
+EXIT 0

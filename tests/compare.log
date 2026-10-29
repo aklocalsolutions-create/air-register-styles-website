@@ -1,0 +1,15 @@
+01 {'sale': 1.3, 'payment': 0.6, 'customer': 1.5}
+03 {'sale': 1.9, 'payment': 0.5, 'customer': 3.0}
+10 {'sale': 12.2, 'payment': 0.6, 'customer': 1.9}
+11 {'sale': 0.8, 'payment': 1.4, 'customer': 3.9}
+15 {'sale': 0.7, 'payment': 0.3, 'customer': 1.4}
+16 {'sale': 1.3, 'payment': 0.6, 'customer': 1.6}
+17 {'sale': 1.4, 'payment': 1.4, 'customer': 0.9}
+19 {'sale': 0.5, 'payment': 0.5, 'customer': 1.7}
+22 {'sale': 0.4, 'payment': 1.1, 'customer': 1.4}
+23 {'sale': 0.6, 'payment': 0.2, 'customer': 1.7}
+25 {'sale': 3.6, 'payment': 2.9, 'customer': 1.4}
+26 {'sale': 0.6, 'payment': 0.4, 'customer': 1.5}
+27 {'sale': 0.9, 'payment': 0.5, 'customer': 1.4}
+30 {'sale': 3.8, 'payment': 0.6, 'customer': 4.5}
+EXIT 0

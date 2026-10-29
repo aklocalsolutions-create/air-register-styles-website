@@ -1,0 +1,642 @@
+[
+ {
+  "id": "01",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "03",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "10",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "11",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "11",
+  "size": "1024x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "11",
+  "size": "390x844@2",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 26,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "11",
+  "size": "1093x614@1.25",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "15",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "16",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "17",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "19",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "19",
+  "size": "1024x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "19",
+  "size": "390x844@2",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 26,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "19",
+  "size": "1093x614@1.25",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "22",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "23",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "25",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "25",
+  "size": "1024x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "25",
+  "size": "390x844@2",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 26,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "25",
+  "size": "1093x614@1.25",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "26",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "27",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "30",
+  "size": "1366x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "30",
+  "size": "1024x768@1",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "30",
+  "size": "390x844@2",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 26,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "30",
+  "size": "1093x614@1.25",
+  "pass": true,
+  "panes": [
+   {
+    "pane": "pReg",
+    "tag": "\"DEMO REGISTER - nothing is real · Demo Store\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   },
+   {
+    "pane": "pCus",
+    "tag": "\"DEMO CUSTOMER SCREEN - nothing is real\"",
+    "stripH": 20,
+    "iframeTop": 20,
+    "clear": true,
+    "inAppRibbon": false
+   }
+  ],
+  "errs": []
+ },
+ {
+  "id": "window-index",
+  "pass": true,
+  "url": "/demo/window.html?page=register&style=30",
+  "strip": "DEMO REGISTER - nothing is real · Demo Store\nOpen the full demo page",
+  "iframeTop": 22,
+  "errs": []
+ },
+ {
+  "id": "window-customer",
+  "pass": true,
+  "url": "/demo/window.html?page=customer&style=30",
+  "strip": "DEMO CUSTOMER SCREEN - nothing is real · Demo Store\nOpen the full demo page",
+  "iframeTop": 22,
+  "errs": []
+ }
+]

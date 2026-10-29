@@ -1,0 +1,424 @@
+/* Air Register Styles — Style 10 Retro Pop
+ * OWNER: the style-10 assistant ONLY (this file + style-10-retro-pop.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v2/style-10-retro-pop (sale.png, payment.png, index.html)
+ * Rules: every selector starts with  html[data-style="10"]  — look only; never hide a working control; no key changes.
+ * Hooks: see STYLES-PLAN.md "Shared DOM hooks". Test: FAKE_PORT=6108 CHROME_PORT=9502 node tests/e2e-styles.js --style 10
+ * STATUS: STYLED.
+ *
+ * Layout (register, sale screen): the LCD top bar ("AIR REG" sticker, last item, big TOTAL — the last two are read-only
+ * .st-deco mirrors from the JS file); receipt-paper cart + totals on the left; scan bar + colored "department" tiles
+ * (the less-used existing buttons) in the middle; quick search, bulk items, Customers tile and the qty/remove keys on
+ * the right; a bottom grid of the 20 key-labelled buttons from the mockup + a big pink PAY (the existing F12 tile).
+ * How: .wrap becomes one 60-column grid and the button containers become display:contents, so every EXISTING
+ * button is placed by CSS only (no DOM moved, no handler touched). Item spacing = margins (gap 0 on the 60 tracks).
+ */
+html[data-style="10"] {
+  --rp-k: #111; --rp-pk: #ff3ea5; --rp-cy: #19e3ff; --rp-ye: #ffe14d; --rp-pu: #7b2ff7; --rp-gr: #39e36b; --rp-or: #ff8a1f;
+  --rp-li: #c9a7ff; --rp-paper: #fffdf3; --rp-lcd: #0f1f14; --rp-lcdtx: #7dff9a;
+  --rp-hd: 'Archivo Black', 'Arial Black', 'Segoe UI Black', 'Archivo', Impact, sans-serif;
+  --rp-mono: 'Space Mono', Consolas, 'Lucida Console', 'Courier New', monospace;
+  --rp-m: 5px;
+}
+html[data-style="10"] body {
+  background: var(--rp-pu) radial-gradient(rgba(255,255,255,.18) 1.5px, transparent 1.6px) 0 0 / 18px 18px;
+  color: var(--rp-k); font-family: var(--rp-mono); -webkit-font-smoothing: antialiased;
+}
+/* shared "pop" box: thick black outline + hard offset shadow */
+html[data-style="10"] .top, html[data-style="10"] .gridbox, html[data-style="10"] #totals, html[data-style="10"] .scanrow input,
+html[data-style="10"] .wrap .abtn, html[data-style="10"] .wrap .rbtn, html[data-style="10"] .wrap .tile, html[data-style="10"] .wrap .side {
+  border: 3px solid var(--rp-k) !important; box-shadow: 4px 4px 0 var(--rp-k) !important; border-radius: 9px;
+}
+html[data-style="10"] kbd { font: 700 10px/1 var(--rp-mono); background: var(--rp-k); color: #fff; border: 0; border-radius: 3px; padding: 3px 5px; white-space: nowrap; }
+
+/* ---------- frame ---------- */
+html[data-style="10"] #app { grid-template-rows: 100px 1fr 24px; background: transparent; }
+html[data-style="10"] body.nosides #app, html[data-style="10"] #app { min-height: 0; }
+
+/* ---------- LCD top bar ---------- */
+html[data-style="10"] .top {
+  margin: 8px 8px 4px; background: var(--rp-lcd); color: var(--rp-lcdtx); padding: 6px 20px 6px 18px;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) repeat(5, auto) auto; grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 8px; row-gap: 2px; align-items: center; text-shadow: 0 0 10px rgba(125,255,154,.55); overflow: hidden;
+}
+html[data-style="10"] .top > b {
+  grid-column: 1; grid-row: 1 / 3; align-self: center; margin-right: 18px;
+  background: var(--rp-ye); color: var(--rp-k); text-shadow: none; padding: 9px 13px 8px; border: 3px solid var(--rp-k);
+  border-radius: 8px; transform: rotate(-4deg); font: 900 19px/1 var(--rp-hd); text-transform: uppercase; letter-spacing: .5px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.6); white-space: nowrap;
+}
+html[data-style="10"] .top > .sp { display: none; }
+html[data-style="10"] .top #subtitle { display: none; grid-column: 2; grid-row: 2; opacity: .75; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="10"] .top #hwPill { grid-column: 3; grid-row: 2; } html[data-style="10"] .top #sessPill { grid-column: 4; grid-row: 2; }
+html[data-style="10"] .top #buildPill { grid-column: 5; grid-row: 2; } html[data-style="10"] .top #helpPill { grid-column: 6; grid-row: 2; }
+html[data-style="10"] .top #setTop { grid-column: 7; grid-row: 2; }
+html[data-style="10"] .top .pill {
+  background: transparent; color: var(--rp-lcdtx); border: 1.5px solid rgba(125,255,154,.55); border-radius: 4px;
+  font: 700 10.5px/1 var(--rp-mono); padding: 3px 7px; text-transform: uppercase; white-space: nowrap; text-shadow: none;
+}
+html[data-style="10"] .top .pill.ok { color: var(--rp-lcdtx); } html[data-style="10"] .top .pill.warn { color: var(--rp-ye); border-color: var(--rp-ye); }
+html[data-style="10"] .top .pill.bad { color: #fff; background: var(--rp-pk); border-color: var(--rp-pk); }
+html[data-style="10"] .top .topset { background: var(--rp-ye); color: var(--rp-k); border-color: var(--rp-k); }
+html[data-style="10"] .top .topset:hover { background: #fff; }
+html[data-style="10"] .top .topset kbd { background: var(--rp-k); color: #fff; padding: 2px 4px; }
+/* read-only mirrors drawn by style-10-retro-pop.js */
+html[data-style="10"] .top .rp-lcd { grid-column: 2 / 8; grid-row: 1; min-width: 0; font: 700 13px/1.45 var(--rp-mono); letter-spacing: .5px; text-transform: uppercase; opacity: .95; }
+html[data-style="10"] .top .rp-lcd b { display: block; font-size: 21px; color: #b6ffc6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="10"] .top .rp-lcd i { font-style: normal; opacity: .85; white-space: nowrap; }
+html[data-style="10"] .top .rp-tot { grid-column: 8; grid-row: 1 / 3; text-align: right; padding-left: 16px; white-space: nowrap; }
+html[data-style="10"] .top .rp-tot small { display: block; font: 700 12px/1 var(--rp-mono); letter-spacing: 3px; }
+html[data-style="10"] .top .rp-tot b { display: block; font: 700 58px/1 var(--rp-mono); letter-spacing: -2px; }
+
+/* ---------- the 60-column grid ---------- */
+html[data-style="10"] .wrap {
+  grid-template-columns: repeat(60, minmax(0, 1fr)); grid-template-rows: 58px repeat(6, minmax(0, 1fr)) 50px 50px;
+  gap: 0; padding: 3px 6px 6px 6px; min-height: 0; overflow: hidden;
+}
+html[data-style="10"] body.nosides .wrap { grid-template-columns: repeat(60, minmax(0, 1fr)) !important; }
+/* Ctrl+B (nosides): in this layout the "sides" are the main key banks, so they stay; sizers remain hidden */
+html[data-style="10"][data-page="register"] body.nosides .wrap > aside { display: contents !important; }
+html[data-style="10"] .wrap .sizer { display: none; } /* column drag handles: this layout has no side columns to resize */
+html[data-style="10"] .wrap > aside.actions, html[data-style="10"] #actions, html[data-style="10"] #actions .hgrp,
+html[data-style="10"] .wrap > section.center, html[data-style="10"] #tiles, html[data-style="10"] .center .bottom,
+html[data-style="10"] #rightAside, html[data-style="10"] #right, html[data-style="10"] #right .rgrid { display: contents; }
+html[data-style="10"] .actions > h2, html[data-style="10"] #right > h3 { display: none; } /* group titles only (no controls) */
+html[data-style="10"] .wrap .abtn, html[data-style="10"] .wrap .rbtn, html[data-style="10"] .wrap .tile,
+html[data-style="10"] .wrap .side, html[data-style="10"] .wrap .gridbox, html[data-style="10"] .wrap #totals,
+html[data-style="10"] .center .bottom > div:first-child { margin: var(--rp-m); min-width: 0; min-height: 0; }
+
+/* ---------- receipt tape (cart + totals), left ---------- */
+html[data-style="10"] .wrap .gridbox {
+  grid-column: 1 / 17; grid-row: 1 / 6; margin-bottom: 0; border-bottom: 0 !important; border-radius: 9px 9px 0 0;
+  box-shadow: 4px 0 0 var(--rp-k) !important; padding: 0 14px; font-family: var(--rp-mono);
+  background: var(--rp-paper) repeating-linear-gradient(var(--rp-paper) 0 27px, #f3efdc 27px 28px);
+}
+html[data-style="10"] .wrap #totals {
+  grid-column: 1 / 17; grid-row: 6 / 8; margin-top: 0; border-top: 0 !important; border-radius: 0 0 9px 9px;
+  background: var(--rp-paper); display: flex; flex-direction: column; justify-content: flex-end; padding: 6px 14px 8px;
+  font: 700 13px/1.25 var(--rp-mono); overflow: hidden;
+}
+html[data-style="10"] #totals::before { content: ''; border-top: 2px dashed var(--rp-k); margin: 0 0 6px; }
+html[data-style="10"] #totals div { padding: 1px 0; border: 0; background: transparent; text-transform: uppercase; }
+html[data-style="10"] #totals div span:last-child { font-weight: 700; }
+html[data-style="10"] #totals .pretax { font-weight: 700; }
+html[data-style="10"] #totals .total { font: 900 22px/1.15 var(--rp-hd); padding: 4px 0 0; margin-top: 2px; background: transparent; }
+html[data-style="10"] #totals .taxoffline, html[data-style="10"] #totals .neg span, html[data-style="10"] #totals .negline span { color: #d0006f; }
+html[data-style="10"] .rp-store { text-align: center; padding: 10px 0 6px; border-bottom: 2px dashed var(--rp-k); margin-bottom: 4px; }
+html[data-style="10"] .rp-store b { display: block; font: 900 17px/1.1 var(--rp-hd); text-transform: uppercase; }
+html[data-style="10"] .rp-store small { font: 700 10.5px/1.4 var(--rp-mono); text-transform: uppercase; }
+html[data-style="10"] #gridhead { border: 0; padding: 3px 0; color: var(--rp-k); font: 700 11px var(--rp-mono); text-transform: uppercase; background: transparent; }
+html[data-style="10"] #gridhead.ret { background: var(--rp-pk); color: #fff; margin: 0 -14px; padding: 4px 14px; }
+html[data-style="10"] #retLines { font-size: 11px; padding: 4px 0; }
+html[data-style="10"] #retLines button.rl { font: 700 11px var(--rp-mono); border: 2px solid var(--rp-k); border-radius: 6px; background: var(--rp-ye); margin: 2px; padding: 3px 6px; box-shadow: 2px 2px 0 var(--rp-k); }
+html[data-style="10"] #retLines button.rl.na { background: #eee; opacity: .6; }
+html[data-style="10"] .gridbox table { font: 13px/1.25 var(--rp-mono); }
+html[data-style="10"] #cartHead { display: none; } /* column titles only; the receipt shows name / qty @ price / total */
+html[data-style="10"] #cart tr.row { display: grid; grid-template-columns: auto auto auto minmax(0, 1fr) auto; column-gap: 6px; padding: 5px 0; }
+html[data-style="10"] #cart tr.row td { padding: 0; border: 0; background: transparent; color: var(--rp-k); }
+html[data-style="10"] #cart tr.row td:nth-child(1) { display: none; } /* line number (the cart order already shows it) */
+html[data-style="10"] #cart tr.row td:nth-child(3) { grid-column: 1 / 5; grid-row: 1; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html[data-style="10"] #cart tr.row td:nth-child(7) { grid-column: 5; grid-row: 1; text-align: right; }
+html[data-style="10"] #cart tr.row td:nth-child(2), html[data-style="10"] #cart tr.row td:nth-child(4),
+html[data-style="10"] #cart tr.row td:nth-child(5), html[data-style="10"] #cart tr.row td:nth-child(6) { grid-row: 2; font-size: 11px; opacity: .72; text-align: left; white-space: nowrap; }
+html[data-style="10"] #cart tr.row td:nth-child(2) { grid-column: 1; } html[data-style="10"] #cart tr.row td:nth-child(4) { grid-column: 2; }
+html[data-style="10"] #cart tr.row td:nth-child(4)::after { content: ' @'; }
+html[data-style="10"] #cart tr.row td:nth-child(5) { grid-column: 3; } html[data-style="10"] #cart tr.row td:nth-child(6) { grid-column: 4 / 6; color: #b0005a; }
+html[data-style="10"] #cart tr.row.sel { background: var(--rp-ye); margin: 0 -8px; padding: 5px 8px; font-weight: 700; }
+html[data-style="10"] #cart tr.row.sel td { color: var(--rp-k); }
+html[data-style="10"] #cart tr.neg td { color: #c00060 !important; }
+html[data-style="10"] #cart td.empty { border: 0; color: #777; text-align: center; padding: 24px 0; font-size: 12px; text-transform: uppercase; }
+html[data-style="10"] #cart .tag { background: var(--rp-cy); color: var(--rp-k); border: 1.5px solid var(--rp-k); font-size: 9.5px; }
+
+/* ---------- scan bar, middle top ---------- */
+html[data-style="10"] .center .bottom > div:first-child { grid-column: 17 / 47; grid-row: 1; position: relative; display: block; }
+html[data-style="10"] .scanrow { height: 100%; }
+html[data-style="10"] .scanrow input {
+  height: 100%; background: #fff; font: 700 15px var(--rp-mono); text-transform: none; padding: 0 14px 0 40px; color: var(--rp-k);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.8' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: 13px 50%; background-size: 17px;
+}
+html[data-style="10"] .scanrow input::placeholder { color: #777; text-transform: uppercase; }
+html[data-style="10"] .scanrow input:focus { outline: 3px solid var(--rp-cy); outline-offset: 2px; }
+html[data-style="10"] .scanrow input.bad { background-color: #ffd6ea; }
+html[data-style="10"] #toast { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); margin: 0; min-height: 0; max-width: 45%;
+  font: 700 11px/1.2 var(--rp-mono); text-transform: uppercase; pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="10"] #toast:empty { display: none; }
+html[data-style="10"] #toast.ok { color: #0a7a35; } html[data-style="10"] #toast.err { color: #d0006f; }
+html[data-style="10"] #scanMsg, html[data-style="10"] #noteLine { position: absolute; left: 10px; right: 10px; top: calc(100% + 2px); z-index: 8; margin: 0;
+  border: 3px solid var(--rp-k); border-radius: 8px; box-shadow: 3px 3px 0 var(--rp-k); padding: 6px 10px; font: 700 13px var(--rp-mono); }
+html[data-style="10"] #scanMsg { background: var(--rp-pk); color: #fff; }
+html[data-style="10"] #noteLine { background: var(--rp-ye); color: var(--rp-k); }
+html[data-style="10"] #scanMsg:not([style*="none"]) ~ #noteLine { top: calc(200% + 4px); }
+
+/* ---------- buttons: common pop look ---------- */
+html[data-style="10"] .wrap .abtn, html[data-style="10"] .wrap .rbtn, html[data-style="10"] .wrap .tile {
+  background: #fff; color: var(--rp-k); font-family: var(--rp-mono); cursor: pointer; text-align: left; overflow: hidden;
+}
+html[data-style="10"] .wrap .abtn:active, html[data-style="10"] .wrap .rbtn:active, html[data-style="10"] .wrap .tile:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--rp-k) !important; }
+html[data-style="10"] .wrap .abtn:focus-visible, html[data-style="10"] .wrap .rbtn:focus-visible { outline: 3px dashed var(--rp-k); outline-offset: 2px; }
+html[data-style="10"] .wrap .rbtn.on, html[data-style="10"] .wrap .tile.on { outline: 4px dashed var(--rp-k); outline-offset: 2px; }
+html[data-style="10"] .wrap .rbtn.na { opacity: .55; }
+
+/* bottom key grid: kbd chip on top, label under (like the mockup) */
+html[data-style="10"] .wrap .abtn { min-height: 0; padding: 4px 8px; display: flex; align-items: center; gap: 0; }
+html[data-style="10"] .wrap .abtn .ic { display: none; }
+html[data-style="10"] .wrap .abtn > span:last-child { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 4px; min-width: 0; }
+html[data-style="10"] .wrap .abtn .t { font: 700 11.5px/1.1 var(--rp-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+html[data-style="10"] .wrap .abtn .k, html[data-style="10"] .wrap .rbtn small, html[data-style="10"] .wrap .tile .k {
+  display: inline-block; font: 700 9.5px/1 var(--rp-mono); background: var(--rp-k); color: #fff; border-radius: 3px; padding: 3px 5px;
+  opacity: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; position: static; word-spacing: -3.5px; letter-spacing: -.2px;
+}
+html[data-style="10"] .wrap .rbtn { min-height: 0; padding: 4px 8px; display: flex; flex-direction: column-reverse; justify-content: center; align-items: flex-start; gap: 4px;
+  font: 700 11.5px/1.1 var(--rp-mono); white-space: nowrap; }
+html[data-style="10"] .wrap .rbtn.red { color: var(--rp-k); }
+
+/* row 8: F1 F3 F5 F6 F7 F8 F9 Esc Ctrl+G Ctrl+I · row 9: New History Hold LoadHold Return Drawer EndDay Settings ClockOut LogOut */
+html[data-style="10"] #right [data-a="local:help"]   { grid-area: 8 / 1 / 9 / 6;   background: var(--rp-ye); }
+html[data-style="10"] #actions [data-a="customer"]   { grid-area: 8 / 6 / 9 / 11;  background: var(--rp-cy); }
+html[data-style="10"] #right [data-a="tax-off"]      { grid-area: 8 / 11 / 9 / 16; background: var(--rp-gr); }
+html[data-style="10"] #right [data-a="discount"]     { grid-area: 8 / 16 / 9 / 21; background: var(--rp-pk); color: #fff; }
+html[data-style="10"] #right [data-a="open-item"]    { grid-area: 8 / 21 / 9 / 26; background: var(--rp-or); }
+html[data-style="10"] #right [data-a="extra-charge"] { grid-area: 8 / 26 / 9 / 31; background: #fff; }
+html[data-style="10"] #right [data-a="promo"]        { grid-area: 8 / 31 / 9 / 36; background: var(--rp-li); }
+html[data-style="10"] #tiles [data-a="close"]        { grid-area: 8 / 36 / 9 / 41; background: var(--rp-ye); }
+html[data-style="10"] #right [data-a="gift-card"]    { grid-area: 8 / 41 / 9 / 46; background: var(--rp-cy); }
+html[data-style="10"] #right [data-a="price-check"]  { grid-area: 8 / 46 / 9 / 51; background: var(--rp-gr); }
+html[data-style="10"] #actions [data-a="new-sale"]   { grid-area: 9 / 1 / 10 / 6;  background: #fff; }
+html[data-style="10"] #actions [data-a="history"]    { grid-area: 9 / 6 / 10 / 11; background: #fff; }
+html[data-style="10"] #actions [data-a="hold"]       { grid-area: 9 / 11 / 10 / 16; background: var(--rp-ye); }
+html[data-style="10"] #actions [data-a="load-hold"]  { grid-area: 9 / 16 / 10 / 21; background: var(--rp-ye); }
+html[data-style="10"] #actions [data-a="return"]     { grid-area: 9 / 21 / 10 / 26; background: var(--rp-pk); color: #fff; }
+html[data-style="10"] #actions [data-a="drawer"]     { grid-area: 9 / 26 / 10 / 31; background: var(--rp-cy); }
+html[data-style="10"] #actions [data-a="end-of-day"] { grid-area: 9 / 31 / 10 / 36; background: var(--rp-or); }
+html[data-style="10"] #right [data-a="settings"]     { grid-area: 9 / 36 / 10 / 41; background: #fff; }
+html[data-style="10"] #actions [data-a="clock-out"]  { grid-area: 9 / 41 / 10 / 46; background: var(--rp-li); }
+html[data-style="10"] #actions [data-a="logout"]     { grid-area: 9 / 46 / 10 / 51; background: var(--rp-pk); color: #fff; }
+html[data-style="10"] .wrap [data-a="discount"] small, html[data-style="10"] .wrap [data-a="return"] .k, html[data-style="10"] .wrap [data-a="logout"] .k { background: #fff; color: var(--rp-k); }
+
+/* the three Classic tiles: Esc = Items (bottom grid), F12 = big PAY, F3 = Customers (right column) */
+html[data-style="10"] .wrap .tile { height: auto; display: flex; flex-direction: column; font: 700 11.5px/1.1 var(--rp-mono); padding: 4px 8px; }
+html[data-style="10"] .wrap .tile .ic { display: none; }
+html[data-style="10"] .wrap .tile .info { color: inherit; opacity: .8; font: 700 10px/1.1 var(--rp-mono); margin: 0; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+html[data-style="10"] .wrap .tile.active { border-color: var(--rp-k) !important; }
+html[data-style="10"] #tiles [data-a="close"] { align-items: flex-start; justify-content: center; gap: 2px; }
+html[data-style="10"] #tiles [data-a="close"] .k { order: -1; margin-bottom: 1px; }
+html[data-style="10"] #tiles [data-a="close"] .info { display: none; } /* the item count is on the LCD and the receipt */
+html[data-style="10"] #tiles [data-a="checkout"] {
+  grid-area: 8 / 51 / 10 / 61; background: var(--rp-pk); color: #fff; align-items: center; justify-content: center; text-align: center;
+  font: 900 22px/1.05 var(--rp-hd); text-transform: uppercase; gap: 3px;
+}
+html[data-style="10"] #tiles [data-a="checkout"] .info { font: 900 21px/1.05 var(--rp-hd); opacity: 1; order: 1; }
+html[data-style="10"] #tiles [data-a="checkout"] .k { order: 2; background: #fff; color: var(--rp-k); font-size: 11px; }
+
+/* ONLY the mockup's buttons are shown (lead rule). These extra buttons are hidden with CSS only: the DOM and the handlers stay,
+   so every keyboard shortcut (Ctrl+R, Ctrl+P, F2, Ctrl+Shift+F, Ctrl+Shift+A/L, Ctrl+N, Ctrl+Shift+C, Ctrl+K, Ctrl+Shift+G/B/F3/D, Ctrl+0, F3, + - * F4 Del, Ctrl+,, F1) still works.
+   Duplicates: Return/History/Customer/Settings/Keys are already in the bottom key rows. */
+html[data-style="10"] #right [data-a="return"],
+html[data-style="10"] #right [data-a="history"],
+html[data-style="10"] #right [data-a="reprint"],
+html[data-style="10"] #right [data-a="search"],
+html[data-style="10"] #right [data-a="cart-search"],
+html[data-style="10"] #actions [data-a="aside-put"],
+html[data-style="10"] #actions [data-a="aside-load"],
+html[data-style="10"] #right [data-a="note"],
+html[data-style="10"] #right [data-a="calculator"],
+html[data-style="10"] #right [data-a="cash-move"],
+html[data-style="10"] #right [data-a="gift-multi"],
+html[data-style="10"] #right [data-a="gift-balance"],
+html[data-style="10"] #right [data-a="clear-customer"],
+html[data-style="10"] #right [data-a="zoom-reset"],
+html[data-style="10"] #right [data-a="hw"],
+html[data-style="10"] #tiles [data-a="customer"],
+html[data-style="10"] #right [data-a="qty-plus"],
+html[data-style="10"] #right [data-a="qty-minus"],
+html[data-style="10"] #right [data-a="qty-edit"],
+html[data-style="10"] #right [data-a="item-discount"],
+html[data-style="10"] #right [data-a="remove"],
+html[data-style="10"] .top #setTop, html[data-style="10"] .top #hwPill,
+html[data-style="10"] .top #helpPill { display: none !important; }
+
+/* middle (mockup "department" keys): the Bulk items panel = one-tap item keys, as big colored tiles */
+html[data-style="10"] #bulkPanel { grid-area: 2 / 17 / 8 / 47; background: transparent; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; overflow: auto; display: flex; flex-direction: column; }
+html[data-style="10"] #bulkPanel > h3 { display: none; } /* panel title only */
+html[data-style="10"] #bulkBtns { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: calc((100% - 30px) / 3); gap: 10px; padding: 5px; align-content: start; }
+html[data-style="10"] #bulkBtns .rbtn { margin: 0 !important; min-height: 0 !important; border: 3px solid var(--rp-k) !important; box-shadow: 4px 4px 0 var(--rp-k) !important; border-radius: 9px;
+  padding: 10px 12px !important; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 4px; text-align: left;
+  font: 900 15px/1.1 var(--rp-hd) !important; text-transform: uppercase; white-space: normal; color: var(--rp-k) !important; position: relative; }
+html[data-style="10"] #bulkBtns .rbtn::before { content: "🏷️"; font: 28px/1 "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif; margin-bottom: auto; }
+html[data-style="10"] #bulkBtns .rbtn small { font: 700 10px/1.2 var(--rp-mono) !important; background: var(--rp-k) !important; color: #fff !important; border-radius: 3px; padding: 3px 5px !important; opacity: 1 !important; text-transform: none; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+1) { background: var(--rp-pk) !important; color: #fff !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+2) { background: var(--rp-ye) !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+3) { background: var(--rp-cy) !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+4) { background: var(--rp-gr) !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+5) { background: var(--rp-or) !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+6) { background: var(--rp-li) !important; }
+html[data-style="10"] #bulkBtns .rbtn:nth-child(7n+7) { background: #fff !important; }
+html[data-style="10"] #bulkBtns #bulkSetup { grid-column: 1 / -1 !important; grid-row: span 3; background: rgba(255,255,255,.14) !important; color: #fff !important; border: 3px dashed #fff !important;
+  box-shadow: none !important; align-items: center; justify-content: center; text-align: center; font-size: 22px !important; }
+html[data-style="10"] #bulkBtns #bulkSetup::before { content: "➕"; margin: 0 0 8px; font-size: 40px; }
+html[data-style="10"] #bulkBtns #bulkSetup small { font-size: 12px !important; background: var(--rp-k) !important; }
+
+/* right column (mockup keypad spot): Quick search (Ctrl+Shift+S), full height, results inline */
+html[data-style="10"] #qsPanel { grid-area: 1 / 47 / 8 / 61; background: #fff; padding: 7px 9px; position: relative; overflow: visible; display: flex; flex-direction: column; }
+html[data-style="10"] .wrap .side h3 { font: 900 12px/1 var(--rp-hd) !important; text-transform: uppercase; color: var(--rp-k); margin: 0 0 6px !important; letter-spacing: .3px; }
+html[data-style="10"] .wrap .side h3 small { font: 700 9.5px/1 var(--rp-mono); background: var(--rp-k); color: #fff; border-radius: 3px; padding: 3px 5px; letter-spacing: 0; }
+html[data-style="10"] #qsIn { border: 2.5px solid var(--rp-k); border-radius: 6px; font: 700 13px var(--rp-mono); padding: 7px 9px; }
+html[data-style="10"] #qsIn:focus { outline: 3px solid var(--rp-cy); outline-offset: 1px; }
+html[data-style="10"] #qsRes { margin-top: 4px; font-family: var(--rp-mono); max-height: none; flex: 1; min-height: 0; overflow: auto; }
+html[data-style="10"] #qsRes:not(:empty) { border-top: 2px dashed var(--rp-k); padding-top: 4px; } /* results list inside the tall panel */
+html[data-style="10"] #qsRes div { border-bottom: 1.5px dashed #bbb; font-size: 12px; }
+html[data-style="10"] #qsRes div.sel, html[data-style="10"] #qsRes div:hover { background: var(--rp-ye); }
+  box-shadow: 3px 3px 0 var(--rp-k) !important; border-radius: 7px; font: 700 11.5px/1.1 var(--rp-mono); white-space: normal; flex-direction: column; }
+
+/* ---------- status bar ---------- */
+html[data-style="10"] .status { background: var(--rp-k); color: #e9dcff; font: 700 10.5px var(--rp-mono); text-transform: uppercase; gap: 14px; }
+html[data-style="10"] .status .net { color: var(--rp-gr); }
+
+/* ---------- dialogs (all windows) ---------- */
+html[data-style="10"] .el-overlay { background: rgba(40, 8, 90, .55); }
+html[data-style="10"] .modal { border: 3px solid var(--rp-k); border-radius: 12px; box-shadow: 8px 8px 0 var(--rp-k); background: var(--rp-paper); font-family: var(--rp-mono); }
+html[data-style="10"] .modal h2 { font: 900 20px/1.15 var(--rp-hd); text-transform: uppercase; }
+html[data-style="10"] .modal .pbtn { border: 3px solid var(--rp-k); box-shadow: 3px 3px 0 var(--rp-k); border-radius: 8px; font: 900 14px var(--rp-hd); text-transform: uppercase; color: var(--rp-k); background: var(--rp-cy); }
+html[data-style="10"] .modal .pbtn.g { background: var(--rp-gr); } html[data-style="10"] .modal .pbtn.r { background: var(--rp-pk); color: #fff; }
+html[data-style="10"] .modal .pbtn.s { background: #fff; }
+html[data-style="10"] .modal .pbtn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--rp-k); }
+html[data-style="10"] .modal button kbd.dk { background: var(--rp-k); color: #fff; opacity: 1; padding: 2px 4px; border-radius: 3px; font: 700 10px var(--rp-mono); }
+html[data-style="10"] .modal input.f, html[data-style="10"] .modal select, html[data-style="10"] .modal textarea { border: 2.5px solid var(--rp-k); border-radius: 6px; font-family: var(--rp-mono); }
+html[data-style="10"] .modal th { background: var(--rp-ye); color: var(--rp-k); border-bottom: 2px solid var(--rp-k); font-family: var(--rp-mono); }
+html[data-style="10"] .modal tr.sel td, html[data-style="10"] .modal tr.row.sel td { background: var(--rp-ye); }
+
+html[data-style="10"] .modal button.btn { border: 3px solid var(--rp-k); box-shadow: 3px 3px 0 var(--rp-k); border-radius: 8px; font: 900 15px var(--rp-hd); text-transform: uppercase;
+  color: var(--rp-k); background: var(--rp-gr); padding: 10px 18px; cursor: pointer; }
+html[data-style="10"] .modal button.btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--rp-k); }
+
+/* ---------- payment (full screen) ----------
+ * The payment window stays a full-screen overlay (it still blocks clicks to the register), but its background is
+ * see-through over the receipt tape (left) and the bottom key grid, like the mockup. LCD text in the head = JS mirror. */
+html[data-style="10"] .fullpay-ov { background: transparent; }
+html[data-style="10"] .modal.fullpay { border: 0; border-radius: 0; box-shadow: none; padding: 0 0 12px; font-family: var(--rp-mono);
+  background: var(--rp-pu) radial-gradient(rgba(255,255,255,.18) 1.5px, transparent 1.6px) 0 0 / 18px 18px; }
+html[data-style="10"] .modal.fullpay:has(> #payBody) { padding-bottom: 128px; background: transparent; } /* without :has() it simply stays full-screen purple */
+html[data-style="10"] .fullpay .payhead {
+  margin: 8px 8px 0; height: 88px; box-sizing: border-box; flex: none; background: var(--rp-lcd); color: var(--rp-lcdtx); border: 3px solid var(--rp-k); border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--rp-k); padding: 6px 20px 6px 18px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center; column-gap: 26px; text-shadow: 0 0 10px rgba(125,255,154,.55); overflow: hidden;
+}
+html[data-style="10"] .fullpay .payhead h2 {
+  grid-column: 1; grid-row: 1 / 3; background: var(--rp-ye); color: var(--rp-k); text-shadow: none; padding: 9px 14px 8px; border: 3px solid var(--rp-k); border-radius: 8px;
+  transform: rotate(-4deg); font: 900 19px/1 var(--rp-hd); text-transform: uppercase; margin: 0; box-shadow: 3px 3px 0 rgba(0,0,0,.6); white-space: nowrap;
+}
+html[data-style="10"] .fullpay .payhead h2::after { content: 'Esc = back'; display: block; font: 700 10px/1.3 var(--rp-mono); text-transform: none; margin-top: 2px; }
+html[data-style="10"] .fullpay .payhead .note { grid-column: 2; grid-row: 2; color: var(--rp-ye) !important; font: 700 12px var(--rp-mono) !important; text-transform: uppercase; margin: 0; text-shadow: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="10"] .fullpay .payhead > :not(h2):not(.note):not(.st-deco) { grid-column: 2; grid-row: 2; }
+html[data-style="10"] .payhead .rp-plcd { grid-column: 2; grid-row: 1; min-width: 0; font: 700 13px/1.45 var(--rp-mono); text-transform: uppercase; }
+html[data-style="10"] .payhead .rp-plcd b { display: block; font-size: 19px; color: #b6ffc6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html[data-style="10"] .payhead .rp-plcd i { font-style: normal; opacity: .85; white-space: nowrap; }
+html[data-style="10"] .payhead .rp-ptot { grid-column: 3; grid-row: 1 / 3; text-align: right; white-space: nowrap; }
+html[data-style="10"] .payhead .rp-ptot small { display: block; font: 700 12px/1 var(--rp-mono); letter-spacing: 3px; text-transform: uppercase; }
+html[data-style="10"] .payhead .rp-ptot b { display: block; font: 700 58px/1 var(--rp-mono); letter-spacing: -2px; }
+/* body: right of the receipt tape, above the bottom key grid (the dotted background hides the register's middle) */
+html[data-style="10"] .fullpay #payBody {
+  overflow: auto; margin: 4px 6px 0; padding: 9px 12px 14px 8px; flex: 1; min-height: 0; box-sizing: border-box;
+  background: var(--rp-pu) radial-gradient(rgba(255,255,255,.18) 1.5px, transparent 1.6px) 0 0 / 18px 18px; border-radius: 0 0 10px 10px;
+}
+html[data-style="10"] .fullpay .pay-inline-note, html[data-style="10"] .fullpay #payBody h3 { color: #fff; }
+html[data-style="10"] .paygrid { flex-direction: row-reverse; gap: 14px; height: 100%; }
+html[data-style="10"] .paynums { width: 32%; gap: 12px; }
+html[data-style="10"] .paynums .pn { background: #fff; border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 4px 4px 0 var(--rp-k); padding: 6px 14px; flex: 1;
+  flex-direction: row; justify-content: space-between; align-items: center; min-height: 0; }
+html[data-style="10"] .paynums .pn span { font: 700 13px var(--rp-mono); color: var(--rp-k); text-transform: uppercase; }
+html[data-style="10"] .paynums .pn b { font: 700 24px/1 var(--rp-mono); color: var(--rp-k); }
+html[data-style="10"] .paynums .pn.left { order: -1; flex: 1.6; background: var(--rp-lcd); flex-direction: column; align-items: flex-end; justify-content: center; text-shadow: 0 0 10px rgba(125,255,154,.6); }
+html[data-style="10"] .paynums .pn.left span { color: var(--rp-lcdtx); letter-spacing: 3px; font-size: 12px; }
+html[data-style="10"] .paynums .pn.left b { color: var(--rp-lcdtx); font: 700 clamp(30px, 3.3vw, 48px)/1 var(--rp-mono); letter-spacing: -2px; }
+html[data-style="10"] .paynums .pn.left.zero { background: var(--rp-gr); text-shadow: none; } html[data-style="10"] .paynums .pn.left.zero span, html[data-style="10"] .paynums .pn.left.zero b { color: var(--rp-k); }
+html[data-style="10"] .paynums .pn.chg { background: var(--rp-ye); } html[data-style="10"] .paynums .pn.chg b { color: var(--rp-k); }
+html[data-style="10"] .payact { gap: 0; overflow: visible; min-width: 0; }
+html[data-style="10"] .fullpay .plist { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: minmax(96px, 1fr); gap: 14px; flex: 1; }
+html[data-style="10"] .pline {
+  min-height: 0; flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 10px 14px 12px;
+  border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 4px 4px 0 var(--rp-k); background: #fff; margin: 0;
+}
+html[data-style="10"] .pline .plbl { font: 900 20px/1 var(--rp-hd); text-transform: uppercase; flex: none; }
+html[data-style="10"] .pline[data-t="20"] .plbl::after { content: 'Tap, insert or swipe'; } html[data-style="10"] .pline[data-t="10"] .plbl::after { content: 'Bills and coins'; }
+html[data-style="10"] .pline[data-t="40"] .plbl::after { content: 'Scan or type number'; } html[data-style="10"] .pline[data-t="50"] .plbl::after { content: 'Paper check'; }
+html[data-style="10"] .pline .plbl::after { display: block; font: 700 10.5px/1.3 var(--rp-mono); text-transform: none; margin-top: 4px; }
+html[data-style="10"] .pline .plbl::before { content: none !important; }
+html[data-style="10"] .pline .pamt { width: 100%; box-sizing: border-box; border: 3px solid var(--rp-k); border-radius: 7px; background: #fff; font: 700 24px var(--rp-mono); color: var(--rp-k); padding: 6px 12px; }
+html[data-style="10"] .pline[data-t="20"] { background: var(--rp-cy); } html[data-style="10"] .pline[data-t="10"] { background: var(--rp-ye); }
+html[data-style="10"] .pline[data-t="40"] { background: var(--rp-pk); color: #fff; } html[data-style="10"] .pline[data-t="50"] { background: var(--rp-li); }
+html[data-style="10"] .pline:nth-child(n+5) { background: var(--rp-gr); color: var(--rp-k); }
+html[data-style="10"] .pline.on { outline: 4px dashed var(--rp-k); outline-offset: 4px; }
+html[data-style="10"] .pline.on .pamt { outline: 3px solid var(--rp-k); background: #fffbe0; }
+html[data-style="10"] .fullpay .tabs .tab, html[data-style="10"] .fullpay .quick button {
+  border: 3px solid var(--rp-k) !important; box-shadow: 4px 4px 0 var(--rp-k); border-radius: 8px; font-family: var(--rp-hd); color: var(--rp-k);
+  background: #d7ffd9 repeating-linear-gradient(45deg, transparent 0 8px, rgba(0,0,0,.05) 8px 10px);
+}
+html[data-style="10"] .fullpay .tabs .tab.on { background: var(--rp-ye); outline: 4px dashed var(--rp-k); outline-offset: 3px; }
+html[data-style="10"] .fullpay label.f { color: #fff; text-shadow: 1px 1px 0 var(--rp-k); font-weight: 700; }
+html[data-style="10"] .fullpay input.f { border: 3px solid var(--rp-k); border-radius: 8px; font-family: var(--rp-mono); font-weight: 700; }
+html[data-style="10"] #payMsg { font: 700 14px var(--rp-mono); color: #fff; text-shadow: 1px 1px 0 var(--rp-k); min-height: 0; margin-top: 8px; }
+html[data-style="10"] #payMsg.err { color: var(--rp-ye); }
+html[data-style="10"] .fullpay .row2 { padding-top: 12px; margin-top: 0; justify-content: stretch; gap: 14px; flex-wrap: nowrap; }
+html[data-style="10"] .fullpay .row2 .pbtn { min-height: 70px; font: 900 22px var(--rp-hd); padding: 10px 24px; box-shadow: 4px 4px 0 var(--rp-k); }
+html[data-style="10"] .fullpay .row2 #payOk { flex: 1; background: var(--rp-gr); color: var(--rp-k); text-align: left; }
+html[data-style="10"] .fullpay .row2 #payOk::after { content: 'Finish sale · receipt prints'; display: block; font: 700 11px var(--rp-mono); text-transform: uppercase; margin-top: 4px; }
+html[data-style="10"] .fullpay .row2 #payBack { background: #fff; }
+html[data-style="10"] .fullpay .cardbox, html[data-style="10"] .fullpay table.mini { background: #fff; border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 4px 4px 0 var(--rp-k); }
+
+html[data-style="10"] .modal.fullpay:has(> #payBody) #payBody { margin-left: calc((100% - 12px) * 16 / 60 + 6px); }
+/* no-receipt refund screen (also a full-screen window) */
+html[data-style="10"] #refBody { margin-top: 40px !important; }
+html[data-style="10"] .fullpay .refbig { background: var(--rp-lcd); color: #ff8fcf; border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 5px 5px 0 var(--rp-k);
+  font: 700 64px/1 var(--rp-mono); text-align: center; padding: 22px 10px; letter-spacing: -2px; text-shadow: 0 0 12px rgba(255,62,165,.6); }
+html[data-style="10"] .fullpay .refl { border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 4px 4px 0 var(--rp-k); background: #fff; font: 900 20px var(--rp-hd); text-transform: uppercase; margin: 14px 0; }
+html[data-style="10"] .fullpay .refl:first-child { background: var(--rp-ye); } html[data-style="10"] .fullpay .refl:nth-child(2) { background: var(--rp-cy); }
+html[data-style="10"] .fullpay .refl.hi { outline: 4px dashed var(--rp-k); outline-offset: 4px; }
+html[data-style="10"] .fullpay #refMsg { color: #fff; text-shadow: 1px 1px 0 var(--rp-k); }
+html[data-style="10"] .modal .refbig { font-family: var(--rp-mono); color: #d0006f; }
+
+/* ---------- Settings (full-screen page) ---------- */
+html[data-style="10"] .modal.stpage { border: 0; border-radius: 0; box-shadow: none; background: var(--rp-pu) radial-gradient(rgba(255,255,255,.18) 1.5px, transparent 1.6px) 0 0 / 18px 18px; }
+html[data-style="10"] .stpage .sthead { background: var(--rp-lcd); color: var(--rp-lcdtx); margin: 8px 8px 0; border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 5px 5px 0 var(--rp-k); text-shadow: 0 0 10px rgba(125,255,154,.55); }
+html[data-style="10"] .stpage .sthead h1 { font: 900 22px var(--rp-hd); text-transform: uppercase; color: var(--rp-lcdtx); }
+html[data-style="10"] .stpage .sthead .pbtn { text-shadow: none; }
+html[data-style="10"] .sttabs { background: transparent; border: 0; padding: 12px 10px 6px; gap: 8px; }
+html[data-style="10"] .sttabs button { background: #fff; border: 3px solid var(--rp-k); border-radius: 8px; box-shadow: 3px 3px 0 var(--rp-k); font: 900 13px var(--rp-hd); text-transform: uppercase; color: var(--rp-k); padding: 8px 12px; }
+html[data-style="10"] .sttabs button.on { background: var(--rp-ye); color: var(--rp-k); box-shadow: 1px 1px 0 var(--rp-k); transform: translate(2px, 2px); }
+html[data-style="10"] .sttabs button kbd { background: var(--rp-k); color: #fff; }
+html[data-style="10"] .stpage .stbody { background: var(--rp-paper); margin: 4px 10px 10px; border: 3px solid var(--rp-k); border-radius: 10px; box-shadow: 5px 5px 0 var(--rp-k); }
+html[data-style="10"] .stpage .stbody h3 { font: 900 13px var(--rp-hd); color: var(--rp-k); }
+html[data-style="10"] .btrow { background: #fff; border: 2px solid var(--rp-k); }
+html[data-style="10"] .sylist .sybtn { border: 3px solid var(--rp-k); box-shadow: 3px 3px 0 var(--rp-k); border-radius: 8px; font-family: var(--rp-mono); background: #fff; }
+html[data-style="10"] .sylist .sybtn.on { background: var(--rp-ye); }
+
+/* ---------- login ---------- */
+html[data-style="10"] #login { background: transparent; }
+html[data-style="10"] #login .card { background: var(--rp-paper); border: 3px solid var(--rp-k); border-radius: 12px; box-shadow: 8px 8px 0 var(--rp-k); font-family: var(--rp-mono); }
+html[data-style="10"] #login h1 { font: 900 30px var(--rp-hd); text-transform: uppercase; display: inline-block; background: var(--rp-ye); border: 3px solid var(--rp-k); border-radius: 8px; padding: 8px 14px; transform: rotate(-3deg); }
+html[data-style="10"] #login input.f { border: 2.5px solid var(--rp-k); border-radius: 6px; font-family: var(--rp-mono); }
+html[data-style="10"] #login .pbtn { background: var(--rp-pk); color: #fff; border: 3px solid var(--rp-k); box-shadow: 4px 4px 0 var(--rp-k); font: 900 16px var(--rp-hd); text-transform: uppercase; }
+
+/* ---------- customer display ---------- */
+html[data-style="10"][data-page="customer"] body { background: var(--rp-pu) radial-gradient(rgba(255,255,255,.18) 1.5px, transparent 1.6px) 0 0 / 18px 18px; font-family: var(--rp-mono); color: var(--rp-k); }
+html[data-style="10"][data-page="customer"] #idle, html[data-style="10"][data-page="customer"] #done { background: transparent; color: var(--rp-k); }
+html[data-style="10"][data-page="customer"] #idle h1, html[data-style="10"][data-page="customer"] #done h1 {
+  font: 900 clamp(48px, 8vw, 110px)/1 var(--rp-hd); text-transform: uppercase; background: var(--rp-ye); border: 5px solid var(--rp-k);
+  border-radius: 16px; box-shadow: 10px 10px 0 var(--rp-k); padding: 22px 40px; transform: rotate(-3deg); }
+html[data-style="10"][data-page="customer"] #idle p { color: #fff; font: 700 clamp(20px, 2.6vw, 36px) var(--rp-mono); text-transform: uppercase; text-shadow: 2px 2px 0 var(--rp-k); margin-top: 40px; }
+html[data-style="10"][data-page="customer"] #done .sum { background: var(--rp-lcd); color: var(--rp-lcdtx); border: 4px solid var(--rp-k); border-radius: 14px; box-shadow: 8px 8px 0 var(--rp-k); padding: 24px 36px; text-shadow: 0 0 10px rgba(125,255,154,.55); }
+html[data-style="10"][data-page="customer"] #done .sum .chg { color: var(--rp-ye); }
+html[data-style="10"][data-page="customer"] #sale { gap: 22px; padding: 22px; }
+html[data-style="10"][data-page="customer"] .lines { background: var(--rp-paper) repeating-linear-gradient(var(--rp-paper) 0 39px, #f3efdc 39px 40px);
+  border: 4px solid var(--rp-k); border-radius: 12px; box-shadow: 8px 8px 0 var(--rp-k); }
+html[data-style="10"][data-page="customer"] .lines h2 { background: transparent; color: var(--rp-k); font: 900 clamp(20px, 2.2vw, 30px) var(--rp-hd); text-transform: uppercase; text-align: center; border-bottom: 3px dashed var(--rp-k); margin: 0 22px; padding: 16px 0 12px; }
+html[data-style="10"][data-page="customer"] .lines h2::before { content: '★ '; } html[data-style="10"][data-page="customer"] .lines h2::after { content: ' ★'; }
+html[data-style="10"][data-page="customer"] .lines h2.ret { background: var(--rp-pk); color: #fff; border-radius: 8px; margin-top: 10px; }
+html[data-style="10"][data-page="customer"] .row { border-bottom: 0; text-transform: uppercase; padding: 10px 26px; font-weight: 700; }
+html[data-style="10"][data-page="customer"] .row .q { color: #555; }
+html[data-style="10"][data-page="customer"] .row:last-child { background: var(--rp-ye); }
+html[data-style="10"][data-page="customer"] .row.ret { color: #c00060; }
+html[data-style="10"][data-page="customer"] .side { background: var(--rp-lcd); color: var(--rp-lcdtx); border: 4px solid var(--rp-k); border-radius: 12px; box-shadow: 8px 8px 0 var(--rp-k);
+  text-shadow: 0 0 10px rgba(125,255,154,.55); text-transform: uppercase; font-weight: 700; }
+html[data-style="10"][data-page="customer"] .side .big { border-top: 3px dashed var(--rp-lcdtx); font: 700 clamp(34px, 4.6vw, 70px)/1.1 var(--rp-mono); letter-spacing: -2px; }
+html[data-style="10"][data-page="customer"] .side .due, html[data-style="10"][data-page="customer"] .side .chg { color: var(--rp-ye); }
+html[data-style="10"][data-page="customer"] .side .off, html[data-style="10"][data-page="customer"] .side .ret { color: #ff8fcf; }
