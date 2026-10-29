@@ -76,6 +76,13 @@ html[data-style="16"] .top .pill.warn { color: var(--t-am); }
 html[data-style="16"] .top .pill.bad { color: var(--t-red); }
 html[data-style="16"] .top .topset { order: 4; flex: none; padding: 0 0 0 8px; background: none !important; color: var(--t-g); text-transform: lowercase; }
 html[data-style="16"] .top .topset kbd { margin-left: 4px; }
+/* Cursor fix (MEDIUM 16): under 1200px the status line can't fit every pill, so each one was cut to a few letters ("not…", "v…", "f…").
+   The pills whose text the window already shows elsewhere are hidden: shop name (status bar "Shop:"), version (status bar),
+   and "f1 = keys" (the hint line). F1 still works. Printer/drawer and the clock-in state keep the room. */
+@media (max-width: 1199px) {
+  html[data-style="16"] .top .sub, html[data-style="16"] .top #buildPill, html[data-style="16"] .top #helpPill { display: none; }
+  html[data-style="16"] .top #sessPill { flex: none; }
+}
 
 /* ---- tiles = tmux windows (0:customer 1:items 2:payment) on the status line ---- */
 html[data-style="16"] #tiles {

@@ -601,9 +601,8 @@ html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] .
 html[data-style="30"][data-page="register"] #actions .abtn[data-a="load-hold"] .k { color: #fff; background: rgba(255,255,255,.14); border-radius: 4px; padding: 3px 5px; }
 html[data-style="30"][data-page="register"] .abtn .k { letter-spacing: -.4px; }
 /* version / session footer at the bottom of the menu column (status pills stay in the centre pill row) */
-/* payment: the mockup's chips are $20, $50, $100 and Exact */
-html[data-style="30"] .fullpay .quick button[data-l="5"],
-html[data-style="30"] .fullpay .quick button[data-l="10"],
+/* payment: the mockup's chips are $20, $50, $100 and Exact. Cursor fix (LOW 30): $5 and $10 are real quick-cash chips (Alt keys, same handler),
+   and hiding them also turned off their Alt keys. They are shown again; they fit at 1024px and at 125% zoom. The "next bill" chip stays hidden. */
 html[data-style="30"] .fullpay .quick button.nb { display: none !important; }
 
 /* ================= narrow window / zoom (Ctrl +, 125% display scaling) =================

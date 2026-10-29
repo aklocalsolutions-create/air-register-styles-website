@@ -25,7 +25,7 @@
       <div class="s19-main"><div class="s19-grid">${L2_TILES.map(([i, n, p]) => `<div><i>${i}</i>${esc(n)}<em>${p}</em></div>`).join('')}</div>
         <div class="s19-lines">${L2_LINES.map(([i, n, q, t, on]) => `<div class="${on ? 'on' : ''}"><i>${i}</i><span>${esc(n)}<small>${q}</small></span><span>${t}</span></div>`).join('')}</div></div>
       <div class="s19-chips"><span>Hold<kbd>Ctrl+H</kbd></span><span>Open Item<kbd>F7</kbd></span><span>Tax Off<kbd>F5</kbd></span><span>Discount<kbd>F6</kbd></span><span>Customer<kbd>F3</kbd></span></div>
-      <div class="s19-tot"><span class="s19-pay">Pay<kbd>F12</kbd></span><span class="s19-big"><small>TOTAL</small>$55.22</span><span class="s19-sum"><span>Subtotal</span><b>$50.72</b><span>Discount</span><b>$0.00</b><span>Tax 8.875%</span><b>$4.50</b></span></div>`;
+      <div class="s19-tot"><span class="s19-note"><b>Preview only</b><small>Sample screen: no sale, no total and no payment here. Ring up in Lane 1.</small></span></div>`;
   }
 
   function update() {

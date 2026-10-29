@@ -100,6 +100,16 @@ html[data-style="15"] #scanInput:focus { box-shadow: var(--n-in), 0 0 0 2px rgba
 html[data-style="15"] #scanInput::placeholder { color: var(--n-t2); }
 html[data-style="15"] .bottom > div:first-child .scanmsg, html[data-style="15"] .bottom > div:first-child .msg,
 html[data-style="15"] .bottom > div:first-child .noteline { text-align: center; font-weight: 700; font-size: 12.5px; margin-top: 6px; background: transparent; border: 0; }
+/* Cursor fix (LOW 15): the recovery notice hung under the pill and covered the dial's New key (and History / Log Out at 1366).
+   It now sits inside the scan pill, on its right side. The pill gets a bit wider while the notice is shown; the left part stays the scan box. */
+html[data-style="15"] .bottom > div:first-child:has(> #noticeBar) { width: min(500px, calc(100vw - 540px)); }
+html[data-style="15"] .bottom > div:first-child:has(> #noticeBar) #scanInput { padding-right: calc(62% + 8px); }
+html[data-style="15"] .bottom > div:first-child > #noticeBar {
+  position: absolute; z-index: 1; top: 3px; right: 4px; width: 62%; height: 38px; box-sizing: border-box; margin: 0;
+  display: flex; align-items: center; gap: 4px; padding: 0 4px 0 12px; border-radius: 19px; border: 0;
+  background: var(--n-bg); box-shadow: var(--n-out-s); font: 700 10px/1.15 var(--n-font); text-align: left; }
+html[data-style="15"] .bottom > div:first-child > #noticeBar > span { flex: 1; min-width: 0; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+html[data-style="15"] .bottom > div:first-child > #noticeBar > button { flex: none; min-height: 0; height: 28px; padding: 0 9px; font-size: 11px; margin: 0; }
 
 /* centre: the dial (actions panel = the ring) */
 html[data-style="15"] .wrap > aside.actions { position: absolute; left: 340px; right: 340px; top: 0; bottom: 0; background: transparent; border: 0; display: block; }

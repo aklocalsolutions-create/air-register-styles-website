@@ -142,6 +142,9 @@ html[data-style="11"] .scanmsg, html[data-style="11"] #toast:not(:empty), html[d
   margin-top: 8px; border-radius: 14px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; background: rgba(255,255,255,.85);
   box-shadow: 0 10px 24px rgba(60,40,90,.16); width: max-content; max-width: 520px; }
 html[data-style="11"] #toast:empty { display: none; }
+/* Cursor fix (MEDIUM 11): up to 520px wide, these ran over the More list (#right). They now end before #right starts and wrap instead. */
+html[data-style="11"] .scanmsg, html[data-style="11"] #toast:not(:empty), html[data-style="11"] .noteline {
+  max-width: max(96px, calc(var(--mx) - var(--tbx) - 8px - 10px)); box-sizing: border-box; white-space: normal; overflow-wrap: anywhere; }
 
 /* ======================================================================= "just added" hero (deco from JS) + its real buttons */
 html[data-style="11"] .s11-hero {
@@ -510,6 +513,11 @@ html[data-style="11"] .fullpay .row2 #payOk::before { content: 'Finish sale'; fo
    covering the segment so a tap still lands on it (same handler as Classic) */
 html[data-style="11"] .fullpay .pline:not(.on) { position: relative; }
 html[data-style="11"] .fullpay .pline:not(.on) .pamt { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; opacity: 0; cursor: pointer; }
+/* Cursor fix (MEDIUM 11): the inactive amounts were invisible (opacity 0). The same input now shows its value, small, under the label. */
+html[data-style="11"] .fullpay .pline:not(.on) .pamt { opacity: 1; background: transparent; border: 0; box-shadow: none; outline: 0; border-radius: inherit;
+  padding: 30px 6px 0; text-align: center; font: 600 12px var(--font); color: var(--mut); }
+html[data-style="11"] .fullpay .pline:not(.on) .pamt::placeholder { color: var(--mut2); }
+html[data-style="11"] .fullpay .pline:not(.on) .plbl { transform: translateY(-8px); pointer-events: none; }
 html[data-style="11"] .fullpay .pline .plbl { line-height: 1.2; }
 html[data-style="11"] .fullpay .pline .plbl { flex: none; }
 /* quick cash chips: amount on top, its Alt key small underneath (keys unchanged) */

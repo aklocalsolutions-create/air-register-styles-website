@@ -77,6 +77,7 @@
 
   AirStyle.register('16', {
     on() { if (document.documentElement.getAttribute('data-page') === 'customer') return; last = {}; tick(); timer = setInterval(tick, 300); },
-    off() { clearInterval(timer); timer = null; if (obs) obs.disconnect(); obs = null; document.querySelectorAll('.s16-log, .s16-hint, .s16-recv, .s16-keys, .s16-ppr').forEach(e => e.remove()); }
+    off() { clearInterval(timer); timer = null; if (obs) obs.disconnect(); obs = null; document.querySelectorAll('.s16-log, .s16-hint, .s16-recv, .s16-keys, .s16-ppr').forEach(e => e.remove());
+      lines = []; last = {}; }   // Cursor fix (LOW 16): forget the log and the last-seen state, so a later on() starts clean
   });
 })();

@@ -38,7 +38,7 @@ html[data-style="22"] {
   --s22-bg: #06110f; --s22-p: #0c1c19; --s22-p2: #122723; --s22-line: #1d3832; --s22-ink: #e8fff8; --s22-mut: #7fa69b;
   --s22-a: #b6ff3c; --s22-a2: #34f5c5; --s22-red: #ff7b8a;
   --s22-rail: 84px; --s22-drw: 404px;
-  --s22-cx: calc(84px + (100vw - 488px) / 2);      /* centre of the hero column */
+  --s22-cx: calc(var(--s22-rail) + (100vw - var(--s22-rail) - var(--s22-drw)) / 2);      /* centre of the hero column (same as 84px + (100vw - 488px) / 2) */
   --s22-dy: calc(50vh - 384px);                     /* mockup y (768 high) -> this window */
   --s22-font: 'Space Grotesk', 'Segoe UI', Roboto, Arial, sans-serif;
   --s22-mono: 'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace;
@@ -78,6 +78,13 @@ html[data-style="22"][data-page="register"] #app > .top .pill {
 html[data-style="22"][data-page="register"] #hwPill::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px;
   background: var(--s22-a); box-shadow: 0 0 10px var(--s22-a); vertical-align: 1px; }
 html[data-style="22"][data-page="register"] #hwPill.warn::before { background: #ffb547; box-shadow: 0 0 10px #ffb547; }
+/* Cursor fix (MEDIUM 22): the top bar ran into itself below 1400px. Narrow the cart drawer there and let the long pills ellipsize. */
+@media (max-width: 1399px) {
+  html[data-style="22"] { --s22-drw: 340px; }
+  html[data-style="22"][data-page="register"] #app > .top .pill:where(:not(#setTop)) { min-width: 0; flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; }
+  html[data-style="22"][data-page="register"] #app > .top #helpPill, html[data-style="22"][data-page="register"] #app > .top #sessPill,
+  html[data-style="22"][data-page="register"] #app > .top > b { flex: none; }
+}
 html[data-style="22"][data-page="register"] #sessPill::before { content: '· '; }
 html[data-style="22"][data-page="register"] #sessPill.warn { color: #ffb547 !important; }
 html[data-style="22"][data-page="register"] #buildPill:not(.ok):not(.bad) { display: none; }
@@ -540,6 +547,21 @@ html[data-style="22"] .s22-pay .s22-core { width: 104px; height: 104px; border-r
 html[data-style="22"] .s22-pay .s22-core svg { width: 52px; height: 52px; }
 html[data-style="22"] .s22-pay h1 { font-size: 30px; margin: 12px 0 0; font-weight: 700; letter-spacing: -.5px; }
 html[data-style="22"] .s22-pay .amt { font-size: 64px; font-weight: 700; letter-spacing: -2.5px; margin: 6px 0 0; color: var(--s22-a); line-height: 1.05; }
+/* Cursor fix (HIGH 22): on a 768-tall window the pay sheet's fields, cash chips and Back ran off the bottom.
+   The sheet now stays inside the window and scrolls, the cash chips sit in one row under the tender cards, and the hero is smaller. */
+@media (max-height: 800px) {
+  html[data-style="22"][data-page="register"] .modal.fullpay { max-height: calc(100vh - 58px); overflow: auto; padding-top: 18px; padding-bottom: 12px; }
+  html[data-style="22"][data-page="register"] .fullpay .plist { flex-wrap: wrap; }
+  html[data-style="22"][data-page="register"] .fullpay .plist > .pextra { order: 5; flex: 1 0 100%; padding: 0; }
+  html[data-style="22"][data-page="register"] .fullpay .pextra.quick button { font-size: 15px; padding: 8px 14px; min-width: 0; }
+  html[data-style="22"][data-page="register"] .fullpay .pline { padding: 9px 12px 8px; gap: 6px; }
+  html[data-style="22"][data-page="register"] .fullpay .pline .plbl { flex-direction: row; align-items: center; gap: 8px; }
+  html[data-style="22"] .s22-pay .s22-rings { width: 140px; height: 140px; }
+  html[data-style="22"] .s22-pay .s22-core { width: 80px; height: 80px; border-radius: 24px; }
+  html[data-style="22"] .s22-pay .s22-core svg { width: 40px; height: 40px; }
+  html[data-style="22"] .s22-pay h1 { font-size: 24px; margin-top: 8px; }
+  html[data-style="22"] .s22-pay .amt { font-size: 50px; }
+}
 @media (max-height: 700px) {
   html[data-style="22"] .s22-pay .s22-rings { width: 120px; height: 120px; }
   html[data-style="22"] .s22-pay .s22-core { width: 72px; height: 72px; border-radius: 22px; }

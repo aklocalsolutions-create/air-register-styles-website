@@ -17,6 +17,21 @@ html[data-style="27"] {
   --r27-sans:Manrope, 'Segoe UI', Roboto, Arial, sans-serif;
   --r27-lw:430px; --r27-rw:318px;
 }
+/* Cursor fix (HIGH 27): at 1024 the two side columns left the pay sheet 212px wide and cut the balance to "$28.9". Narrower side columns below 1200px. */
+@media (max-width: 1199px) {
+  html[data-style="27"] { --r27-lw:340px; --r27-rw:262px; }
+  html[data-style="27"][data-page="register"] .modal.fullpay { min-width:0; }
+  html[data-style="27"][data-page="register"] .fullpay .plist > .pextra { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:6px; padding:0; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:36px; min-width:0; padding:0 10px; font-size:14px; }
+  html[data-style="27"][data-page="register"] .fullpay .pline { padding:9px 8px 9px 10px !important; gap:6px; }
+  html[data-style="27"][data-page="register"] .fullpay .pline .plbl { font-size:13.5px !important; }
+  html[data-style="27"][data-page="register"] .fullpay .pline .pamt { font-size:14px !important; padding:0 6px !important; max-width:52%; min-width:64px; }
+}
+/* Cursor fix (HIGH 27): at 1366x768 the cash chips stacked in one column and pushed Back/Pay below the screen. Lay the chips out in one wrapping row on short screens. */
+@media (max-height: 899px) {
+  html[data-style="27"][data-page="register"] .fullpay .plist > .pextra { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:6px; padding:0; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:36px; min-width:0; padding:0 10px; font-size:14px; }
+}
 html[data-style="27"], html[data-style="27"] body { background:var(--r27-bg); color:var(--r27-ink); font-family:var(--r27-sans); }
 html[data-style="27"] kbd { font:700 10px/1 var(--r27-mono); color:var(--r27-b); background:var(--r27-kbd); border:0; border-radius:4px; padding:3px 5px; white-space:nowrap; }
 

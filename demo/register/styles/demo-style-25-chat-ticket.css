@@ -180,7 +180,8 @@ html[data-style="25"] #right .rbtn[data-a="open-item"]:hover, html[data-style="2
 html[data-style="25"] #right .rbtn[data-a="tax-off"]:hover { background: #e9ecf8; }
 
 /* ---------- center: composer (the real scan box) ---------- */
-html[data-style="25"] .bottom > div:first-child { grid-area: comp; background: #fff; padding: 8px 18px 6px; height: 88px; display: flex; flex-direction: column; min-width: 0; }
+html[data-style="25"] .bottom > div:first-child { grid-area: comp; background: #fff; padding: 8px 18px 6px; height: auto; min-height: 88px; box-sizing: border-box; display: flex; flex-direction: column; min-width: 0; }
+/* Cursor fix (LOW 25): the composer was a fixed 88px, so the recovery notice pushed #toast 17-19px below the window. It now grows and the chat row gives up the room. */
 html[data-style="25"] .scanrow { position: relative; align-items: center; gap: 8px; height: 50px; flex: none; border: 1.5px solid var(--s25-b); border-radius: 16px;
   background: #fff; box-shadow: 0 0 0 4px var(--s25-soft); padding: 0 6px 0 12px; }
 html[data-style="25"] .scanrow input { border: 0; outline: 0; background: transparent; height: 46px; padding: 0 4px; font: 500 16px var(--s25-font); color: var(--s25-ink); min-width: 0; }
@@ -290,6 +291,19 @@ html[data-style="25"] .fullpay .row2 .pbtn kbd, html[data-style="25"] .fullpay .
 html[data-style="25"] .fullpay .row2 .pbtn { min-height: 54px; font-size: 17px; padding: 12px 26px; border-radius: 15px; }
 html[data-style="25"] .fullpay #payOk { background: var(--s25-p); box-shadow: 0 12px 24px -12px var(--s25-p); }
 html[data-style="25"] .fullpay #payBack { background: #fff; color: var(--s25-ink); border: 1px solid var(--s25-line); }
+/* Cursor fix (HIGH 25): after Enter the cash chips pushed Back and Pay under the window edge at 1024x768.
+   #payBody now scrolls (the grid grows with its content), and on short windows the sheet is a little tighter so both buttons fit. */
+html[data-style="25"] .fullpay #payBody { overflow-y: auto; min-height: 0; }
+html[data-style="25"] .fullpay .paygrid { height: auto; min-height: 100%; }
+@media (max-height: 800px) {
+  html[data-style="25"] .fullpay .payhead { margin-bottom: 10px; padding-top: 9px; padding-bottom: 9px; }
+  html[data-style="25"] .fullpay .plist { padding: 10px 14px; gap: 6px; }
+  html[data-style="25"] .fullpay .pline { min-height: 48px; }
+  html[data-style="25"] .fullpay .quick { gap: 6px; }
+  html[data-style="25"] .fullpay .quick button { font-size: 15px; padding: 6px 14px; }
+  html[data-style="25"] .fullpay .row2 .pbtn { min-height: 46px; padding: 9px 24px; }
+  html[data-style="25"] .fullpay .paynums .pn.left { min-height: 118px; }
+}
 
 /* ---------- settings page ---------- */
 html[data-style="25"] .stpage .sthead { background: var(--s25-side); }
