@@ -1,0 +1,1185 @@
+{
+ "allOk": false,
+ "results": [
+  {
+   "style": "19",
+   "size": "1024x768",
+   "check": "totals not clipped",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "totalsIn": true,
+    "lane2": true,
+    "preview": true,
+    "pay": false,
+    "lane2In": true
+   }
+  },
+  {
+   "style": "19",
+   "size": "1024x768",
+   "check": "Lane 2 says 'Preview only', no Pay",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "totalsIn": true,
+    "lane2": true,
+    "preview": true,
+    "pay": false,
+    "lane2In": true
+   }
+  },
+  {
+   "style": "19",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "22",
+   "size": "1366x768",
+   "check": "left rail: Settings does not overlap other buttons",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "22",
+   "size": "1366x768",
+   "check": "pay drawer on screen (sheet, cash box, Pay, Back)",
+   "ok": true,
+   "info": {
+    "drawer": true,
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "m": [
+     84,
+     248,
+     1026,
+     620
+    ]
+   }
+  },
+  {
+   "style": "22",
+   "size": "1366x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "22",
+   "size": "1024x768",
+   "check": "left rail: Settings does not overlap other buttons",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "22",
+   "size": "1024x768",
+   "check": "pay drawer on screen (sheet, cash box, Pay, Back)",
+   "ok": true,
+   "info": {
+    "drawer": true,
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "m": [
+     84,
+     248,
+     684,
+     620
+    ]
+   }
+  },
+  {
+   "style": "22",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "23",
+   "size": "1024x768",
+   "check": "menu and quick search on screen",
+   "ok": true,
+   "info": {
+    "buttons": 13,
+    "off": [],
+    "qs": true,
+    "hOverflow": false
+   }
+  },
+  {
+   "style": "23",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "25",
+   "size": "1366x768",
+   "check": "Pay and Back inside the window (after Enter)",
+   "ok": true,
+   "info": {
+    "open": true,
+    "payOk": true,
+    "back": true
+   }
+  },
+  {
+   "style": "25",
+   "size": "1366x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "25",
+   "size": "1024x768",
+   "check": "Pay and Back inside the window (after Enter)",
+   "ok": true,
+   "info": {
+    "open": true,
+    "payOk": true,
+    "back": true
+   }
+  },
+  {
+   "style": "25",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (demo page)",
+   "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (demo page)",
+   "check": "prices not clipped (sale + payment)",
+   "ok": true,
+   "info": {
+    "sale": [],
+    "pay": {
+     "clipped": [],
+     "payOk": true,
+     "back": true,
+     "total": true
+    }
+   }
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (demo page)",
+   "check": "Pay and Back on screen with the cash chips open",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "payOk": true,
+    "back": true,
+    "total": true,
+    "payInScrollArea": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (demo page)",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (demo page)",
+   "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (demo page)",
+   "check": "prices not clipped (sale + payment)",
+   "ok": true,
+   "info": {
+    "sale": [],
+    "pay": {
+     "clipped": [],
+     "payOk": true,
+     "back": true,
+     "total": true
+    }
+   }
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (demo page)",
+   "check": "Pay and Back on screen with the cash chips open",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "payOk": true,
+    "back": true,
+    "total": true,
+    "payInScrollArea": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (demo page)",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (app window)",
+   "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (app window)",
+   "check": "prices not clipped (sale + payment)",
+   "ok": true,
+   "info": {
+    "sale": [],
+    "pay": {
+     "clipped": [],
+     "payOk": true,
+     "back": true,
+     "total": true
+    }
+   }
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (app window)",
+   "check": "Pay and Back on screen with the cash chips open",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "payOk": true,
+    "back": true,
+    "total": true,
+    "payInScrollArea": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1366x768 (app window)",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (app window)",
+   "check": "all ticket columns (Price, Discount, Total) in view without sideways scrolling",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (app window)",
+   "check": "prices not clipped (sale + payment)",
+   "ok": true,
+   "info": {
+    "sale": [],
+    "pay": {
+     "clipped": [],
+     "payOk": true,
+     "back": true,
+     "total": true
+    }
+   }
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (app window)",
+   "check": "Pay and Back on screen with the cash chips open",
+   "ok": true,
+   "info": {
+    "clipped": [],
+    "payOk": true,
+    "back": true,
+    "total": true,
+    "payInScrollArea": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1024x768 (app window)",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "17",
+   "size": "1920x1080",
+   "check": "scan box doesn't collapse with a notice",
+   "ok": true,
+   "info": {
+    "before": 1150,
+    "scanW": 712,
+    "notice": true,
+    "scanIn": true
+   }
+  },
+  {
+   "style": "17",
+   "size": "1920x1080",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "17",
+   "size": "1366x768",
+   "check": "scan box doesn't collapse with a notice",
+   "ok": true,
+   "info": {
+    "before": 596,
+    "scanW": 180,
+    "notice": true,
+    "scanIn": true
+   }
+  },
+  {
+   "style": "17",
+   "size": "1366x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "17",
+   "size": "1024x768",
+   "check": "scan box doesn't collapse with a notice",
+   "ok": true,
+   "info": {
+    "before": 254,
+    "scanW": 254,
+    "notice": true,
+    "scanIn": true
+   }
+  },
+  {
+   "style": "17",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "30",
+   "size": "1366x768",
+   "check": "$5 and $10 cash chips visible",
+   "ok": true,
+   "info": {
+    "c5": true,
+    "c10": true,
+    "c20": true,
+    "payOk": true,
+    "back": true
+   }
+  },
+  {
+   "style": "30",
+   "size": "1366x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "30",
+   "size": "1024x768",
+   "check": "$5 and $10 cash chips visible",
+   "ok": true,
+   "info": {
+    "c5": true,
+    "c10": true,
+    "c20": true,
+    "payOk": true,
+    "back": true
+   }
+  },
+  {
+   "style": "30",
+   "size": "1024x768",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "30",
+   "size": "1093x614@1.25",
+   "check": "$5 and $10 cash chips visible",
+   "ok": true,
+   "info": {
+    "c5": true,
+    "c10": true,
+    "c20": true,
+    "payOk": true,
+    "back": true
+   }
+  },
+  {
+   "style": "30",
+   "size": "1093x614@1.25",
+   "check": "no JS errors",
+   "ok": true,
+   "info": []
+  },
+  {
+   "style": "01",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "01",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "01",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "03",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "03",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": false,
+   "info": {
+    "cashIn": true,
+    "payOk": false,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "03",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "10",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "10",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": false,
+   "info": {
+    "cashIn": true,
+    "payOk": false,
+    "back": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "10",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "11",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "11",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "11",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "15",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "15",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "15",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "16",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "16",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "16",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "17",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "17",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "17",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "19",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "19",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "19",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "22",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "22",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "22",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "23",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "23",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "23",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "25",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "25",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "25",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "26",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "26",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": false,
+   "info": {
+    "cashIn": true,
+    "payOk": false,
+    "back": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "26",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "27",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "27",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "30",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "30",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "30",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": "hidden by design (Enter / Esc)",
+    "back": "hidden by design (Enter / Esc)",
+    "keyOnly": true
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": false,
+    "payOk": false,
+    "pageScrolled": false,
+    "keyOnly": true
+   }
+  }
+ ]
+}

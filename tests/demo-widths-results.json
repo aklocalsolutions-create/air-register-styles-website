@@ -1,0 +1,2909 @@
+[
+ {
+  "id": "01",
+  "name": "Clean Light",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "03",
+  "name": "Glass",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 532,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "10",
+  "name": "Retro Pop",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "11",
+  "name": "Liquid Glass",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "15",
+  "name": "Neumorphic Dial",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "16",
+  "name": "Terminal TUI",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "17",
+  "name": "Editorial",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 532,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "19",
+  "name": "Dual Cashier",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "22",
+  "name": "Scan Hero",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "23",
+  "name": "Spreadsheet",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "25",
+  "name": "Chat Ticket",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "26",
+  "name": "Floating Windows",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "27",
+  "name": "Receipt Preview",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "30",
+  "name": "Card Deck",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "32",
+  "name": "Order Desk",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "33",
+  "name": "Counter Grid",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "35",
+  "name": "Tabbed Pantry",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "36",
+  "name": "Rail Cards",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": true,
+     "keyOnly": false,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "37",
+  "name": "Maroon Console",
+  "compare": {},
+  "widths": [
+   {
+    "size": "1920x1080",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 972,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": false,
+     "keyOnly": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1366x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": false,
+     "keyOnly": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1280x800",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 652,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": false,
+     "keyOnly": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "1024x768",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 620,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": false,
+     "keyOnly": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   },
+   {
+    "size": "390x844",
+    "ok": true,
+    "page": {
+     "band": true,
+     "hOverflow": false,
+     "frameH": 512,
+     "dl": true
+    },
+    "sale": {
+     "hOverflow": false,
+     "payVisible": true,
+     "totalShown": true,
+     "scanVisible": true
+    },
+    "pay": {
+     "cashInVisible": true,
+     "payOkVisible": false,
+     "keyOnly": true,
+     "dueVisible": true,
+     "hOverflow": false
+    },
+    "customer": {
+     "saleView": true,
+     "totalVisible": true,
+     "hOverflow": false
+    },
+    "errors": []
+   }
+  ],
+  "errors": []
+ }
+]

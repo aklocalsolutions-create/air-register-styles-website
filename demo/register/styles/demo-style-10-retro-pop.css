@@ -278,6 +278,16 @@ html[data-style="10"] .status .net { color: var(--rp-gr); }
 html[data-style="10"] .status > span { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
 html[data-style="10"] .status > #stNet, html[data-style="10"] .status > #stVer, html[data-style="10"] .status > #stTime { flex-shrink: 0; overflow: visible; }
 @media (max-width: 1100px) { html[data-style="10"] .status { gap: 10px; padding: 0 8px; } }
+/* Cursor fix (MEDIUM 10): at 1024px the 5-column key cells are about 52px wide, so labels like "Sale Disc…" and "Open D…" were cut off.
+   Under 1200px the two key rows get 8px more height each and labels wrap onto two short lines instead of being cut. */
+@media (max-width: 1199px) {
+  html[data-style="10"] .wrap { grid-template-rows: 58px repeat(6, minmax(0, 1fr)) 58px 58px; }
+  html[data-style="10"] .wrap .abtn, html[data-style="10"] .wrap .rbtn { padding: 3px 4px; }
+  html[data-style="10"] .wrap .abtn > span:last-child, html[data-style="10"] .wrap .rbtn { gap: 2px; }
+  html[data-style="10"] .wrap .abtn .t { font-size: 10.5px; line-height: 1.08; white-space: normal; overflow-wrap: anywhere; text-overflow: clip; }
+  html[data-style="10"] .wrap .rbtn { font-size: 10.5px; line-height: 1.08; white-space: normal; overflow-wrap: anywhere; }
+  html[data-style="10"] .wrap .abtn .k, html[data-style="10"] .wrap .rbtn small, html[data-style="10"] .wrap .tile .k { font-size: 8.5px; padding: 2px 4px; }
+}
 
 /* ---------- dialogs (all windows) ---------- */
 html[data-style="10"] .el-overlay { background: rgba(40, 8, 90, .55); }

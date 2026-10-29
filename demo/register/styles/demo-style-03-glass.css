@@ -454,3 +454,9 @@ html[data-style="03"] #qsPanel:focus-within, html[data-style="03"] #qsPanel:focu
 html[data-style="03"] #bulkPanel h3 { font-size: 0 !important; }
 html[data-style="03"] #bulkPanel h3::before { content: 'Categories'; font-size: 11px; }
 html[data-style="03"] #bulkPanel h3::after { content: 'Alt+1  Alt+2 …'; float: right; font: 600 10px/1 var(--g3-font); letter-spacing: 0; color: rgba(255,255,255,.7); }
+/* Cursor fix (LOW 03): at 1024px the Discount slot is 65px wide, so "Sale Discount" was cut to "ale Discoun". It now wraps onto two lines.
+   The category hint ended in "…" and read as cut off, so it now spells out the range. */
+@media (max-width: 1199px) {
+  html[data-style="03"] #right .rbtn[data-a="discount"] { white-space: normal; line-height: 1.1; font-size: 10.5px; }
+  html[data-style="03"] #bulkPanel h3::after { content: 'Alt+1–9, 0, -, ='; }
+}

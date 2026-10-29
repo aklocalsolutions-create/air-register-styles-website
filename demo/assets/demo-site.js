@@ -6,7 +6,7 @@ function safeHttp(url) {
   if (!url) return '';
   try { const u = new URL(url, location.href); return (u.protocol === 'https:' || u.protocol === 'http:') ? u.href : ''; } catch { return ''; }
 }
-const FRAME_VIEWS = new Set(['reg', 'split', 'cust', 'mock', 'mockpay']);
+const FRAME_VIEWS = new Set(['reg', 'split', 'cust']);
 const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
 // "Download Air Register in this style": a disabled placeholder until the style's downloadUrl is set in demo-styles-config.js.
 function downloadButton(s) {
@@ -15,7 +15,7 @@ function downloadButton(s) {
   if (href) return `<a class="dl live" href="${esc(href)}" rel="noopener" title="${esc(label)}" data-download="${s.id}">${DL_ICON}Download</a>`;
   return `<button class="dl" type="button" disabled aria-disabled="true" title="${esc(label)} - coming soon" data-download="${s.id}">${DL_ICON}Download - coming soon</button>`;
 }
-function stageBadge(s) { return s.stage === 'tested' ? '<span class="badge ok" data-stage="tested">✔ Tested - working demo in this style</span>' : '<span class="badge pv" data-stage="preview">Preview - still in testing</span>'; }
+function stageBadge(s) { return s.stage === 'tested' ? '<span class="badge ok" data-stage="tested">✔ Tested - working demo in this style</span>' : '<span class="badge pv" data-stage="preview">Preview - coming soon to Air Register</span>'; }
 // small original preview drawn from the style's colours (used until a screenshot thumbnail exists)
 function swatchThumb(s) {
   const [a, b, c] = (s.swatch || ['#345', '#9bd', '#eef']).map(safeColor);
@@ -27,12 +27,12 @@ function swatchThumb(s) {
 function renderGallery() {
   const g = document.getElementById('grid'), list = window.DEMO_STYLES || [];
   g.innerHTML = list.map(s => `<article class="card" data-style="${s.id}">
-    <a class="thumb" href="demo-style.html?style=${s.id}" aria-label="Open the Style ${s.id} ${esc(s.name)} demo"><span class="svg">${swatchThumb(s)}</span>
+    <a class="thumb" href="demo-style.html?style=${s.id}" aria-label="Open the Style ${s.id} ${esc(s.name)} ${s.stage === 'tested' ? 'demo' : 'preview'}"><span class="svg">${swatchThumb(s)}</span>
       <img alt="" src="assets/thumbs/demo-style-${s.id}.png" onerror="this.remove()" style="position:absolute;inset:0"><span class="no">Style ${s.id}</span></a>
     <div class="body"><h3>Style ${s.id} ${esc(s.name)}</h3>
-      ${stageBadge(s)}
+      ${stageBadge(s)}${s.desc ? `<div class="meta">${esc(s.desc)}</div>` : ''}
       <div class="sw">${(s.swatch || []).map(c => `<i style="background:${safeColor(c)}"></i>`).join('')}</div>
-      <div class="row"><a class="btn pri" href="demo-style.html?style=${s.id}">Open demo</a>${downloadButton(s)}</div></div></article>`).join('');
+      <div class="row"><a class="btn pri" href="demo-style.html?style=${s.id}">${s.stage === 'tested' ? 'Open demo' : 'See preview'}</a>${downloadButton(s)}</div></div></article>`).join('');
   document.getElementById('count').textContent = list.length;
 }
 function renderFrame() {
@@ -40,27 +40,20 @@ function renderFrame() {
   const s = (window.DEMO_STYLES || []).find(x => x.id === id) || (window.DEMO_STYLES || [])[0];
   document.title = `DEMO - Style ${s.id} ${s.name} - Demo Store`;
   const pv = s.stage !== 'tested';
+  if (pv) { renderPreview(s); return; }
   document.getElementById('sname').innerHTML = `<span class="no">Style ${s.id}</span> ${esc(s.name)} ${stageBadge(s)}`;
-  document.body.classList.toggle('isPreview', pv);
-  document.getElementById('dlSlot').innerHTML = downloadButton(s);
-  const sel = document.getElementById('pick');
-  sel.innerHTML = (window.DEMO_STYLES || []).map(x => `<option value="${x.id}"${x.id === s.id ? ' selected' : ''}>Style ${x.id} ${esc(x.name)}</option>`).join('');
-  sel.onchange = () => { location.search = '?style=' + encodeURIComponent(sel.value); };
-  const reg = document.getElementById('reg'), cus = document.getElementById('cus'), mock = document.getElementById('mock'), stage = document.getElementById('stage');
+  frameCommon(s);
+  const reg = document.getElementById('reg'), cus = document.getElementById('cus'), stage = document.getElementById('stage');
   reg.src = `register/index.html?style=${encodeURIComponent(s.id)}`;
-  document.getElementById('pvNote').hidden = !pv;
-  const mockPath = (typeof s.mockup === 'string' && s.mockup && !/^[a-z][a-z0-9+.-]*:/i.test(s.mockup) && !s.mockup.startsWith('//') && !s.mockup.startsWith('/') && !s.mockup.includes('..')) ? s.mockup : '';
   const view = v => {
-    if (!FRAME_VIEWS.has(v)) v = pv ? 'mock' : 'reg';
-    if (!pv && (v === 'mock' || v === 'mockpay')) v = 'reg';
-    if ((v === 'mock' || v === 'mockpay') && mockPath) { const want = mockPath + (v === 'mockpay' ? '#pay' : '#sale'); if (!mock.src.endsWith(want)) mock.src = want; }
-    stage.className = 'stage ' + (v === 'mock' || v === 'mockpay' ? 'mock' : v);
-    if (v !== 'reg' && v !== 'mock' && v !== 'mockpay' && !cus.src.includes('customer')) cus.src = `register/demo-customer.html?style=${encodeURIComponent(s.id)}`;
+    if (!FRAME_VIEWS.has(v)) v = 'reg';
+    stage.className = 'stage ' + v;
+    if (v !== 'reg' && !cus.src.includes('customer')) cus.src = `register/demo-customer.html?style=${encodeURIComponent(s.id)}`;
     document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('on', b.dataset.view === v));
   };
   document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => view(b.dataset.view));
   const requested = q.get('view');
-  view(FRAME_VIEWS.has(requested) ? requested : (pv ? 'mock' : 'reg'));
+  view(FRAME_VIEWS.has(requested) ? requested : 'reg');
   // Fit to screen: below FIT_MIN px the screens are drawn at a desktop size and scaled down, so no style is squashed.
   const FIT_MIN = 1000, DESK_W = 1280;
   const fit = () => {
@@ -77,4 +70,57 @@ function renderFrame() {
   document.getElementById('rcBtn').onclick = () => { let rec = null; try { rec = reg.contentWindow.DEMO_RECEIPT(); } catch {} window.DEMO_OPEN_RECEIPT(rec); };
   document.getElementById('popBtn').onclick = () => window.open(`demo-window.html?page=customer&style=${s.id}`, 'demoCustomer', 'width=900,height=640');
   document.getElementById('resetBtn').onclick = () => { try { reg.contentWindow.DEMO_RESET(); } catch {} reg.src = reg.src; if (cus.src) cus.src = cus.src; };
+  designShots(s);
+}
+// tested styles that started as previews keep their design pictures: a "Design pictures" button opens them over the register
+function designShots(s) {
+  const pvw = s.preview || {}, dir = (typeof pvw.dir === 'string' && /^previews\/[a-z0-9-]+\/$/.test(pvw.dir)) ? pvw.dir : '';
+  const shots = (pvw.shots || []).filter(k => PREVIEW_SHOTS[k]), btn = document.getElementById('shotsBtn');
+  if (!btn || !dir || !shots.length) return;
+  btn.hidden = false;
+  btn.onclick = () => {
+    if (document.getElementById('dsBox')) return;
+    const box = document.createElement('div'); box.id = 'dsBox'; box.className = 'dsBox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Design pictures');
+    box.innerHTML = `<div class="dsIn"><div class="dsHead"><b>Style ${s.id} ${esc(s.name)} - design pictures</b><small>The design this style was built from (made-up demo data). The working register is behind this window.</small><button class="btn" type="button" id="dsClose">Close</button></div>
+      <div class="pvGrid">${shots.map(k => `<figure><a href="${dir}demo-${k}.png" target="_blank" rel="noopener"><img loading="lazy" src="${dir}demo-${k}.png" alt="Style ${s.id} ${esc(s.name)} design - ${PREVIEW_SHOTS[k][1].toLowerCase()} (made-up demo data)"></a><figcaption>${PREVIEW_SHOTS[k][1]}</figcaption></figure>`).join('')}</div></div>`;
+    document.body.appendChild(box);
+    const close = () => { box.remove(); btn.focus(); };
+    document.getElementById('dsClose').onclick = close; box.onclick = e => { if (e.target === box) close(); };
+    box.onkeydown = e => { if (e.key === 'Escape') close(); };
+    document.getElementById('dsClose').focus();
+  };
+}
+// shared by the demo page and the preview page: style name + badge, download placeholder, style picker
+function frameCommon(s) {
+  document.getElementById('sname').innerHTML = `<span class="no">Style ${s.id}</span> ${esc(s.name)} ${stageBadge(s)}`;
+  document.getElementById('dlSlot').innerHTML = downloadButton(s);
+  const sel = document.getElementById('pick');
+  sel.innerHTML = (window.DEMO_STYLES || []).map(x => `<option value="${x.id}"${x.id === s.id ? ' selected' : ''}>Style ${x.id} ${esc(x.name)}${x.stage === 'tested' ? '' : ' (preview)'}</option>`).join('');
+  sel.onchange = () => { location.search = '?style=' + encodeURIComponent(sel.value); };
+}
+// 'preview' styles: not in Air Register yet. Shows the design mockup (switch screens with the buttons) and its pictures.
+const PREVIEW_SHOTS = { sale: ['sale', 'Sale screen'], payment: ['pay', 'Payment screen'], customer: ['cfd', 'Customer screen'], menu: ['menu', 'Register menu'], keys: ['keys', 'Keys screen'] };
+function renderPreview(s) {
+  document.title = `DEMO - Style ${s.id} ${s.name} - Preview - Demo Store`;
+  document.body.classList.add('isPreview');
+  frameCommon(s);
+  const pvw = s.preview || {}, dir = (typeof pvw.dir === 'string' && /^previews\/[a-z0-9-]+\/$/.test(pvw.dir)) ? pvw.dir : '';
+  const shots = (pvw.shots || []).filter(k => PREVIEW_SHOTS[k]);
+  document.getElementById('stage').remove();
+  const note = document.getElementById('pvNote'); note.hidden = false;
+  note.innerHTML = '<b>Preview - coming soon to Air Register.</b> This style is not in the Windows app yet. Below is its design with made-up Demo Store data: switch screens with the buttons, or scroll down for the pictures. Nothing on it is a working register.';
+  const box = document.createElement('main'); box.className = 'pvWrap'; box.id = 'pvWrap';
+  box.innerHTML = `${s.desc ? `<p class="pvDesc">${esc(s.desc)}</p>` : ''}<section class="pvLive"><div class="pvBar"><b>Clickable design mockup</b>${shots.map((k, i) => `<button class="btn${i ? '' : ' on'}" type="button" data-screen="${PREVIEW_SHOTS[k][0]}">${PREVIEW_SHOTS[k][1]}</button>`).join('')}</div>
+    <div class="pvFrame" id="pvFrame" data-tag="DEMO · Preview - coming soon to Air Register · made-up data"><iframe id="pvMock" title="Style ${s.id} ${esc(s.name)} design mockup (preview)"></iframe></div></section>
+    <section class="pvShots"><h2>Pictures</h2><div class="pvGrid">${shots.map(k => `<figure><a href="${dir}demo-${k}.png" target="_blank" rel="noopener"><img loading="lazy" src="${dir}demo-${k}.png" alt="Style ${s.id} ${esc(s.name)} preview - ${PREVIEW_SHOTS[k][1].toLowerCase()} (made-up demo data)"></a><figcaption>${PREVIEW_SHOTS[k][1]}</figcaption></figure>`).join('')}</div></section>`;
+  document.body.appendChild(box);
+  const f = document.getElementById('pvMock'), fr = document.getElementById('pvFrame');
+  if (dir) f.src = dir + 'index.html#sale';
+  box.querySelectorAll('[data-screen]').forEach(b => b.onclick = () => {
+    box.querySelectorAll('[data-screen]').forEach(x => x.classList.toggle('on', x === b));
+    if (dir) f.src = dir + 'index.html#' + b.dataset.screen;
+  });
+  const W = 1366, H = 768;
+  const fit = () => { const k = Math.min(1, fr.clientWidth / W); f.style.width = W + 'px'; f.style.height = H + 'px'; f.style.transform = `scale(${k})`; fr.style.height = Math.round(H * k) + 20 + 'px'; };
+  addEventListener('resize', fit); new ResizeObserver(fit).observe(fr); fit();
 }

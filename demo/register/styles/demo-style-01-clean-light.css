@@ -385,3 +385,24 @@ html[data-style="01"] .fullpay .row2 #payOk { min-width:380px; min-height:80px; 
 html[data-style="01"] .fullpay .row2 #payOk::after { content:'Finish sale'; display:block; font-size:12px; font-weight:500; opacity:.85; margin-top:2px; }
 /* customer display: label on the total card */
 html[data-style="01"][data-page="customer"] .side::before { content:'Your total'; margin-bottom:auto; font-size:clamp(14px,1.3vw,18px); font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.7); }
+/* Website fix (29 Oct, 01 on short windows, e.g. 1024x620): the payment sheet's big Pay bar sat half below the window.
+   Up to 800px tall (incl. 1024x768 and 1366x768): a slimmer balance card, tender cards and bars, and the keyboard-help card (decoration) is left out. Look only. */
+@media (max-height: 800px) {
+  html[data-style="01"] .modal.fullpay { padding-top:12px; padding-bottom:12px; }
+  html[data-style="01"] .fullpay .payhead { margin-bottom:8px; min-height:40px; }
+  html[data-style="01"] .fullpay .row2 #payBack { top:12px; min-height:40px; height:40px; }
+  html[data-style="01"] .paygrid { gap:10px; }
+  html[data-style="01"] .paynums { padding:12px 26px; border-radius:22px; }
+  html[data-style="01"] .paynums .pn.left b { font-size:min(var(--pay-due-size), 46px); letter-spacing:-1.5px; }
+  html[data-style="01"] .paynums .pn b { font-size:17px; }
+  html[data-style="01"] .fullpay .plist { gap:10px; }
+  html[data-style="01"] .fullpay .pline { min-height:0; gap:6px; padding:10px 14px; border-radius:18px; }
+  html[data-style="01"] .fullpay .pline .plbl::before { width:30px; height:30px; border-radius:10px; font-size:15px; }
+  html[data-style="01"] .fullpay .pline .pamt { height:42px; }
+  html[data-style="01"] .fullpay .plist > .pextra { padding:8px 12px; gap:8px; }
+  html[data-style="01"] .fullpay .plist > .pextra.quick button { min-height:42px; }
+  html[data-style="01"] .fullpay .row2 { padding-top:8px; }
+  html[data-style="01"] .fullpay .row2 #payOk { min-height:60px; }
+  html[data-style="01"] body:has(.modal.fullpay .row2 #payOk) .st-deco.c1-paykeys { display:none; }
+  html[data-style="01"] body:has(.modal.fullpay) .st-deco.c1-payticket { top:12px; bottom:12px; }
+}

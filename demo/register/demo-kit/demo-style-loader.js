@@ -17,8 +17,8 @@
   window.DEMO_STYLE_ENTRY = s;
   window.AIRREG_STYLE_DEFAULT = window.DEMO_STYLE;
   try { localStorage.setItem('airreg.style', window.DEMO_STYLE); } catch {}
-  // the Settings > Style picker only lists the demo's styles
-  window.AIR_STYLES = [{ id: '00', slug: 'classic', name: 'Classic', swatch: ['#34495e', '#b6d4e7', '#eef2f5'] }].concat(list.map(x => ({ id: x.id, slug: x.slug, name: x.name, swatch: x.swatch })));
+  // the Settings > Style picker only lists the demo's tested styles (previews are not in the register yet)
+  window.AIR_STYLES = [{ id: '00', slug: 'classic', name: 'Classic', swatch: ['#34495e', '#b6d4e7', '#eef2f5'] }].concat(list.filter(x => x.stage === 'tested').map(x => ({ id: x.id, slug: x.slug, name: x.name, swatch: x.swatch })));
   if (s && s.css) document.write(`<link rel="stylesheet" href="styles/demo-style-${s.id}-${s.slug}.css">`);
   document.write('<link rel="stylesheet" href="demo-kit/demo-site-fixes.css">');
   window.DEMO_LOAD_STYLE_JS = () => { if (s && s.js) document.write(`<script src="styles/demo-style-${s.id}-${s.slug}.js"><\/script>`); };

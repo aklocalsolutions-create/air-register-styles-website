@@ -75,7 +75,9 @@
     if (mo) { mo.disconnect(); mo = null; }
     if (timer) { clearTimeout(timer); timer = 0; }
     document.querySelectorAll('.e17-feat').forEach(e => e.remove()); feat = null;
-    // fonts stay registered (harmless; only style-17 rules name them)
+    // Cursor fix (LOW 17): take our FontFace objects back out of document.fonts, so switching style leaves nothing behind.
+    if (faces && document.fonts) faces.forEach(f => { try { document.fonts.delete(f); } catch (e) { /* already gone */ } });
+    faces = null;
   }
   // Mockup button set (STYLES-PLAN 13.3): every other [data-a] button stays in the DOM, hidden by style-17 CSS only,
   // and its shortcut keeps working.

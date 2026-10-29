@@ -1,0 +1,92 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DEMO - Style 37 Maroon Console - Preview</title>
+<script src="../common/demo-data.js"></script><script src="../common/demo-ribbon.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;width:1366px;height:768px;overflow:hidden;background:#2e1410;color:#f3c58c;position:relative;font-family:'Michroma','Jura',sans-serif}
+body[data-screen=sale] .pay,body[data-screen=pay] .sale,body:not([data-screen=cfd]) .cfd,body:not([data-screen=menu]) .menu,body:not([data-screen=keys]) .keys,
+body[data-screen=cfd] .op,body[data-screen=menu] .op,body[data-screen=keys] .op{display:none!important}
+.hid{display:none!important} 
+.a{position:absolute}
+.glow{background:radial-gradient(ellipse 520px 380px at 300px 300px,rgba(120,70,60,.35),rgba(0,0,0,0))}
+.tb{left:0;top:0;width:1366px;height:16px;background:linear-gradient(#e7d2ea,#c9b0d4);color:#4a3458;font:9.5px/16px 'Liberation Sans';padding:0 8px;white-space:nowrap}
+.frame{left:3px;top:17px;width:1360px;height:722px;border:2px solid #d79aa8}
+.strip{left:3px;top:739px;width:1360px;height:29px;background:#e6c4cd;border-top:1px solid #b88a96}
+.np{left:24px;top:24px;font-size:25px;letter-spacing:5px;color:#9f9690;white-space:nowrap}
+.tk{position:absolute;left:30px;width:262px;height:58px;background:#4d7f79;border:0;padding:6px 0 0 8px;text-align:left;color:#f3c58c;font:25px 'Michroma';letter-spacing:4px;white-space:nowrap;overflow:hidden;cursor:pointer}
+.tk.on{outline:3px solid #e3a54a;outline-offset:-3px}
+.cp{left:318px;top:134px;width:818px;height:574px;border:2px solid #cdc3c6}
+.li{display:grid;grid-template-columns:56px 1fr 120px 120px;height:35px;align-items:center;font:17px 'Michroma';letter-spacing:2px;color:#f3c58c;white-space:nowrap;padding:0 20px}
+.li span:nth-child(n+3){text-align:right}
+.li.cur{color:#ffe0a8;background:rgba(120,50,35,.45)}
+.eb{left:536px;top:498px;width:424px;height:66px;border:3px solid #e3a54a;padding:0 14px;display:flex;align-items:center;font:24px 'Michroma';color:#f3c58c;white-space:nowrap}
+.bb{top:620px;height:66px;background:#1e2ea6;color:#f5e2b2;padding:4px 10px 0;white-space:nowrap}
+.bb .l{display:block;text-align:center;font:24px/1.05 'Michroma';letter-spacing:4px}
+.bb .v{display:block;font:25px/1.1 'Michroma';letter-spacing:3px}
+.rv{left:1148px;width:196px;height:52px;background:#4d7f79;color:#f3c58c;padding:4px 6px 0;white-space:nowrap}
+.rv .l{display:block;text-align:center;font:21px/1.1 'Michroma';letter-spacing:3px}
+.rv .v{display:block;font:21px/1.2 'Michroma';letter-spacing:2px}
+.cfd{position:absolute;inset:0}
+.tk,.bb,.rv,.np,.eb,.li{-webkit-text-stroke:.7px currentColor} 
+.keys{position:absolute;inset:0}
+.kg{font:13px 'Michroma';letter-spacing:3px;color:#9f9690;margin:8px 0 4px;white-space:nowrap}
+.kr{display:flex;width:100%;background:none;border:0;padding:0;height:21px;align-items:center;font:12px 'Michroma';letter-spacing:1px;color:#f3c58c;text-align:left;white-space:nowrap;cursor:pointer}
+.kr .k{margin-left:auto;font:12px 'DejaVu Sans Mono';color:#e3a54a;letter-spacing:0}
+.kr.red .l{color:#ffab95}
+.menu{position:absolute;inset:0;background:#1517a4;font-family:'VT323',monospace;color:#dfe3ff;overflow:hidden}
+.wall{position:absolute;left:-30px;top:58px;width:1460px;height:660px;color:#2328c4;font:italic 700 22px/26px 'VT323';white-space:nowrap;overflow:hidden}
+.mh{left:0;top:18px;width:1366px;height:40px;display:flex;align-items:center;padding:0 22px;font:32px 'VT323';color:#e6e9ff;white-space:nowrap}
+.mh .t{flex:1;text-align:center;letter-spacing:16px}
+.mt{left:423px;top:118px;width:430px;height:34px;background:#7a2412;color:#ffd04a;font:30px/34px 'VT323';text-align:center;white-space:pre}
+.mbox{left:506px;top:282px;width:288px;height:268px;background:#1517a4;border:2px solid #dfe3ff;box-shadow:24px 24px 0 #0a0a1e;padding:12px 14px}
+.mi{height:30px;line-height:30px;font:30px 'VT323';color:#e6e9ff;white-space:nowrap;padding:0 6px}
+.mi.on{background:#8e3aae;color:#ffe45a}
+.mf{left:0;top:736px;width:1366px;height:32px;text-align:center;font:28px/32px 'VT323';color:#dfe3ff}
+.mf span{background:#6870dc;color:#fff;padding:0 3px}
+</style></head><body>
+<div class="op" id="op"></div><div class="cfd" id="cfd"></div><div class="menu" id="menu"></div><div class="keys" id="keys" data-keys-screen="1"></div>
+<script>const C=D.cust,L_=D.lines,m2=v=>v.toFixed(2);
+const P=(x,y,w,h)=>`left:${x}px;top:${y}px${w!=null?';width:'+w+'px':''}${h!=null?';height:'+h+'px':''}`;
+const div=(cls,x,y,w,h,html='',st='')=>`<div class="a ${cls}" style="${P(x,y,w,h)};${st}">${html}</div>`;
+const chrome=t=>`<div class="a glow" style="inset:0"></div><div class="a tb">Air Register — ${D.store} · Register-1 · ${D.ver} · ${t}</div><div class="a frame"></div><div class="a strip"></div>`;
+const KY=[94,208,322,436,550];
+const RY=[112,212,312,410,508];
+const BB=[[350,244],[630,254],[915,212]];
+const rv=(i,l,v)=>div('rv',1148,RY[i],null,null,`<span class="l">${l}</span><span class="v">${v}</span>`);
+const bb=(i,l,v)=>div('bb',BB[i][0],0,BB[i][1],null,`<span class="l">${l}</span><span class="v">${v}</span>`).replace('top:0px;','');
+const BIG=[['t-payment','TENDER'],['g-gift','GIFT CARD'],['a-customer','CUSTOMER'],['a-return','RETURN'],['x-taxoff','TAX OFF']];
+const big=BIG.map(([id],i)=>D.b(id,'tk',k=>k.l.toUpperCase()).replace('class="tk','style="top:'+KY[i]+'px" class="tk')).join('');
+const used=new Set(BIG.map(b=>b[0]));
+const hidden=`<div class="hid">${D.KEYS.filter(k=>!used.has(k.id)).map(k=>D.b(k.id,'hk')).join('')}</div>`;
+const rows=L_.map((l,i)=>`<div class="li${i==L_.length-1?' cur':''}"><span>${l.q}</span><span>${l.n.toUpperCase()}</span><span>${m2(l.p)}</span><span>${m2(l.t)}</span></div>`).join('');
+const sale=`<div class="sale">${chrome('Sale')}<div class="a np">${D.cashier.toUpperCase()}</div>${big}${hidden}
+<div class="a cp"></div><div class="a" style="${P(320,150,814,330)}">${rows}</div>
+<div class="a eb">_</div>
+${bb(0,'TOTAL',m2(D.total))}${bb(1,'SUBTOTAL',m2(D.sub))}${bb(2,'BEFORE TAX',m2(D.sub-D.disc)).replace('class="l"','class="l" style="font-size:19px;letter-spacing:1px"')}
+${rv(0,'ROWS',L_.length)}${rv(1,'DISCNT',m2(D.disc))}${rv(2,'TAX',m2(D.tax))}${rv(3,'QTY',D.count)}${rv(4,'STORE CR',m2(C.acct))}</div>`;
+const PL=[['CREDIT CARD','20.00','✔ PAID'],['CASH','40.00',''],['GIFT CARD','',''],['CHECK','',''],['STORE CREDIT','','']];
+const pay=`<div class="pay" data-pay="1">${chrome('Payment')}<div class="a np">PAYMENT</div>
+${PL.map((p,i)=>`<button class="tk${i==1?' on':''}" style="top:${KY[i]}px;font-size:${p[0].length>9?19:25}px" data-pay="${p[0]}">${p[0]}</button>`).join('')}
+<div class="hid">${D.PAY.quick.map(q=>`<button data-pay="${q}">${q}</button>`).join('')}<button data-pay="ok">${D.PAY.ok}</button><button data-pay="back">${D.PAY.back}</button></div>
+<div class="a cp"></div><div class="a" style="${P(320,150,814,120)}">${PL.slice(0,2).map((p,i)=>`<div class="li${i==1?' cur':''}" style="grid-template-columns:1fr 160px 170px"><span>${p[0]}</span><span style="text-align:right">${p[1]}</span><span>${p[2]}</span></div>`).join('')}</div>
+<div class="a eb">40.00_</div>
+${bb(0,'TOTAL',m2(D.total))}${bb(1,'UNPAID','0.00').replace('UNPAID','BALANCE')}${bb(2,'CHANGE',m2(D.change))}
+${rv(0,'DUE',m2(D.total))}${rv(1,'PAID','60.00')}${rv(2,'BALANCE','0.00')}${rv(3,'CHANGE',m2(D.change))}${rv(4,'ITEMS',L_.length+'/'+D.count)}</div>`;
+op.innerHTML=sale+pay;
+cfd.innerHTML=`${chrome('customer view')}<div class="a np" style="color:#f3c58c;font-size:22px">WELCOME, ${C.name.toUpperCase()}</div>
+<div class="a cp" style="left:30px;width:1106px"></div><div class="a" style="${P(32,150,1102,380)}">${L_.map(l=>`<div class="li" style="height:40px;font-size:20px;grid-template-columns:70px 1fr 160px 160px"><span>${l.q}</span><span>${l.n.toUpperCase()}</span><span>${m2(l.p)}</span><span>${m2(l.t)}</span></div>`).join('')}</div>
+${div('bb',62,0,420,null,`<span class="l">TOTAL</span><span class="v">${m2(D.total)}</span>`).replace('top:0px;','')}${div('bb',520,0,280,null,`<span class="l">SUBTOTAL</span><span class="v">${m2(D.sub)}</span>`).replace('top:0px;','')}${div('bb',830,0,280,null,`<span class="l">TAX</span><span class="v">${m2(D.tax)}</span>`).replace('top:0px;','')}
+${rv(0,'ITEMS',L_.length)}${rv(1,'QTY',D.count)}${rv(2,'DISCNT',m2(D.disc))}${rv(3,'POINTS',C.pts)}${rv(4,'STORE CR',m2(C.acct))}`;
+const cols=[['Actions','Tiles'],['Transaction Actions','Gift Cards','Lookups'],['Items','Register']];
+keys.innerHTML=`${chrome('Keys (F1)')}<div class="a np">KEYS</div><div class="a cp" style="left:30px;top:70px;width:1306px;height:638px"></div>
+${cols.map((gs,c)=>`<div class="a" style="${P(56+c*430,82,400,620)}">${gs.map(g=>`<div class="kg">${g.toUpperCase()}</div>`+D.group(g).map(id=>D.b(id,'kr')).join('')).join('')}${c==2?`<div class="kg">KEYBOARD ONLY</div>${D.legendHTML('<br>').replace(/<b>/g,'<b style="font:12px DejaVu Sans Mono;color:#e3a54a">').replace('<span data-legend="1">','<span data-legend="1" style="font:12px/21px Michroma;letter-spacing:1px">')}`:''}</div>`).join('')}
+<div class="a eb" style="left:930px;top:640px;width:380px;height:48px;font-size:15px" data-qs="1">${D.qs.title.toUpperCase()}: ${D.qs.alt} · ${D.qs.k}</div>
+<div class="a" style="left:60px;top:652px;font:15px 'Michroma';letter-spacing:2px;color:#9f9690">ESC = BACK TO SALE</div>`;
+const M=[['Sale','Esc'],['End of Day','Ctrl+E'],['Customer','F3'],['Price Check','Ctrl+I'],['History','Ctrl+L'],['Hardware','Ctrl+Shift+D'],['Printer','Ctrl+,'],['Exit','Ctrl+Shift+Q']];
+const wall=Array.from({length:26},(_,r)=>(r%2?'   ':'')+'— Air Register '.repeat(40)).join('<br>');
+menu.innerHTML=`<div class="a tb">Air Register — ${D.store} · Register-1 · ${D.ver}</div><div class="wall">${wall}</div>
+<div class="a mh"><span>10/29/26</span><span class="t">=== Air Register ===</span><span>04:12:00 pm</span></div>
+<div class="a mt">-=≡ *** MAIN MENU *** ≡=-</div>
+<div class="a mbox">${M.map(([t],i)=>`<div class="mi${i==1?' on':''}">${t}</div>`).join('')}</div>
+<div class="a mf"><span>${M[1][1]}</span>Select</div>`;
+D.show();
+</script></body></html>

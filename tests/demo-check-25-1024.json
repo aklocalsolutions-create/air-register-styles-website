@@ -16,7 +16,7 @@
   },
   "pageOverflowX": false,
   "errs": [],
-  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1024x768-header-payment.png"
+  "shot": "/tmp/arsw-pr/tests/../screenshots/check-25-1024x768-header-payment.png"
  },
  {
   "size": "1280x800",
@@ -35,7 +35,7 @@
   },
   "pageOverflowX": false,
   "errs": [],
-  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1280x800-header-payment.png"
+  "shot": "/tmp/arsw-pr/tests/../screenshots/check-25-1280x800-header-payment.png"
  },
  {
   "size": "1366x768",
@@ -54,6 +54,6 @@
   },
   "pageOverflowX": false,
   "errs": [],
-  "shot": "/workspace/styles-website/tests/../screenshots/check-25-1366x768-header-payment.png"
+  "shot": "/tmp/arsw-pr/tests/../screenshots/check-25-1366x768-header-payment.png"
  }
 ]

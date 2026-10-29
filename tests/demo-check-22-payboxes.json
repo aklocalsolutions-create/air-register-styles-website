@@ -1,0 +1,298 @@
+[
+ {
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "boxes": true,
+  "frameH": 620,
+  "due": {
+   "found": true,
+   "full": true,
+   "text": "Due $52.36",
+   "box": [
+    110,
+    450,
+    238,
+    482
+   ]
+  },
+  "paid": {
+   "found": true,
+   "full": true,
+   "text": "Paid $20.00",
+   "box": [
+    248,
+    450,
+    376,
+    482
+   ]
+  },
+  "balance": {
+   "found": true,
+   "full": true,
+   "text": "Balance $32.36",
+   "box": [
+    386,
+    450,
+    520,
+    482
+   ]
+  },
+  "change": {
+   "found": true,
+   "full": true,
+   "text": "Change $0.00",
+   "box": [
+    530,
+    450,
+    658,
+    482
+   ]
+  },
+  "pay": {
+   "found": true,
+   "full": true,
+   "text": "Pay $20.00",
+   "box": [
+    702,
+    544,
+    1006,
+    606
+   ]
+  },
+  "back": {
+   "found": true,
+   "full": true,
+   "text": "Back (Esc)",
+   "box": [
+    110,
+    408,
+    203,
+    444
+   ]
+  },
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x620-app-payboxes.png"
+ },
+ {
+  "size": "1024x768-app (app window)",
+  "pass": true,
+  "boxes": true,
+  "frameH": 768,
+  "due": {
+   "found": true,
+   "full": true,
+   "text": "Due $52.36",
+   "box": [
+    110,
+    570,
+    238,
+    602
+   ]
+  },
+  "paid": {
+   "found": true,
+   "full": true,
+   "text": "Paid $20.00",
+   "box": [
+    248,
+    570,
+    376,
+    602
+   ]
+  },
+  "balance": {
+   "found": true,
+   "full": true,
+   "text": "Balance $32.36",
+   "box": [
+    386,
+    570,
+    520,
+    602
+   ]
+  },
+  "change": {
+   "found": true,
+   "full": true,
+   "text": "Change $0.00",
+   "box": [
+    530,
+    570,
+    658,
+    602
+   ]
+  },
+  "pay": {
+   "found": true,
+   "full": true,
+   "text": "Pay $20.00",
+   "box": [
+    702,
+    692,
+    1006,
+    754
+   ]
+  },
+  "back": {
+   "found": true,
+   "full": true,
+   "text": "Back (Esc)",
+   "box": [
+    110,
+    528,
+    203,
+    564
+   ]
+  },
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x768-app-payboxes.png"
+ },
+ {
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "boxes": true,
+  "frameH": 620,
+  "due": {
+   "found": true,
+   "full": true,
+   "text": "Due $52.36",
+   "box": [
+    110,
+    450,
+    238,
+    482
+   ]
+  },
+  "paid": {
+   "found": true,
+   "full": true,
+   "text": "Paid $20.00",
+   "box": [
+    248,
+    450,
+    376,
+    482
+   ]
+  },
+  "balance": {
+   "found": true,
+   "full": true,
+   "text": "Balance $32.36",
+   "box": [
+    386,
+    450,
+    520,
+    482
+   ]
+  },
+  "change": {
+   "found": true,
+   "full": true,
+   "text": "Change $0.00",
+   "box": [
+    530,
+    450,
+    658,
+    482
+   ]
+  },
+  "pay": {
+   "found": true,
+   "full": true,
+   "text": "Pay $20.00",
+   "box": [
+    702,
+    544,
+    1006,
+    606
+   ]
+  },
+  "back": {
+   "found": true,
+   "full": true,
+   "text": "Back (Esc)",
+   "box": [
+    110,
+    408,
+    203,
+    444
+   ]
+  },
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x768-payboxes.png"
+ },
+ {
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "boxes": true,
+  "frameH": 620,
+  "due": {
+   "found": true,
+   "full": true,
+   "text": "Due $52.36",
+   "box": [
+    110,
+    436,
+    325,
+    468
+   ]
+  },
+  "paid": {
+   "found": true,
+   "full": true,
+   "text": "Paid $20.00",
+   "box": [
+    335,
+    436,
+    550,
+    468
+   ]
+  },
+  "balance": {
+   "found": true,
+   "full": true,
+   "text": "Balance $32.36",
+   "box": [
+    560,
+    436,
+    775,
+    468
+   ]
+  },
+  "change": {
+   "found": true,
+   "full": true,
+   "text": "Change $0.00",
+   "box": [
+    785,
+    436,
+    1000,
+    468
+   ]
+  },
+  "pay": {
+   "found": true,
+   "full": true,
+   "text": "Pay $20.00",
+   "box": [
+    1044,
+    544,
+    1348,
+    606
+   ]
+  },
+  "back": {
+   "found": true,
+   "full": true,
+   "text": "Back (Esc)",
+   "box": [
+    110,
+    394,
+    203,
+    430
+   ]
+  },
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1366x768-payboxes.png"
+ }
+]

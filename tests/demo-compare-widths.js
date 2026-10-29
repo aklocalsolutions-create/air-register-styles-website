@@ -47,7 +47,7 @@ const layout = fr => fr.evaluate(() => {
       await p.screenshot({ path: path.join(dir, `${tag}-sale.png`) });
       await reg.evaluate(() => checkoutDialog()); await reg.waitForSelector('#cashIn'); await reg.waitForTimeout(400);
       const pay = await reg.evaluate(() => { const W = innerWidth, H = innerHeight, f = el => { if (!el) return false; const r = el.getBoundingClientRect(); return r.width > 4 && r.right <= W + 2 && r.bottom <= H + 2 && r.left >= -2 && r.top >= -2; };
-        return { cashInVisible: f(document.getElementById('cashIn')), payOkVisible: f(document.getElementById('payOk')), dueVisible: f(document.getElementById('payTotal')), hOverflow: document.documentElement.scrollWidth > W + 2 }; });
+        return { cashInVisible: f(document.getElementById('cashIn')), payOkVisible: f(document.getElementById('payOk')), keyOnly: getComputedStyle(document.getElementById('payOk')).display === 'none' && getComputedStyle(document.getElementById('payBack')).display === 'none', dueVisible: f(document.getElementById('payTotal')), hOverflow: document.documentElement.scrollWidth > W + 2 }; });
       await p.screenshot({ path: path.join(dir, `${tag}-payment.png`) });
       await reg.evaluate(() => document.getElementById('payBack') && document.getElementById('payBack').click()); await p.waitForTimeout(300);
       await p.locator('#vCust').click(); await p.waitForTimeout(1300);
@@ -56,7 +56,7 @@ const layout = fr => fr.evaluate(() => {
         const rb = big && big.getBoundingClientRect(); return { saleView: document.getElementById('sale').classList.contains('on'), totalVisible: !!rb && rb.width > 4 && rb.right <= W + 2 && rb.bottom <= H + 2, hOverflow: document.documentElement.scrollWidth > W + 2 }; });
       await p.screenshot({ path: path.join(dir, `${tag}-customer.png`) });
       const fe = await p.evaluate(() => top.__e || []);
-      const ok = page.band && !page.hOverflow && page.dl && !sale.hOverflow && sale.payVisible && sale.totalShown && pay.cashInVisible && pay.payOkVisible && cu.saleView && cu.totalVisible && !errs.length && !fe.length;
+      const ok = page.band && !page.hOverflow && page.dl && !sale.hOverflow && sale.payVisible && sale.totalShown && pay.cashInVisible && (pay.payOkVisible || pay.keyOnly) /* keyOnly: style hides Pay/Back by design (Enter / Esc) */ && cu.saleView && cu.totalVisible && !errs.length && !fe.length;
       r.widths.push({ size: tag, ok, page, sale, pay, customer: cu, errors: [...errs, ...fe] });
       console.log(`${ok ? 'PASS' : 'FAIL'} ${s.id} ${tag}`, ok ? '' : JSON.stringify({ page, sale, pay, cu, errs, fe }));
       await ctx.close();

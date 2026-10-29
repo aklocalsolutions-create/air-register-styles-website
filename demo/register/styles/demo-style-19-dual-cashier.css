@@ -53,6 +53,9 @@ html[data-style="19"] .s19-lane { grid-row: 1 / 6; border-radius: 12px; backgrou
   border-top: 4px solid var(--s19-l1); position: relative; z-index: 0; overflow: hidden; min-width: 0; }
 html[data-style="19"] .s19-lane1 { grid-column: 1 / 3; }
 html[data-style="19"] .s19-lane2 { grid-column: 4; border-top-color: var(--s19-l2); display: grid; grid-template-rows: 58px auto minmax(0, 1fr) auto 78px; }
+/* Cursor fix (19): one shrinkable column so the static sample never widens Lane 2 past its card (it stuck out to x 1070 at 1024) */
+html[data-style="19"] .s19-lane2 { grid-template-columns: minmax(0, 1fr); }
+html[data-style="19"] .s19-l2c .s19-main { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
 html[data-style="19"] .s19-head { display: flex; align-items: center; gap: 10px; padding: 9px 14px 0; height: 54px; box-sizing: border-box; }
 html[data-style="19"] .s19-av { width: 30px; height: 30px; border-radius: 50%; background: var(--s19-l1); color: #fff; font: 800 12px/30px 'Segoe UI', Arial; text-align: center; flex: none; }
 html[data-style="19"] .s19-l2c .s19-av { background: var(--s19-l2); }
@@ -132,6 +135,15 @@ html[data-style="19"] #totals .total { grid-column: 4; grid-row: 1 / span 3; bac
 html[data-style="19"][data-mode="return"] #totals .total { color: var(--s19-red); }
 html[data-style="19"] #totals .total span:last-child { font-size: 32px; letter-spacing: -.5px; line-height: 1.05; text-transform: none; }
 html[data-style="19"] #totals .negline span, html[data-style="19"] #totals .neg span, html[data-style="19"] #totals .taxoffline { color: var(--s19-red) !important; }
+/* Cursor fix (HIGH 19): below 1280px the lane is ~400px wide, so the 3 nowrap/hidden columns clipped ("Subtota", "$1.9").
+   Keep 3 columns but put each label above its value, use a smaller TOTAL and a slimmer Pay tile so the right padding can shrink. */
+@media (max-width: 1279px) {
+  html[data-style="19"] #totals { padding-right: 112px; column-gap: 8px; font-size: 10.5px; }
+  html[data-style="19"] #totals > div { overflow: visible; display: flex; flex-direction: column; line-height: 1.2; }
+  html[data-style="19"] #totals .total { padding-left: 4px; }
+  html[data-style="19"] #totals .total span:last-child { font-size: 22px; }
+  html[data-style="19"] .tiles > .tile:nth-child(3) { min-width: 0; padding: 4px 10px; font-size: 16px !important; }
+}
 
 /* right panel = lane 1 tile grid (all the side buttons) */
 html[data-style="19"] .right { grid-column: 2; grid-row: 2 / 4; background: transparent; border: 0; padding: 4px 14px 6px 6px; overflow: auto; min-width: 0; scrollbar-width: thin; }
@@ -198,6 +210,9 @@ html[data-style="19"] .s19-big { font-size: 32px; font-weight: 800; letter-spaci
 html[data-style="19"] .s19-big small { display: block; font-size: 10.5px; letter-spacing: .6px; color: var(--s19-text); }
 html[data-style="19"] .s19-sum { margin-left: auto; display: grid; grid-template-columns: auto auto; column-gap: 28px; font-size: 11.5px; color: var(--s19-mute); }
 html[data-style="19"] .s19-sum b { color: var(--s19-text); text-align: right; }
+/* Cursor fix (MEDIUM 19): the Lane 2 sample no longer shows a second Pay or a dollar total, only a "preview only" note */
+html[data-style="19"] .s19-note { min-width: 0; display: flex; flex-direction: column; gap: 2px; color: var(--s19-mute); font-size: 11.5px; }
+html[data-style="19"] .s19-note b { color: #b23d16; font-size: 13px; font-weight: 800; }
 
 /* ---------- payment + refund: open inside Lane 1 (like the mockup) ---------- */
 html[data-style="19"] .el-overlay { background: #1b20306b; }

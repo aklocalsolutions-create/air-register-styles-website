@@ -9,18 +9,17 @@
   <a class="btn" href="index.html" id="backBtn">← All styles</a>
   <div class="name" id="sname"></div>
   <select id="pick" class="btn" aria-label="Switch style"></select>
-  <button class="btn pvOnly" data-view="mock" id="vMock">Design preview: sale</button>
-  <button class="btn pvOnly" data-view="mockpay" id="vMockPay">Design preview: payment</button>
-  <button class="btn" data-view="reg" id="vReg"><img alt="" src="assets/icons/demo-receipt.svg">Register</button>
-  <button class="btn" data-view="split" id="vSplit"><img alt="" src="assets/icons/demo-screen.svg">Register + customer screen</button>
-  <button class="btn" data-view="cust" id="vCust"><img alt="" src="assets/icons/demo-screen.svg">Customer screen</button>
-  <button class="btn" id="popBtn" title="Open the customer screen in its own window">↗</button>
-  <button class="btn" id="rcBtn"><img alt="" src="assets/icons/demo-receipt.svg">Last receipt</button>
-  <button class="btn" id="resetBtn">Reset demo</button>
+  <button class="btn regOnly" data-view="reg" id="vReg"><img alt="" src="assets/icons/demo-receipt.svg">Register</button>
+  <button class="btn regOnly" data-view="split" id="vSplit"><img alt="" src="assets/icons/demo-screen.svg">Register + customer screen</button>
+  <button class="btn regOnly" data-view="cust" id="vCust"><img alt="" src="assets/icons/demo-screen.svg">Customer screen</button>
+  <button class="btn regOnly" id="popBtn" title="Open the customer screen in its own window">↗</button>
+  <button class="btn regOnly" id="rcBtn"><img alt="" src="assets/icons/demo-receipt.svg">Last receipt</button>
+  <button class="btn regOnly" id="resetBtn">Reset demo</button>
+  <button class="btn regOnly" id="shotsBtn" hidden title="Pictures of this style's design (made-up demo data)">Design pictures</button>
   <span id="dlSlot"></span>
 </nav>
-<div class="pvNote" id="pvNote" hidden><b>Preview - still in testing.</b> The design preview is a picture of this style (nothing on it works). The working demo register runs in the plain Classic look until this style passes its tests.</div>
+<div class="pvNote" id="pvNote" hidden></div>
 <div class="fitNote" id="fitNote">Small screen: the register is shown at desktop size, scaled to fit. Pinch to zoom.</div>
-<div class="stage reg" id="stage"><div class="pane" id="pMock" data-tag="DESIGN PREVIEW - a picture, nothing works"><iframe id="mock" title="Design preview (mockup)"></iframe></div><div class="pane" id="pReg" data-tag="DEMO REGISTER - nothing is real · Demo Store"><iframe id="reg" title="Demo register"></iframe></div><div class="pane" id="pCus" data-tag="DEMO CUSTOMER SCREEN - nothing is real"><iframe id="cus" title="Demo customer screen"></iframe></div></div>
+<div class="stage reg" id="stage"><div class="pane" id="pReg" data-tag="DEMO REGISTER - nothing is real · Demo Store"><iframe id="reg" title="Demo register"></iframe></div><div class="pane" id="pCus" data-tag="DEMO CUSTOMER SCREEN - nothing is real"><iframe id="cus" title="Demo customer screen"></iframe></div></div>
 <script>renderFrame()</script>
 </body></html>

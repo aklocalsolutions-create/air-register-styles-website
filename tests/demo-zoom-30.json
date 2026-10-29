@@ -14,7 +14,7 @@
   "pageOverflowX": false,
   "clipped": [],
   "errors": [],
-  "shot": "/workspace/styles-website/tests/../screenshots/zoom/30-card-deck-1366at125pct-browser-zoom-12items.png"
+  "shot": "/tmp/arsw-pr/tests/../screenshots/zoom/30-card-deck-1366at125pct-browser-zoom-12items.png"
  },
  {
   "mode": "app",
@@ -31,6 +31,6 @@
   "pageOverflowX": false,
   "clipped": [],
   "errors": [],
-  "shot": "/workspace/styles-website/tests/../screenshots/zoom/30-card-deck-1366at125pct-app-zoom-12items.png"
+  "shot": "/tmp/arsw-pr/tests/../screenshots/zoom/30-card-deck-1366at125pct-app-zoom-12items.png"
  }
 ]

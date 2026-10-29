@@ -1,0 +1,1446 @@
+[
+ {
+  "id": "01",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1366x768-cash-entry.png"
+ },
+ {
+  "id": "01",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1024x768-cash-entry.png"
+ },
+ {
+  "id": "01",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "01",
+  "size": "1024x600-app (app window)",
+  "pass": false,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 602
+  },
+  "back": {
+   "full": true,
+   "bottom": 52
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/01-clean-light-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "03",
+  "size": "1366x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 631
+  },
+  "back": {
+   "full": true,
+   "bottom": 68
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/03-glass-1366x768-cash-entry.png"
+ },
+ {
+  "id": "03",
+  "size": "1024x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 741
+  },
+  "back": {
+   "full": true,
+   "bottom": 68
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/03-glass-1024x768-cash-entry.png"
+ },
+ {
+  "id": "03",
+  "size": "1024x620-app (app window)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 741
+  },
+  "back": {
+   "full": true,
+   "bottom": 68
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/03-glass-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "03",
+  "size": "1024x600-app (app window)",
+  "pass": false,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 741
+  },
+  "back": {
+   "full": true,
+   "bottom": 68
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/03-glass-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "10",
+  "size": "1366x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 1343
+  },
+  "back": {
+   "full": false,
+   "bottom": 1343
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/10-retro-pop-1366x768-cash-entry.png"
+ },
+ {
+  "id": "10",
+  "size": "1024x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 1564
+  },
+  "back": {
+   "full": false,
+   "bottom": 1564
+  },
+  "cash": "20",
+  "scrolled": 325,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/10-retro-pop-1024x768-cash-entry.png"
+ },
+ {
+  "id": "10",
+  "size": "1024x620-app (app window)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 1564
+  },
+  "back": {
+   "full": false,
+   "bottom": 1564
+  },
+  "cash": "20",
+  "scrolled": 325,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/10-retro-pop-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "10",
+  "size": "1024x600-app (app window)",
+  "pass": false,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 1554
+  },
+  "back": {
+   "full": false,
+   "bottom": 1554
+  },
+  "cash": "20",
+  "scrolled": 335,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/10-retro-pop-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "11",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 564
+  },
+  "back": {
+   "full": true,
+   "bottom": 470
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/11-liquid-glass-1366x768-cash-entry.png"
+ },
+ {
+  "id": "11",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 564
+  },
+  "back": {
+   "full": true,
+   "bottom": 470
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/11-liquid-glass-1024x768-cash-entry.png"
+ },
+ {
+  "id": "11",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 564
+  },
+  "back": {
+   "full": true,
+   "bottom": 470
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/11-liquid-glass-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "11",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 545
+  },
+  "back": {
+   "full": true,
+   "bottom": 451
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/11-liquid-glass-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "15",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 489
+  },
+  "back": {
+   "full": true,
+   "bottom": 489
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/15-neumorphic-dial-1366x768-cash-entry.png"
+ },
+ {
+  "id": "15",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 550
+  },
+  "back": {
+   "full": true,
+   "bottom": 550
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/15-neumorphic-dial-1024x768-cash-entry.png"
+ },
+ {
+  "id": "15",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 550
+  },
+  "back": {
+   "full": true,
+   "bottom": 550
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/15-neumorphic-dial-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "15",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 550
+  },
+  "back": {
+   "full": true,
+   "bottom": 550
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/15-neumorphic-dial-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "16",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 569
+  },
+  "back": {
+   "full": true,
+   "bottom": 569
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/16-terminal-tui-1366x768-cash-entry.png"
+ },
+ {
+  "id": "16",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 569
+  },
+  "back": {
+   "full": true,
+   "bottom": 569
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/16-terminal-tui-1024x768-cash-entry.png"
+ },
+ {
+  "id": "16",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 569
+  },
+  "back": {
+   "full": true,
+   "bottom": 569
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/16-terminal-tui-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "16",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 549
+  },
+  "back": {
+   "full": true,
+   "bottom": 549
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/16-terminal-tui-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "17",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 586
+  },
+  "back": {
+   "full": true,
+   "bottom": 586
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/17-editorial-1366x768-cash-entry.png"
+ },
+ {
+  "id": "17",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 586
+  },
+  "back": {
+   "full": true,
+   "bottom": 586
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/17-editorial-1024x768-cash-entry.png"
+ },
+ {
+  "id": "17",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 586
+  },
+  "back": {
+   "full": true,
+   "bottom": 586
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/17-editorial-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "17",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 566
+  },
+  "back": {
+   "full": true,
+   "bottom": 566
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/17-editorial-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "19",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 576
+  },
+  "back": {
+   "full": true,
+   "bottom": 576
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/19-dual-cashier-1366x768-cash-entry.png"
+ },
+ {
+  "id": "19",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 576
+  },
+  "back": {
+   "full": true,
+   "bottom": 576
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/19-dual-cashier-1024x768-cash-entry.png"
+ },
+ {
+  "id": "19",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 576
+  },
+  "back": {
+   "full": true,
+   "bottom": 576
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/19-dual-cashier-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "19",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 556
+  },
+  "back": {
+   "full": true,
+   "bottom": 556
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/19-dual-cashier-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "22",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 606
+  },
+  "back": {
+   "full": true,
+   "bottom": 524
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1366x768-cash-entry.png"
+ },
+ {
+  "id": "22",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 606
+  },
+  "back": {
+   "full": true,
+   "bottom": 538
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x768-cash-entry.png"
+ },
+ {
+  "id": "22",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 606
+  },
+  "back": {
+   "full": true,
+   "bottom": 538
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "22",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 586
+  },
+  "back": {
+   "full": true,
+   "bottom": 530
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/22-scan-hero-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "23",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 338
+  },
+  "back": {
+   "full": true,
+   "bottom": 338
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/23-spreadsheet-1366x768-cash-entry.png"
+ },
+ {
+  "id": "23",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 338
+  },
+  "back": {
+   "full": true,
+   "bottom": 338
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/23-spreadsheet-1024x768-cash-entry.png"
+ },
+ {
+  "id": "23",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 338
+  },
+  "back": {
+   "full": true,
+   "bottom": 338
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/23-spreadsheet-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "23",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 338
+  },
+  "back": {
+   "full": true,
+   "bottom": 338
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/23-spreadsheet-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "25",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 578
+  },
+  "back": {
+   "full": true,
+   "bottom": 578
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/25-chat-ticket-1366x768-cash-entry.png"
+ },
+ {
+  "id": "25",
+  "size": "1024x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 648
+  },
+  "back": {
+   "full": false,
+   "bottom": 648
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/25-chat-ticket-1024x768-cash-entry.png"
+ },
+ {
+  "id": "25",
+  "size": "1024x620-app (app window)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 648
+  },
+  "back": {
+   "full": false,
+   "bottom": 648
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/25-chat-ticket-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "25",
+  "size": "1024x600-app (app window)",
+  "pass": false,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 648
+  },
+  "back": {
+   "full": false,
+   "bottom": 648
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/25-chat-ticket-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "26",
+  "size": "1366x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 677
+  },
+  "back": {
+   "full": false,
+   "bottom": 677
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/26-floating-windows-1366x768-cash-entry.png"
+ },
+ {
+  "id": "26",
+  "size": "1024x768 (demo page)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 677
+  },
+  "back": {
+   "full": false,
+   "bottom": 677
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/26-floating-windows-1024x768-cash-entry.png"
+ },
+ {
+  "id": "26",
+  "size": "1024x620-app (app window)",
+  "pass": false,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 677
+  },
+  "back": {
+   "full": false,
+   "bottom": 677
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/26-floating-windows-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "26",
+  "size": "1024x600-app (app window)",
+  "pass": false,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": false,
+   "bottom": 675
+  },
+  "back": {
+   "full": false,
+   "bottom": 675
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/26-floating-windows-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 575
+  },
+  "back": {
+   "full": true,
+   "bottom": 575
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1366x768-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 575
+  },
+  "back": {
+   "full": true,
+   "bottom": 575
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1024x768-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 575
+  },
+  "back": {
+   "full": true,
+   "bottom": 575
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "27",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 555
+  },
+  "back": {
+   "full": true,
+   "bottom": 555
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/27-receipt-preview-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "30",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 109
+  },
+  "back": {
+   "full": true,
+   "bottom": 165
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/30-card-deck-1366x768-cash-entry.png"
+ },
+ {
+  "id": "30",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 109
+  },
+  "back": {
+   "full": true,
+   "bottom": 165
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/30-card-deck-1024x768-cash-entry.png"
+ },
+ {
+  "id": "30",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 109
+  },
+  "back": {
+   "full": true,
+   "bottom": 165
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/30-card-deck-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "30",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 109
+  },
+  "back": {
+   "full": true,
+   "bottom": 165
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/30-card-deck-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "32",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 274
+  },
+  "back": {
+   "full": true,
+   "bottom": 320
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/32-order-desk-1366x768-cash-entry.png"
+ },
+ {
+  "id": "32",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 274
+  },
+  "back": {
+   "full": true,
+   "bottom": 320
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/32-order-desk-1024x768-cash-entry.png"
+ },
+ {
+  "id": "32",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 274
+  },
+  "back": {
+   "full": true,
+   "bottom": 320
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/32-order-desk-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "32",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 274
+  },
+  "back": {
+   "full": true,
+   "bottom": 320
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/32-order-desk-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "33",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 608
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/33-counter-grid-1366x768-cash-entry.png"
+ },
+ {
+  "id": "33",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 608
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/33-counter-grid-1024x768-cash-entry.png"
+ },
+ {
+  "id": "33",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 608
+  },
+  "back": {
+   "full": true,
+   "bottom": 608
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/33-counter-grid-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "33",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 588
+  },
+  "back": {
+   "full": true,
+   "bottom": 588
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/33-counter-grid-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "35",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 612
+  },
+  "back": {
+   "full": true,
+   "bottom": 612
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/35-tabbed-pantry-1366x768-cash-entry.png"
+ },
+ {
+  "id": "35",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 612
+  },
+  "back": {
+   "full": true,
+   "bottom": 612
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/35-tabbed-pantry-1024x768-cash-entry.png"
+ },
+ {
+  "id": "35",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 612
+  },
+  "back": {
+   "full": true,
+   "bottom": 612
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/35-tabbed-pantry-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "35",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 592
+  },
+  "back": {
+   "full": true,
+   "bottom": 592
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/35-tabbed-pantry-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "36",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 123
+  },
+  "back": {
+   "full": true,
+   "bottom": 123
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/36-rail-cards-1366x768-cash-entry.png"
+ },
+ {
+  "id": "36",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 123
+  },
+  "back": {
+   "full": true,
+   "bottom": 123
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/36-rail-cards-1024x768-cash-entry.png"
+ },
+ {
+  "id": "36",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 123
+  },
+  "back": {
+   "full": true,
+   "bottom": 123
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/36-rail-cards-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "36",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": false,
+  "pay": {
+   "full": true,
+   "bottom": 123
+  },
+  "back": {
+   "full": true,
+   "bottom": 123
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/36-rail-cards-1024x600-app-cash-entry.png"
+ },
+ {
+  "id": "37",
+  "size": "1366x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": true,
+  "pay": {
+   "full": false,
+   "bottom": 0
+  },
+  "back": {
+   "full": false,
+   "bottom": 0
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/37-maroon-console-1366x768-cash-entry.png"
+ },
+ {
+  "id": "37",
+  "size": "1024x768 (demo page)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": true,
+  "pay": {
+   "full": false,
+   "bottom": 0
+  },
+  "back": {
+   "full": false,
+   "bottom": 0
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/37-maroon-console-1024x768-cash-entry.png"
+ },
+ {
+  "id": "37",
+  "size": "1024x620-app (app window)",
+  "pass": true,
+  "frameH": 620,
+  "keyOnly": true,
+  "pay": {
+   "full": false,
+   "bottom": 0
+  },
+  "back": {
+   "full": false,
+   "bottom": 0
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/37-maroon-console-1024x620-app-cash-entry.png"
+ },
+ {
+  "id": "37",
+  "size": "1024x600-app (app window)",
+  "pass": true,
+  "frameH": 600,
+  "keyOnly": true,
+  "pay": {
+   "full": false,
+   "bottom": 0
+  },
+  "back": {
+   "full": false,
+   "bottom": 0
+  },
+  "cash": "20",
+  "scrolled": 0,
+  "errs": [],
+  "shot": "/tmp/arsw-pr/screenshots/fixes/37-maroon-console-1024x600-app-cash-entry.png"
+ }
+]
