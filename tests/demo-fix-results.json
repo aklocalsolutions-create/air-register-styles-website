@@ -213,8 +213,8 @@
     "sale": [],
     "pay": {
      "clipped": [],
-     "payOk": false,
-     "back": false,
+     "payOk": true,
+     "back": true,
      "total": true
     }
    }
@@ -223,13 +223,13 @@
    "style": "27",
    "size": "1024x768 (demo page)",
    "check": "Pay and Back on screen with the cash chips open",
-   "ok": false,
+   "ok": true,
    "info": {
     "clipped": [],
-    "payOk": false,
-    "back": false,
+    "payOk": true,
+    "back": true,
     "total": true,
-    "payInScrollArea": true
+    "payInScrollArea": false
    }
   },
   {
@@ -313,7 +313,7 @@
     "payOk": true,
     "back": true,
     "total": true,
-    "payInScrollArea": true
+    "payInScrollArea": false
    }
   },
   {

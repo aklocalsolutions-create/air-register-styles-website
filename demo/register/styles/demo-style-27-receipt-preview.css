@@ -306,6 +306,17 @@ html[data-style="27"] #hwPill, html[data-style="27"] #helpPill { display:none !i
   html[data-style="27"][data-page="register"] #cart td:nth-child(3) { font-size:12.5px; overflow-wrap:anywhere; }
   html[data-style="27"][data-page="register"] #cart td.n { font-size:11.5px; white-space:nowrap; letter-spacing:-.3px; }
 }
+/* Website fix (29 Oct, 27 at a true 1024x768 with many cash chips): Back and Pay ended below the payment panel.
+   Up to 800px tall: the next-bill chips flow with the others (fewer rows), slightly smaller chips, and Back/Pay 46px
+   instead of the shared 64px min-height. The 699px block below tightens further. Look only. */
+@media (max-height: 800px) {
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick #nextBills { display:contents; }
+  html[data-style="27"][data-page="register"] .fullpay .plist > .pextra { gap:5px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:32px; padding:0 8px; font-size:13px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button kbd { font-size:9px; padding:2px 4px; }
+  html[data-style="27"][data-page="register"] #payBack, html[data-style="27"][data-page="register"] #payOk,
+  html[data-style="27"][data-page="register"] .fullpay .row2 .pbtn { height:46px; min-height:46px; padding-top:0; padding-bottom:0; }
+}
 /* Website fix (29 Oct, 27 at 1024x620 after cash is entered): the cash chips pushed Back and Pay below the window.
    Below 700px tall only: a slimmer balance card, cards and chips, and shorter Back/Pay. Look only. */
 @media (max-height: 699px) {
@@ -324,4 +335,17 @@ html[data-style="27"] #hwPill, html[data-style="27"] #helpPill { display:none !i
   html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:30px; padding:0 8px; font-size:13px; }
   html[data-style="27"][data-page="register"] .fullpay .row2 { padding-top:6px; }
   html[data-style="27"][data-page="register"] #payBack, html[data-style="27"][data-page="register"] #payOk { height:44px; }
+  /* (29 Oct, later) beat the shared 64px min-height on the pay buttons, and let the next-bill chips flow with the others so they wrap onto fewer rows */
+  html[data-style="27"][data-page="register"] .fullpay .row2 .pbtn { min-height:44px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick #nextBills { display:contents; }
+  html[data-style="27"][data-page="register"] .fullpay .plist > .pextra { gap:4px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:28px; padding:0 6px; font-size:12.5px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button kbd { font-size:8.5px; padding:2px 3px; }
+  html[data-style="27"][data-page="register"] .fullpay .pextra.quick button { height:26px; }
+  html[data-style="27"][data-page="register"] .fullpay .pline .plbl { font-size:13px !important; }
+  html[data-style="27"][data-page="register"] .paynums .pn.left b { font-size:24px; }
+  html[data-style="27"][data-page="register"] .fullpay .payhead { padding:6px 14px; }
+  html[data-style="27"][data-page="register"] .fullpay #payMsg { margin-top:2px; min-height:14px; }
+  html[data-style="27"][data-page="register"] #payBack, html[data-style="27"][data-page="register"] #payOk,
+  html[data-style="27"][data-page="register"] .fullpay .row2 .pbtn { height:40px; min-height:40px; padding-top:0; padding-bottom:0; }
 }
