@@ -1,0 +1,267 @@
+/* Air Register Styles — Style 35 Tabbed Pantry (grocery register look: receipt list left, department column + glossy key grid right; look only)
+ * OWNER: the style-35 assistant ONLY (this file + demo-style-35-tabbed-pantry.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v3/style-35-tabbed-pantry (sale.png, payment.png, customer.png, README.md)
+ * Rules: every selector starts with  html[data-style="35"]  — look only; hidden controls are hidden by CSS only; no key changes.
+ * Test: node tests/style-suite.js --style 35 --base 7320 --chrome 9516
+ * STATUS: STYLED (v1, 2026-10-29)
+ *
+ * Layout map (CSS only; DOM order, ids and handlers untouched). Every wrapper (actions list, holds group, #right groups,
+ * .center, .bottom, #rightAside) is display:contents, so each button is placed straight into ONE .wrap grid:
+ *   left 52%  ">" prompt + pale-yellow scan box, the grey receipt list (dark # column, black selected row),
+ *             #totals as boxes with a black TOTAL box, customer line (Customers tile info) + Quick search, key legend (.st-deco), status line
+ *   right     lavender panel: "Command" tab title, department column of 7 (Items, Customers, Hold, Load Hold, Put Aside, Return, Payment),
+ *             a 5 x 7 grid of glossy multicolour keys (New ... Hardware check), bottom row: Set Qty + the Bulk items panel ("Touch Item" in the mockup)
+ *   payment   the list stays in view; the right panel turns into tender keys (department column), Due/Paid/Balance/Change boxes,
+ *             quick-cash keys, key hints, the payment message and Back / Pay
+ *   hidden (CSS only, keys still work): the top bar (F1 pill, hardware pill, Settings button), group titles, the drag sizers.
+ *   left out (not in 1.2.0): the up/down arrow keys, tab switching (Sale Keys / Number Pad / Touch Item), the Qty / lb boxes,
+ *             the Tax column, the numeric keypad on the payment screen.
+ */
+
+/* ---------------------------------------------------------------- tokens */
+html[data-style="35"] {
+  --tp-bg:#d4d4d4; --tp-list:#ececec; --tp-ink:#111111; --tp-ink2:#444; --tp-dark:#4a4a4a; --tp-lav:#c8c4f4; --tp-lav2:#b9b4ee; --tp-line:#a9a9a9;
+  --tp-yellow:#ffffcc; --tp-font:Arial,'Helvetica Neue',Roboto,sans-serif; --tp-mono:Consolas,'Courier New',monospace;
+  --pay-num-size:28px; --pay-due-size:28px; --pay-tab-h:44px; --pay-tab-size:14px; --pay-input-size:16px; --pay-bill-size:14px; --pay-gap:8px;
+  --slate:#4a4a4a; --sel:#111; --line:#a9a9a9;
+}
+html[data-style="35"] body { font-family:var(--tp-font); color:var(--tp-ink); background:var(--tp-bg); }
+html[data-style="35"] kbd { font:600 10px/1 var(--tp-mono); background:#fff; border:1px solid #999; border-radius:2px; padding:1px 3px; color:var(--tp-ink); }
+
+/* ---------------------------------------------------------------- frame */
+html[data-style="35"] #app { grid-template-rows:minmax(0,1fr) 0; position:relative; background:var(--tp-bg); }
+html[data-style="35"] .top, html[data-style="35"] .sizer, html[data-style="35"] aside.actions > h2, html[data-style="35"] #right > h3 { display:none; }
+html[data-style="35"] .status { position:absolute; z-index:3; left:6px; bottom:3px; width:calc(52% - 12px); height:20px; background:transparent; color:var(--tp-ink2); border:0;
+  display:flex; align-items:center; gap:12px; padding:0; font-size:11px; white-space:nowrap; overflow:hidden; }
+html[data-style="35"] .status > span:empty { display:none; }
+html[data-style="35"] .status #stUser { font-weight:700; color:var(--tp-ink); }
+html[data-style="35"] .status .net { color:#1d7a2e; }
+
+/* ---------------------------------------------------------------- the one grid */
+html[data-style="35"] .wrap {
+  grid-template-columns:52% minmax(0,1.05fr) repeat(5,minmax(0,1fr));
+  grid-template-rows:44px repeat(7,minmax(0,1fr)) 80px;
+  column-gap:6px; row-gap:6px; padding:0 8px 0 0; min-height:0;
+}
+html[data-style="35"] body.nosides .wrap { grid-template-columns:52% minmax(0,1.05fr) repeat(5,minmax(0,1fr)) !important; }
+/* lavender right panel + its "Command" tab title */
+html[data-style="35"] .wrap::after { content:''; grid-column:2 / -1; grid-row:1 / -1; margin:0 -8px 0 -6px; background:var(--tp-bg); border-left:3px solid #9a9a9a; z-index:0; pointer-events:none; }
+html[data-style="35"] .wrap::before { content:'Command'; grid-column:6 / 8; grid-row:1; align-self:center; justify-self:stretch; height:34px; line-height:34px; text-align:center; font-size:13px; font-weight:700;
+  background:linear-gradient(#e6e4fb,var(--tp-lav)); border:2px solid #555; border-radius:4px; z-index:1; pointer-events:none; }
+html[data-style="35"] .center, html[data-style="35"] .bottom, html[data-style="35"] #rightAside, html[data-style="35"] aside.actions,
+html[data-style="35"] .actions .list, html[data-style="35"] .actions .list .hgrp, html[data-style="35"] #right, html[data-style="35"] #right .rgrid { display:contents; }
+
+/* ---------------------------------------------------------------- left: prompt + scan box */
+html[data-style="35"] .bottom > div:first-child { grid-row:1; grid-column:1; position:relative; min-width:0; z-index:1; display:flex; align-items:center; padding-left:22px; border-bottom:2px solid #999; background:#e2e2e2; }
+html[data-style="35"] .bottom > div:first-child::before { content:'>'; position:absolute; left:6px; top:50%; transform:translateY(-50%); font:700 18px/1 var(--tp-mono); color:var(--tp-ink); }
+html[data-style="35"] .bottom > div:first-child .scanrow { flex:1; min-width:0; }
+html[data-style="35"] #scanInput, html[data-style="35"] .scanrow input { height:34px; border:1px solid #bdbd8a; border-radius:0; background:var(--tp-yellow); font:600 16px var(--tp-mono); padding:0 10px; color:var(--tp-ink); }
+html[data-style="35"] #scanInput:focus { outline:2px solid #555; outline-offset:-2px; }
+html[data-style="35"] .scanrow input.bad { border-color:#c0392b; background:#ffe1dc; }
+html[data-style="35"] #toast, html[data-style="35"] #scanMsg, html[data-style="35"] #noteLine { position:absolute; z-index:3; right:10px; top:calc(100% + 2px); margin:0; font-size:11.5px; min-height:0; background:rgba(255,255,204,.95); border:1px solid #bdbd8a; padding:0 6px; }
+html[data-style="35"] #noteLine { right:auto; left:30px; }
+html[data-style="35"] #toast:empty, html[data-style="35"] #scanMsg:empty, html[data-style="35"] #noteLine:empty { display:none; }
+
+/* ---------------------------------------------------------------- left: the receipt list */
+html[data-style="35"] .gridbox { grid-column:1; grid-row:2 / 7; margin-left:0; background:var(--tp-list); border:1px solid var(--tp-line); border-left:0; display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+html[data-style="35"] .gridhead { padding:2px 8px; font-size:11px; color:var(--tp-ink2); background:#dcdcdc; border-bottom:1px solid var(--tp-line); }
+html[data-style="35"] .gridhead #gridTitle { font-weight:700; color:var(--tp-ink); }
+html[data-style="35"] .gridhead.ret, html[data-style="35"][data-mode="return"] .gridhead { background:#f6d2cc; } html[data-style="35"][data-mode="return"] .gridhead #gridTitle { color:#b0221a; }
+html[data-style="35"] .gridbox table { font-size:13px; }
+html[data-style="35"] #cartHead th { background:linear-gradient(#f4f4f4,#d6d6d6); color:var(--tp-ink); font-weight:700; font-size:12px; border:1px solid var(--tp-line); padding:5px 6px; }
+html[data-style="35"] #cart td { padding:8px 6px; border-bottom:1px solid #c9c9c9; background:var(--tp-list); color:var(--tp-ink); font-weight:700; }
+html[data-style="35"] #cart td:first-child, html[data-style="35"] #cartHead th:first-child { background:var(--tp-dark); color:#fff; text-align:center; }
+html[data-style="35"] #cartHead th:first-child { background:linear-gradient(#f4f4f4,#d6d6d6); color:var(--tp-ink); }
+html[data-style="35"] #cart tr.row.sel td { background:#000; color:#fff; }
+html[data-style="35"] #cart tr.row.neg td { color:#b0221a; } html[data-style="35"] #cart tr.row.sel.neg td { color:#ff9c90; }
+html[data-style="35"] #retLines { background:#f6d2cc; border-bottom:1px solid #d99; }
+
+/* ---------------------------------------------------------------- left: totals boxes */
+html[data-style="35"] #totals { grid-column:1; grid-row:7; align-self:stretch; margin:0 0 0 6px; padding:0; background:transparent; border:0; display:flex; gap:5px; min-height:0; font-size:11px; }
+html[data-style="35"] #totals div { flex:1 1 0; min-width:0; display:flex; flex-direction:column; justify-content:space-between; align-items:stretch; background:#fff; border:1px solid #999; padding:3px 6px; margin:0; }
+html[data-style="35"] #totals div > span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+html[data-style="35"] #totals div > span:first-child { font-weight:700; font-size:10.5px; color:var(--tp-ink2); }
+html[data-style="35"] #totals div > span:last-child { text-align:right; font-size:16px; font-weight:400; color:var(--tp-ink); }
+html[data-style="35"] #totals .total { flex:1.7 1 0; background:#000; border-color:#000; }
+html[data-style="35"] #totals .total > span:first-child { color:#fff; text-transform:uppercase; font-size:10px; }
+html[data-style="35"] #totals .total > span:last-child { color:#ffee66; font-size:22px; font-weight:700; }
+html[data-style="35"] #totals .taxoffline > span:last-child, html[data-style="35"] #totals .negline > span:last-child { color:#b0221a; }
+html[data-style="35"] #totals .total.neg > span:last-child { color:#ff9c90; }
+
+/* ---------------------------------------------------------------- left: customer line + Quick search, legend */
+html[data-style="35"] #info-customer { position:absolute; z-index:2; left:6px; bottom:86px; width:calc(26% - 10px); height:26px; box-sizing:border-box; line-height:24px; padding:0 8px; margin:0;
+  background:#fff; border:1px solid #999; font-size:11.5px; font-weight:700; color:var(--tp-ink); text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none; }
+html[data-style="35"] #info-customer::before { content:'Customer: '; }
+html[data-style="35"] #qsPanel { grid-column:1; grid-row:8; align-self:end; justify-self:end; width:calc(26% - 4px); height:26px; box-sizing:border-box; position:relative; z-index:2; margin:0; padding:0 6px;
+  background:var(--tp-yellow); border:1px solid #bdbd8a; display:flex; align-items:center; gap:6px; min-width:0; }
+html[data-style="35"] #qsPanel h3 { display:block; margin:0 !important; font-size:11px; font-weight:700; color:var(--tp-ink); white-space:nowrap; }
+html[data-style="35"] #qsPanel h3 small { display:none; }
+html[data-style="35"] #qsIn { flex:1; height:20px; min-width:0; border:0; background:transparent; font-size:11px; padding:0 2px; color:var(--tp-ink); outline:none; }
+html[data-style="35"] #qsRes { position:absolute; right:0; width:360px; bottom:calc(100% + 4px); background:#fff; color:var(--tp-ink); border:1px solid #999; box-shadow:0 6px 18px rgba(0,0,0,.25); max-height:50vh; overflow:auto; }
+html[data-style="35"] #qsRes:empty { display:none; }
+html[data-style="35"] .st-deco.tp-legend { position:absolute; z-index:2; left:6px; bottom:26px; width:calc(52% - 12px); height:50px; box-sizing:border-box; padding:3px 8px; overflow:hidden;
+  background:#fff; border:1px solid #999; color:var(--tp-ink2); font-size:10px; line-height:1.5; }
+
+/* ---------------------------------------------------------------- right: keys (shared look) */
+html[data-style="35"] .actions .abtn, html[data-style="35"] #right .rbtn, html[data-style="35"] .tile {
+  position:static; height:auto !important; min-height:0; margin:0; padding:2px 3px; border:1px solid rgba(0,0,0,.45); border-radius:4px; box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.3);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; text-align:center; font-size:11.5px !important; font-weight:700; line-height:1.15; color:var(--tp-ink); background:linear-gradient(#ffffff,#e4e4e4); z-index:1; }
+html[data-style="35"] .actions .abtn .ic, html[data-style="35"] .tile .ic, html[data-style="35"] #info-items, html[data-style="35"] #info-payment { display:none; }
+html[data-style="35"] .actions .abtn .t { font-size:11.5px; font-weight:700; }
+html[data-style="35"] .actions .abtn .k, html[data-style="35"] #right .rbtn small, html[data-style="35"] .tile .k { position:static; margin:0; font-size:9px; font-weight:400; color:inherit; opacity:.85; }
+html[data-style="35"] .actions .abtn:hover, html[data-style="35"] #right .rbtn:hover, html[data-style="35"] .tile:hover { filter:brightness(1.05); }
+html[data-style="35"] #right .rbtn.on, html[data-style="35"] .actions .abtn.on, html[data-style="35"] .tile.on { box-shadow:0 0 0 3px #111; }
+/* glossy colours */
+html[data-style="35"] { --k-peach:linear-gradient(#ffe2cf,#f7a77a); --k-yellow:linear-gradient(#ffffd8,#f4ec5c); --k-green:linear-gradient(#e5ffd2,#8fdd5c); --k-cream:linear-gradient(#ffffff,#fff4c8);
+  --k-grey:linear-gradient(#f2f2f2,#b9b9b9); --k-maroon:linear-gradient(#c0607e,#8a2347); --k-pink:linear-gradient(#ffd8f2,#f39ad6); --k-red:linear-gradient(#ff8a80,#e5332a);
+  --k-olive:linear-gradient(#b9b45a,#7f7a20); --k-purple:linear-gradient(#c9c6ff,#7d77e6); --k-white:linear-gradient(#ffffff,#ececec); --k-dgreen:linear-gradient(#8fd394,#2e9a3f);
+  --k-blue:linear-gradient(#7d8dff,#2a3ce0); --k-orange:linear-gradient(#ffd09a,#f39a3c); --k-sky:linear-gradient(#bde6ff,#4aaee6); --k-mag:linear-gradient(#ff7cf0,#e01fd0); --k-lav:linear-gradient(#efeeff,#c8c4f4); }
+/* department column (col 2, rows 2-8) */
+html[data-style="35"] .tile[data-a="close"]          { grid-column:2; grid-row:2; background:var(--k-lav); }
+html[data-style="35"] .tile[data-a="customer"]       { grid-column:2; grid-row:3; background:var(--k-mag); }
+html[data-style="35"] .actions [data-a="hold"]       { grid-column:2; grid-row:4; background:var(--k-peach); }
+html[data-style="35"] .actions [data-a="load-hold"]  { grid-column:2; grid-row:5; background:var(--k-pink); }
+html[data-style="35"] .actions [data-a="aside-put"]  { grid-column:2; grid-row:6; background:var(--k-lav); }
+html[data-style="35"] .actions [data-a="return"]     { grid-column:2; grid-row:7; background:var(--k-red); color:#fff; }
+html[data-style="35"] .tile[data-a="checkout"]       { grid-column:2; grid-row:8; background:var(--k-dgreen); }
+html[data-style="35"] .tile.active { border:3px solid #333; }
+html[data-style="35"] .tile .k { order:2; }
+html[data-style="35"] #tiles { display:contents; }
+/* 5 x 7 key grid (cols 3-7, rows 2-8) */
+html[data-style="35"] .actions [data-a="new-sale"]     { grid-column:3; grid-row:2; background:var(--k-peach); }
+html[data-style="35"] .actions [data-a="history"]      { grid-column:4; grid-row:2; background:var(--k-yellow); }
+html[data-style="35"] .actions [data-a="aside-load"]   { grid-column:5; grid-row:2; background:var(--k-green); }
+html[data-style="35"] .actions [data-a="drawer"]       { grid-column:6; grid-row:2; background:var(--k-cream); }
+html[data-style="35"] .actions [data-a="customer"]     { grid-column:7; grid-row:2; background:var(--k-grey); }
+html[data-style="35"] .actions [data-a="end-of-day"]   { grid-column:3; grid-row:3; background:var(--k-maroon); color:#fff; }
+html[data-style="35"] .actions [data-a="clock-out"]    { grid-column:4; grid-row:3; background:var(--k-pink); }
+html[data-style="35"] .actions [data-a="logout"]       { grid-column:5; grid-row:3; background:var(--k-red); color:#fff; }
+html[data-style="35"] #right [data-a="return"]         { grid-column:6; grid-row:3; background:var(--k-red); color:#fff; }
+html[data-style="35"] #right [data-a="history"]        { grid-column:7; grid-row:3; background:var(--k-olive); color:#fff; }
+html[data-style="35"] #right [data-a="reprint"]        { grid-column:3; grid-row:4; background:var(--k-purple); }
+html[data-style="35"] #right [data-a="search"]         { grid-column:4; grid-row:4; background:var(--k-white); }
+html[data-style="35"] #right [data-a="discount"]       { grid-column:5; grid-row:4; background:var(--k-maroon); color:#fff; }
+html[data-style="35"] #right [data-a="tax-off"]        { grid-column:6; grid-row:4; background:var(--k-dgreen); }
+html[data-style="35"] #right [data-a="promo"]          { grid-column:7; grid-row:4; background:var(--k-yellow); }
+html[data-style="35"] #right [data-a="extra-charge"]   { grid-column:3; grid-row:5; background:var(--k-blue); color:#fff; }
+html[data-style="35"] #right [data-a="clear-customer"] { grid-column:4; grid-row:5; background:var(--k-orange); }
+html[data-style="35"] #right [data-a="gift-card"]      { grid-column:5; grid-row:5; background:var(--k-peach); }
+html[data-style="35"] #right [data-a="gift-multi"]     { grid-column:6; grid-row:5; background:var(--k-yellow); }
+html[data-style="35"] #right [data-a="gift-balance"]   { grid-column:7; grid-row:5; background:var(--k-green); }
+html[data-style="35"] #right [data-a="price-check"]    { grid-column:3; grid-row:6; background:var(--k-white); }
+html[data-style="35"] #right [data-a="cart-search"]    { grid-column:4; grid-row:6; background:var(--k-white); }
+html[data-style="35"] #right [data-a="note"]           { grid-column:5; grid-row:6; background:var(--k-maroon); color:#fff; }
+html[data-style="35"] #right [data-a="calculator"]     { grid-column:6; grid-row:6; background:var(--k-pink); }
+html[data-style="35"] #right [data-a="zoom-reset"]     { grid-column:7; grid-row:6; background:var(--k-sky); }
+html[data-style="35"] #right [data-a="qty-plus"]       { grid-column:3; grid-row:7; background:var(--k-sky); }
+html[data-style="35"] #right [data-a="qty-minus"]      { grid-column:4; grid-row:7; background:var(--k-olive); color:#fff; }
+html[data-style="35"] #right [data-a="remove"]         { grid-column:5; grid-row:7; background:var(--k-red); color:#fff; }
+html[data-style="35"] #right [data-a="open-item"]      { grid-column:6; grid-row:7; background:var(--k-white); }
+html[data-style="35"] #right [data-a="item-discount"]  { grid-column:7; grid-row:7; background:var(--k-maroon); color:#fff; }
+html[data-style="35"] #right [data-a="cash-move"]      { grid-column:3; grid-row:8; background:var(--k-dgreen); }
+html[data-style="35"] #right [data-a="settings"]       { grid-column:4; grid-row:8; background:var(--k-yellow); }
+html[data-style="35"] #right [data-a="local:help"]     { grid-column:5; grid-row:8; background:var(--k-blue); color:#fff; }
+html[data-style="35"] #right [data-a="hw"]             { grid-column:6; grid-row:8; background:var(--k-orange); }
+/* bottom row: Set Qty + Bulk items ("Touch Item") */
+html[data-style="35"] #right [data-a="qty-edit"]       { grid-column:5; grid-row:9; margin:8px 0 10px; background:var(--k-cream); }
+html[data-style="35"] #right .rbtn.red { color:#fff; }
+html[data-style="35"] #right [data-a="tax-off"].on { background:var(--k-red); color:#fff; }
+html[data-style="35"] #bulkPanel { grid-column:6 / 8; grid-row:9; z-index:1; margin:8px 0 10px; padding:3px 5px; min-height:0; overflow:auto; background:var(--tp-lav); border:2px solid #555; border-radius:4px; display:flex; flex-direction:column; gap:2px; }
+html[data-style="35"] #bulkPanel h3 { margin:0 !important; font-size:10.5px; font-weight:700; color:var(--tp-ink); }
+html[data-style="35"] #bulkPanel .bulkgrid { grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); gap:3px; }
+html[data-style="35"] #bulkPanel .bulkgrid .rbtn { min-height:28px; padding:1px 3px; font-size:10.5px; font-weight:700; border:1px solid rgba(0,0,0,.45); border-radius:4px; background:var(--k-green); color:var(--tp-ink); }
+
+/* ---------------------------------------------------------------- dialogs */
+html[data-style="35"] .modal { border-radius:4px; font-family:var(--tp-font); }
+html[data-style="35"] .pbtn { border-radius:4px; }
+html[data-style="35"] .pbtn.g { background:var(--k-dgreen); color:#fff; } html[data-style="35"] .pbtn.s { background:var(--k-white); color:var(--tp-ink); border:1px solid #888; }
+html[data-style="35"] th { background:linear-gradient(#f4f4f4,#d6d6d6); color:var(--tp-ink); }
+html[data-style="35"] tr.row.sel td { background:#000; color:#fff; }
+
+/* ---------------------------------------------------------------- payment: list stays in view, the right panel is the pay panel */
+html[data-style="35"] .fullpay-ov { background:transparent; }
+html[data-style="35"] .modal.fullpay { position:fixed; left:calc(52% + 3px); top:0; right:0; bottom:0; width:auto; max-width:none; height:auto; max-height:none; margin:0; border-radius:0;
+  background:var(--tp-bg); border-left:3px solid #9a9a9a; box-shadow:none; padding:0 8px 8px; display:flex; flex-direction:column; }
+html[data-style="35"] .fullpay .payhead { background:transparent; color:var(--tp-ink); margin:0; padding:2px 0; height:36px; box-sizing:border-box; justify-content:flex-end; gap:10px; }
+html[data-style="35"] .fullpay .payhead h2 { font-size:13px; font-weight:700; padding:0 22px; height:30px; line-height:30px; background:linear-gradient(#e6e4fb,var(--tp-lav)); border:2px solid #555; border-radius:4px; color:var(--tp-ink); }
+html[data-style="35"] .fullpay .payhead .note { color:var(--tp-ink2); font-size:12px; }
+html[data-style="35"] #payBody { flex:1; min-height:0; }
+html[data-style="35"] .paygrid { height:100%; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,5fr); grid-template-rows:repeat(6,56px) minmax(0,1fr) 60px; gap:8px; }
+html[data-style="35"] .payact, html[data-style="35"] .fullpay .plist { display:contents; }
+html[data-style="35"] .paynums { grid-column:2; grid-row:1 / 3; width:auto; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:6px; margin:0; }
+html[data-style="35"] .paynums .pn { background:#fff !important; border:1px solid #888; border-radius:0; padding:3px 8px; display:flex; flex-direction:column; justify-content:space-between; }
+html[data-style="35"] .paynums .pn > * { display:block; }
+html[data-style="35"] .paynums .pn span { font-size:11.5px; font-weight:700; color:var(--tp-ink) !important; }
+html[data-style="35"] .paynums .pn b, html[data-style="35"] .paynums .pn.left b { font-size:24px; font-weight:700; color:var(--tp-ink); text-align:right; }
+html[data-style="35"] .paynums .pn.chg { background:#000 !important; border-color:#000; } html[data-style="35"] .paynums .pn.chg span { color:#fff !important; } html[data-style="35"] .paynums .pn.chg b { color:#ffee66 !important; }
+html[data-style="35"] .fullpay .pline { grid-column:1; min-height:0; margin:0; border:1px solid rgba(0,0,0,.45); border-radius:4px; background:var(--k-lav); color:var(--tp-ink);
+  display:flex; flex-direction:column; justify-content:center; align-items:stretch; gap:2px; padding:3px 5px; box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.3); }
+html[data-style="35"] .fullpay .pline[data-t="20"] { background:var(--k-lav); }
+html[data-style="35"] .fullpay .pline[data-t="10"] { background:var(--k-dgreen); }
+html[data-style="35"] .fullpay .pline[data-t="40"] { background:var(--k-orange); }
+html[data-style="35"] .fullpay .pline[data-t="50"] { background:var(--k-pink); }
+html[data-style="35"] .fullpay .pline .plbl { flex:none; font-size:11.5px; font-weight:700; text-align:center; }
+html[data-style="35"] .fullpay .pline .plbl::before { content:''; }
+html[data-style="35"] .fullpay .pline .pamt { width:auto; min-width:0; border:1px solid #888; border-radius:0; background:rgba(255,255,255,.92); color:var(--tp-ink); font-size:13px; text-align:center; padding:2px; }
+html[data-style="35"] .fullpay .pline.on { border:3px solid #111; }
+html[data-style="35"] .fullpay .plist > .pextra { grid-column:2; grid-row:3 / 5; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-auto-rows:minmax(0,1fr); gap:6px; min-height:0; overflow:auto; }
+html[data-style="35"] .fullpay .plist > .pextra:not(.quick) { grid-template-columns:1fr 1fr auto; grid-auto-rows:auto; align-content:start; background:#fff; border:1px solid #888; padding:6px; }
+html[data-style="35"] .fullpay .pextra.quick #nextBills { display:contents; }
+html[data-style="35"] .fullpay .pextra.quick button { min-width:0; min-height:0; border:1px solid rgba(0,0,0,.45); border-radius:4px; background:var(--k-white); color:var(--tp-ink); font-size:var(--pay-bill-size); font-weight:700;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.3); }
+html[data-style="35"] .fullpay .pextra.quick button:nth-of-type(4n+2) { background:var(--k-yellow); } html[data-style="35"] .fullpay .pextra.quick button:nth-of-type(4n+3) { background:var(--k-green); }
+html[data-style="35"] .fullpay .pextra.quick button:nth-of-type(4n) { background:var(--k-sky); }
+html[data-style="35"] .fullpay .pextra.quick button kbd { background:transparent; border:0; color:var(--tp-ink2); font-weight:400; }
+html[data-style="35"] .paygrid::after { content:'Enter  next payment line / finish when fully paid\A +  put the full balance on this line\A Esc  back to sale'; white-space:pre; grid-column:2; grid-row:5; align-self:stretch; overflow:hidden;
+  background:#fff; border:1px solid #888; padding:4px 10px; font-size:11px; line-height:1.55; color:var(--tp-ink); pointer-events:none; }
+html[data-style="35"] #payMsg { grid-column:2; grid-row:6 / 8; align-self:start; margin:0; font-size:12.5px; font-weight:700; background:#fff; border:1px solid #888; color:var(--tp-ink); padding:6px 10px; }
+html[data-style="35"] #payMsg:empty { display:none; }
+html[data-style="35"] .fullpay .row2 { grid-column:2; grid-row:8; margin:0; padding:0; display:grid; grid-template-columns:2fr 3fr; gap:8px; }
+html[data-style="35"] .fullpay .row2 .pbtn { min-height:0; height:100%; font-size:15px; font-weight:700; border-radius:4px; border:1px solid rgba(0,0,0,.45); box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.3); }
+html[data-style="35"] .fullpay .row2 #payBack { background:var(--k-white); color:var(--tp-ink); }
+html[data-style="35"] .fullpay .row2 #payOk { background:var(--k-dgreen); color:#fff; font-size:17px; }
+
+/* ---------------------------------------------------------------- Settings + login */
+html[data-style="35"] .modal.stpage { background:#e2e2e2; border-radius:0; }
+html[data-style="35"] .stpage .sthead { background:#4a4a4a; color:#fff; }
+html[data-style="35"] .sttabs { background:var(--tp-lav); border-bottom:2px solid #555; }
+html[data-style="35"] .sttabs button.on { background:#fff; color:var(--tp-ink); border:2px solid #555; }
+html[data-style="35"] .sybtn { border-radius:4px; border-color:#999; }
+html[data-style="35"] .sybtn.on { border-color:#111; background:var(--tp-lav); }
+html[data-style="35"] #login { background:var(--tp-bg); }
+html[data-style="35"] #login .card { border-radius:4px; border:2px solid #555; }
+html[data-style="35"] #lgBtn { background:var(--k-dgreen); color:#fff; border-radius:4px; }
+
+/* ---------------------------------------------------------------- customer display */
+html[data-style="35"][data-page="customer"] body { background:var(--tp-bg); font-family:var(--tp-font); color:var(--tp-ink); }
+html[data-style="35"][data-page="customer"] #idle, html[data-style="35"][data-page="customer"] #done { background:linear-gradient(160deg,#ececec,var(--tp-lav)); color:var(--tp-ink); }
+html[data-style="35"][data-page="customer"] #done .sum .chg { color:#1d7a2e; }
+html[data-style="35"][data-page="customer"] .lines { background:var(--tp-list); border:1px solid var(--tp-line); border-radius:0; }
+html[data-style="35"][data-page="customer"] .lines h2 { background:linear-gradient(#f4f4f4,#d6d6d6); color:var(--tp-ink); border-bottom:1px solid var(--tp-line); border-radius:0; }
+html[data-style="35"][data-page="customer"] .lines h2.ret { background:#f6d2cc; color:#b0221a; }
+html[data-style="35"][data-page="customer"] .row { border-bottom:1px solid #c9c9c9; font-weight:700; }
+html[data-style="35"][data-page="customer"] .row:last-child { background:#000; color:#fff; }
+html[data-style="35"][data-page="customer"] .row:last-child .q { color:#ddd; }
+html[data-style="35"][data-page="customer"] .side { background:#000; color:#fff; border-radius:0; }
+html[data-style="35"][data-page="customer"] .side .due { color:#ffee66; } html[data-style="35"][data-page="customer"] .side .chg { color:#9be38f; }
+html[data-style="35"][data-page="customer"] .side .off, html[data-style="35"][data-page="customer"] .side .ret { color:#ff9c90; }
+
+/* ---------------------------------------------------------------- round 2 fit fixes (look only)
+ * The payment sheet drops the base 420px dialog minimum so it always fits the right-hand panel (Pay stays on screen);
+ * below 1100px wide the totals boxes wrap onto two lines (using the free space above Quick search), the amounts
+ * shrink, and Quick search keeps a usable field. */
+html[data-style="35"] .modal.fullpay { min-width:0; }
+html[data-style="35"] .paynums .pn, html[data-style="35"] .fullpay .row2 .pbtn, html[data-style="35"] .fullpay .pextra.quick button { min-width:0; }
+@media (max-width:1099px) {
+  html[data-style="35"] #totals { grid-row:7 / 9; align-self:stretch; margin:0 0 36px 6px; flex-wrap:wrap; align-content:stretch; gap:4px 5px; }
+  html[data-style="35"] #totals div { flex:1 1 calc(25% - 5px); padding:2px 5px; }
+  html[data-style="35"] #totals .total { flex:2 1 calc(50% - 5px); flex-direction:row; align-items:center; }
+  html[data-style="35"] #totals div > span:last-child { font-size:15px; }
+  html[data-style="35"] #totals .total > span:last-child { font-size:20px; }
+  html[data-style="35"] #qsPanel { width:max(170px, calc(26% - 4px)); }
+  html[data-style="35"] #qsIn { min-width:70px; }
+  html[data-style="35"] .paynums .pn b, html[data-style="35"] .paynums .pn.left b { font-size:20px; }
+  html[data-style="35"] .fullpay .pextra.quick button { font-size:12px; padding:2px; }
+  html[data-style="35"] .fullpay .pextra.quick button kbd { display:block; padding:0; }
+  html[data-style="35"] .paygrid::after { white-space:pre-wrap; font-size:10.5px; line-height:1.4; }
+}

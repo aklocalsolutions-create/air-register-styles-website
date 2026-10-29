@@ -86,12 +86,14 @@ const clipped = sel => `[...document.querySelectorAll(${JSON.stringify(sel)})].f
   for (const s of TESTED) { const { ctx, p, fr, errs } = await open(b, s.id, 1093, 614, 1.25, true);
     const sale = await fr.evaluate(`(() => { const f = ${inWin}; const pay = [...document.querySelectorAll('[data-a="checkout"],button,.tile')].some(e => (e.dataset.a === 'checkout' || /(^|\\s)(payment|pay)\\b/i.test((e.innerText || '').slice(0, 40))) && f(e)); return { scan: f(document.getElementById('scanInput')), pay, total: document.body.innerText.includes(S.totals.due.toFixed(2)), hOverflow: document.documentElement.scrollWidth > innerWidth + 2 }; })()`);
     await openPay(fr, p);
-    const pay = await fr.evaluate(`(() => { const f = ${inWin}; return { cashIn: f(document.getElementById('cashIn')), payOk: f(document.getElementById('payOk')), back: f(document.getElementById('payBack')) }; })()`);
+    const pay = await fr.evaluate(`(() => { const f = ${inWin}; const hid = id => getComputedStyle(document.getElementById(id)).display === 'none'; return { cashIn: f(document.getElementById('cashIn')), payOk: f(document.getElementById('payOk')), back: f(document.getElementById('payBack')), keyOnly: hid('payOk') && hid('payBack') }; })()`);
+    // keyOnly: the style hides Back/Pay on purpose and finishes with Enter / goes back with Esc (37 Maroon Console); then the cash box must be on screen
+    if (pay.keyOnly) { pay.payOk = pay.back = 'hidden by design (Enter / Esc)'; }
     // if Pay/Back start below the fold, can the cashier scroll the payment sheet to reach them?
     const reach = await fr.evaluate(`(() => { const f = ${inWin}; const o = {}; for (const id of ['payBack', 'payOk']) { const e = document.getElementById(id); if (e) e.scrollIntoView({ block: 'nearest' }); o[id] = f(e); } o.pageScrolled = scrollY > 0 || document.documentElement.scrollTop > 0; return o; })()`);
     rec(s.id, '1093x614@1.25 (app window)', '125% zoom: sale screen on screen', sale.scan && sale.pay && sale.total && !sale.hOverflow && !errs.length, { sale, errs });
-    rec(s.id, '1093x614@1.25 (app window)', '125% zoom: payment Pay+Back on screen without scrolling', pay.cashIn && pay.payOk && pay.back, pay);
-    rec(s.id, '1093x614@1.25 (app window)', '125% zoom: payment Pay+Back reachable by scrolling the sheet', pay.cashIn && reach.payOk && reach.payBack && !reach.pageScrolled, reach);
+    rec(s.id, '1093x614@1.25 (app window)', '125% zoom: payment Pay+Back on screen without scrolling', pay.cashIn && (pay.keyOnly || (pay.payOk && pay.back)), pay);
+    rec(s.id, '1093x614@1.25 (app window)', '125% zoom: payment Pay+Back reachable by scrolling the sheet', pay.cashIn && (pay.keyOnly || (reach.payOk && reach.payBack)) && !reach.pageScrolled, { ...reach, keyOnly: pay.keyOnly });
     await p.screenshot({ path: path.join(OUT, `zoom125-${s.id}-${s.slug}-payment.png`) }); await ctx.close(); }
   fs.writeFileSync(path.join(__dirname, 'demo-fix-results.json'), JSON.stringify({ allOk, results }, null, 1));
   console.log(allOk ? 'ALL PASS' : 'SOME FAILED'); await b.close(); process.exit(allOk ? 0 : 1);

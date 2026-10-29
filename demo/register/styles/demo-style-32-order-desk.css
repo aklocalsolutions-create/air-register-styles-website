@@ -1,0 +1,245 @@
+/* Air Register Styles — Style 32 Order Desk (order desk layout, look only)
+ * OWNER: the style-32 assistant ONLY (this file + demo-style-32-order-desk.js). Shared files belong to the lead.
+ * Mockup: /workspace/ui-mockup/v3/style-32-order-desk (sale.png, payment.png, customer.png, menu.png, README.md)
+ * Rules: every selector starts with  html[data-style="32"]  — look only; hidden controls are hidden by CSS only; no key changes.
+ * Test: node tests/style-suite.js --style 32 --base 7280 --chrome 9514
+ * STATUS: STYLED (v1, 2026-10-29)
+ *
+ * Layout map (CSS only; DOM order, ids and handlers untouched):
+ *   main   .gridbox   -> the order list (magenta header, ruled rows) under a "CASHIER · customer" title (= #gridhead)
+ *          scan box   -> the "Item:" entry line, Quick search under it, the key legend (.st-deco) under that
+ *          #totals    -> green-on-black LCD boxes (Total big, then Subtotal, Rows, Discount, Quantity, Before tax, Tax ...)
+ *   right  REGISTER KEYS panel, two columns of outlined key bars:
+ *          column 1 = Actions (aside.actions) · Tiles (#tiles) · Items (the #right Items group, placed under Tiles)
+ *          column 2 = Transaction Actions · Gift Cards · Lookups · Register (#right)
+ *   bottom .status    -> the green status bar
+ *   hidden (CSS only, keys still work): the top bar (F1 pill, hardware pill, Settings button: Ctrl+, / Settings key in Register),
+ *          the drag sizers, the Bulk items panel (Alt+1..9 still add them).
+ *   left out (not in 1.2.0): the start menu (menu.png; 1.2.0 opens straight to the sale), the "Price / Qty" readout of the last line.
+ */
+
+/* ---------------------------------------------------------------- tokens */
+html[data-style="32"] {
+  --od-sky:#86d4ee; --od-sky2:#a6e0f3; --od-key:#c4ecf8; --od-keyline:#4e9fc0; --od-ink:#0b2a3a; --od-navy:#1c1c9c; --od-mag:#e01fd6; --od-mag2:#b532c8;
+  --od-lcd:#0a0a0a; --od-green:#2df02d; --od-blue:#2aa3e8; --od-yellow:#f2ef3a; --od-red:#d01818; --od-bar:#1ee01e;
+  --od-mono:'Orbitron',Consolas,'Lucida Console',monospace; --od-font:Arial,'Segoe UI',sans-serif; --od-kmono:Consolas,'Lucida Console',monospace;
+  --pay-num-size:22px; --pay-due-size:30px; --pay-tab-h:40px; --pay-tab-size:14px; --pay-input-size:18px; --pay-bill-size:15px; --pay-gap:10px;
+  --slate:#1c1c9c; --sel:#1c1c9c; --line:#4e9fc0;
+}
+html[data-style="32"] body { font-family:var(--od-font); color:var(--od-ink); background:var(--od-sky); }
+html[data-style="32"] kbd { font:600 10px/1 var(--od-kmono); background:transparent; border:0; padding:0 2px; color:#000; }
+
+/* ---------------------------------------------------------------- frame */
+html[data-style="32"] #app { grid-template-rows:minmax(0,1fr) 24px; background:var(--od-sky); position:relative; }
+html[data-style="32"] .top, html[data-style="32"] .sizer, html[data-style="32"] #bulkPanel { display:none; }
+html[data-style="32"] .status { background:var(--od-bar); color:#000; font-size:11.5px; font-weight:600; border:0; padding:0 0 0 10px; gap:14px; }
+html[data-style="32"] .status::before { content:''; width:9px; height:9px; border:2px solid #000; border-radius:50%; flex:none; }
+html[data-style="32"] .status > span:empty { display:none; }
+html[data-style="32"] .status .net { color:#000; }
+html[data-style="32"] .status #stTime { background:#d5f7cf; padding:3px 10px; margin-right:4px; font-weight:700; }
+
+/* ---------------------------------------------------------------- the grid: main | keys column 1 | keys column 2 */
+html[data-style="32"] .wrap {
+  grid-template-columns:minmax(0,1fr) 196px 196px;
+  grid-template-rows:minmax(0,1fr) 50px 40px 40px 162px;
+  grid-template-areas:"list ka kb" "scan ka kb" "qs ka kb" "info ka kb" "tot ka kb";
+  gap:0; min-height:0;
+}
+html[data-style="32"] body.nosides .wrap { grid-template-columns:minmax(0,1fr) 0 0 !important; }
+html[data-style="32"] .center, html[data-style="32"] .bottom, html[data-style="32"] #rightAside { display:contents; }
+html[data-style="32"] .wrap::after { content:''; grid-column:2 / 4; grid-row:1 / -1; background:var(--od-sky); border-left:2px solid #2b7ea3; z-index:0; }
+html[data-style="32"] .wrap::before { content:'REGISTER KEYS'; position:absolute; top:5px; right:8px; width:378px; z-index:2; font:700 13px/1 var(--od-mono); letter-spacing:2px; color:var(--od-ink); }
+
+/* ---------------------------------------------------------------- key bars (both columns) */
+html[data-style="32"] aside.actions { grid-area:ka; z-index:1; background:transparent; border:0; padding:26px 4px 0 6px; min-height:0; overflow:visible; }
+html[data-style="32"] aside.actions h2, html[data-style="32"] #right h3, html[data-style="32"] #tiles::before {
+  margin:4px 0 2px !important; padding:0; background:none; color:#123c52; font:700 10px/1.2 var(--od-font); letter-spacing:.6px; text-transform:uppercase; text-align:left; border:0; }
+html[data-style="32"] #right h3 small { display:none; }
+html[data-style="32"] .actions .list { display:flex; flex-direction:column; gap:2px; padding:0; overflow:visible; }
+html[data-style="32"] .actions .list .hgrp { display:contents; }
+html[data-style="32"] .actions .abtn, html[data-style="32"] .hgrp .abtn, html[data-style="32"] #right .rbtn, html[data-style="32"] .tile {
+  flex:none; display:block; height:25px !important; min-height:0; padding:1px 5px; margin:0; border:1px solid var(--od-keyline); border-radius:0; background:var(--od-key);
+  box-shadow:none; color:#08202c; text-align:left; font:600 10.5px/1.15 var(--od-mono); letter-spacing:.4px; text-transform:uppercase; white-space:nowrap; overflow:hidden; }
+html[data-style="32"] .actions .abtn .ic, html[data-style="32"] .tile .ic, html[data-style="32"] .tile .info { display:none; }
+html[data-style="32"] .actions .abtn .t { display:block; font:inherit; }
+html[data-style="32"] .actions .abtn .k, html[data-style="32"] #right .rbtn small, html[data-style="32"] .tile .k {
+  display:block; font:500 9px/1.1 var(--od-kmono); text-transform:none; letter-spacing:0; color:#123c52; opacity:1; margin:0; position:static; }
+html[data-style="32"] .actions .abtn.red, html[data-style="32"] #right .rbtn.red { color:var(--od-red); }
+html[data-style="32"] .actions .abtn:hover, html[data-style="32"] #right .rbtn:hover, html[data-style="32"] .tile:hover { background:#e2f7fd; }
+html[data-style="32"] .actions .abtn:focus-visible, html[data-style="32"] #right .rbtn:focus-visible { outline:2px solid var(--od-mag); }
+html[data-style="32"] #right .rbtn.on, html[data-style="32"] .tile.on, html[data-style="32"] .abtn.on { background:var(--od-yellow); color:#000; }
+/* Tiles under the Actions (column 1): Customers / Items / Payment */
+html[data-style="32"] #tiles { position:absolute; z-index:1; right:202px; width:184px; bottom:178px; display:flex; flex-direction:column; gap:2px; }
+html[data-style="32"] #tiles::before { content:'Tiles'; display:block; }
+html[data-style="32"] .tile { font-size:10.5px !important; }
+html[data-style="32"] .tile { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; }
+html[data-style="32"] .tile .k { order:2; }
+html[data-style="32"] .tile.active { background:var(--od-key); }
+/* column 2: #right groups; the Items group is placed in column 1 under the Tiles */
+html[data-style="32"] #right { grid-area:kb; z-index:1; display:flex; flex-direction:column; gap:0; background:transparent; padding:26px 6px 0 4px; overflow:visible; min-height:0; }
+html[data-style="32"] #right .rgrid { display:flex; flex-direction:column; gap:2px; }
+html[data-style="32"] #right h3:nth-of-type(4) { position:absolute; z-index:1; right:202px; width:184px; bottom:149px; }
+html[data-style="32"] #right .rgrid:nth-of-type(4) { position:absolute; z-index:1; right:202px; width:184px; bottom:6px; }
+
+/* ---------------------------------------------------------------- order list */
+html[data-style="32"] .gridbox { grid-area:list; margin:6px 14px 8px 22px; background:transparent; border:0; display:flex; flex-direction:column; min-height:0; }
+html[data-style="32"] .gridhead { justify-content:center; background:transparent; border:0; padding:22px 0 6px; font-size:11px; color:#123c52; gap:14px; }
+html[data-style="32"] .gridhead #gridTitle { font:700 14px/1 var(--od-mono); text-transform:uppercase; color:#000; letter-spacing:1px; }
+html[data-style="32"] .gridbox table { border-collapse:collapse; border:1px solid #2b7ea3; font:700 12px/1.2 var(--od-font); background:var(--od-sky); }
+html[data-style="32"] #cartHead th { background:var(--od-mag); color:#0b0b0b; font-weight:600; font-size:11.5px; border:1px solid #2b7ea3; padding:6px 6px; text-align:center; }
+html[data-style="32"] #cart td { padding:5px 8px; border-bottom:1px solid #4e9fc0; border-right:1px solid #2b7ea3; background:var(--od-sky); color:#000; text-transform:uppercase; }
+html[data-style="32"] #cart td.n { font-family:var(--od-kmono); text-align:right; }
+html[data-style="32"] #cart tr.row.sel td { background:var(--od-sky2); box-shadow:inset 0 0 0 0 transparent; }
+html[data-style="32"] #cart tr.row.sel td:first-child { box-shadow:inset 4px 0 0 var(--od-mag); }
+html[data-style="32"] #cart tr.row.neg td { color:var(--od-red); }
+html[data-style="32"] #cart .tag { background:var(--od-yellow); color:#000; }
+html[data-style="32"][data-mode="return"] #cartHead th { background:var(--od-red); color:#fff; }
+html[data-style="32"][data-mode="return"] .gridhead #gridTitle { color:var(--od-red); }
+html[data-style="32"] #retLines { background:#ffe3e3; border:1px solid var(--od-red); }
+
+/* ---------------------------------------------------------------- entry area */
+html[data-style="32"] .bottom > div:first-child { grid-area:scan / scan / info / scan; position:relative; z-index:1; border-top:1px solid #2b7ea3; padding:12px 290px 0 98px; min-width:0; }
+html[data-style="32"] .scanrow { position:relative; }
+html[data-style="32"] .scanrow::before { content:'Item:'; position:absolute; left:-46px; top:7px; font:700 12px/1 var(--od-font); color:#000; }
+html[data-style="32"] #scanInput, html[data-style="32"] .scanrow input { height:26px; border:1px solid var(--od-keyline); border-radius:0; background:#cdeffa; font:13px/1 var(--od-kmono); padding:0 8px; color:#000; box-shadow:none; }
+html[data-style="32"] #scanInput:focus { outline:2px solid var(--od-mag); outline-offset:0; }
+html[data-style="32"] .scanrow input.bad { background:#ffd9d9; }
+html[data-style="32"] #toast, html[data-style="32"] #scanMsg, html[data-style="32"] #noteLine { position:absolute; left:calc(100% - 280px); top:14px; width:270px; margin:0; font-size:11.5px; font-weight:700; min-height:0; }
+html[data-style="32"] #noteLine { top:auto; bottom:-60px; }
+html[data-style="32"] #toast:empty { display:none; }
+html[data-style="32"] #qsPanel { grid-area:qs; position:relative; z-index:2; margin:2px 14px 6px 98px; display:flex; align-items:center; gap:8px; padding:0 8px; height:28px; border:1px solid var(--od-keyline); background:#cdeffa; min-width:0; }
+html[data-style="32"] #qsPanel h3 { display:block; margin:0 !important; font:700 11px/1 var(--od-font); white-space:nowrap; color:#000; }
+html[data-style="32"] #qsPanel h3 small { display:none; }
+html[data-style="32"] #qsIn { flex:1; min-width:0; border:0; background:transparent; font:11.5px/1 var(--od-kmono); padding:2px; outline:none; }
+html[data-style="32"] #qsPanel::after { content:'F2 \00b7  Ctrl+Shift+S'; font:600 11px/1 var(--od-kmono); white-space:nowrap; }
+html[data-style="32"] #qsPanel:focus-within { outline:2px solid var(--od-mag); }
+html[data-style="32"] #qsRes { position:absolute; left:0; right:0; bottom:calc(100% + 2px); background:#e8f8fd; border:1px solid var(--od-keyline); max-height:50vh; overflow:auto; }
+html[data-style="32"] #qsRes:empty { display:none; }
+html[data-style="32"] .st-deco.od-legend { position:absolute; z-index:2; left:22px; bottom:194px; width:calc(100% - 440px); font:11px/1.6 var(--od-font); color:#123c52; text-align:center;
+  border-bottom:1px solid #2b7ea3; padding-bottom:6px; }
+
+/* ---------------------------------------------------------------- LCD totals */
+html[data-style="32"] #totals { grid-area:tot; z-index:1; align-self:center; margin:0 20px 0 64px; display:grid; grid-template-columns:2fr repeat(5,minmax(0,1fr)); grid-auto-rows:66px;
+  grid-auto-flow:row dense; gap:8px 10px; background:transparent; border:0; font-size:13px; max-width:820px; }
+html[data-style="32"] #totals div { display:grid; grid-template-columns:100%; grid-template-rows:20px 1fr; padding:0; border:0; background:var(--od-lcd); min-width:0; }
+html[data-style="32"] #totals div > span { display:block; width:auto; margin:0; }
+html[data-style="32"] #totals div span:first-child { background:var(--od-blue); color:#000; font:700 11.5px/20px var(--od-mono); text-align:center; letter-spacing:.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+html[data-style="32"] #totals div span:last-child { color:var(--od-green); font:700 21px/1 var(--od-mono); letter-spacing:1px; display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; }
+html[data-style="32"] #totals .total { grid-column:1; grid-row:1 / span 2; grid-template-rows:24px 1fr; font-size:inherit; }
+html[data-style="32"] #totals .total span:first-child { font-size:15px; line-height:24px; }
+html[data-style="32"] #totals .total span:last-child { font-size:44px; text-shadow:0 0 8px rgba(45,240,45,.35); }
+html[data-style="32"] #totals .taxoffline span:last-child, html[data-style="32"] #totals .negline span:last-child, html[data-style="32"] #totals .neg span:last-child { color:#ff5050; }
+html[data-style="32"][data-mode="return"] #totals .total span:first-child { background:var(--od-red); color:#fff; }
+
+/* ---------------------------------------------------------------- dialogs */
+html[data-style="32"] .modal { border-radius:0; border:2px solid var(--od-navy); background:#e8f8fd; font-family:var(--od-font); }
+html[data-style="32"] .modal h2 { font:700 16px/1.2 var(--od-mono); letter-spacing:1px; text-transform:uppercase; color:var(--od-navy); }
+html[data-style="32"] .pbtn { border-radius:0; }
+html[data-style="32"] .pbtn.g { background:var(--od-mag2); color:var(--od-yellow); border:2px solid var(--od-yellow); }
+html[data-style="32"] .pbtn.s { background:var(--od-key); color:#000; border:1px solid var(--od-keyline); }
+html[data-style="32"] th { background:var(--od-mag); color:#000; }
+
+/* ---------------------------------------------------------------- payment: navy tender columns + LCD + Payment keys panel */
+html[data-style="32"] .modal.fullpay { background:var(--od-sky); padding:0; border:0; }
+html[data-style="32"] .fullpay .payhead { margin:0; padding:5px 12px; background:var(--od-navy); color:var(--od-yellow); }
+html[data-style="32"] .fullpay .payhead h2 { color:var(--od-yellow); font-size:15px; }
+html[data-style="32"] .fullpay .payhead .note { color:#cfd3ff; font-size:12px; }
+html[data-style="32"] .fullpay #payBody { min-height:0; }
+html[data-style="32"] .paygrid { display:grid; position:relative; grid-template-columns:minmax(0,1fr) 400px; grid-template-rows:minmax(0,1fr) 170px; gap:0; height:100%; }
+html[data-style="32"] .payact { display:contents; }
+html[data-style="32"] .paygrid::before { content:'PAYMENT KEYS'; grid-column:2; grid-row:1 / span 2; border-left:2px solid #2b7ea3; padding:10px 10px; font:700 13px/1 var(--od-mono); letter-spacing:2px; color:var(--od-ink); }
+html[data-style="32"] .fullpay .plist { grid-column:1; grid-row:1; flex-direction:row; align-items:stretch; gap:0; margin:8px 10px 10px; background:var(--od-navy); border:2px solid #fff; overflow:auto; }
+html[data-style="32"] .fullpay .pline { flex:1 1 0; min-width:0; flex-direction:column; justify-content:flex-start; align-items:stretch; gap:30px; padding:14px 8px; min-height:0; border:0; border-right:2px solid #fff; border-radius:0; background:transparent; color:#fff; }
+html[data-style="32"] .fullpay .pline .plbl { flex:none; text-align:center; background:var(--od-mag2); color:var(--od-yellow); font:700 12px/24px var(--od-kmono); }
+html[data-style="32"] .fullpay .pline .plbl::before { content:''; }
+html[data-style="32"] .fullpay .pline .pamt { width:auto; border:0; border-radius:0; background:transparent; color:#fff; font:700 17px/1 var(--od-kmono); text-align:right; padding:6px 4px; }
+html[data-style="32"] .fullpay .pline .pamt::placeholder { color:#9fa3e0; }
+html[data-style="32"] .fullpay .pline.on { box-shadow:none; background:#26269f; }
+html[data-style="32"] .fullpay .pline.on .plbl { outline:2px solid var(--od-yellow); outline-offset:0; background:var(--od-navy); }
+html[data-style="32"] .fullpay .pline.on .pamt { outline:1px dashed var(--od-yellow); }
+html[data-style="32"] .paynums { grid-column:1; grid-row:2; width:auto; display:grid; grid-template-columns:2fr 2fr 1fr 1fr; gap:8px 10px; padding:10px 20px 20px 64px; max-width:900px; }
+html[data-style="32"] .paynums .pn { background:var(--od-lcd) !important; border-radius:0; padding:0; display:grid; grid-template-rows:22px 1fr; }
+html[data-style="32"] .paynums .pn > * { display:block; width:auto; justify-self:stretch; align-self:stretch; }
+html[data-style="32"] .paynums .pn span { background:var(--od-blue); color:#000 !important; font:700 13px/22px var(--od-mono); text-align:center; }
+html[data-style="32"] .paynums .pn b, html[data-style="32"] .paynums .pn.left b { color:var(--od-green); font:700 38px/1 var(--od-mono); display:flex; align-items:center; justify-content:center; }
+html[data-style="32"] .paynums .pn.left b, html[data-style="32"] .paynums .pn.chg b { font-size:30px; }
+html[data-style="32"] .paynums .pn.left.zero span { background:var(--od-bar); }
+html[data-style="32"] .fullpay .plist > .pextra { position:absolute; z-index:1; right:10px; width:378px; top:34px; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+html[data-style="32"] .fullpay .plist > .pextra.quick::before { content:'Quick cash (puts the amount on the cash line)'; grid-column:1 / -1; font:700 10px/1.2 var(--od-font); text-transform:uppercase; color:#123c52; }
+html[data-style="32"] .fullpay .plist > .pextra:not(.quick) { grid-template-columns:1fr; background:#e8f8fd; border:1px solid var(--od-keyline); padding:8px; }
+html[data-style="32"] .fullpay .pextra.quick #nextBills { display:contents; }
+html[data-style="32"] .fullpay .pextra.quick button { min-width:0; min-height:34px; padding:2px 6px; border-radius:0; text-align:left; background:var(--od-key); border:1px solid var(--od-keyline); color:#000; font:700 12px/1.1 var(--od-mono); }
+html[data-style="32"] .fullpay .row2 { position:absolute; z-index:1; right:10px; width:378px; top:188px; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+html[data-style="32"] .fullpay .row2::before { order:-2; content:'FINISH'; font:700 10px/1.2 var(--od-font); color:#123c52; }
+html[data-style="32"] .fullpay .row2 .pbtn { min-height:40px; font:700 13px/1.1 var(--od-mono); text-transform:uppercase; text-align:left; padding:4px 10px; background:#cdeffa; color:#000; border:1px solid #2b7ea3; }
+html[data-style="32"] .fullpay .row2 #payOk { order:-1; background:var(--od-mag2); color:var(--od-yellow); border:3px double var(--od-yellow); }
+html[data-style="32"] .fullpay .row2 kbd { color:inherit; }
+html[data-style="32"] .paygrid::after { content:'KEYS\A Enter    next payment line / finish when fully paid\A +        put the full balance on this line\A Esc      back to sale';
+  white-space:pre; position:absolute; right:10px; width:378px; top:300px; font:11.5px/1.9 var(--od-kmono); color:#0b2a3a; pointer-events:none; }
+html[data-style="32"] #payMsg { position:absolute; z-index:1; right:10px; width:378px; top:400px; font-size:13px; font-weight:700; }
+
+/* ---------------------------------------------------------------- Settings + login */
+html[data-style="32"] .modal.stpage { background:#e8f8fd; border:0; }
+html[data-style="32"] .stpage .sthead { background:var(--od-navy); color:var(--od-yellow); }
+html[data-style="32"] .stpage .sthead h2 { color:var(--od-yellow); }
+html[data-style="32"] .sttabs { background:var(--od-sky); }
+html[data-style="32"] .sttabs button { border-radius:0; font-family:var(--od-mono); font-size:12px; }
+html[data-style="32"] .sttabs button.on { background:var(--od-mag2); color:var(--od-yellow); }
+html[data-style="32"] .sybtn { border-radius:0; border-color:var(--od-keyline); }
+html[data-style="32"] .sybtn.on { border-color:var(--od-mag); background:#fde8fb; }
+html[data-style="32"] #login { background:var(--od-sky); }
+html[data-style="32"] #login .card { border-radius:0; border:2px solid var(--od-navy); }
+html[data-style="32"] #lgBtn { background:var(--od-mag2); color:var(--od-yellow); border-radius:0; }
+
+/* ---------------------------------------------------------------- customer display: same sky / LCD look */
+html[data-style="32"][data-page="customer"] body { background:var(--od-sky); font-family:var(--od-font); color:#000; }
+html[data-style="32"][data-page="customer"] #idle, html[data-style="32"][data-page="customer"] #done { background:var(--od-navy); color:var(--od-yellow); }
+html[data-style="32"][data-page="customer"] #idle h1, html[data-style="32"][data-page="customer"] #done h1 { font-family:var(--od-mono); letter-spacing:2px; }
+html[data-style="32"][data-page="customer"] #done .sum .chg { color:var(--od-green); }
+html[data-style="32"][data-page="customer"] .lines { background:var(--od-sky); border:2px solid #2b7ea3; border-radius:0; }
+html[data-style="32"][data-page="customer"] .lines h2 { background:var(--od-mag); color:#000; font-family:var(--od-mono); text-transform:uppercase; letter-spacing:1px; }
+html[data-style="32"][data-page="customer"] .lines h2.ret { background:var(--od-red); color:#fff; }
+html[data-style="32"][data-page="customer"] .row { border-bottom:1px solid var(--od-keyline); text-transform:uppercase; font-weight:700; }
+html[data-style="32"][data-page="customer"] .side { background:var(--od-lcd); color:var(--od-green); border-radius:0; font-family:var(--od-mono); }
+html[data-style="32"][data-page="customer"] .side .due, html[data-style="32"][data-page="customer"] .side .big { color:var(--od-green); }
+html[data-style="32"][data-page="customer"] .side .chg { color:var(--od-yellow); }
+html[data-style="32"][data-page="customer"] .side .off, html[data-style="32"][data-page="customer"] .side .ret { color:#ff6b6b; }
+
+/* ---------------------------------------------------------------- round 2 fit fixes (look only)
+ * Short windows (<=700px tall, e.g. 125% zoom): flatter key bars so both key columns fit, Tiles/Items no longer overlap
+ * the Actions, and the columns scroll as a last resort. Narrow windows (<1100px wide): slimmer key columns, a wider scan
+ * box, a 3-column LCD block and a 2x2 payment amount block so no amount runs together or gets cut. */
+@media (max-height:700px) {
+  html[data-style="32"] .wrap::before { top:4px; font-size:12px; }
+  html[data-style="32"] aside.actions, html[data-style="32"] #right { padding-top:20px; overflow-y:auto; overflow-x:hidden; scrollbar-width:thin; }
+  html[data-style="32"] aside.actions h2, html[data-style="32"] #right h3, html[data-style="32"] #tiles::before { margin:2px 0 1px !important; font-size:9px; line-height:11px; }
+  html[data-style="32"] .actions .abtn, html[data-style="32"] .hgrp .abtn, html[data-style="32"] #right .rbtn, html[data-style="32"] .tile { height:21px !important; padding:1px 5px 0; font-size:9.5px !important; line-height:1.05; }
+  html[data-style="32"] .actions .abtn .k, html[data-style="32"] #right .rbtn small, html[data-style="32"] .tile .k { font-size:8px; line-height:1; }
+  html[data-style="32"] .actions .list, html[data-style="32"] #right .rgrid, html[data-style="32"] #tiles { gap:2px; }
+  html[data-style="32"] #right .rgrid:nth-of-type(4) { bottom:4px; }
+  html[data-style="32"] #right h3:nth-of-type(4) { bottom:121px; }
+  html[data-style="32"] #tiles { bottom:136px; }
+}
+@media (max-width:1099px) {
+  html[data-style="32"] .wrap { grid-template-columns:minmax(0,1fr) 172px 172px; }
+  html[data-style="32"] .wrap::before { width:330px; }
+  html[data-style="32"] #tiles, html[data-style="32"] #right h3:nth-of-type(4), html[data-style="32"] #right .rgrid:nth-of-type(4) { right:178px; width:160px; }
+  html[data-style="32"] .gridbox { margin:6px 10px 8px 12px; }
+  html[data-style="32"] .bottom > div:first-child { padding:12px 196px 0 58px; }
+  html[data-style="32"] .scanrow::before { left:-44px; }
+  html[data-style="32"] #toast, html[data-style="32"] #scanMsg, html[data-style="32"] #noteLine { left:calc(100% - 190px); width:184px; overflow:hidden; text-overflow:ellipsis; }
+  html[data-style="32"] #qsPanel { margin:2px 10px 6px 58px; }
+  html[data-style="32"] #qsPanel::after { display:none; }
+  html[data-style="32"] .st-deco.od-legend { left:12px; width:calc(100% - 368px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  html[data-style="32"] #totals { margin:0 10px; grid-template-columns:2fr repeat(3,minmax(0,1fr)); gap:8px; max-width:none; }
+  html[data-style="32"] #totals div span:first-child { font-size:10px; letter-spacing:0; }
+  html[data-style="32"] #totals div span:last-child { font-size:16px; letter-spacing:0; }
+  html[data-style="32"] #totals .total span:last-child { font-size:30px; }
+  html[data-style="32"] .paygrid { grid-template-columns:minmax(0,1fr) 300px; }
+  html[data-style="32"] .fullpay .plist > .pextra, html[data-style="32"] .fullpay .row2, html[data-style="32"] .paygrid::after, html[data-style="32"] #payMsg { width:280px; }
+  html[data-style="32"] .paygrid::after { white-space:pre-wrap; font-size:10.5px; line-height:1.6; }
+  html[data-style="32"] .paynums { grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px 8px; padding:8px 10px 10px; }
+  html[data-style="32"] .paynums .pn { min-width:0; grid-template-rows:20px 1fr; }
+  html[data-style="32"] .paynums .pn span { font-size:11px; line-height:20px; }
+  html[data-style="32"] .paynums .pn b, html[data-style="32"] .paynums .pn.left b, html[data-style="32"] .paynums .pn.chg b { font-size:clamp(18px,3vw,26px); min-width:0; overflow:hidden; }
+}

@@ -637,3 +637,15 @@ html[data-style="22"][data-page="register"] .modal .calc button:hover { border-c
   html[data-style="22"] .s22-hero .s22-core svg { width:44px; height:44px; }
   html[data-style="22"] .s22-hero h1 { font-size:36px; margin-top:12px; }
 }
+/* Website fix (29 Oct, 22 payment drawer on short windows, e.g. the 1024x768 demo frame ~620 tall): the Due/Paid/Balance/Change row
+   at the bottom of the drawer was cut off. Up to 800px tall: a slightly taller drawer (the hero above follows it) and tighter spacing. Look only. */
+@media (max-height: 800px) {
+  html[data-style="22"][data-page="register"] .modal.fullpay { height: min(400px, 60vh); padding-bottom: 10px; }
+  html[data-style="22"] .s22-pay { bottom: min(400px, 60vh); }
+  html[data-style="22"][data-page="register"] .fullpay .payhead { margin-bottom: 6px; }
+  html[data-style="22"][data-page="register"] .fullpay .paygrid { gap: 6px; }
+  html[data-style="22"][data-page="register"] .fullpay .pline { padding: 7px 12px 7px; }
+  html[data-style="22"][data-page="register"] .fullpay .pextra.quick button { padding: 6px 12px; }
+  html[data-style="22"][data-page="register"] .fullpay .row2 { margin-top: 4px; }
+  html[data-style="22"][data-page="register"] .fullpay .paynums .pn { padding: 5px 12px; }
+}

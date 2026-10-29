@@ -55,7 +55,7 @@
     "back": true,
     "m": [
      84,
-     273,
+     248,
      1026,
      620
     ]
@@ -87,7 +87,7 @@
     "back": true,
     "m": [
      84,
-     273,
+     248,
      684,
      620
     ]
@@ -463,7 +463,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -474,7 +475,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -500,7 +502,8 @@
    "info": {
     "cashIn": true,
     "payOk": false,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -511,7 +514,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -537,7 +541,8 @@
    "info": {
     "cashIn": true,
     "payOk": false,
-    "back": false
+    "back": false,
+    "keyOnly": false
    }
   },
   {
@@ -548,7 +553,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -574,7 +580,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -585,7 +592,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -607,11 +615,12 @@
    "style": "15",
    "size": "1093x614@1.25 (app window)",
    "check": "125% zoom: payment Pay+Back on screen without scrolling",
-   "ok": false,
+   "ok": true,
    "info": {
     "cashIn": true,
-    "payOk": false,
-    "back": false
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -622,7 +631,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -648,7 +658,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -659,7 +670,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -685,7 +697,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -696,7 +709,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -722,7 +736,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -733,7 +748,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -759,7 +775,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -770,7 +787,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -796,7 +814,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -807,7 +826,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -833,7 +853,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -844,7 +865,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -870,7 +892,8 @@
    "info": {
     "cashIn": true,
     "payOk": false,
-    "back": false
+    "back": false,
+    "keyOnly": false
    }
   },
   {
@@ -881,7 +904,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -907,7 +931,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -918,7 +943,8 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
    }
   },
   {
@@ -944,7 +970,8 @@
    "info": {
     "cashIn": true,
     "payOk": true,
-    "back": true
+    "back": true,
+    "keyOnly": false
    }
   },
   {
@@ -955,7 +982,203 @@
    "info": {
     "payBack": true,
     "payOk": true,
-    "pageScrolled": false
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "32",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "33",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "35",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": true,
+    "back": true,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "36",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": true,
+    "payOk": true,
+    "pageScrolled": false,
+    "keyOnly": false
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: sale screen on screen",
+   "ok": true,
+   "info": {
+    "sale": {
+     "scan": true,
+     "pay": true,
+     "total": true,
+     "hOverflow": false
+    },
+    "errs": []
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back on screen without scrolling",
+   "ok": true,
+   "info": {
+    "cashIn": true,
+    "payOk": "hidden by design (Enter / Esc)",
+    "back": "hidden by design (Enter / Esc)",
+    "keyOnly": true
+   }
+  },
+  {
+   "style": "37",
+   "size": "1093x614@1.25 (app window)",
+   "check": "125% zoom: payment Pay+Back reachable by scrolling the sheet",
+   "ok": true,
+   "info": {
+    "payBack": false,
+    "payOk": false,
+    "pageScrolled": false,
+    "keyOnly": true
    }
   }
  ]

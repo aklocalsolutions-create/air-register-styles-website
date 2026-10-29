@@ -6,6 +6,9 @@ const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..'), SHOTS = path.join(ROOT, 'screenshots');
 const port = fs.readFileSync(path.join(__dirname, 'demo-port.txt'), 'utf8').trim(), BASE = `http://127.0.0.1:${port}/demo/`;
 const cfg = fs.readFileSync(path.join(ROOT, 'demo/demo-styles-config.js'), 'utf8'); const window = {}; eval(cfg); const STYLES = window.DEMO_STYLES;
+// Pay: click the Pay button; a style that hides it by design (37 Maroon Console: "Enter - finish when paid") is finished
+// with Enter in the payment box, the same as a cashier would.
+async function finish(reg, box) { if (await reg.locator('#payOk').isVisible().catch(() => false)) await reg.locator('#payOk').click(); else await reg.locator(box).press('Enter'); }
 const only = process.argv[2] ? process.argv[2].split(',') : null;
 const PAYSHOTS = ['03', '16', '22'];
 const r2 = n => Math.round((n + 1e-9) * 100) / 100, money = n => '$' + r2(n).toFixed(2);
@@ -72,7 +75,7 @@ function expectTotals(lines, pct) { // same math as register.js recalc (8% tax o
       await reg.locator('#cashIn').fill(String(tendered)); await reg.locator('#cashIn').dispatchEvent('input'); await reg.waitForTimeout(250);
       step('change preview', (await reg.locator('#chg').innerText()).includes(change.toFixed(2)), `${await reg.locator('#chg').innerText()} vs ${change}`);
       if (PAYSHOTS.includes(s.id)) await page.screenshot({ path: path.join(SHOTS, `payment-cash-${s.id}-${s.slug}.png`) });
-      await reg.locator('#payOk').click(); await reg.waitForSelector('#dPrint', { timeout: 4000 });
+      await finish(reg, '#cashIn'); await reg.waitForSelector('#dPrint', { timeout: 4000 });
       step('sale complete + change', (await reg.locator('.donechg').innerText()).includes(change.toFixed(2)));
       await page.locator('#vSplit').click(); await page.waitForTimeout(900);
       const done = await cus.evaluate(() => document.getElementById('done').classList.contains('on') && document.body.innerText);
@@ -87,7 +90,7 @@ function expectTotals(lines, pct) { // same math as register.js recalc (8% tax o
       await reg.evaluate(() => act('scan', { code: '2001' })); await reg.waitForTimeout(300);
       const due2 = expectTotals([[2001, 1]], 0).due;
       await reg.evaluate(() => checkoutDialog()); await reg.waitForSelector('#pa-20', { timeout: 4000 });
-      await reg.locator('#pa-20').fill(due2.toFixed(2)); await reg.locator('#pa-20').dispatchEvent('input'); await reg.locator('#payOk').click();
+      await reg.locator('#pa-20').fill(due2.toFixed(2)); await reg.locator('#pa-20').dispatchEvent('input'); await finish(reg, '#pa-20');
       await reg.waitForFunction(() => /approved - demo/i.test((document.getElementById('payBody') || {}).innerText || ''), null, { timeout: 5000 });
       step('card approved - demo', true);
       if (PAYSHOTS.includes(s.id)) await page.screenshot({ path: path.join(SHOTS, `payment-card-${s.id}-${s.slug}.png`) });

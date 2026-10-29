@@ -140,6 +140,56 @@
   "errors": []
  },
  {
+  "id": "32",
+  "name": "Order Desk",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "33",
+  "name": "Counter Grid",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "35",
+  "name": "Tabbed Pantry",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "36",
+  "name": "Rail Cards",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
+  "id": "37",
+  "name": "Maroon Console",
+  "stage": "tested",
+  "pass": true,
+  "passed": 18,
+  "total": 18,
+  "fails": [],
+  "errors": []
+ },
+ {
   "id": "gallery",
   "pass": true,
   "info": {

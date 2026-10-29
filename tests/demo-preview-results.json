@@ -14,9 +14,9 @@
     "info": "DEMO - Air Register Styles - Demo Store"
    },
    {
-    "name": "14 tested + 5 preview = 19 cards",
+    "name": "19 cards, all tested (none left in preview)",
     "ok": true,
-    "info": "14+5=19"
+    "info": "19+0=19"
    },
    {
     "name": "no style 31 or 34",
@@ -24,7 +24,7 @@
     "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
    },
    {
-    "name": "preview badge text",
+    "name": "new styles 32-37 show the Tested badge",
     "ok": true,
     "info": ""
    },
@@ -80,20 +80,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+    "info": "DEMO - Style 32 Order Desk - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+    "info": "Style 32\nOrder Desk\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -103,29 +98,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
-   },
-   {
-    "name": "screen buttons switch (4)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (4)",
+    "name": "design pictures load (4)",
     "ok": true,
     "info": "4/4"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -149,8 +129,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "33",
@@ -164,20 +144,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+    "info": "DEMO - Style 33 Counter Grid - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+    "info": "Style 33\nCounter Grid\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -187,29 +162,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -233,8 +193,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "35",
@@ -248,20 +208,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+    "info": "DEMO - Style 35 Tabbed Pantry - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+    "info": "Style 35\nTabbed Pantry\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -271,29 +226,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -317,8 +257,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "36",
@@ -332,20 +272,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+    "info": "DEMO - Style 36 Rail Cards - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+    "info": "Style 36\nRail Cards\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -355,29 +290,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":276,\"y\":204,\"width\":1368,\"height\":788}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -401,8 +321,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "37",
@@ -416,20 +336,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+    "info": "DEMO - Style 37 Maroon Console - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+    "info": "Style 37\nMaroon Console\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -439,29 +354,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":276,\"y\":172,\"width\":1368,\"height\":788}"
-   },
-   {
-    "name": "screen buttons switch (5)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (5)",
+    "name": "design pictures load (5)",
     "ok": true,
     "info": "5/5"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -485,8 +385,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "gallery",
@@ -503,9 +403,9 @@
     "info": "DEMO - Air Register Styles - Demo Store"
    },
    {
-    "name": "14 tested + 5 preview = 19 cards",
+    "name": "19 cards, all tested (none left in preview)",
     "ok": true,
-    "info": "14+5=19"
+    "info": "19+0=19"
    },
    {
     "name": "no style 31 or 34",
@@ -513,7 +413,7 @@
     "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
    },
    {
-    "name": "preview badge text",
+    "name": "new styles 32-37 show the Tested badge",
     "ok": true,
     "info": ""
    },
@@ -569,20 +469,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+    "info": "DEMO - Style 32 Order Desk - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+    "info": "Style 32\nOrder Desk\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -592,29 +487,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
-   },
-   {
-    "name": "screen buttons switch (4)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (4)",
+    "name": "design pictures load (4)",
     "ok": true,
     "info": "4/4"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -638,8 +518,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "33",
@@ -653,20 +533,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+    "info": "DEMO - Style 33 Counter Grid - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+    "info": "Style 33\nCounter Grid\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -676,29 +551,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -722,8 +582,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "35",
@@ -737,20 +597,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+    "info": "DEMO - Style 35 Tabbed Pantry - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+    "info": "Style 35\nTabbed Pantry\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -760,29 +615,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -806,8 +646,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "36",
@@ -821,20 +661,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+    "info": "DEMO - Style 36 Rail Cards - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+    "info": "Style 36\nRail Cards\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -844,29 +679,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":1334,\"height\":770}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -890,8 +710,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "37",
@@ -905,20 +725,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+    "info": "DEMO - Style 37 Maroon Console - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+    "info": "Style 37\nMaroon Console\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -928,29 +743,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":190,\"width\":1334,\"height\":770}"
-   },
-   {
-    "name": "screen buttons switch (5)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (5)",
+    "name": "design pictures load (5)",
     "ok": true,
     "info": "5/5"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -974,8 +774,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "gallery",
@@ -992,9 +792,9 @@
     "info": "DEMO - Air Register Styles - Demo Store"
    },
    {
-    "name": "14 tested + 5 preview = 19 cards",
+    "name": "19 cards, all tested (none left in preview)",
     "ok": true,
-    "info": "14+5=19"
+    "info": "19+0=19"
    },
    {
     "name": "no style 31 or 34",
@@ -1002,7 +802,7 @@
     "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
    },
    {
-    "name": "preview badge text",
+    "name": "new styles 32-37 show the Tested badge",
     "ok": true,
     "info": ""
    },
@@ -1058,20 +858,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+    "info": "DEMO - Style 32 Order Desk - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+    "info": "Style 32\nOrder Desk\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1081,29 +876,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
-   },
-   {
-    "name": "screen buttons switch (4)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (4)",
+    "name": "design pictures load (4)",
     "ok": true,
     "info": "4/4"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1127,8 +907,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "33",
@@ -1142,20 +922,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+    "info": "DEMO - Style 33 Counter Grid - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+    "info": "Style 33\nCounter Grid\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1165,29 +940,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1211,8 +971,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "35",
@@ -1226,20 +986,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+    "info": "DEMO - Style 35 Tabbed Pantry - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+    "info": "Style 35\nTabbed Pantry\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1249,29 +1004,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":262,\"width\":992,\"height\":578}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1295,8 +1035,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "36",
@@ -1310,20 +1050,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+    "info": "DEMO - Style 36 Rail Cards - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+    "info": "Style 36\nRail Cards\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1333,29 +1068,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":222,\"width\":992,\"height\":578}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1379,8 +1099,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "37",
@@ -1394,20 +1114,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+    "info": "DEMO - Style 37 Maroon Console - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+    "info": "Style 37\nMaroon Console\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1417,29 +1132,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":230,\"width\":992,\"height\":578}"
-   },
-   {
-    "name": "screen buttons switch (5)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (5)",
+    "name": "design pictures load (5)",
     "ok": true,
     "info": "5/5"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1463,8 +1163,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "gallery",
@@ -1481,9 +1181,9 @@
     "info": "DEMO - Air Register Styles - Demo Store"
    },
    {
-    "name": "14 tested + 5 preview = 19 cards",
+    "name": "19 cards, all tested (none left in preview)",
     "ok": true,
-    "info": "14+5=19"
+    "info": "19+0=19"
    },
    {
     "name": "no style 31 or 34",
@@ -1491,7 +1191,7 @@
     "info": "01,03,10,11,15,16,17,19,22,23,25,26,27,30,32,33,35,36,37"
    },
    {
-    "name": "preview badge text",
+    "name": "new styles 32-37 show the Tested badge",
     "ok": true,
     "info": ""
    },
@@ -1547,20 +1247,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview - Demo Store"
+    "info": "DEMO - Style 32 Order Desk - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 32\nOrder Desk\nPreview - coming soon to Air Register"
+    "info": "Style 32\nOrder Desk\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1570,29 +1265,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 32 Order Desk - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":466,\"width\":358,\"height\":221}"
-   },
-   {
-    "name": "screen buttons switch (4)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (4)",
+    "name": "design pictures load (4)",
     "ok": true,
     "info": "4/4"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1616,8 +1296,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "33",
@@ -1631,20 +1311,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview - Demo Store"
+    "info": "DEMO - Style 33 Counter Grid - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 33\nCounter Grid\nPreview - coming soon to Air Register"
+    "info": "Style 33\nCounter Grid\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1654,29 +1329,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 33 Counter Grid - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":427,\"width\":358,\"height\":221}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1700,8 +1360,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "35",
@@ -1715,20 +1375,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview - Demo Store"
+    "info": "DEMO - Style 35 Tabbed Pantry - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 35\nTabbed Pantry\nPreview - coming soon to Air Register"
+    "info": "Style 35\nTabbed Pantry\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1738,29 +1393,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 35 Tabbed Pantry - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":427,\"width\":358,\"height\":221}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1784,8 +1424,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "36",
@@ -1799,20 +1439,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview - Demo Store"
+    "info": "DEMO - Style 36 Rail Cards - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 36\nRail & Cards\nPreview - coming soon to Air Register"
+    "info": "Style 36\nRail Cards\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1822,29 +1457,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 36 Rail & Cards - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":447,\"width\":358,\"height\":221}"
-   },
-   {
-    "name": "screen buttons switch (3)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (3)",
+    "name": "design pictures load (3)",
     "ok": true,
     "info": "3/3"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1868,8 +1488,8 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  },
  {
   "page": "37",
@@ -1883,20 +1503,15 @@
    {
     "name": "title starts \"DEMO -\"",
     "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview - Demo Store"
+    "info": "DEMO - Style 37 Maroon Console - Demo Store"
    },
    {
-    "name": "name + preview label",
+    "name": "name + Tested label",
     "ok": true,
-    "info": "Style 37\nMaroon Console\nPreview - coming soon to Air Register"
+    "info": "Style 37\nMaroon Console\n✔ Tested - working demo in this style"
    },
    {
-    "name": "preview note shown",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "no register on page",
+    "name": "live register on page",
     "ok": true,
     "info": ""
    },
@@ -1906,29 +1521,14 @@
     "info": ""
    },
    {
-    "name": "mockup loads with DEMO ribbon",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "mockup title starts \"DEMO -\"",
-    "ok": true,
-    "info": "DEMO - Style 37 Maroon Console - Preview"
-   },
-   {
-    "name": "mockup fits the window width",
-    "ok": true,
-    "info": "{\"x\":16,\"y\":414,\"width\":358,\"height\":221}"
-   },
-   {
-    "name": "screen buttons switch (5)",
-    "ok": true,
-    "info": ""
-   },
-   {
-    "name": "pictures load (5)",
+    "name": "design pictures load (5)",
     "ok": true,
     "info": "5/5"
+   },
+   {
+    "name": "pictures close with Esc",
+    "ok": true,
+    "info": ""
    },
    {
     "name": "no sideways scroll",
@@ -1952,7 +1552,7 @@
    }
   ],
   "pass": true,
-  "passed": 15,
-  "total": 15
+  "passed": 11,
+  "total": 11
  }
 ]

@@ -70,6 +70,25 @@ function renderFrame() {
   document.getElementById('rcBtn').onclick = () => { let rec = null; try { rec = reg.contentWindow.DEMO_RECEIPT(); } catch {} window.DEMO_OPEN_RECEIPT(rec); };
   document.getElementById('popBtn').onclick = () => window.open(`demo-window.html?page=customer&style=${s.id}`, 'demoCustomer', 'width=900,height=640');
   document.getElementById('resetBtn').onclick = () => { try { reg.contentWindow.DEMO_RESET(); } catch {} reg.src = reg.src; if (cus.src) cus.src = cus.src; };
+  designShots(s);
+}
+// tested styles that started as previews keep their design pictures: a "Design pictures" button opens them over the register
+function designShots(s) {
+  const pvw = s.preview || {}, dir = (typeof pvw.dir === 'string' && /^previews\/[a-z0-9-]+\/$/.test(pvw.dir)) ? pvw.dir : '';
+  const shots = (pvw.shots || []).filter(k => PREVIEW_SHOTS[k]), btn = document.getElementById('shotsBtn');
+  if (!btn || !dir || !shots.length) return;
+  btn.hidden = false;
+  btn.onclick = () => {
+    if (document.getElementById('dsBox')) return;
+    const box = document.createElement('div'); box.id = 'dsBox'; box.className = 'dsBox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Design pictures');
+    box.innerHTML = `<div class="dsIn"><div class="dsHead"><b>Style ${s.id} ${esc(s.name)} - design pictures</b><small>The design this style was built from (made-up demo data). The working register is behind this window.</small><button class="btn" type="button" id="dsClose">Close</button></div>
+      <div class="pvGrid">${shots.map(k => `<figure><a href="${dir}demo-${k}.png" target="_blank" rel="noopener"><img loading="lazy" src="${dir}demo-${k}.png" alt="Style ${s.id} ${esc(s.name)} design - ${PREVIEW_SHOTS[k][1].toLowerCase()} (made-up demo data)"></a><figcaption>${PREVIEW_SHOTS[k][1]}</figcaption></figure>`).join('')}</div></div>`;
+    document.body.appendChild(box);
+    const close = () => { box.remove(); btn.focus(); };
+    document.getElementById('dsClose').onclick = close; box.onclick = e => { if (e.target === box) close(); };
+    box.onkeydown = e => { if (e.key === 'Escape') close(); };
+    document.getElementById('dsClose').focus();
+  };
 }
 // shared by the demo page and the preview page: style name + badge, download placeholder, style picker
 function frameCommon(s) {
